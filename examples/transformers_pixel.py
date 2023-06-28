@@ -48,6 +48,7 @@ def prepare(params, samples):
     pass
 
 def batcher(params, batch):
+    pooling = params["pooling"]
     layer = params["layer"]
     model = params["model"]
     processor = params.tokenizer
@@ -129,7 +130,7 @@ if __name__ == "__main__":
 
     # Set params for DiscoEval or SentEval
     params = {'task_path': PATH_TO_DATA, 'usepytorch': True, 'kfold': 10, 'batch_size': 16,
-              'tokenizer': tokenizer, "pooling": args.pooling, "layer": args.layer, "model": model, 'seed': args.seed}
+              'tokenizer': processor, "pooling": args.pooling, "layer": args.layer, "model": model, 'seed': args.seed}
     params['classifier'] = {'nhid': 0, 'optim': 'adam', 'batch_size': 64,
                             'tenacity': 5, 'epoch_size': 4}
 
