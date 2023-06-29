@@ -130,4 +130,5 @@ if __name__ == "__main__":
         args.task_index,
         params['seed'])
 
+    df = pd.DataFrame(results)
     df.to_csv(output_path, index=True)
