@@ -109,7 +109,6 @@ class PyTorchClassifier(object):
         self.nepoch += epoch_size
 
     def score(self, devX, devy):
-        set_trace()
         self.model.eval()
         correct = 0
         if not isinstance(devX, torch.cuda.FloatTensor) or self.cudaEfficient:
@@ -129,6 +128,7 @@ class PyTorchClassifier(object):
         return accuracy
 
     def predict(self, devX):
+        set_trace()
         self.model.eval()
         if not isinstance(devX, torch.cuda.FloatTensor):
             devX = torch.FloatTensor(devX).cuda()
@@ -143,6 +143,7 @@ class PyTorchClassifier(object):
         return yhat
 
     def predict_proba(self, devX):
+        set_trace()
         self.model.eval()
         probas = []
         with torch.no_grad():
