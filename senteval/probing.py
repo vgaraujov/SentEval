@@ -10,7 +10,7 @@ probing tasks
 '''
 
 from __future__ import absolute_import, division, unicode_literals
-
+from pudb import set_trace
 import os
 import io
 import copy
@@ -90,7 +90,7 @@ class PROBINGEval(object):
                                  'valid': task_embed['dev']['y'],
                                  'test': task_embed['test']['y']},
                               config=config_classifier)
-
+        set_trace()
         devacc, testacc = clf.run()
         logging.debug('\nDev acc : %.1f Test acc : %.1f for %s classification\n' % (devacc, testacc, self.task.upper()))
 
