@@ -11,7 +11,7 @@ Classifiers include Logistic Regression and MLP
 """
 
 from __future__ import absolute_import, division, unicode_literals
-
+from pudb import set_trace
 import numpy as np
 import copy
 from senteval import utils
@@ -109,6 +109,7 @@ class PyTorchClassifier(object):
         self.nepoch += epoch_size
 
     def score(self, devX, devy):
+        set_trace()
         self.model.eval()
         correct = 0
         if not isinstance(devX, torch.cuda.FloatTensor) or self.cudaEfficient:
