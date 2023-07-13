@@ -11,7 +11,7 @@ Generic sentence evaluation scripts wrapper
 
 '''
 from __future__ import absolute_import, division, unicode_literals
-
+from pudb import set_trace
 from senteval import utils
 from senteval.binary import CREval, MREval, MPQAEval, SUBJEval
 from senteval.snli import SNLIEval
@@ -119,5 +119,6 @@ class SE(object):
         self.evaluation.do_prepare(self.params, self.prepare)
 
         self.results = self.evaluation.run(self.params, self.batcher)
+        set_trace()
 
         return self.results
