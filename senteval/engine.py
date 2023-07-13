@@ -119,6 +119,5 @@ class SE(object):
         self.evaluation.do_prepare(self.params, self.prepare)
 
         self.results = self.evaluation.run(self.params, self.batcher)
-        set_trace()
 
         return self.results
