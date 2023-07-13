@@ -123,7 +123,6 @@ class PyTorchClassifier(object):
                     ybatch = ybatch.cuda()
                 output = self.model(Xbatch)
                 pred = output.data.max(1)[1]
-                set_trace()
                 correct += pred.long().eq(ybatch.data.long()).sum().item()
             accuracy = 1.0 * correct / len(devX)
         return accuracy
