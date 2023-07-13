@@ -174,6 +174,7 @@ class KFoldClassifier(object):
             clf = LogisticRegression(C=optreg, random_state=self.seed)
             clf.fit(self.train['X'], self.train['y'])
         yhat = clf.predict(self.test['X'])
+        set_trace()
 
         testaccuracy = clf.score(self.test['X'], self.test['y'])
         testaccuracy = round(100*testaccuracy, 2)
