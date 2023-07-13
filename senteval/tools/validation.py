@@ -242,6 +242,5 @@ class SplitClassifier(object):
             clf.fit(self.X['train'], self.y['train'])
 
         testaccuracy = clf.score(self.X['test'], self.y['test'])
-        set_trace()
         testaccuracy = round(100*testaccuracy, 2)
         return devaccuracy, testaccuracy
