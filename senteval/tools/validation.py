@@ -17,7 +17,7 @@ from __future__ import absolute_import, division, unicode_literals
 import logging
 import numpy as np
 from senteval.tools.classifier import MLP
-
+from pudb import set_trace
 import sklearn
 assert(sklearn.__version__ >= "0.18.0"), \
     "need to update sklearn to version >= 0.18.0"
@@ -242,5 +242,6 @@ class SplitClassifier(object):
             clf.fit(self.X['train'], self.y['train'])
 
         testaccuracy = clf.score(self.X['test'], self.y['test'])
+        set_trace()
         testaccuracy = round(100*testaccuracy, 2)
         return devaccuracy, testaccuracy
