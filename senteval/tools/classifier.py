@@ -123,12 +123,12 @@ class PyTorchClassifier(object):
                     ybatch = ybatch.cuda()
                 output = self.model(Xbatch)
                 pred = output.data.max(1)[1]
+                set_trace()
                 correct += pred.long().eq(ybatch.data.long()).sum().item()
             accuracy = 1.0 * correct / len(devX)
         return accuracy
 
     def predict(self, devX):
-        set_trace()
         self.model.eval()
         if not isinstance(devX, torch.cuda.FloatTensor):
             devX = torch.FloatTensor(devX).cuda()
@@ -143,7 +143,6 @@ class PyTorchClassifier(object):
         return yhat
 
     def predict_proba(self, devX):
-        set_trace()
         self.model.eval()
         probas = []
         with torch.no_grad():
