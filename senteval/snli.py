@@ -110,5 +110,5 @@ class SNLIEval(object):
                       .format(devacc, testacc))
         return {'devacc': devacc, 'acc': testacc,
                 'ndev': len(self.data['valid'][0]),
-                'ntest': len(self.data['test'][0])
+                'ntest': len(self.data['test'][0]),
                'predictions': predictions}
