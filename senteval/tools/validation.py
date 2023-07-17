@@ -177,7 +177,6 @@ class KFoldClassifier(object):
         
         testaccuracy = clf.score(self.test['X'], self.test['y'])
         testaccuracy = round(100*testaccuracy, 2)
-        set_trace()
         return devaccuracy, testaccuracy, yhat
 
 
@@ -243,5 +242,4 @@ class SplitClassifier(object):
 
         testaccuracy = clf.score(self.X['test'], self.y['test'])
         testaccuracy = round(100*testaccuracy, 2)
-        set_trace()
         return devaccuracy, testaccuracy, '\n'.join(self.y['test'])
