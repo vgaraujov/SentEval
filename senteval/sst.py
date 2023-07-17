@@ -94,5 +94,4 @@ class SSTEval(object):
         return {'devacc': devacc, 'acc': testacc,
                 'ndev': len(sst_embed['dev']['X']),
                 'ntest': len(sst_embed['test']['X']),
-                'test_idx': 'NA',
                'predictions': predictions}
