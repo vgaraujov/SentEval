@@ -82,8 +82,8 @@ class TRECEval(object):
                               {'X': test_embeddings,
                                'y': np.array(test_labels)},
                               config_classifier)
-        devacc, testacc, _ = clf.run()
+        devacc, testacc, yhat = clf.run()
         logging.debug('\nDev acc : {0} Test acc : {1} \
             for TREC\n'.format(devacc, testacc))
         return {'devacc': devacc, 'acc': testacc,
-                'ndev': len(self.train['X']), 'ntest': len(self.test['X'])}
+                'ndev': len(self.train['X']), 'ntest': len(self.test['X']), 'predictions': yhat}
