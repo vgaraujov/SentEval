@@ -140,11 +140,15 @@ if __name__ == "__main__":
     scores = {}
     predictions = {}
     for key, value in results.items():
-        if key == 'predictions':
-            predictions[key] = value
-        else:
-            scores[key] = value
+        keydict_score = {}
+        for k, v in value.items():
+            if k == 'predictions':
+                predictions[key] = v
+            else:
+                keydict_score[k] = v
+        scores[key] = keydict_score
+                
     df_scores = pd.DataFrame(scores)
-    df_preds = pd.DataFrame.from_dict(predictions['predictions'], orient='index')
+    df_preds = pd.DataFrame(predictions)
     df_scores.to_csv(output_path, index=True)
-    df_preds.to_csv(pred_path)
+    df_preds.to_csv(pred_path, index=True)
