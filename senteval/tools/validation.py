@@ -246,4 +246,4 @@ class SplitClassifier(object):
         testaccuracy = round(100*testaccuracy, 2)
         y_test = []
         y_test.append([str(y) for y in self.y['test']])
-        return devaccuracy, testaccuracy, '/'.join(y_test[0])
+        return devaccuracy, testaccuracy, y_test[0]
