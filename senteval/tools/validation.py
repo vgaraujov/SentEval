@@ -104,11 +104,9 @@ class InnerKFoldClassifier(object):
 
         devaccuracy = round(np.mean(self.devresults), 2)
         testaccuracy = round(np.mean(self.testresults), 2)
-        test_idx1 = []
-        test_idx1.append([str(idx) for idx in test_idx])
         y_test1 = []
         y_test1.append([str(y) for y in y_test])
-        return devaccuracy, testaccuracy, '/'.join(test_idx1[0]), '/'.join(y_test1[0])
+        return devaccuracy, testaccuracy, X_test, '/'.join(y_test1[0])
 
 
 class KFoldClassifier(object):
