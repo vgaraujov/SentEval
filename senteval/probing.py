@@ -94,7 +94,7 @@ class PROBINGEval(object):
         preds = {}
         n = 0
         for line in self.task_data['test']['X']:
-            preds[n]=[''.join(line), self.task_data['test']['y'][n], predictions[n]]
+            preds[n]=[' '.join(line), self.task_data['test']['y'][n], predictions[n]]
             n+=1
 
         return {'devacc': devacc, 'acc': testacc,
