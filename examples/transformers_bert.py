@@ -121,7 +121,7 @@ if __name__ == "__main__":
     ]
 
     results = se.eval(transfer_tasks[args.task_index])
-    print(results)
+    #print(results)
 
     output_path = '{}_p={}_l={}_t={}_s={}.csv'.format(
         args.model_name,
@@ -130,5 +130,21 @@ if __name__ == "__main__":
         args.task_index,
         params['seed'])
 
-    df = pd.DataFrame(results)
-    df.to_csv(output_path, index=True)
+    pred_path = '{}_p={}_l={}_t={}_s={}_preds.csv'.format(
+        args.model_name,
+        args.pooling,
+        args.layer,
+        args.task_index,
+        params['seed'])
+
+    scores = {}
+    predictions = {}
+    for key, value in results.items():
+        if key == 'predictions':
+            predictions[key] = value
+        else:
+            scores[key] = value
+    df_scores = pd.DataFrame(scores)
+    df_preds = pd.DataFrame.from_dict(predictions['predictions'], orient='index')
+    df_scores.to_csv(output_path, index=True)
+    df_preds.to_csv(pred_path)
