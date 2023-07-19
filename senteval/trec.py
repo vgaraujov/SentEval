@@ -85,5 +85,12 @@ class TRECEval(object):
         devacc, testacc, yhat = clf.run()
         logging.debug('\nDev acc : {0} Test acc : {1} \
             for TREC\n'.format(devacc, testacc))
+
+        preds = {}
+        n=0
+        for line in test_samples:
+            preds[n]=[line, test_labels[n], yhat[n]]
+            n+=1
+            
         return {'devacc': devacc, 'acc': testacc,
-                'ndev': len(self.train['X']), 'ntest': len(self.test['X']), 'predictions': yhat}
+                'ndev': len(self.train['X']), 'ntest': len(self.test['X']), 'predictions': preds}
