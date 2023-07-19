@@ -108,7 +108,14 @@ class SNLIEval(object):
         devacc, testacc, predictions = clf.run()
         logging.debug('Dev acc : {0} Test acc : {1} for SNLI\n'
                       .format(devacc, testacc))
+
+        preds = {}
+        n = 0
+       for line in test1:
+            preds[n]=[test1[n] + '->' + test2[n], testlabels[n], predictions[n]]
+            n+=1
+           
         return {'devacc': devacc, 'acc': testacc,
                 'ndev': len(self.data['valid'][0]),
                 'ntest': len(self.data['test'][0]),
-               'predictions': predictions}
+               'predictions': preds}
