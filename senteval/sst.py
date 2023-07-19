@@ -90,8 +90,14 @@ class SSTEval(object):
         devacc, testacc, predictions = clf.run()
         logging.debug('\nDev acc : {0} Test acc : {1} for \
             SST {2} classification\n'.format(devacc, testacc, self.task_name))
+        
+        preds = {}
+        n = 0
+        for line in self.sst_data['test']['X']:
+            preds[n]=[' '.join(line), self.sst_data['test']['y'][n], predictions[n]]
+            n+=1
 
         return {'devacc': devacc, 'acc': testacc,
                 'ndev': len(sst_embed['dev']['X']),
                 'ntest': len(sst_embed['test']['X']),
-               'predictions': predictions}
+               'predictions': preds}
