@@ -213,5 +213,12 @@ class SICKEntailmentEval(SICKRelatednessEval):
         devacc, testacc, predictions = clf.run()
         logging.debug('\nDev acc : {0} Test acc : {1} for \
                        SICK entailment\n'.format(devacc, testacc))
+        
+        preds = {}
+        n=0
+        for line in self.sick_data['test']['X_A']:
+            preds[n]=[' '.join(line) + '->' + ' '.join(self.sick_data['test']['X_B'][n], self.sick_data['test']['y'][n], predictions[n]]
+            n+=1
+            
         return {'devacc': devacc, 'acc': testacc,
-                'ndev': len(devA), 'ntest': len(testA), 'predictions': predictions}
+                'ndev': len(devA), 'ntest': len(testA), 'predictions': preds}
