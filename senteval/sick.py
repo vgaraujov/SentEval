@@ -116,9 +116,14 @@ class SICKRelatednessEval(object):
         logging.debug('Dev : Pearson {0}'.format(devpr))
         logging.debug('Test : Pearson {0} Spearman {1} MSE {2} \
                        for SICK Relatedness\n'.format(pr, sr, se))
+        preds = {}
+        n=0
+        for line in self.sick_data['test']['X_A']:
+            preds[n]=[' '.join(line) + '->' + ' '.join(self.sick_data['test']['X_A'][n]), self.sick_data['test']['y'][n], yhat[n]]
+            n+=1
 
         return {'devpearson': devpr, 'pearson': pr, 'spearman': sr, 'mse': se,
-                'yhat': yhat, 'ndev': len(devA), 'ntest': len(testA)}
+                'predictions': preds, 'ndev': len(devA), 'ntest': len(testA)}
 
     def encode_labels(self, labels, nclass=5):
         """
@@ -217,7 +222,7 @@ class SICKEntailmentEval(SICKRelatednessEval):
         preds = {}
         n=0
         for line in self.sick_data['test']['X_A']:
-            preds[n]=[' '.join(line) + '->' + ' '.join(self.sick_data['test']['X_B'][n], self.sick_data['test']['y'][n], predictions[n]]
+            preds[n]=[' '.join(line) + '->' + ' '.join(self.sick_data['test']['X_B'][n]), self.sick_data['test']['y'][n], predictions[n]]
             n+=1
             
         return {'devacc': devacc, 'acc': testacc,
