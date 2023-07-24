@@ -111,7 +111,7 @@ class SNLIEval(object):
 
         preds = {}
         n = 0
-       for line in test1:
+        for line in test1:
             preds[n]=[' '.join(line) + '->' + ' '.join(test2[n]), testlabels[n], predictions[n]]
             n+=1
            
