@@ -119,7 +119,7 @@ class SICKRelatednessEval(object):
         preds = {}
         n=0
         for line in self.sick_data['test']['X_A']:
-            preds[n]=[' '.join(line) + '->' + ' '.join(self.sick_data['test']['X_A'][n]), self.sick_data['test']['y'][n], yhat[n]]
+            preds[n]=[' '.join(line) + '->' + ' '.join(self.sick_data['test']['X_B'][n]), self.sick_data['test']['y'][n], yhat[n]]
             n+=1
 
         return {'devpearson': devpr, 'pearson': pr, 'spearman': sr, 'mse': se,
