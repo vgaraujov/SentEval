@@ -39,7 +39,6 @@ class STSEval(object):
             not_empty_idx = raw_scores != ''
 
             gs_scores = [float(x) for x in raw_scores[not_empty_idx]]
-            set_trace()
             sent1 = np.array([s.split() for s in sent1], dtype=object)[not_empty_idx]
             sent2 = np.array([s.split() for s in sent2], dtype=object)[not_empty_idx]
             # sort data by length to minimize padding in batcher
