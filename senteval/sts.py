@@ -11,7 +11,7 @@ STS-benchmark (supervised) tasks
 '''
 
 from __future__ import absolute_import, division, unicode_literals
-
+from pudb import set_trace
 import os
 import io
 import numpy as np
@@ -39,6 +39,7 @@ class STSEval(object):
             not_empty_idx = raw_scores != ''
 
             gs_scores = [float(x) for x in raw_scores[not_empty_idx]]
+            set_trace()
             sent1 = np.array([s.split() for s in sent1])[not_empty_idx]
             sent2 = np.array([s.split() for s in sent2])[not_empty_idx]
             # sort data by length to minimize padding in batcher
