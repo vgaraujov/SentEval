@@ -111,8 +111,8 @@ class SNLIEval(object):
 
         preds = {}
         n = 0
-        for line in test1:
-            preds[n]=[' '.join(line) + '->' + ' '.join(test2[n]), testlabels[n], predictions[n]]
+        for line in self.data['test']:
+            preds[n]=[' '.join(line[0]) + '->' + ' '.join(line[1]), line[2], predictions[n]]
             n+=1
            
         return {'devacc': devacc, 'acc': testacc,
