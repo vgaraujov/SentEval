@@ -43,6 +43,7 @@ class InnerKFoldClassifier(object):
     def __init__(self, X, y, config):
         self.X = X
         self.y = y
+        self.idx = idx
         self.featdim = X.shape[1]
         self.nclasses = config['nclasses']
         self.seed = config['seed']
@@ -68,6 +69,7 @@ class InnerKFoldClassifier(object):
             count += 1
             X_train, X_test = self.X[train_idx], self.X[test_idx]
             y_train, y_test = self.y[train_idx], self.y[test_idx]
+            idx_train, idx_test = self.idx[train_idx], self.idx[test_idx]
             scores = []
             for reg in regs:
                 regscores = []
@@ -106,7 +108,7 @@ class InnerKFoldClassifier(object):
         testaccuracy = round(np.mean(self.testresults), 2)
         y_test1 = []
         y_test1.append([str(y) for y in y_test])
-        return devaccuracy, testaccuracy, X_test, '/'.join(y_test1[0])
+        return devaccuracy, testaccuracy, X_test, idx_test
 
 
 class KFoldClassifier(object):
