@@ -40,8 +40,8 @@ class BinaryClassifierEval(object):
         # Sort to reduce padding
         sorted_corpus = sorted(zip(self.samples, self.labels, self.indexes),
                                key=lambda z: (len(z[0]), z[1], z[2]))
-        sorted_samples = [x for (x, y) in sorted_corpus]
-        sorted_labels = [y for (x, y) in sorted_corpus]
+        sorted_samples = [x for (x, y, i) in sorted_corpus]
+        sorted_labels = [y for (x, y, i) in sorted_corpus]
         sorted_indexes = [i for (x, y, i) in sorted_corpus]
         logging.info('Generating sentence embeddings')
         for ii in range(0, self.n_samples, params.batch_size):
