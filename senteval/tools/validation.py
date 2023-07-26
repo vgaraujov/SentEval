@@ -40,7 +40,7 @@ class InnerKFoldClassifier(object):
     """
     (train) split classifier : InnerKfold.
     """
-    def __init__(self, X, y, config):
+    def __init__(self, X, y, idx, config):
         self.X = X
         self.y = y
         self.idx = idx
