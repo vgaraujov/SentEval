@@ -141,12 +141,23 @@ if __name__ == "__main__":
     predictions = {}
     for key, value in results.items():
         keydict_score = {}
-        for k, v in value.items():
-            if k == 'predictions':
-                predictions[key] = v
-            else:
-                keydict_score[k] = v
-        scores[key] = keydict_score
+        metric_dict = {}
+        if args.task_index == 3:
+            for dataset, val in value.items:
+                for metric, valu in val.items:
+                    if metric == 'predictions':
+                        predictions[(key, dataset)] = valu
+                    else:
+                        metric_dict[metric] = valu
+                keydict_score[dataset] = metric_dict
+            scores[key] = keydict_score
+        else:
+            for k, v in value.items():
+                if k == 'predictions':
+                    predictions[key] = v
+                else:
+                    keydict_score[k] = v
+            scores[key] = keydict_score
                 
     df_scores = pd.DataFrame(scores)
     df_preds = pd.DataFrame(predictions)
