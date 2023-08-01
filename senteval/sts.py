@@ -100,7 +100,7 @@ class STSEval(object):
             Spearman = %.4f' % (wavg_pearson, wavg_spearman))
         logging.debug('ALL (average) : Pearson = %.4f, \
             Spearman = %.4f\n' % (avg_pearson, avg_spearman))
-
+        set_trace()
         return results
 
 
