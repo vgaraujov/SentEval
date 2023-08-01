@@ -77,7 +77,7 @@ class STSEval(object):
             preds = {}
             n=0
             for line in input1:
-                preds[n] = [' '.join(line) + '->' + ' '.join(input2[n]), gs_score[n], sys_score[n]]
+                preds[n] = [' '.join(line) + '->' + ' '.join(input2[n]), gs_scores[n], sys_scores[n]]
                 n+=1
 
             results[dataset] = {'pearson': pearsonr(sys_scores, gs_scores),
@@ -107,7 +107,6 @@ class STSEval(object):
             Spearman = %.4f' % (wavg_pearson, wavg_spearman))
         logging.debug('ALL (average) : Pearson = %.4f, \
             Spearman = %.4f\n' % (avg_pearson, avg_spearman))
-        set_trace()
         return results
 
 
