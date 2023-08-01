@@ -9,7 +9,7 @@
 SICK Relatedness and Entailment
 '''
 from __future__ import absolute_import, division, unicode_literals
-from pudb import set_trace()
+from pudb import set_trace
 import os
 import io
 import logging
