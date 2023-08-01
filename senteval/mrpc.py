@@ -58,14 +58,17 @@ class MRPCEval(object):
             logging.info('Computing embedding for {0}'.format(key))
             # Sort to reduce padding
             text_data = {}
+            indexes = list(range(len(self.mrpc_data[key]['y'])))
             sorted_corpus = sorted(zip(self.mrpc_data[key]['X_A'],
                                        self.mrpc_data[key]['X_B'],
-                                       self.mrpc_data[key]['y']),
-                                   key=lambda z: (len(z[0]), len(z[1]), z[2]))
+                                       self.mrpc_data[key]['y'],
+                                       indexes),
+                                   key=lambda z: (len(z[0]), len(z[1]), z[2], z[3]))
 
-            text_data['A'] = [x for (x, y, z) in sorted_corpus]
-            text_data['B'] = [y for (x, y, z) in sorted_corpus]
-            text_data['y'] = [z for (x, y, z) in sorted_corpus]
+            text_data['A'] = [x for (x, y, z, i) in sorted_corpus]
+            text_data['B'] = [y for (x, y, z, i) in sorted_corpus]
+            text_data['y'] = [z for (x, y, z, i) in sorted_corpus]
+            text_data['idx'] = [i for (x, y, z, i) in sorted_corpus]
 
             for txt_type in ['A', 'B']:
                 mrpc_embed[key][txt_type] = []
@@ -75,6 +78,7 @@ class MRPCEval(object):
                     mrpc_embed[key][txt_type].append(embeddings)
                 mrpc_embed[key][txt_type] = np.vstack(mrpc_embed[key][txt_type])
             mrpc_embed[key]['y'] = np.array(text_data['y'])
+            mrpc_embed[key]['idx'] = np.array(text_data['idx'])
             logging.info('Computed {0} embeddings'.format(key))
 
         # Train
@@ -96,9 +100,10 @@ class MRPCEval(object):
         clf = KFoldClassifier(train={'X': trainF, 'y': trainY},
                               test={'X': testF, 'y': testY}, config=config)
 
-        devacc, testacc, yhat = clf.run()
+        devacc, testacc, tgts, preds = clf.run()
         testf1 = round(100*f1_score(testY, yhat), 2)
         logging.debug('Dev acc : {0} Test acc {1}; Test F1 {2} for MRPC.\n'
                       .format(devacc, testacc, testf1))
         return {'devacc': devacc, 'acc': testacc, 'f1': testf1,
-                'ndev': len(trainA), 'ntest': len(testA)}
+                'ndev': len(trainA), 'ntest': len(testA),
+                'indexes': mrpc_embed['test']['idx'], 'targets': tgts, 'predictions': preds}

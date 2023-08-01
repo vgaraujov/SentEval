@@ -39,14 +39,15 @@ class STSEval(object):
             not_empty_idx = raw_scores != ''
 
             gs_scores = [float(x) for x in raw_scores[not_empty_idx]]
-            sent1 = np.array([s.split() for s in sent1])[not_empty_idx]
-            sent2 = np.array([s.split() for s in sent2])[not_empty_idx]
+            sent1 = np.array([s.split() for s in sent1], dtype=object)[not_empty_idx]
+            sent2 = np.array([s.split() for s in sent2], dtype=object)[not_empty_idx]
             # sort data by length to minimize padding in batcher
-            sorted_data = sorted(zip(sent1, sent2, gs_scores),
-                                 key=lambda z: (len(z[0]), len(z[1]), z[2]))
-            sent1, sent2, gs_scores = map(list, zip(*sorted_data))
+            indexes = list(range(len(gs_scores)))
+            sorted_data = sorted(zip(sent1, sent2, gs_scores, indexes),
+                                 key=lambda z: (len(z[0]), len(z[1]), z[2], z[3]))
+            sent1, sent2, gs_scores, indexes = map(list, zip(*sorted_data))
 
-            self.data[dataset] = (sent1, sent2, gs_scores)
+            self.data[dataset] = (sent1, sent2, gs_scores, indexes)
             self.samples += sent1 + sent2
 
     def do_prepare(self, params, prepare):
@@ -60,7 +61,7 @@ class STSEval(object):
         results = {}
         for dataset in self.datasets:
             sys_scores = []
-            input1, input2, gs_scores = self.data[dataset]
+            input1, input2, gs_scores, indexes = self.data[dataset]
             for ii in range(0, len(gs_scores), params.batch_size):
                 batch1 = input1[ii:ii + params.batch_size]
                 batch2 = input2[ii:ii + params.batch_size]
@@ -76,7 +77,8 @@ class STSEval(object):
 
             results[dataset] = {'pearson': pearsonr(sys_scores, gs_scores),
                                 'spearman': spearmanr(sys_scores, gs_scores),
-                                'nsamples': len(sys_scores)}
+                                'nsamples': len(sys_scores),
+                                'indexes': indexes, 'targets': gs_scores, 'predictions': sys_scores}
             logging.debug('%s : pearson = %.4f, spearman = %.4f' %
                           (dataset, results[dataset]['pearson'][0],
                            results[dataset]['spearman'][0]))

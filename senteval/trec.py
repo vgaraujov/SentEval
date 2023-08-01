@@ -52,10 +52,12 @@ class TRECEval(object):
         train_samples = [x for (x, y) in sorted_corpus_train]
         train_labels = [y for (x, y) in sorted_corpus_train]
 
-        sorted_corpus_test = sorted(zip(self.test['X'], self.test['y']),
-                                    key=lambda z: (len(z[0]), z[1]))
-        test_samples = [x for (x, y) in sorted_corpus_test]
-        test_labels = [y for (x, y) in sorted_corpus_test]
+        test_indexes = list(range(len(self.test['y'])))
+        sorted_corpus_test = sorted(zip(self.test['X'], self.test['y'], test_indexes),
+                                    key=lambda z: (len(z[0]), z[1], z[2]))
+        test_samples = [x for (x, y, i) in sorted_corpus_test]
+        test_labels = [y for (x, y, i) in sorted_corpus_test]
+        test_indexes = [i for (x, y, i) in sorted_corpus_test]
 
         # Get train embeddings
         for ii in range(0, len(train_labels), params.batch_size):
@@ -82,8 +84,9 @@ class TRECEval(object):
                               {'X': test_embeddings,
                                'y': np.array(test_labels)},
                               config_classifier)
-        devacc, testacc, _ = clf.run()
+        devacc, testacc, tgts, preds = clf.run()
         logging.debug('\nDev acc : {0} Test acc : {1} \
             for TREC\n'.format(devacc, testacc))
         return {'devacc': devacc, 'acc': testacc,
-                'ndev': len(self.train['X']), 'ntest': len(self.test['X'])}
+                'ndev': len(self.train['X']), 'ntest': len(self.test['X']), 
+                'indexes': np.array(test_indexes), 'targets': tgts, 'predictions': preds}

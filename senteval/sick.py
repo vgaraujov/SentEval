@@ -62,14 +62,17 @@ class SICKRelatednessEval(object):
         for key in self.sick_data:
             logging.info('Computing embedding for {0}'.format(key))
             # Sort to reduce padding
+            indexes = list(range(len(self.sick_data[key]['y'])))
             sorted_corpus = sorted(zip(self.sick_data[key]['X_A'],
                                        self.sick_data[key]['X_B'],
-                                       self.sick_data[key]['y']),
-                                   key=lambda z: (len(z[0]), len(z[1]), z[2]))
+                                       self.sick_data[key]['y'],
+                                       indexes),
+                                   key=lambda z: (len(z[0]), len(z[1]), z[2], z[3]))
 
-            self.sick_data[key]['X_A'] = [x for (x, y, z) in sorted_corpus]
-            self.sick_data[key]['X_B'] = [y for (x, y, z) in sorted_corpus]
-            self.sick_data[key]['y'] = [z for (x, y, z) in sorted_corpus]
+            self.sick_data[key]['X_A'] = [x for (x, y, z, i) in sorted_corpus]
+            self.sick_data[key]['X_B'] = [y for (x, y, z, i) in sorted_corpus]
+            self.sick_data[key]['y'] = [z for (x, y, z, i) in sorted_corpus]
+            self.sick_data[key]['idx'] = [i for (x, y, z, i) in sorted_corpus]
 
             for txt_type in ['X_A', 'X_B']:
                 sick_embed[key][txt_type] = []
@@ -79,6 +82,7 @@ class SICKRelatednessEval(object):
                     sick_embed[key][txt_type].append(embeddings)
                 sick_embed[key][txt_type] = np.vstack(sick_embed[key][txt_type])
             sick_embed[key]['y'] = np.array(self.sick_data[key]['y'])
+            sick_embed[key]['idx'] = np.array(self.sick_data[key]['idx'])
             logging.info('Computed {0} embeddings'.format(key))
 
         # Train
@@ -118,7 +122,8 @@ class SICKRelatednessEval(object):
                        for SICK Relatedness\n'.format(pr, sr, se))
 
         return {'devpearson': devpr, 'pearson': pr, 'spearman': sr, 'mse': se,
-                'yhat': yhat, 'ndev': len(devA), 'ntest': len(testA)}
+                'yhat': yhat, 'ndev': len(devA), 'ntest': len(testA),
+                'indexes': sick_embed['test']['idx'], 'targets': self.sick_data['test']['y'], 'predictions': yhat}
 
     def encode_labels(self, labels, nclass=5):
         """
@@ -166,14 +171,17 @@ class SICKEntailmentEval(SICKRelatednessEval):
         for key in self.sick_data:
             logging.info('Computing embedding for {0}'.format(key))
             # Sort to reduce padding
+            indexes = list(range(len(self.sick_data[key]['y'])))
             sorted_corpus = sorted(zip(self.sick_data[key]['X_A'],
                                        self.sick_data[key]['X_B'],
-                                       self.sick_data[key]['y']),
-                                   key=lambda z: (len(z[0]), len(z[1]), z[2]))
+                                       self.sick_data[key]['y'],
+                                       indexes),
+                                   key=lambda z: (len(z[0]), len(z[1]), z[2], z[3]))
 
-            self.sick_data[key]['X_A'] = [x for (x, y, z) in sorted_corpus]
-            self.sick_data[key]['X_B'] = [y for (x, y, z) in sorted_corpus]
-            self.sick_data[key]['y'] = [z for (x, y, z) in sorted_corpus]
+            self.sick_data[key]['X_A'] = [x for (x, y, z, i) in sorted_corpus]
+            self.sick_data[key]['X_B'] = [y for (x, y, z, i) in sorted_corpus]
+            self.sick_data[key]['y'] = [z for (x, y, z, i) in sorted_corpus]
+            self.sick_data[key]['idx'] = [i for (x, y, z, i) in sorted_corpus]
 
             for txt_type in ['X_A', 'X_B']:
                 sick_embed[key][txt_type] = []
@@ -201,6 +209,7 @@ class SICKEntailmentEval(SICKRelatednessEval):
         testB = sick_embed['test']['X_B']
         testF = np.c_[np.abs(testA - testB), testA * testB]
         testY = np.array(self.sick_data['test']['y'])
+        testidx = np.array(self.sick_data['test']['idx'])
 
         config = {'nclasses': 3, 'seed': self.seed,
                   'usepytorch': params.usepytorch,
@@ -210,8 +219,9 @@ class SICKEntailmentEval(SICKRelatednessEval):
                               y={'train': trainY, 'valid': devY, 'test': testY},
                               config=config)
 
-        devacc, testacc = clf.run()
+        devacc, testacc, tgts, preds = clf.run()
         logging.debug('\nDev acc : {0} Test acc : {1} for \
                        SICK entailment\n'.format(devacc, testacc))
         return {'devacc': devacc, 'acc': testacc,
-                'ndev': len(devA), 'ntest': len(testA)}
+                'ndev': len(devA), 'ntest': len(testA),
+                'indexes': testidx, 'targets': tgts, 'predictions': preds}

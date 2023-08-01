@@ -39,6 +39,7 @@ class SNLIEval(object):
         test2 = self.loadFile(os.path.join(taskpath, 's2.test'))
         testlabels = io.open(os.path.join(taskpath, 'labels.test'),
                              encoding='utf-8').read().splitlines()
+        testindexes = list(range(len(testlabels)))
 
         # sort data (by s2 first) to reduce padding
         sorted_train = sorted(zip(train2, train1, trainlabels),
@@ -49,14 +50,14 @@ class SNLIEval(object):
                               key=lambda z: (len(z[0]), len(z[1]), z[2]))
         valid2, valid1, validlabels = map(list, zip(*sorted_valid))
 
-        sorted_test = sorted(zip(test2, test1, testlabels),
-                             key=lambda z: (len(z[0]), len(z[1]), z[2]))
-        test2, test1, testlabels = map(list, zip(*sorted_test))
+        sorted_test = sorted(zip(test2, test1, testlabels, testindexes),
+                             key=lambda z: (len(z[0]), len(z[1]), z[2], z[3]))
+        test2, test1, testlabels, testindexes = map(list, zip(*sorted_test))
 
         self.samples = train1 + train2 + valid1 + valid2 + test1 + test2
-        self.data = {'train': (train1, train2, trainlabels),
-                     'valid': (valid1, valid2, validlabels),
-                     'test': (test1, test2, testlabels)
+        self.data = {'train': (train1, train2, trainlabels, None),
+                     'valid': (valid1, valid2, validlabels, None),
+                     'test': (test1, test2, testlabels, testindexes)
                      }
 
     def do_prepare(self, params, prepare):
@@ -68,7 +69,7 @@ class SNLIEval(object):
                     f.read().splitlines()]
 
     def run(self, params, batcher):
-        self.X, self.y = {}, {}
+        self.X, self.y, self.index = {}, {}, {}
         dico_label = {'entailment': 0,  'neutral': 1, 'contradiction': 2}
         for key in self.data:
             if key not in self.X:
@@ -76,7 +77,7 @@ class SNLIEval(object):
             if key not in self.y:
                 self.y[key] = []
 
-            input1, input2, mylabels = self.data[key]
+            input1, input2, mylabels, myindexes = self.data[key]
             enc_input = []
             n_labels = len(mylabels)
             for ii in range(0, n_labels, params.batch_size):
@@ -93,6 +94,7 @@ class SNLIEval(object):
                                  (100 * ii / n_labels))
             self.X[key] = np.vstack(enc_input)
             self.y[key] = np.array([dico_label[y] for y in mylabels])
+            self.index[key] = np.array(myindexes)
 
         config = {'nclasses': 3, 'seed': self.seed,
                   'usepytorch': params.usepytorch,
@@ -105,9 +107,12 @@ class SNLIEval(object):
         config['classifier'] = config_classifier
 
         clf = SplitClassifier(self.X, self.y, config)
-        devacc, testacc = clf.run()
+        devacc, testacc, tgts, preds = clf.run()
         logging.debug('Dev acc : {0} Test acc : {1} for SNLI\n'
                       .format(devacc, testacc))
         return {'devacc': devacc, 'acc': testacc,
                 'ndev': len(self.data['valid'][0]),
-                'ntest': len(self.data['test'][0])}
+                'ntest': len(self.data['test'][0]), 
+                'indexes': self.index['test'],
+                'targets': tgts, 
+                'predictions': preds}

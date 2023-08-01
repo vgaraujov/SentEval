@@ -61,10 +61,12 @@ class SSTEval(object):
         for key in self.sst_data:
             logging.info('Computing embedding for {0}'.format(key))
             # Sort to reduce padding
+            indexes = list(range(len(self.sst_data[key]['y'])))
             sorted_data = sorted(zip(self.sst_data[key]['X'],
-                                     self.sst_data[key]['y']),
-                                 key=lambda z: (len(z[0]), z[1]))
-            self.sst_data[key]['X'], self.sst_data[key]['y'] = map(list, zip(*sorted_data))
+                                     self.sst_data[key]['y'],
+                                     indexes),
+                                 key=lambda z: (len(z[0]), z[1], z[2]))
+            self.sst_data[key]['X'], self.sst_data[key]['y'], self.sst_data[key]['idx'] = map(list, zip(*sorted_data))
 
             sst_embed[key]['X'] = []
             for ii in range(0, len(self.sst_data[key]['y']), bsize):
@@ -73,6 +75,7 @@ class SSTEval(object):
                 sst_embed[key]['X'].append(embeddings)
             sst_embed[key]['X'] = np.vstack(sst_embed[key]['X'])
             sst_embed[key]['y'] = np.array(self.sst_data[key]['y'])
+            sst_embed[key]['idx'] = np.array(self.sst_data[key]['idx'])
             logging.info('Computed {0} embeddings'.format(key))
 
         config_classifier = {'nclasses': self.nclasses, 'seed': self.seed,
@@ -87,10 +90,11 @@ class SSTEval(object):
                                  'test': sst_embed['test']['y']},
                               config=config_classifier)
 
-        devacc, testacc = clf.run()
+        devacc, testacc, tgts, preds = clf.run()
         logging.debug('\nDev acc : {0} Test acc : {1} for \
             SST {2} classification\n'.format(devacc, testacc, self.task_name))
 
         return {'devacc': devacc, 'acc': testacc,
                 'ndev': len(sst_embed['dev']['X']),
-                'ntest': len(sst_embed['test']['X'])}
+                'ntest': len(sst_embed['test']['X']),
+                'indexes': sst_embed['test']['idx'] , 'targets': tgts, 'predictions': preds}

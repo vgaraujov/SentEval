@@ -40,9 +40,10 @@ class InnerKFoldClassifier(object):
     """
     (train) split classifier : InnerKfold.
     """
-    def __init__(self, X, y, config):
+    def __init__(self, X, y, idx, config):
         self.X = X
         self.y = y
+        self.idx = idx
         self.featdim = X.shape[1]
         self.nclasses = config['nclasses']
         self.seed = config['seed']
@@ -68,6 +69,7 @@ class InnerKFoldClassifier(object):
             count += 1
             X_train, X_test = self.X[train_idx], self.X[test_idx]
             y_train, y_test = self.y[train_idx], self.y[test_idx]
+            idx_train, idx_test = self.idx[train_idx], self.idx[test_idx]
             scores = []
             for reg in regs:
                 regscores = []
@@ -104,7 +106,13 @@ class InnerKFoldClassifier(object):
 
         devaccuracy = round(np.mean(self.devresults), 2)
         testaccuracy = round(np.mean(self.testresults), 2)
-        return devaccuracy, testaccuracy
+        
+        # return only the last k-fold for ease
+        # (squeeze and int to match y_test format)
+        y_hat = clf.predict(X_test).squeeze(-1).astype(int)
+        assert len(y_test) == len(y_hat)
+        
+        return devaccuracy, testaccuracy, idx_test, y_test, y_hat
 
 
 class KFoldClassifier(object):
@@ -178,7 +186,11 @@ class KFoldClassifier(object):
         testaccuracy = clf.score(self.test['X'], self.test['y'])
         testaccuracy = round(100*testaccuracy, 2)
 
-        return devaccuracy, testaccuracy, yhat
+        # (squeeze and int to match y_test format)
+        y_hat = clf.predict(self.test['X']).squeeze(-1).astype(int)
+        assert len(self.test['y']) == len(y_hat)
+        
+        return devaccuracy, testaccuracy, self.test['y'], y_hat
 
 
 class SplitClassifier(object):
@@ -243,4 +255,10 @@ class SplitClassifier(object):
 
         testaccuracy = clf.score(self.X['test'], self.y['test'])
         testaccuracy = round(100*testaccuracy, 2)
-        return devaccuracy, testaccuracy
+
+        # return y_test and y_hat (idx_test ordered list as y_test was not shuffled) 
+        # (squeeze and int to match y_test format)
+        y_hat = clf.predict(self.X['test']).squeeze(-1).astype(int)
+        assert len(self.y['test']) == len(y_hat)
+
+        return devaccuracy, testaccuracy, self.y['test'], y_hat

@@ -22,6 +22,7 @@ class BinaryClassifierEval(object):
     def __init__(self, pos, neg, seed=1111):
         self.seed = seed
         self.samples, self.labels = pos + neg, [1] * len(pos) + [0] * len(neg)
+        self.indexes = list(range(len(self.samples)))
         self.n_samples = len(self.samples)
 
     def do_prepare(self, params, prepare):
@@ -37,10 +38,11 @@ class BinaryClassifierEval(object):
     def run(self, params, batcher):
         enc_input = []
         # Sort to reduce padding
-        sorted_corpus = sorted(zip(self.samples, self.labels),
-                               key=lambda z: (len(z[0]), z[1]))
-        sorted_samples = [x for (x, y) in sorted_corpus]
-        sorted_labels = [y for (x, y) in sorted_corpus]
+        sorted_corpus = sorted(zip(self.samples, self.labels, self.indexes),
+                               key=lambda z: (len(z[0]), z[1], z[2]))
+        sorted_samples = [x for (x, y, i) in sorted_corpus]
+        sorted_labels = [y for (x, y, i) in sorted_corpus]
+        sorted_indexes = [i for (x, y, i) in sorted_corpus]
         logging.info('Generating sentence embeddings')
         for ii in range(0, self.n_samples, params.batch_size):
             batch = sorted_samples[ii:ii + params.batch_size]
@@ -53,11 +55,11 @@ class BinaryClassifierEval(object):
                   'usepytorch': params.usepytorch,
                   'classifier': params.classifier,
                   'nhid': params.nhid, 'kfold': params.kfold}
-        clf = InnerKFoldClassifier(enc_input, np.array(sorted_labels), config)
-        devacc, testacc = clf.run()
+        clf = InnerKFoldClassifier(enc_input, np.array(sorted_labels), np.array(sorted_indexes), config)
+        devacc, testacc, idxs, tgts, preds = clf.run()
         logging.debug('Dev acc : {0} Test acc : {1}\n'.format(devacc, testacc))
         return {'devacc': devacc, 'acc': testacc, 'ndev': self.n_samples,
-                'ntest': self.n_samples}
+                'ntest': self.n_samples, 'indexes': idxs,'targets': tgts, 'predictions': preds}
 
 
 class CREval(BinaryClassifierEval):
