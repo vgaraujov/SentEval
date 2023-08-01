@@ -56,7 +56,7 @@ class BinaryClassifierEval(object):
                   'classifier': params.classifier,
                   'nhid': params.nhid, 'kfold': params.kfold}
         clf = InnerKFoldClassifier(enc_input, np.array(sorted_labels), np.array(sorted_indexes), config)
-        devacc, testacc, test_idx, y_test = clf.run()
+        devacc, testacc, y_test, test_idx = clf.run()
         logging.debug('Dev acc : {0} Test acc : {1}\n'.format(devacc, testacc))
         preds = {}
         n=0
