@@ -82,7 +82,7 @@ class STSEval(object):
 
             results[dataset] = {'pearson': pearsonr(sys_scores, gs_scores),
                                 'spearman': spearmanr(sys_scores, gs_scores),
-                                'nsamples': len(sys_scores)
+                                'nsamples': len(sys_scores),
                                'predictions': preds}
             logging.debug('%s : pearson = %.4f, spearman = %.4f' %
                           (dataset, results[dataset]['pearson'][0],
