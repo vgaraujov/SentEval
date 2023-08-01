@@ -9,7 +9,7 @@
 SICK Relatedness and Entailment
 '''
 from __future__ import absolute_import, division, unicode_literals
-
+from pudb import set_trace()
 import os
 import io
 import logging
@@ -121,7 +121,7 @@ class SICKRelatednessEval(object):
         for line in self.sick_data['test']['X_A']:
             preds[n]=[' '.join(line) + '->' + ' '.join(self.sick_data['test']['X_B'][n]), self.sick_data['test']['y'][n], yhat[n]]
             n+=1
-
+        set_trace()
         return {'devpearson': devpr, 'pearson': pr, 'spearman': sr, 'mse': se,
                 'predictions': preds, 'ndev': len(devA), 'ntest': len(testA)}
 
