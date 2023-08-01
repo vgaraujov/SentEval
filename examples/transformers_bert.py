@@ -143,8 +143,8 @@ if __name__ == "__main__":
         keydict_score = {}
         metric_dict = {}
         if args.task_index == 3:
-            for dataset, val in value.items:
-                for metric, valu in val.items:
+            for dataset, val in value.items():
+                for metric, valu in val.items():
                     if metric == 'predictions':
                         predictions[(key, dataset)] = valu
                     else:
