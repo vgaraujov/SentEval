@@ -56,12 +56,12 @@ class BinaryClassifierEval(object):
                   'classifier': params.classifier,
                   'nhid': params.nhid, 'kfold': params.kfold}
         clf = InnerKFoldClassifier(enc_input, np.array(sorted_labels), np.array(sorted_indexes), config)
-        devacc, testacc, y_test, test_idx = clf.run()
+        devacc, testacc, y_test, test_idx, yhat = clf.run()
         logging.debug('Dev acc : {0} Test acc : {1}\n'.format(devacc, testacc))
         preds = {}
         n=0
         for idx in test_idx:
-            preds[n] = [idx, y_test[n]]
+            preds[n] = [idx, y_test[n], yhat[n]]
             n+=1
         return {'devacc': devacc, 'acc': testacc, 'ndev': self.n_samples,
                 'ntest': self.n_samples, 'predictions': preds}
