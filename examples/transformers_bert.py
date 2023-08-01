@@ -15,6 +15,7 @@ import logging
 import torch
 import code
 import argparse
+import pickle
 
 # Set PATHs
 PATH_TO_SENTEVAL = '../'
@@ -121,14 +122,17 @@ if __name__ == "__main__":
     ]
 
     results = se.eval(transfer_tasks[args.task_index])
-    print(results)
 
-    output_path = '{}_p={}_l={}_t={}_s={}.csv'.format(
+    output_path = '{}_p={}_l={}_t={}_s={}'.format(
         args.model_name,
         args.pooling,
         args.layer,
         args.task_index,
         params['seed'])
 
-    df = pd.DataFrame(results)
-    df.to_csv(output_path, index=True)
+    # deprecation: move to pickle format for ease
+    # df = pd.DataFrame(results)
+    # df.to_csv(output_path+'.csv', index=True)
+
+    with open(output_path+'.pickle', 'wb') as handle:
+        pickle.dump(results, handle, protocol=pickle.HIGHEST_PROTOCOL)
