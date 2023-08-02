@@ -106,9 +106,9 @@ class InnerKFoldClassifier(object):
 
         devaccuracy = round(np.mean(self.devresults), 2)
         testaccuracy = round(np.mean(self.testresults), 2)
-        y_test1 = []
-        y_test1.append([str(y) for y in y_test])
-        return devaccuracy, testaccuracy, y_test, idx_test, self.testresults
+        y_hat = clf.predict(X_test).squeeze(-1).astype(int)
+        assert len(y_test) == len(y_hat)
+        return devaccuracy, testaccuracy, y_hat, idx_test, self.testresults
 
 
 class KFoldClassifier(object):
@@ -246,6 +246,6 @@ class SplitClassifier(object):
 
         testaccuracy = clf.score(self.X['test'], self.y['test'])
         testaccuracy = round(100*testaccuracy, 2)
-        y_test = []
-        y_test.append([str(y) for y in self.y['test']])
-        return devaccuracy, testaccuracy, y_test[0]
+        y_hat = clf.predict(self.X['test']).squeeze(-1).astype(int)
+        assert len(self.y['test']) == len(y_hat)
+        return devaccuracy, testaccuracy, y_hat
