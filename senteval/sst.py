@@ -100,4 +100,6 @@ class SSTEval(object):
         return {'devacc': devacc, 'acc': testacc,
                 'ndev': len(sst_embed['dev']['X']),
                 'ntest': len(sst_embed['test']['X']),
-               'predictions': preds}
+                'indexes': [' '.join(line) for line in self.sst_data['test']['X']],
+                'targets': self.sst_data['test']['y'],
+               'predictions': predictions}

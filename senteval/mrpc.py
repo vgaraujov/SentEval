@@ -100,11 +100,14 @@ class MRPCEval(object):
         testf1 = round(100*f1_score(testY, yhat), 2)
         logging.debug('Dev acc : {0} Test acc {1}; Test F1 {2} for MRPC.\n'
                       .format(devacc, testacc, testf1))
-        preds = {}
-        n = 0
+
+        idxs = []
+        n=0
         for line in self.mrpc_data['test']['X_A']:
-            preds[n] = [' '.join(line) + '->' + ' '.join(self.mrpc_data['test']['X_B'][n]), testY[n], yhat[n]]
+            idxs.append(' '.join(line) + ' --> ' + ' '.join(self.mrpc_data['test']['X_B'][n]))
             n+=1
+
+
         return {'devacc': devacc, 'acc': testacc, 'f1': testf1,
-                'ndev': len(trainA), 'ntest': len(testA), 
-                'predictions': preds}
+                'ndev': len(trainA), 'ntest': len(testA),
+                'indexes': idxs, 'targets': testY, 'predictions': yhat}

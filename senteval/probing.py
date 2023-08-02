@@ -91,16 +91,11 @@ class PROBINGEval(object):
                               config=config_classifier)
         devacc, testacc, predictions = clf.run()
         logging.debug('\nDev acc : %.1f Test acc : %.1f for %s classification\n' % (devacc, testacc, self.task.upper()))
-        preds = {}
-        n = 0
-        for line in self.task_data['test']['X']:
-            preds[n]=[' '.join(line), self.task_data['test']['y'][n], predictions[n]]
-            n+=1
 
         return {'devacc': devacc, 'acc': testacc,
                 'ndev': len(task_embed['dev']['X']),
                 'ntest': len(task_embed['test']['X']),
-                'predictions': preds}
+                'indexes': [' '.join(line) for line in self.task_data['test']['X']], 'targets': self.task_data['test']['y'], 'predictions': predictions}
 
 """
 Surface Information

@@ -15,7 +15,7 @@ import logging
 import torch
 import code
 import argparse
-
+import pickle
 # Set PATHs
 PATH_TO_SENTEVAL = '../'
 PATH_TO_DATA = '../data'
@@ -137,29 +137,34 @@ if __name__ == "__main__":
         args.task_index,
         params['seed'])
 
-    scores = {}
-    predictions = {}
-    for key, value in results.items():
-        keydict_score = {}
-        metric_dict = {}
-        if args.task_index == 3:
-            for dataset, val in value.items():
-                for metric, valu in val.items():
-                    if metric == 'predictions':
-                        predictions[(key, dataset)] = valu
-                    else:
-                        metric_dict[metric] = valu
-                keydict_score[dataset] = metric_dict
-            scores[key] = keydict_score
-        else:
-            for k, v in value.items():
-                if k == 'predictions':
-                    predictions[key] = v
-                else:
-                    keydict_score[k] = v
-            scores[key] = keydict_score
-                
-    df_scores = pd.DataFrame(scores)
-    df_preds = pd.DataFrame(predictions)
-    df_scores.to_csv(output_path, index=True)
-    df_preds.to_csv(pred_path, index=True)
+    with open(output_path + '.pickle', 'wb') as handle:
+        pickle.dump(results, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+
+
+    # scores = {}
+    # predictions = {}
+    # for key, value in results.items():
+    #     keydict_score = {}
+    #     metric_dict = {}
+    #     if args.task_index == 3:
+    #         for dataset, val in value.items():
+    #             for metric, valu in val.items():
+    #                 if metric == 'predictions':
+    #                     predictions[(key, dataset)] = valu
+    #                 else:
+    #                     metric_dict[metric] = valu
+    #             keydict_score[dataset] = metric_dict
+    #         scores[key] = keydict_score
+    #     else:
+    #         for k, v in value.items():
+    #             if k == 'predictions':
+    #                 predictions[key] = v
+    #             else:
+    #                 keydict_score[k] = v
+    #         scores[key] = keydict_score
+    #
+    # df_scores = pd.DataFrame(scores)
+    # df_preds = pd.DataFrame(predictions)
+    # df_scores.to_csv(output_path, index=True)
+    # df_preds.to_csv(pred_path, index=True)

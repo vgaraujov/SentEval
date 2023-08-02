@@ -109,13 +109,17 @@ class SNLIEval(object):
         logging.debug('Dev acc : {0} Test acc : {1} for SNLI\n'
                       .format(devacc, testacc))
 
-        preds = {}
+        idxs = []
+        trgts = []
         n = 0
         for line in self.data['test']:
-            preds[n]=[' '.join(line[0]) + '->' + ' '.join(line[1]), line[2], predictions[n]]
+            idxs.append(' '.join(line[0]) + ' --> ' + ' '.join(line[1]))
+            trgts.append(line[2])
             n+=1
            
         return {'devacc': devacc, 'acc': testacc,
                 'ndev': len(self.data['valid'][0]),
                 'ntest': len(self.data['test'][0]),
-               'predictions': preds}
+                'indexes': idxs,
+                'targets': trgts,
+               'predictions': predictions}

@@ -40,6 +40,7 @@ class InnerKFoldClassifier(object):
     """
     (train) split classifier : InnerKfold.
     """
+
     def __init__(self, X, y, idx, config):
         self.X = X
         self.y = y
@@ -59,8 +60,8 @@ class InnerKFoldClassifier(object):
         logging.info('Training {0} with (inner) {1}-fold cross-validation'
                      .format(self.modelname, self.k))
 
-        regs = [10**t for t in range(-5, -1)] if self.usepytorch else \
-               [2**t for t in range(-2, 4, 1)]
+        regs = [10 ** t for t in range(-5, -1)] if self.usepytorch else \
+            [2 ** t for t in range(-2, 4, 1)]
         skf = StratifiedKFold(n_splits=self.k, shuffle=True, random_state=1111)
         innerskf = StratifiedKFold(n_splits=self.k, shuffle=True,
                                    random_state=1111)
@@ -86,7 +87,7 @@ class InnerKFoldClassifier(object):
                         clf = LogisticRegression(C=reg, random_state=self.seed)
                         clf.fit(X_in_train, y_in_train)
                     regscores.append(clf.score(X_in_test, y_in_test))
-                scores.append(round(100*np.mean(regscores), 2))
+                scores.append(round(100 * np.mean(regscores), 2))
             optreg = regs[np.argmax(scores)]
             logging.info('Best param found at split {0}: l2reg = {1} \
                 with score {2}'.format(count, optreg, np.max(scores)))
@@ -102,13 +103,17 @@ class InnerKFoldClassifier(object):
                 clf = LogisticRegression(C=optreg, random_state=self.seed)
                 clf.fit(X_train, y_train)
 
-            self.testresults.append(round(100*clf.score(X_test, y_test), 2))
+            self.testresults.append(round(100 * clf.score(X_test, y_test), 2))
 
         devaccuracy = round(np.mean(self.devresults), 2)
         testaccuracy = round(np.mean(self.testresults), 2)
+
+        # return only the last k-fold for ease
+        # (squeeze and int to match y_test format)
         y_hat = clf.predict(X_test).squeeze(-1).astype(int)
         assert len(y_test) == len(y_hat)
-        return devaccuracy, testaccuracy, y_hat, idx_test, self.testresults
+
+        return devaccuracy, testaccuracy, idx_test, y_test, y_hat
 
 
 class KFoldClassifier(object):

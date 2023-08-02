@@ -74,16 +74,19 @@ class STSEval(object):
                         sys_score = self.similarity(enc1[kk], enc2[kk])
                         sys_scores.append(sys_score)
 
-            preds = {}
+            idxs = []
             n=0
             for line in input1:
-                preds[n] = [' '.join(line) + '->' + ' '.join(input2[n]), gs_scores[n], sys_scores[n]]
+                idxs.append(' '.join(line) + ' --> ' + ' '.join(input2[n]))
                 n+=1
 
             results[dataset] = {'pearson': pearsonr(sys_scores, gs_scores),
                                 'spearman': spearmanr(sys_scores, gs_scores),
                                 'nsamples': len(sys_scores),
-                               'predictions': preds}
+                                'indexes': idxs,
+                                'targets': gs_scores,
+                               'predictions': sys_scores}
+
             logging.debug('%s : pearson = %.4f, spearman = %.4f' %
                           (dataset, results[dataset]['pearson'][0],
                            results[dataset]['spearman'][0]))
