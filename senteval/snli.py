@@ -16,6 +16,7 @@ import io
 import copy
 import logging
 import numpy as np
+from pudb import set_trace
 
 from senteval.tools.validation import SplitClassifier
 
@@ -108,7 +109,7 @@ class SNLIEval(object):
         devacc, testacc, predictions = clf.run()
         logging.debug('Dev acc : {0} Test acc : {1} for SNLI\n'
                       .format(devacc, testacc))
-
+        set_trace()
         idxs = []
         trgts = []
         n = 0
