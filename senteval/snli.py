@@ -71,12 +71,13 @@ class SNLIEval(object):
     def run(self, params, batcher):
         self.X, self.y = {}, {}
         dico_label = {'entailment': 0,  'neutral': 1, 'contradiction': 2}
+        set_trace()
         for key in self.data:
             if key not in self.X:
                 self.X[key] = []
             if key not in self.y:
                 self.y[key] = []
-        set_trace()
+                
             input1, input2, mylabels = self.data[key]
             enc_input = []
             n_labels = len(mylabels)
