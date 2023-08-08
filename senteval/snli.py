@@ -114,7 +114,7 @@ class SNLIEval(object):
         idxs = []
         n = 0
         for line in a:
-            idxs.append(' '.join(line) + ' --> ' + ' '.join(b[n))
+            idxs.append(' '.join(line) + ' --> ' + ' '.join(b[n]))
             n+=1
            
         return {'devacc': devacc, 'acc': testacc,
