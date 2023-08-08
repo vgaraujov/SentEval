@@ -123,7 +123,7 @@ if __name__ == "__main__":
     results = se.eval(transfer_tasks[args.task_index])
     #print(results)
 
-    output_path = '{}_p={}_l={}_t={}_s={}.csv'.format(
+    output_path = '{}_p={}_l={}_t={}_s={}.pickle'.format(
         args.model_name,
         args.pooling,
         args.layer,
@@ -137,7 +137,7 @@ if __name__ == "__main__":
         args.task_index,
         params['seed'])
 
-    with open(output_path + '.pickle', 'wb') as handle:
+    with open(output_path, 'wb') as handle:
         pickle.dump(results, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 
