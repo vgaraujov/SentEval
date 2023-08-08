@@ -16,6 +16,7 @@ import io
 import copy
 import logging
 import numpy as np
+import pickle
 from pudb import set_trace
 
 from senteval.tools.validation import SplitClassifier
@@ -71,7 +72,8 @@ class SNLIEval(object):
     def run(self, params, batcher):
         self.X, self.y = {}, {}
         dico_label = {'entailment': 0,  'neutral': 1, 'contradiction': 2}
-        set_trace()
+        with open('snli_examples.pickle', 'wb') as handle:
+            pickle.dump(self.data['test'], handle, protocol=pickle.HIGHEST_PROTOCOL)
         for key in self.data:
             if key not in self.X:
                 self.X[key] = []
