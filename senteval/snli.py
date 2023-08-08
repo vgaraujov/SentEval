@@ -76,7 +76,7 @@ class SNLIEval(object):
                 self.X[key] = []
             if key not in self.y:
                 self.y[key] = []
-
+        set_trace()
             input1, input2, mylabels = self.data[key]
             enc_input = []
             n_labels = len(mylabels)
@@ -109,7 +109,7 @@ class SNLIEval(object):
         devacc, testacc, predictions = clf.run()
         logging.debug('Dev acc : {0} Test acc : {1} for SNLI\n'
                       .format(devacc, testacc))
-        set_trace()
+
         idxs = []
         trgts = []
         n = 0
