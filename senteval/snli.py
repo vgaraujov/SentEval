@@ -110,12 +110,11 @@ class SNLIEval(object):
         logging.debug('Dev acc : {0} Test acc : {1} for SNLI\n'
                       .format(devacc, testacc))
 
+        a, b, trgts = self.data['test']
         idxs = []
-        trgts = []
         n = 0
-        for line in self.data['test']:
-            idxs.append(' '.join(line[0]) + ' --> ' + ' '.join(line[1]))
-            trgts.append(line[2])
+        for line in a:
+            idxs.append(' '.join(line) + ' --> ' + ' '.join(b[n))
             n+=1
            
         return {'devacc': devacc, 'acc': testacc,
