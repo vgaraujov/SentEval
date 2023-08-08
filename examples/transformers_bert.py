@@ -112,7 +112,7 @@ if __name__ == "__main__":
     se = senteval.engine.SE(params, batcher, prepare)
     transfer_tasks = [
         ['CR', 'MR', 'MPQA', 'SUBJ', 'SST2', 'SST5', 'TREC'], # stand-alone sentence classification
-        ['MRPC', 'SNLI', 'SICKEntailment'], # pair-sentence clasificationc
+        ['SNLI', 'MRPC', 'SICKEntailment'], # pair-sentence clasificationc
         ['SICKRelatedness', 'STSBenchmark'], # supervised semantic similarity
         ['STS12', 'STS13', 'STS14', 'STS15', 'STS16'], # unsupervised semantic similarity
         ['Length', 'WordContent', 'Depth', 'TopConstituents',
