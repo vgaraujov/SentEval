@@ -129,9 +129,17 @@ if __name__ == "__main__":
     model = ViTModel.from_pretrained(model_dict[args.model_name], config=config).cuda()
     model.eval()
 
+    output_path = '{}_p={}_l={}_t={}_s={}'.format(
+        args.model_name,
+        args.pooling,
+        args.layer,
+        args.task_index,
+        args.seed)
+
     # Set params for DiscoEval or SentEval
     params = {'task_path': PATH_TO_DATA, 'usepytorch': True, 'kfold': 10, 'batch_size': 16,
-              'tokenizer': processor, "pooling": args.pooling, "layer": args.layer, "model": model, 'seed': args.seed}
+              'tokenizer': processor, 'pooling': args.pooling, 'layer': args.layer, 'model': model,
+              'seed': args.seed, 'save_emb': output_path}
     params['classifier'] = {'nhid': 0, 'optim': 'adam', 'batch_size': 64,
                             'tenacity': 5, 'epoch_size': 4}
 
@@ -147,13 +155,6 @@ if __name__ == "__main__":
     ]
 
     results = se.eval(transfer_tasks[args.task_index])
-
-    output_path = '{}_p={}_l={}_t={}_s={}'.format(
-        args.model_name,
-        args.pooling,
-        args.layer,
-        args.task_index,
-        params['seed'])
 
     # deprecation: move to pickle format for ease
     # df = pd.DataFrame(results)

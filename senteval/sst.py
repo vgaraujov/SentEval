@@ -58,25 +58,54 @@ class SSTEval(object):
         sst_embed = {'train': {}, 'dev': {}, 'test': {}}
         bsize = params.batch_size
 
-        for key in self.sst_data:
-            logging.info('Computing embedding for {0}'.format(key))
-            # Sort to reduce padding
-            indexes = list(range(len(self.sst_data[key]['y'])))
-            sorted_data = sorted(zip(self.sst_data[key]['X'],
-                                     self.sst_data[key]['y'],
-                                     indexes),
-                                 key=lambda z: (len(z[0]), z[1], z[2]))
-            self.sst_data[key]['X'], self.sst_data[key]['y'], self.sst_data[key]['idx'] = map(list, zip(*sorted_data))
+        if params.save_emb is not None:
+            data_filename = '_'.join(params.save_emb.split('_')[:-1])+'.npy'
+            if os.path.isfile(data_filename):
+                logging.info('Loading sentence embeddings')
+                sst_embed = np.load(data_filename)
+                logging.info('Generated sentence embeddings')
+            else:
+                for key in self.sst_data:
+                    logging.info('Computing embedding for {0}'.format(key))
+                    # Sort to reduce padding
+                    indexes = list(range(len(self.sst_data[key]['y'])))
+                    sorted_data = sorted(zip(self.sst_data[key]['X'],
+                                             self.sst_data[key]['y'],
+                                             indexes),
+                                         key=lambda z: (len(z[0]), z[1], z[2]))
+                    self.sst_data[key]['X'], self.sst_data[key]['y'], self.sst_data[key]['idx'] = map(list, zip(*sorted_data))
 
-            sst_embed[key]['X'] = []
-            for ii in range(0, len(self.sst_data[key]['y']), bsize):
-                batch = self.sst_data[key]['X'][ii:ii + bsize]
-                embeddings = batcher(params, batch)
-                sst_embed[key]['X'].append(embeddings)
-            sst_embed[key]['X'] = np.vstack(sst_embed[key]['X'])
-            sst_embed[key]['y'] = np.array(self.sst_data[key]['y'])
-            sst_embed[key]['idx'] = np.array(self.sst_data[key]['idx'])
-            logging.info('Computed {0} embeddings'.format(key))
+                    sst_embed[key]['X'] = []
+                    for ii in range(0, len(self.sst_data[key]['y']), bsize):
+                        batch = self.sst_data[key]['X'][ii:ii + bsize]
+                        embeddings = batcher(params, batch)
+                        sst_embed[key]['X'].append(embeddings)
+                    sst_embed[key]['X'] = np.vstack(sst_embed[key]['X'])
+                    sst_embed[key]['y'] = np.array(self.sst_data[key]['y'])
+                    sst_embed[key]['idx'] = np.array(self.sst_data[key]['idx'])
+                    logging.info('Computed {0} embeddings'.format(key))
+                logging.info('Saving sentence embeddings')
+                np.save(data_filename, sst_embed)
+        else:
+            for key in self.sst_data:
+                logging.info('Computing embedding for {0}'.format(key))
+                # Sort to reduce padding
+                indexes = list(range(len(self.sst_data[key]['y'])))
+                sorted_data = sorted(zip(self.sst_data[key]['X'],
+                                         self.sst_data[key]['y'],
+                                         indexes),
+                                     key=lambda z: (len(z[0]), z[1], z[2]))
+                self.sst_data[key]['X'], self.sst_data[key]['y'], self.sst_data[key]['idx'] = map(list, zip(*sorted_data))
+
+                sst_embed[key]['X'] = []
+                for ii in range(0, len(self.sst_data[key]['y']), bsize):
+                    batch = self.sst_data[key]['X'][ii:ii + bsize]
+                    embeddings = batcher(params, batch)
+                    sst_embed[key]['X'].append(embeddings)
+                sst_embed[key]['X'] = np.vstack(sst_embed[key]['X'])
+                sst_embed[key]['y'] = np.array(self.sst_data[key]['y'])
+                sst_embed[key]['idx'] = np.array(self.sst_data[key]['idx'])
+                logging.info('Computed {0} embeddings'.format(key))
 
         config_classifier = {'nclasses': self.nclasses, 'seed': self.seed,
                              'usepytorch': params.usepytorch,

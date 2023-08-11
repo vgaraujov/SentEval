@@ -43,13 +43,31 @@ class BinaryClassifierEval(object):
         sorted_samples = [x for (x, y, i) in sorted_corpus]
         sorted_labels = [y for (x, y, i) in sorted_corpus]
         sorted_indexes = [i for (x, y, i) in sorted_corpus]
-        logging.info('Generating sentence embeddings')
-        for ii in range(0, self.n_samples, params.batch_size):
-            batch = sorted_samples[ii:ii + params.batch_size]
-            embeddings = batcher(params, batch)
-            enc_input.append(embeddings)
-        enc_input = np.vstack(enc_input)
-        logging.info('Generated sentence embeddings')
+
+        if params.save_emb is not None:
+            data_filename = '_'.join(params.save_emb.split('_')[:-1])+'.npy'
+            if os.path.isfile(data_filename):
+                logging.info('Loading sentence embeddings')
+                enc_input = np.load(data_filename)
+                logging.info('Generated sentence embeddings')
+            else:
+                logging.info('Generating sentence embeddings')
+                for ii in range(0, self.n_samples, params.batch_size):
+                    batch = sorted_samples[ii:ii + params.batch_size]
+                    embeddings = batcher(params, batch)
+                    enc_input.append(embeddings)
+                enc_input = np.vstack(enc_input)
+                logging.info('Generated sentence embeddings')
+                logging.info('Saving sentence embeddings')
+                np.save(data_filename, enc_input)
+        else:
+            logging.info('Generating sentence embeddings')
+            for ii in range(0, self.n_samples, params.batch_size):
+                batch = sorted_samples[ii:ii + params.batch_size]
+                embeddings = batcher(params, batch)
+                enc_input.append(embeddings)
+            enc_input = np.vstack(enc_input)
+            logging.info('Generated sentence embeddings')
 
         config = {'nclasses': 2, 'seed': self.seed,
                   'usepytorch': params.usepytorch,

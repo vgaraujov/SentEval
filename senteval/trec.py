@@ -59,6 +59,47 @@ class TRECEval(object):
         test_labels = [y for (x, y, i) in sorted_corpus_test]
         test_indexes = [i for (x, y, i) in sorted_corpus_test]
 
+        if params.save_emb is not None:
+            data_filename = '_'.join(params.save_emb.split('_')[:-1])+'.npy'
+            if os.path.isfile(data_filename):
+                logging.info('Loading sentence embeddings')
+                train_embeddings, test_embeddings = np.load(data_filename)
+                logging.info('Generated sentence embeddings')
+            else:
+                # Get train embeddings
+                for ii in range(0, len(train_labels), params.batch_size):
+                    batch = train_samples[ii:ii + params.batch_size]
+                    embeddings = batcher(params, batch)
+                    train_embeddings.append(embeddings)
+                train_embeddings = np.vstack(train_embeddings)
+                logging.info('Computed train embeddings')
+
+                # Get test embeddings
+                for ii in range(0, len(test_labels), params.batch_size):
+                    batch = test_samples[ii:ii + params.batch_size]
+                    embeddings = batcher(params, batch)
+                    test_embeddings.append(embeddings)
+                test_embeddings = np.vstack(test_embeddings)
+                logging.info('Computed test embeddings')
+                logging.info('Saving sentence embeddings')
+                np.save(data_filename, [train_embeddings, test_embeddings])
+        else:
+            # Get train embeddings
+            for ii in range(0, len(train_labels), params.batch_size):
+                batch = train_samples[ii:ii + params.batch_size]
+                embeddings = batcher(params, batch)
+                train_embeddings.append(embeddings)
+            train_embeddings = np.vstack(train_embeddings)
+            logging.info('Computed train embeddings')
+
+            # Get test embeddings
+            for ii in range(0, len(test_labels), params.batch_size):
+                batch = test_samples[ii:ii + params.batch_size]
+                embeddings = batcher(params, batch)
+                test_embeddings.append(embeddings)
+            test_embeddings = np.vstack(test_embeddings)
+            logging.info('Computed test embeddings')
+
         # Get train embeddings
         for ii in range(0, len(train_labels), params.batch_size):
             batch = train_samples[ii:ii + params.batch_size]
