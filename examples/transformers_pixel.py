@@ -148,12 +148,15 @@ if __name__ == "__main__":
     results = se.eval(transfer_tasks[args.task_index])
     print(results)
 
-    output_path = '{}_p={}_l={}_t={}_s={}.csv'.format(
+    output_path = '{}_p={}_l={}_t={}_s={}.pickle'.format(
         args.model_name,
         args.pooling,
         args.layer,
         args.task_index,
         params['seed'])
 
-    df = pd.DataFrame(results)
-    df.to_csv(output_path, index=True)
+    # df = pd.DataFrame(results)
+    # df.to_csv(output_path, index=True)
+
+    with open(output_path, 'wb') as handle:
+        pickle.dump(results, handle, protocol=pickle.HIGHEST_PROTOCOL)
