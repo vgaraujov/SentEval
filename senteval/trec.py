@@ -25,6 +25,7 @@ class TRECEval(object):
         self.seed = seed
         self.train = self.loadFile(os.path.join(task_path, 'train_5500.label'))
         self.test = self.loadFile(os.path.join(task_path, 'TREC_10.label'))
+        self.task_name = os.path.basename(task_path)
 
     def do_prepare(self, params, prepare):
         samples = self.train['X'] + self.test['X']
@@ -60,7 +61,7 @@ class TRECEval(object):
         test_indexes = [i for (x, y, i) in sorted_corpus_test]
 
         if params.save_emb is not None:
-            data_filename = '_'.join(params.save_emb.split('_')[:-1])+'.npy'
+            data_filename = '_'.join(params.save_emb.split('_')[:-1]) + '_' + self.task_name + '.npy'
             if os.path.isfile(data_filename):
                 logging.info('Loading sentence embeddings')
                 train_embeddings, test_embeddings = np.load(data_filename)

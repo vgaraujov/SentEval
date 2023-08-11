@@ -45,7 +45,7 @@ class BinaryClassifierEval(object):
         sorted_indexes = [i for (x, y, i) in sorted_corpus]
 
         if params.save_emb is not None:
-            data_filename = '_'.join(params.save_emb.split('_')[:-1])+'.npy'
+            data_filename = '_'.join(params.save_emb.split('_')[:-1]) + '_' + self.task_name + '.npy'
             if os.path.isfile(data_filename):
                 logging.info('Loading sentence embeddings')
                 enc_input = np.load(data_filename)
@@ -83,6 +83,7 @@ class BinaryClassifierEval(object):
 class CREval(BinaryClassifierEval):
     def __init__(self, task_path, seed=1111):
         logging.debug('***** Transfer task : CR *****\n\n')
+        self.task_name = os.path.basename(task_path)
         pos = self.loadFile(os.path.join(task_path, 'custrev.pos'))
         neg = self.loadFile(os.path.join(task_path, 'custrev.neg'))
         super(self.__class__, self).__init__(pos, neg, seed)
@@ -91,6 +92,7 @@ class CREval(BinaryClassifierEval):
 class MREval(BinaryClassifierEval):
     def __init__(self, task_path, seed=1111):
         logging.debug('***** Transfer task : MR *****\n\n')
+        self.task_name = os.path.basename(task_path)
         pos = self.loadFile(os.path.join(task_path, 'rt-polarity.pos'))
         neg = self.loadFile(os.path.join(task_path, 'rt-polarity.neg'))
         super(self.__class__, self).__init__(pos, neg, seed)
@@ -99,6 +101,7 @@ class MREval(BinaryClassifierEval):
 class SUBJEval(BinaryClassifierEval):
     def __init__(self, task_path, seed=1111):
         logging.debug('***** Transfer task : SUBJ *****\n\n')
+        self.task_name = os.path.basename(task_path)
         obj = self.loadFile(os.path.join(task_path, 'subj.objective'))
         subj = self.loadFile(os.path.join(task_path, 'subj.subjective'))
         super(self.__class__, self).__init__(obj, subj, seed)
@@ -107,6 +110,7 @@ class SUBJEval(BinaryClassifierEval):
 class MPQAEval(BinaryClassifierEval):
     def __init__(self, task_path, seed=1111):
         logging.debug('***** Transfer task : MPQA *****\n\n')
+        self.task_name = os.path.basename(task_path)
         pos = self.loadFile(os.path.join(task_path, 'mpqa.pos'))
         neg = self.loadFile(os.path.join(task_path, 'mpqa.neg'))
         super(self.__class__, self).__init__(pos, neg, seed)

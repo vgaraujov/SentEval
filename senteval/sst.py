@@ -59,7 +59,7 @@ class SSTEval(object):
         bsize = params.batch_size
 
         if params.save_emb is not None:
-            data_filename = '_'.join(params.save_emb.split('_')[:-1])+'.npy'
+            data_filename = '_'.join(params.save_emb.split('_')[:-1]) + '_SST' + self.task_name + '.npy'
             if os.path.isfile(data_filename):
                 logging.info('Loading sentence embeddings')
                 sst_embed = np.load(data_filename)
