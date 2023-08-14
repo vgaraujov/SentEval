@@ -61,7 +61,7 @@ class TRECEval(object):
         test_indexes = [i for (x, y, i) in sorted_corpus_test]
 
         if params.save_emb is not None:
-            data_filename = '_'.join(params.save_emb.split('_')[:-1]) + '_' + self.task_name + '.npy'
+            data_filename = '_'.join(params.save_emb.split('_')[:-1]) + '_' + self.task_name + '.npz'
             if os.path.isfile(data_filename):
                 logging.info('Loading sentence embeddings')
                 loaded_data = np.load(data_filename)
@@ -84,7 +84,7 @@ class TRECEval(object):
                 test_embeddings = np.vstack(test_embeddings)
                 logging.info('Computed test embeddings')
                 logging.info('Saving sentence embeddings')
-                np.save(data_filename, train_emb=train_embeddings, test_emb=test_embeddings)
+                np.savez(data_filename, train_emb=train_embeddings, test_emb=test_embeddings)
             
         else:
             # Get train embeddings
