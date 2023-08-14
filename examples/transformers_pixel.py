@@ -15,6 +15,7 @@ import logging
 import torch
 import code
 import argparse
+import pickle
 
 # Set PATHs
 PATH_TO_SENTEVAL = '../'
@@ -128,9 +129,17 @@ if __name__ == "__main__":
     model = ViTModel.from_pretrained(model_dict[args.model_name], config=config).cuda()
     model.eval()
 
+    output_path = '{}_p={}_l={}_t={}_s={}'.format(
+        args.model_name,
+        args.pooling,
+        args.layer,
+        args.task_index,
+        args.seed)
+
     # Set params for DiscoEval or SentEval
     params = {'task_path': PATH_TO_DATA, 'usepytorch': True, 'kfold': 10, 'batch_size': 16,
-              'tokenizer': processor, "pooling": args.pooling, "layer": args.layer, "model": model, 'seed': args.seed}
+              'tokenizer': processor, 'pooling': args.pooling, 'layer': args.layer, 'model': model,
+              'seed': args.seed, 'save_emb': output_path}
     params['classifier'] = {'nhid': 0, 'optim': 'adam', 'batch_size': 64,
                             'tenacity': 5, 'epoch_size': 4}
 
@@ -138,7 +147,7 @@ if __name__ == "__main__":
     transfer_tasks = [
         ['CR', 'MR', 'MPQA', 'SUBJ', 'SST2', 'SST5', 'TREC'], # stand-alone sentence classification
         ['MRPC', 'SNLI', 'SICKEntailment'], # pair-sentence clasificationc
-        ['SICKRelatedness', 'STSBenchmark'], # supervised semantic similarity
+        ['STSBenchmark', 'SICKRelatedness'], # supervised semantic similarity
         ['STS12', 'STS13', 'STS14', 'STS15', 'STS16'], # unsupervised semantic similarity
         ['Length', 'WordContent', 'Depth', 'TopConstituents',
          'BigramShift', 'Tense', 'SubjNumber', 'ObjNumber', 
@@ -146,17 +155,10 @@ if __name__ == "__main__":
     ]
 
     results = se.eval(transfer_tasks[args.task_index])
-    print(results)
 
-    output_path = '{}_p={}_l={}_t={}_s={}.pickle'.format(
-        args.model_name,
-        args.pooling,
-        args.layer,
-        args.task_index,
-        params['seed'])
-
+    # deprecation: move to pickle format for ease
     # df = pd.DataFrame(results)
-    # df.to_csv(output_path, index=True)
+    # df.to_csv(output_path+'.csv', index=True)
 
-    with open(output_path, 'wb') as handle:
+    with open(output_path+'.pickle', 'wb') as handle:
         pickle.dump(results, handle, protocol=pickle.HIGHEST_PROTOCOL)
