@@ -77,7 +77,7 @@ class BinaryClassifierEval(object):
         devacc, testacc, idxs, tgts, preds = clf.run()
         logging.debug('Dev acc : {0} Test acc : {1}\n'.format(devacc, testacc))
         return {'devacc': devacc, 'acc': testacc, 'ndev': self.n_samples,
-                'ntest': self.n_samples, 'indexes': idxs,'targets': tgts, 'predictions': preds}
+                'ntest': self.n_samples, 'indexes': [sorted_samples[i] for i in idxs],'targets': tgts, 'predictions': preds}
 
 
 class CREval(BinaryClassifierEval):
