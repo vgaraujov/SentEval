@@ -103,22 +103,6 @@ class TRECEval(object):
             test_embeddings = np.vstack(test_embeddings)
             logging.info('Computed test embeddings')
 
-        # Get train embeddings
-        for ii in range(0, len(train_labels), params.batch_size):
-            batch = train_samples[ii:ii + params.batch_size]
-            embeddings = batcher(params, batch)
-            train_embeddings.append(embeddings)
-        train_embeddings = np.vstack(train_embeddings)
-        logging.info('Computed train embeddings')
-
-        # Get test embeddings
-        for ii in range(0, len(test_labels), params.batch_size):
-            batch = test_samples[ii:ii + params.batch_size]
-            embeddings = batcher(params, batch)
-            test_embeddings.append(embeddings)
-        test_embeddings = np.vstack(test_embeddings)
-        logging.info('Computed test embeddings')
-
         config_classifier = {'nclasses': 6, 'seed': self.seed,
                              'usepytorch': params.usepytorch,
                              'classifier': params.classifier,
