@@ -96,7 +96,6 @@ class InnerKFoldClassifier(object):
                 clf = MLP(self.classifier_config, inputdim=self.featdim,
                           nclasses=self.nclasses, l2reg=optreg,
                           seed=self.seed)
-
                 clf.fit(X_train, y_train, validation_split=0.05)
             else:
                 clf = LogisticRegression(C=optreg, random_state=self.seed)
@@ -106,12 +105,12 @@ class InnerKFoldClassifier(object):
 
         devaccuracy = round(np.mean(self.devresults), 2)
         testaccuracy = round(np.mean(self.testresults), 2)
-        
+
         # return only the last k-fold for ease
         # (squeeze and int to match y_test format)
         y_hat = clf.predict(X_test).squeeze(-1).astype(int)
         assert len(y_test) == len(y_hat)
-        
+
         return devaccuracy, testaccuracy, idx_test, y_test, y_hat
 
 
