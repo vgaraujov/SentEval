@@ -29,6 +29,7 @@ class MRPCEval(object):
         test = self.loadFile(os.path.join(task_path,
                              'msr_paraphrase_test.txt'))
         self.mrpc_data = {'train': train, 'test': test}
+        self.task_name = os.path.basename(task_path)
 
     def do_prepare(self, params, prepare):
         # TODO : Should we separate samples in "train, test"?
@@ -54,28 +55,68 @@ class MRPCEval(object):
     def run(self, params, batcher):
         mrpc_embed = {'train': {}, 'test': {}}
 
-        for key in self.mrpc_data:
-            logging.info('Computing embedding for {0}'.format(key))
-            # Sort to reduce padding
-            text_data = {}
-            sorted_corpus = sorted(zip(self.mrpc_data[key]['X_A'],
-                                       self.mrpc_data[key]['X_B'],
-                                       self.mrpc_data[key]['y']),
-                                   key=lambda z: (len(z[0]), len(z[1]), z[2]))
+        if params.save_emb is not None:
+            data_filename = '_'.join(params.save_emb.split('_')[:-1]) + '_' + self.task_name + '.npy'
+            if os.path.isfile(data_filename):
+                logging.info('Loading sentence embeddings')
+                mrpc_embed = np.load(data_filename)
+                logging.info('Generated sentence embeddings')
+            else:
+                for key in self.mrpc_data:
+                    logging.info('Computing embedding for {0}'.format(key))
+                    # Sort to reduce padding
+                    text_data = {}
+                    indexes = list(range(len(self.mrpc_data[key]['y'])))
+                    sorted_corpus = sorted(zip(self.mrpc_data[key]['X_A'],
+                                               self.mrpc_data[key]['X_B'],
+                                               self.mrpc_data[key]['y'],
+                                               indexes),
+                                           key=lambda z: (len(z[0]), len(z[1]), z[2], z[3]))
 
-            text_data['A'] = [x for (x, y, z) in sorted_corpus]
-            text_data['B'] = [y for (x, y, z) in sorted_corpus]
-            text_data['y'] = [z for (x, y, z) in sorted_corpus]
+                    text_data['A'] = [x for (x, y, z, i) in sorted_corpus]
+                    text_data['B'] = [y for (x, y, z, i) in sorted_corpus]
+                    text_data['y'] = [z for (x, y, z, i) in sorted_corpus]
+                    text_data['idx'] = [i for (x, y, z, i) in sorted_corpus]
 
-            for txt_type in ['A', 'B']:
-                mrpc_embed[key][txt_type] = []
-                for ii in range(0, len(text_data['y']), params.batch_size):
-                    batch = text_data[txt_type][ii:ii + params.batch_size]
-                    embeddings = batcher(params, batch)
-                    mrpc_embed[key][txt_type].append(embeddings)
-                mrpc_embed[key][txt_type] = np.vstack(mrpc_embed[key][txt_type])
-            mrpc_embed[key]['y'] = np.array(text_data['y'])
-            logging.info('Computed {0} embeddings'.format(key))
+                    for txt_type in ['A', 'B']:
+                        mrpc_embed[key][txt_type] = []
+                        for ii in range(0, len(text_data['y']), params.batch_size):
+                            batch = text_data[txt_type][ii:ii + params.batch_size]
+                            embeddings = batcher(params, batch)
+                            mrpc_embed[key][txt_type].append(embeddings)
+                        mrpc_embed[key][txt_type] = np.vstack(mrpc_embed[key][txt_type])
+                    mrpc_embed[key]['y'] = np.array(text_data['y'])
+                    mrpc_embed[key]['idx'] = np.array(text_data['idx'])
+                    logging.info('Computed {0} embeddings'.format(key))
+                logging.info('Saving sentence embeddings')
+                np.save(data_filename, mrpc_embed)
+        else:
+            for key in self.mrpc_data:
+                logging.info('Computing embedding for {0}'.format(key))
+                # Sort to reduce padding
+                text_data = {}
+                indexes = list(range(len(self.mrpc_data[key]['y'])))
+                sorted_corpus = sorted(zip(self.mrpc_data[key]['X_A'],
+                                           self.mrpc_data[key]['X_B'],
+                                           self.mrpc_data[key]['y'],
+                                           indexes),
+                                       key=lambda z: (len(z[0]), len(z[1]), z[2], z[3]))
+
+                text_data['A'] = [x for (x, y, z, i) in sorted_corpus]
+                text_data['B'] = [y for (x, y, z, i) in sorted_corpus]
+                text_data['y'] = [z for (x, y, z, i) in sorted_corpus]
+                text_data['idx'] = [i for (x, y, z, i) in sorted_corpus]
+
+                for txt_type in ['A', 'B']:
+                    mrpc_embed[key][txt_type] = []
+                    for ii in range(0, len(text_data['y']), params.batch_size):
+                        batch = text_data[txt_type][ii:ii + params.batch_size]
+                        embeddings = batcher(params, batch)
+                        mrpc_embed[key][txt_type].append(embeddings)
+                    mrpc_embed[key][txt_type] = np.vstack(mrpc_embed[key][txt_type])
+                mrpc_embed[key]['y'] = np.array(text_data['y'])
+                mrpc_embed[key]['idx'] = np.array(text_data['idx'])
+                logging.info('Computed {0} embeddings'.format(key))
 
         # Train
         trainA = mrpc_embed['train']['A']
@@ -93,8 +134,6 @@ class MRPCEval(object):
                   'usepytorch': params.usepytorch,
                   'classifier': params.classifier,
                   'nhid': params.nhid, 'kfold': params.kfold}
-        clf = KFoldClassifier(train={'X': trainF, 'y': trainY},
-                              test={'X': testF, 'y': testY}, config=config)
 
         devacc, testacc, yhat = clf.run()
         testf1 = round(100*f1_score(testY, yhat), 2)
