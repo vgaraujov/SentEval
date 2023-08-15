@@ -9,7 +9,7 @@
 SICK Relatedness and Entailment
 '''
 from __future__ import absolute_import, division, unicode_literals
-from pudb import set_trace
+
 import os
 import io
 import logging
@@ -25,6 +25,7 @@ from senteval.tools.validation import SplitClassifier
 class SICKRelatednessEval(object):
     def __init__(self, task_path, seed=1111):
         logging.debug('***** Transfer task : SICK-Relatedness*****\n\n')
+        self.task_name = os.path.basename(task_path)
         self.seed = seed
         train = self.loadFile(os.path.join(task_path, 'SICK_train.txt'))
         dev = self.loadFile(os.path.join(task_path, 'SICK_trial.txt'))
@@ -59,27 +60,66 @@ class SICKRelatednessEval(object):
         sick_embed = {'train': {}, 'dev': {}, 'test': {}}
         bsize = params.batch_size
 
-        for key in self.sick_data:
-            logging.info('Computing embedding for {0}'.format(key))
-            # Sort to reduce padding
-            sorted_corpus = sorted(zip(self.sick_data[key]['X_A'],
-                                       self.sick_data[key]['X_B'],
-                                       self.sick_data[key]['y']),
-                                   key=lambda z: (len(z[0]), len(z[1]), z[2]))
+        if params.save_emb is not None:
+            data_filename = '_'.join(params.save_emb.split('_')[:-1]) + '_' + self.task_name + 'R' + '.npy'
+            if os.path.isfile(data_filename):
+                logging.info('Loading sentence embeddings')
+                sick_embed = np.load(data_filename)
+                logging.info('Generated sentence embeddings')
+            else:
+                for key in self.sick_data:
+                    logging.info('Computing embedding for {0}'.format(key))
+                    # Sort to reduce padding
+                    indexes = list(range(len(self.sick_data[key]['y'])))
+                    sorted_corpus = sorted(zip(self.sick_data[key]['X_A'],
+                                               self.sick_data[key]['X_B'],
+                                               self.sick_data[key]['y'],
+                                               indexes),
+                                           key=lambda z: (len(z[0]), len(z[1]), z[2], z[3]))
 
-            self.sick_data[key]['X_A'] = [x for (x, y, z) in sorted_corpus]
-            self.sick_data[key]['X_B'] = [y for (x, y, z) in sorted_corpus]
-            self.sick_data[key]['y'] = [z for (x, y, z) in sorted_corpus]
+                    self.sick_data[key]['X_A'] = [x for (x, y, z, i) in sorted_corpus]
+                    self.sick_data[key]['X_B'] = [y for (x, y, z, i) in sorted_corpus]
+                    self.sick_data[key]['y'] = [z for (x, y, z, i) in sorted_corpus]
+                    self.sick_data[key]['idx'] = [i for (x, y, z, i) in sorted_corpus]
+                    
+                    for txt_type in ['X_A', 'X_B']:
+                        sick_embed[key][txt_type] = []
+                        for ii in range(0, len(self.sick_data[key]['y']), bsize):
+                            batch = self.sick_data[key][txt_type][ii:ii + bsize]
+                            embeddings = batcher(params, batch)
+                            sick_embed[key][txt_type].append(embeddings)
+                        sick_embed[key][txt_type] = np.vstack(sick_embed[key][txt_type])
+                    sick_embed[key]['y'] = np.array(self.sick_data[key]['y'])
+                    sick_embed[key]['idx'] = np.array(self.sick_data[key]['idx'])
+                    logging.info('Computed {0} embeddings'.format(key))
+                logging.info('Saving sentence embeddings')
+                np.save(data_filename, sick_embed)
+        else:
+            for key in self.sick_data:
+                logging.info('Computing embedding for {0}'.format(key))
+                # Sort to reduce padding
+                indexes = list(range(len(self.sick_data[key]['y'])))
+                sorted_corpus = sorted(zip(self.sick_data[key]['X_A'],
+                                           self.sick_data[key]['X_B'],
+                                           self.sick_data[key]['y'],
+                                           indexes),
+                                       key=lambda z: (len(z[0]), len(z[1]), z[2], z[3]))
+                
+                self.sick_data[key]['X_A'] = [x for (x, y, z, i) in sorted_corpus]
+                self.sick_data[key]['X_B'] = [y for (x, y, z, i) in sorted_corpus]
+                self.sick_data[key]['y'] = [z for (x, y, z, i) in sorted_corpus]
+                self.sick_data[key]['idx'] = [i for (x, y, z, i) in sorted_corpus]
 
-            for txt_type in ['X_A', 'X_B']:
-                sick_embed[key][txt_type] = []
-                for ii in range(0, len(self.sick_data[key]['y']), bsize):
-                    batch = self.sick_data[key][txt_type][ii:ii + bsize]
-                    embeddings = batcher(params, batch)
-                    sick_embed[key][txt_type].append(embeddings)
-                sick_embed[key][txt_type] = np.vstack(sick_embed[key][txt_type])
-            sick_embed[key]['y'] = np.array(self.sick_data[key]['y'])
-            logging.info('Computed {0} embeddings'.format(key))
+                for txt_type in ['X_A', 'X_B']:
+                    sick_embed[key][txt_type] = []
+                    for ii in range(0, len(self.sick_data[key]['y']), bsize):
+                        batch = self.sick_data[key][txt_type][ii:ii + bsize]
+                        embeddings = batcher(params, batch)
+                        sick_embed[key][txt_type].append(embeddings)
+                    sick_embed[key][txt_type] = np.vstack(sick_embed[key][txt_type])
+                sick_embed[key]['y'] = np.array(self.sick_data[key]['y'])
+                sick_embed[key]['idx'] = np.array(self.sick_data[key]['idx'])
+                logging.info('Computed {0} embeddings'.format(key))
 
         # Train
         trainA = sick_embed['train']['X_A']
@@ -107,7 +147,7 @@ class SICKRelatednessEval(object):
                                  config=config)
 
         devpr, yhat = clf.run()
-
+        
         pr = pearsonr(yhat, self.sick_data['test']['y'])[0]
         sr = spearmanr(yhat, self.sick_data['test']['y'])[0]
         pr = 0 if pr != pr else pr
@@ -116,6 +156,7 @@ class SICKRelatednessEval(object):
         logging.debug('Dev : Pearson {0}'.format(devpr))
         logging.debug('Test : Pearson {0} Spearman {1} MSE {2} \
                        for SICK Relatedness\n'.format(pr, sr, se))
+
         idxs = []
         n=0
         for line in self.sick_data['test']['X_A']:
@@ -142,12 +183,13 @@ class SICKRelatednessEval(object):
 class SICKEntailmentEval(SICKRelatednessEval):
     def __init__(self, task_path, seed=1111):
         logging.debug('***** Transfer task : SICK-Entailment*****\n\n')
+        self.task_name = os.path.basename(task_path)
         self.seed = seed
         train = self.loadFile(os.path.join(task_path, 'SICK_train.txt'))
         dev = self.loadFile(os.path.join(task_path, 'SICK_trial.txt'))
         test = self.loadFile(os.path.join(task_path, 'SICK_test_annotated.txt'))
         self.sick_data = {'train': train, 'dev': dev, 'test': test}
-
+        
     def loadFile(self, fpath):
         label2id = {'CONTRADICTION': 0, 'NEUTRAL': 1, 'ENTAILMENT': 2}
         skipFirstLine = True
@@ -168,26 +210,62 @@ class SICKEntailmentEval(SICKRelatednessEval):
         sick_embed = {'train': {}, 'dev': {}, 'test': {}}
         bsize = params.batch_size
 
-        for key in self.sick_data:
-            logging.info('Computing embedding for {0}'.format(key))
-            # Sort to reduce padding
-            sorted_corpus = sorted(zip(self.sick_data[key]['X_A'],
-                                       self.sick_data[key]['X_B'],
-                                       self.sick_data[key]['y']),
-                                   key=lambda z: (len(z[0]), len(z[1]), z[2]))
+        if params.save_emb is not None:
+            data_filename = '_'.join(params.save_emb.split('_')[:-1]) + '_' + self.task_name + 'E' + '.npy'
+            if os.path.isfile(data_filename):
+                logging.info('Loading sentence embeddings')
+                sick_embed = np.load(data_filename)
+                logging.info('Generated sentence embeddings')
+            else:
+                for key in self.sick_data:
+                    logging.info('Computing embedding for {0}'.format(key))
+                    # Sort to reduce padding
+                    indexes = list(range(len(self.sick_data[key]['y'])))
+                    sorted_corpus = sorted(zip(self.sick_data[key]['X_A'],
+                                               self.sick_data[key]['X_B'],
+                                               self.sick_data[key]['y'],
+                                               indexes),
+                                           key=lambda z: (len(z[0]), len(z[1]), z[2], z[3]))
 
-            self.sick_data[key]['X_A'] = [x for (x, y, z) in sorted_corpus]
-            self.sick_data[key]['X_B'] = [y for (x, y, z) in sorted_corpus]
-            self.sick_data[key]['y'] = [z for (x, y, z) in sorted_corpus]
+                    self.sick_data[key]['X_A'] = [x for (x, y, z, i) in sorted_corpus]
+                    self.sick_data[key]['X_B'] = [y for (x, y, z, i) in sorted_corpus]
+                    self.sick_data[key]['y'] = [z for (x, y, z, i) in sorted_corpus]
+                    self.sick_data[key]['idx'] = [i for (x, y, z, i) in sorted_corpus]
 
-            for txt_type in ['X_A', 'X_B']:
-                sick_embed[key][txt_type] = []
-                for ii in range(0, len(self.sick_data[key]['y']), bsize):
-                    batch = self.sick_data[key][txt_type][ii:ii + bsize]
-                    embeddings = batcher(params, batch)
-                    sick_embed[key][txt_type].append(embeddings)
-                sick_embed[key][txt_type] = np.vstack(sick_embed[key][txt_type])
-            logging.info('Computed {0} embeddings'.format(key))
+                    for txt_type in ['X_A', 'X_B']:
+                        sick_embed[key][txt_type] = []
+                        for ii in range(0, len(self.sick_data[key]['y']), bsize):
+                            batch = self.sick_data[key][txt_type][ii:ii + bsize]
+                            embeddings = batcher(params, batch)
+                            sick_embed[key][txt_type].append(embeddings)
+                        sick_embed[key][txt_type] = np.vstack(sick_embed[key][txt_type])
+                    logging.info('Computed {0} embeddings'.format(key))
+                logging.info('Saving sentence embeddings')
+                np.save(data_filename, sick_embed)
+        else:
+            for key in self.sick_data:
+                logging.info('Computing embedding for {0}'.format(key))
+                # Sort to reduce padding
+                indexes = list(range(len(self.sick_data[key]['y'])))
+                sorted_corpus = sorted(zip(self.sick_data[key]['X_A'],
+                                           self.sick_data[key]['X_B'],
+                                           self.sick_data[key]['y'],
+                                           indexes),
+                                       key=lambda z: (len(z[0]), len(z[1]), z[2], z[3]))
+
+                self.sick_data[key]['X_A'] = [x for (x, y, z, i) in sorted_corpus]
+                self.sick_data[key]['X_B'] = [y for (x, y, z, i) in sorted_corpus]
+                self.sick_data[key]['y'] = [z for (x, y, z, i) in sorted_corpus]
+                self.sick_data[key]['idx'] = [i for (x, y, z, i) in sorted_corpus]
+
+                for txt_type in ['X_A', 'X_B']:
+                    sick_embed[key][txt_type] = []
+                    for ii in range(0, len(self.sick_data[key]['y']), bsize):
+                        batch = self.sick_data[key][txt_type][ii:ii + bsize]
+                        embeddings = batcher(params, batch)
+                        sick_embed[key][txt_type].append(embeddings)
+                    sick_embed[key][txt_type] = np.vstack(sick_embed[key][txt_type])
+                logging.info('Computed {0} embeddings'.format(key))
 
         # Train
         trainA = sick_embed['train']['X_A']
@@ -206,6 +284,7 @@ class SICKEntailmentEval(SICKRelatednessEval):
         testB = sick_embed['test']['X_B']
         testF = np.c_[np.abs(testA - testB), testA * testB]
         testY = np.array(self.sick_data['test']['y'])
+        testidx = np.array(self.sick_data['test']['idx'])
 
         config = {'nclasses': 3, 'seed': self.seed,
                   'usepytorch': params.usepytorch,
@@ -216,9 +295,6 @@ class SICKEntailmentEval(SICKRelatednessEval):
                               config=config)
 
         devacc, testacc, predictions = clf.run()
-        logging.debug('\nDev acc : {0} Test acc : {1} for \
-                       SICK entailment\n'.format(devacc, testacc))
-        
         idxs = []
         n=0
         for line in self.sick_data['test']['X_A']:
