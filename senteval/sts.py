@@ -11,7 +11,7 @@ STS-benchmark (supervised) tasks
 '''
 
 from __future__ import absolute_import, division, unicode_literals
-from pudb import set_trace
+
 import os
 import io
 import numpy as np
@@ -42,11 +42,12 @@ class STSEval(object):
             sent1 = np.array([s.split() for s in sent1], dtype=object)[not_empty_idx]
             sent2 = np.array([s.split() for s in sent2], dtype=object)[not_empty_idx]
             # sort data by length to minimize padding in batcher
-            sorted_data = sorted(zip(sent1, sent2, gs_scores),
-                                 key=lambda z: (len(z[0]), len(z[1]), z[2]))
-            sent1, sent2, gs_scores = map(list, zip(*sorted_data))
+            indexes = list(range(len(gs_scores)))
+            sorted_data = sorted(zip(sent1, sent2, gs_scores, indexes),
+                                 key=lambda z: (len(z[0]), len(z[1]), z[2], z[3]))
+            sent1, sent2, gs_scores, indexes = map(list, zip(*sorted_data))
 
-            self.data[dataset] = (sent1, sent2, gs_scores)
+            self.data[dataset] = (sent1, sent2, gs_scores, indexes)
             self.samples += sent1 + sent2
 
     def do_prepare(self, params, prepare):
@@ -116,6 +117,7 @@ class STSEval(object):
 class STS12Eval(STSEval):
     def __init__(self, taskpath, seed=1111):
         logging.debug('***** Transfer task : STS12 *****\n\n')
+        self.task_name = os.path.basename(task_path)
         self.seed = seed
         self.datasets = ['MSRpar', 'MSRvid', 'SMTeuroparl',
                          'surprise.OnWN', 'surprise.SMTnews']
@@ -126,6 +128,7 @@ class STS13Eval(STSEval):
     # STS13 here does not contain the "SMT" subtask due to LICENSE issue
     def __init__(self, taskpath, seed=1111):
         logging.debug('***** Transfer task : STS13 (-SMT) *****\n\n')
+        self.task_name = os.path.basename(task_path)
         self.seed = seed
         self.datasets = ['FNWN', 'headlines', 'OnWN']
         self.loadFile(taskpath)
@@ -134,6 +137,7 @@ class STS13Eval(STSEval):
 class STS14Eval(STSEval):
     def __init__(self, taskpath, seed=1111):
         logging.debug('***** Transfer task : STS14 *****\n\n')
+        self.task_name = os.path.basename(task_path)
         self.seed = seed
         self.datasets = ['deft-forum', 'deft-news', 'headlines',
                          'images', 'OnWN', 'tweet-news']
@@ -143,6 +147,7 @@ class STS14Eval(STSEval):
 class STS15Eval(STSEval):
     def __init__(self, taskpath, seed=1111):
         logging.debug('***** Transfer task : STS15 *****\n\n')
+        self.task_name = os.path.basename(task_path)
         self.seed = seed
         self.datasets = ['answers-forums', 'answers-students',
                          'belief', 'headlines', 'images']
@@ -152,6 +157,7 @@ class STS15Eval(STSEval):
 class STS16Eval(STSEval):
     def __init__(self, taskpath, seed=1111):
         logging.debug('***** Transfer task : STS16 *****\n\n')
+        self.task_name = os.path.basename(task_path)
         self.seed = seed
         self.datasets = ['answer-answer', 'headlines', 'plagiarism',
                          'postediting', 'question-question']
@@ -161,6 +167,7 @@ class STS16Eval(STSEval):
 class STSBenchmarkEval(SICKRelatednessEval):
     def __init__(self, task_path, seed=1111):
         logging.debug('\n\n***** Transfer task : STSBenchmark*****\n\n')
+        self.task_name = os.path.basename(task_path)
         self.seed = seed
         train = self.loadFile(os.path.join(task_path, 'sts-train.csv'))
         dev = self.loadFile(os.path.join(task_path, 'sts-dev.csv'))
