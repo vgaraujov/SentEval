@@ -64,7 +64,7 @@ class TRECEval(object):
             data_filename = '_'.join(params.save_emb.split('_')[:-1]) + '_' + self.task_name + '.npz'
             if os.path.isfile(data_filename):
                 logging.info('Loading sentence embeddings')
-                loaded_data = np.load(data_filename, allow_pickle = True)
+                loaded_data = np.load(data_filename)
                 train_embeddings, test_embeddings = loaded_data['train_emb'], loaded_data['test_emb']
                 logging.info('Generated sentence embeddings')
             else:
