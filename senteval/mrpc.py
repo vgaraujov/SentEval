@@ -59,7 +59,7 @@ class MRPCEval(object):
             data_filename = '_'.join(params.save_emb.split('_')[:-1]) + '_' + self.task_name + '.npy'
             if os.path.isfile(data_filename):
                 logging.info('Loading sentence embeddings')
-                mrpc_embed = np.load(data_filename)
+                mrpc_embed = np.load(data_filename, allow_pickle=True).item()
                 logging.info('Generated sentence embeddings')
             else:
                 for key in self.mrpc_data:
