@@ -23,7 +23,7 @@ from senteval.tools.validation import SplitClassifier
 class SNLIEval(object):
     def __init__(self, taskpath, seed=1111):
         logging.debug('***** Transfer task : SNLI Entailment*****\n\n')
-        self.task_name = os.path.basename(task_path)
+        self.task_name = os.path.basename(taskpath)
         self.seed = seed
         train1 = self.loadFile(os.path.join(taskpath, 's1.train'))
         train2 = self.loadFile(os.path.join(taskpath, 's2.train'))
