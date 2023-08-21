@@ -105,7 +105,7 @@ class PROBINGEval(object):
                 task_embed[key]['idx'] = np.array(self.task_data[key]['idx'])
             logging.info('Computed embeddings')
 
-        assert task_embed['train']['X'].shape[0] == task_embed['train']['y'].shape[0] == task_embed['train']['idx']
+        assert task_embed['train']['X'].shape[0] == task_embed['train']['y'].shape[0] == task_embed['train']['idx'].shape[0]
         
         config_classifier = {'nclasses': self.nclasses, 'seed': self.seed,
                              'usepytorch': params.usepytorch,
