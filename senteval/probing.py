@@ -59,7 +59,7 @@ class PROBINGEval(object):
         bsize = params.batch_size
 
         if params.save_emb is not None:
-            data_filename = '_'.join(params.save_emb.split('_')[:-1]) + '_' + self.task_name + '.npy'
+            data_filename = '_'.join(params.save_emb.split('_')[:-1]) + '_' + self.task + '.npy'
             if os.path.isfile(data_filename):
                 logging.info('Loading sentence embeddings')
                 task_embed = np.load(data_filename, allow_pickle = True).item()
@@ -137,14 +137,12 @@ Surface Information
 """
 class LengthEval(PROBINGEval):
     def __init__(self, task_path, seed=1111):
-        self.task_name = os.path.basename(task_path)
         task_path = os.path.join(task_path, 'sentence_length.txt')
         # labels: bins
         PROBINGEval.__init__(self, 'Length', task_path, seed)
 
 class WordContentEval(PROBINGEval):
     def __init__(self, task_path, seed=1111):
-        self.task_name = os.path.basename(task_path)
         task_path = os.path.join(task_path, 'word_content.txt')
         # labels: 200 target words
         PROBINGEval.__init__(self, 'WordContent', task_path, seed)
@@ -154,21 +152,18 @@ Latent Structural Information
 """
 class DepthEval(PROBINGEval):
     def __init__(self, task_path, seed=1111):
-        self.task_name = os.path.basename(task_path)
         task_path = os.path.join(task_path, 'tree_depth.txt')
         # labels: bins
         PROBINGEval.__init__(self, 'Depth', task_path, seed)
 
 class TopConstituentsEval(PROBINGEval):
     def __init__(self, task_path, seed=1111):
-        self.task_name = os.path.basename(task_path)
         task_path = os.path.join(task_path, 'top_constituents.txt')
         # labels: 'PP_NP_VP_.' .. (20 classes)
         PROBINGEval.__init__(self, 'TopConstituents', task_path, seed)
 
 class BigramShiftEval(PROBINGEval):
     def __init__(self, task_path, seed=1111):
-        self.task_name = os.path.basename(task_path)
         task_path = os.path.join(task_path, 'bigram_shift.txt')
         # labels: 0 or 1
         PROBINGEval.__init__(self, 'BigramShift', task_path, seed)
@@ -181,35 +176,30 @@ Latent Semantic Information
 
 class TenseEval(PROBINGEval):
     def __init__(self, task_path, seed=1111):
-        self.task_name = os.path.basename(task_path)
         task_path = os.path.join(task_path, 'past_present.txt')
         # labels: 'PRES', 'PAST'
         PROBINGEval.__init__(self, 'Tense', task_path, seed)
 
 class SubjNumberEval(PROBINGEval):
     def __init__(self, task_path, seed=1111):
-        self.task_name = os.path.basename(task_path)
         task_path = os.path.join(task_path, 'subj_number.txt')
         # labels: 'NN', 'NNS'
         PROBINGEval.__init__(self, 'SubjNumber', task_path, seed)
 
 class ObjNumberEval(PROBINGEval):
     def __init__(self, task_path, seed=1111):
-        self.task_name = os.path.basename(task_path)
         task_path = os.path.join(task_path, 'obj_number.txt')
         # labels: 'NN', 'NNS'
         PROBINGEval.__init__(self, 'ObjNumber', task_path, seed)
 
 class OddManOutEval(PROBINGEval):
     def __init__(self, task_path, seed=1111):
-        self.task_name = os.path.basename(task_path)
         task_path = os.path.join(task_path, 'odd_man_out.txt')
         # labels: 'O', 'C'
         PROBINGEval.__init__(self, 'OddManOut', task_path, seed)
 
 class CoordinationInversionEval(PROBINGEval):
     def __init__(self, task_path, seed=1111):
-        self.task_name = os.path.basename(task_path)
         task_path = os.path.join(task_path, 'coordination_inversion.txt')
         # labels: 'O', 'I'
         PROBINGEval.__init__(self, 'CoordinationInversion', task_path, seed)
