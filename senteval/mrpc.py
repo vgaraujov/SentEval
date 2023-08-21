@@ -135,6 +135,9 @@ class MRPCEval(object):
                   'classifier': params.classifier,
                   'nhid': params.nhid, 'kfold': params.kfold}
 
+        clf = KFoldClassifier(train={'X': trainF, 'y': trainY},
+                              test={'X': testF, 'y': testY}, config=config)
+
         devacc, testacc, yhat = clf.run()
         testf1 = round(100*f1_score(testY, yhat), 2)
         logging.debug('Dev acc : {0} Test acc {1}; Test F1 {2} for MRPC.\n'
