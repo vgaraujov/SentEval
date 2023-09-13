@@ -61,7 +61,7 @@ class STSEval(object):
         results = {}
         for dataset in self.datasets:
             sys_scores = []
-            input1, input2, gs_scores = self.data[dataset]
+            input1, input2, gs_scores, indexes = self.data[dataset]
             for ii in range(0, len(gs_scores), params.batch_size):
                 batch1 = input1[ii:ii + params.batch_size]
                 batch2 = input2[ii:ii + params.batch_size]
