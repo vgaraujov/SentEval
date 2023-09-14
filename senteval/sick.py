@@ -211,7 +211,7 @@ class SICKEntailmentEval(SICKRelatednessEval):
         bsize = params.batch_size
 
         if params.save_emb is not None:
-            data_filename = '_'.join(params.save_emb.split('_')[:-1]) + '_' + self.task_name + 'E' + '.npz'
+            data_filename = '_'.join(params.save_emb.split('_')[:-1]) + '_' + self.task_name + 'E' + '.pkl'
             if os.path.isfile(data_filename):
                 logging.info('Loading sentence embeddings')
                 # sick_embed = np.load(data_filename, allow_pickle = True).item()
@@ -244,7 +244,7 @@ class SICKEntailmentEval(SICKRelatednessEval):
                     logging.info('Computed {0} embeddings'.format(key))
                 logging.info('Saving sentence embeddings')
                 # np.savez(data_filename, sick_embed)
-                 with open(data_filename, 'wb') as f:
+                with open(data_filename, 'wb') as f:
                     pickle.dump(sick_embed, f, protocol=4)
         else:
             for key in self.sick_data:
