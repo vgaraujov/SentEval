@@ -215,7 +215,7 @@ class SICKEntailmentEval(SICKRelatednessEval):
             if os.path.isfile(data_filename):
                 logging.info('Loading sentence embeddings')
                 # sick_embed = np.load(data_filename, allow_pickle = True).item()
-                sick_embed = np.load(data_filename, allow_pickle = True)
+                sick_embed = np.load(data_filename, allow_pickle = True).items()
                 logging.info('Generated sentence embeddings')
             else:
                 for key in self.sick_data:
