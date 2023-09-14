@@ -113,7 +113,7 @@ class SNLIEval(object):
                 logging.info('Saving sentence embeddings')
                 # np.savez(data_filename, X=self.X, y=self.y, index=self.index)
                 with open(data_filename, 'wb') as f:
-                    pickle.dump({'X':self.X, 'y':self.y, 'index':self.index}, protocol=4, f)
+                    pickle.dump({'X':self.X, 'y':self.y, 'index':self.index}, f, protocol=4)
         else:
             for key in self.data:
                 logging.info('Computing embedding for {0}'.format(key))
