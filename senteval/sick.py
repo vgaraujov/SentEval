@@ -61,7 +61,7 @@ class SICKRelatednessEval(object):
         bsize = params.batch_size
 
         if params.save_emb is not None:
-            data_filename = '_'.join(params.save_emb.split('_')[:-1]) + '_' + self.task_name + 'R' + '.npy'
+            data_filename = '_'.join(params.save_emb.split('_')[:-1]) + '_' + self.task_name + 'R' + '.npz'
             if os.path.isfile(data_filename):
                 logging.info('Loading sentence embeddings')
                 sick_embed = np.load(data_filename, allow_pickle = True).item()
@@ -93,7 +93,8 @@ class SICKRelatednessEval(object):
                     sick_embed[key]['idx'] = np.array(self.sick_data[key]['idx'])
                     logging.info('Computed {0} embeddings'.format(key))
                 logging.info('Saving sentence embeddings')
-                np.save(data_filename, sick_embed)
+                # np.save(data_filename, sick_embed)
+                np.savez(data_filename, sick_embed)
         else:
             for key in self.sick_data:
                 logging.info('Computing embedding for {0}'.format(key))
