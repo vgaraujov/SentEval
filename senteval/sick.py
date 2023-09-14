@@ -215,7 +215,8 @@ class SICKEntailmentEval(SICKRelatednessEval):
             if os.path.isfile(data_filename):
                 logging.info('Loading sentence embeddings')
                 # sick_embed = np.load(data_filename, allow_pickle = True).item()
-                sick_embed = np.load(data_filename, allow_pickle = True).items()
+                with open(data_filename) as f:
+                    sick_embed = pickle.load(f)
                 logging.info('Generated sentence embeddings')
             else:
                 for key in self.sick_data:
@@ -242,7 +243,9 @@ class SICKEntailmentEval(SICKRelatednessEval):
                         sick_embed[key][txt_type] = np.vstack(sick_embed[key][txt_type])
                     logging.info('Computed {0} embeddings'.format(key))
                 logging.info('Saving sentence embeddings')
-                np.savez(data_filename, sick_embed)
+                # np.savez(data_filename, sick_embed)
+                 with open(data_filename, 'wb') as f:
+                    pickle.dump(sick_embed, f, protocol=4)
         else:
             for key in self.sick_data:
                 logging.info('Computing embedding for {0}'.format(key))
