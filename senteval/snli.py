@@ -16,6 +16,7 @@ import io
 import copy
 import logging
 import numpy as np
+import pickle
 
 from senteval.tools.validation import SplitClassifier
 
@@ -74,10 +75,12 @@ class SNLIEval(object):
         dico_label = {'entailment': 0,  'neutral': 1, 'contradiction': 2}
 
         if params.save_emb is not None:
-            data_filename = '_'.join(params.save_emb.split('_')[:-1]) + '_' + self.task_name + '.npz'
+            data_filename = '_'.join(params.save_emb.split('_')[:-1]) + '_' + self.task_name + '.pkl'
             if os.path.isfile(data_filename):
                 logging.info('Loading sentence embeddings')
-                loaded_data = np.load(data_filename)
+                # loaded_data = np.load(data_filename)
+                with open(data_filename) as f:
+                    loaded_data = pickle.load(f)
                 self.X, self.y, self.index = loaded_data['X'], loaded_data['y'], loaded_data['index']
                 logging.info('Generated sentence embeddings')
             else:
@@ -108,7 +111,9 @@ class SNLIEval(object):
                     self.index[key] = np.array(myindexes)
                     logging.info('Computed {0} embeddings'.format(key))
                 logging.info('Saving sentence embeddings')
-                np.savez(data_filename, X=self.X, y=self.y, index=self.index)
+                # np.savez(data_filename, X=self.X, y=self.y, index=self.index)
+                with open(data_filename, 'wb') as f:
+                    pickle.dump({'X':self.X, 'y':self.y, 'index':self.index}, protocol=4, f)
         else:
             for key in self.data:
                 logging.info('Computing embedding for {0}'.format(key))
