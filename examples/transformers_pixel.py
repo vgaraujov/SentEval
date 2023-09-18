@@ -126,7 +126,8 @@ if __name__ == "__main__":
     config = PIXELConfig.from_pretrained(model_dict[args.model_name])
     config.output_hidden_states = True
     config.output_attentions = True
-    model = ViTModel.from_pretrained(model_dict[args.model_name], config=config).cuda()
+    # model = ViTModel.from_pretrained(model_dict[args.model_name], config=config).cuda()
+    model = ViTModel.from_pretrained(model_dict[args.model_name], config=config)
     model.eval()
 
     output_path = '{}_p={}_l={}_t={}_s={}'.format(
