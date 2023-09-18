@@ -68,8 +68,10 @@ def batcher(params, batch):
     ]
 
     with torch.no_grad():
-        batch = torch.stack(pixel_values).cuda()
-        mask = torch.stack(attention_mask).cuda() # bs * seq_length
+        batch = torch.stack(pixel_values)
+        mask = torch.stack(attention_mask)# bs * seq_length
+        # batch = torch.stack(pixel_values).cuda()
+        # mask = torch.stack(attention_mask).cuda() # bs * seq_length
         outputs, pooled_output, hidden_states, _ = model(batch, attention_mask=mask, return_dict=False)
 
     extended_mask = torch.cat((torch.ones(mask.shape[0], 1).cuda(), mask), -1).unsqueeze(-1)
