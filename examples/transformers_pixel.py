@@ -74,7 +74,9 @@ def batcher(params, batch):
         # mask = torch.stack(attention_mask).cuda() # bs * seq_length
         outputs, pooled_output, hidden_states, _ = model(batch, attention_mask=mask, return_dict=False)
 
-    extended_mask = torch.cat((torch.ones(mask.shape[0], 1).cuda(), mask), -1).unsqueeze(-1)
+    # extended_mask = torch.cat((torch.ones(mask.shape[0], 1).cuda(), mask), -1).unsqueeze(-1)
+
+    extended_mask = torch.cat((torch.ones(mask.shape[0], 1), mask), -1).unsqueeze(-1)
     # extended_mask = mask.unsqueeze(-1)
     if pooling == "cls":
         if layer == "all":
