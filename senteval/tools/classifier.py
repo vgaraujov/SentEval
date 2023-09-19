@@ -183,12 +183,12 @@ class MLP(PyTorchClassifier):
         self.batch_size = 64 if "batch_size" not in params else params["batch_size"]
 
         if params["nhid"] == 0:
-            # self.model = nn.Sequential(
-            #     nn.Linear(self.inputdim, self.nclasses),
-            # ).cuda()
             self.model = nn.Sequential(
                 nn.Linear(self.inputdim, self.nclasses),
-            )
+            ).cuda()
+            # self.model = nn.Sequential(
+            #     nn.Linear(self.inputdim, self.nclasses),
+            # )
         else:
             self.model = nn.Sequential(
                 nn.Linear(self.inputdim, params["nhid"]),
