@@ -51,7 +51,9 @@ class SE(object):
                            'STS14', 'STS15', 'STS16',
                            'Length', 'WordContent', 'Depth', 'TopConstituents',
                            'BigramShift', 'Tense', 'SubjNumber', 'ObjNumber',
-                           'OddManOut', 'CoordinationInversion']
+                           'OddManOut', 'CoordinationInversion', 'Mr_Aspect', 'Mr_Case', 'Mr_Deixis',
+                           'Mr_Gender', 'Mr_Number', 'Mr_Person', 'Mr_Polarity',
+                           'Mr_PronType', 'Mr_Tense', 'Mr_VerbForm']
 
     def eval(self, name):
         # evaluate on evaluation [name], either takes string or list of strings
