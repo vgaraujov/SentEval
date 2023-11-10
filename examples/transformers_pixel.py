@@ -162,8 +162,8 @@ if __name__ == "__main__":
         ['Length', 'WordContent', 'Depth', 'TopConstituents',
          'BigramShift', 'Tense', 'SubjNumber', 'ObjNumber', 
          'OddManOut', 'CoordinationInversion'], # probing tasks
-        ['SNLI'] #moving SNLI here since it is too big, so can be run separately from others to allow us to analyse the rest while this runs 
-        #(also a sentence-pair classification)
+        ['Mr_Aspect', 'Mr_Case', 'Mr_Deixis', 'Mr_Gender', 'Mr_Number', 'Mr_Person', 'Mr_Polarity',
+         'Mr_PronType', 'Mr_Tense', 'Mr_VerbForm']  # Marathi probing tasks
     ]
 
     results = se.eval(transfer_tasks[args.task_index])
