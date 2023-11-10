@@ -123,19 +123,19 @@ if __name__ == "__main__":
     results = se.eval(transfer_tasks[args.task_index])
     #print(results)
 
-    output_path = '{}_p={}_l={}_t={}_s={}.csv'.format(
+    output_path = '{}_p={}_l={}_t={}_s={}'.format(
         args.model_name,
         args.pooling,
         args.layer,
         args.task_index,
         params['seed'])
 
-    pred_path = '{}_p={}_l={}_t={}_s={}_preds.csv'.format(
-        args.model_name,
-        args.pooling,
-        args.layer,
-        args.task_index,
-        params['seed'])
+    # pred_path = '{}_p={}_l={}_t={}_s={}_preds.csv'.format(
+    #     args.model_name,
+    #     args.pooling,
+    #     args.layer,
+    #     args.task_index,
+    #     params['seed'])
 
     with open(output_path + '.pickle', 'wb') as handle:
         pickle.dump(results, handle, protocol=pickle.HIGHEST_PROTOCOL)

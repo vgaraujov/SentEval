@@ -142,7 +142,9 @@ if __name__ == "__main__":
         ['STS12', 'STS13', 'STS14', 'STS15', 'STS16'], # unsupervised semantic similarity
         ['Length', 'WordContent', 'Depth', 'TopConstituents',
          'BigramShift', 'Tense', 'SubjNumber', 'ObjNumber', 
-         'OddManOut', 'CoordinationInversion'] # probing tasks
+         'OddManOut', 'CoordinationInversion'], # probing tasks
+        ['Mr_Aspect', 'Mr_Case', 'Mr_Deixis', 'Mr_Gender', 'Mr_Number', 'Mr_Person', 'Mr_Polarity',
+         'Mr_PronType', 'Mr_Tense', 'Mr_VerbForm'] # Marathi probing tasks
     ]
 
     results = se.eval(transfer_tasks[args.task_index])

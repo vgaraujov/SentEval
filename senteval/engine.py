@@ -115,6 +115,28 @@ class SE(object):
         elif name == 'CoordinationInversion':
                 self.evaluation = CoordinationInversionEval(tpath + '/probing', seed=self.params.seed)
 
+        # Multilingual Probing Tasks
+        elif name == 'Mr_Aspect':
+            self.evaluation = Multi_Aspect(tpath + '/probing/Marathi', seed=self.params.seed)
+        elif name == 'Mr_Case':
+            self.evaluation = Multi_Case(tpath + '/probing/Marathi', seed=self.params.seed)
+        elif name == 'Mr_Deixis':
+            self.evaluation = Multi_Deixis(tpath + '/probing/Marathi', seed=self.params.seed)
+        elif name == 'Mr_Gender':
+            self.evaluation = Multi_Gender(tpath + '/probing/Marathi', seed=self.params.seed)
+        elif name == 'Mr_Number':
+            self.evaluation = Multi_Number(tpath + '/probing/Marathi', seed=self.params.seed)
+        elif name == 'Mr_Person':
+            self.evaluation = Multi_Person(tpath + '/probing/Marathi', seed=self.params.seed)
+        elif name == 'Mr_Polarity':
+            self.evaluation = Multi_Polarity(tpath + '/probing/Marathi', seed=self.params.seed)
+        elif name == 'Mr_PronType':
+            self.evaluation = Multi_PronType(tpath + '/probing/Marathi', seed=self.params.seed)
+        elif name == 'Mr_Tense':
+            self.evaluation = Multi_Tense(tpath + '/probing/Marathi', seed=self.params.seed)
+        elif name == 'Mr_VerbForm':
+            self.evaluation = Multi_VerbForm(tpath + '/probing/Marathi', seed=self.params.seed)
+
         self.params.current_task = name
         self.evaluation.do_prepare(self.params, self.prepare)
 

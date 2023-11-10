@@ -168,3 +168,67 @@ class CoordinationInversionEval(PROBINGEval):
         task_path = os.path.join(task_path, 'coordination_inversion.txt')
         # labels: 'O', 'I'
         PROBINGEval.__init__(self, 'CoordinationInversion', task_path, seed)
+
+### Multilingual Probing Experiments ###
+
+class Multi_Aspect(PROBINGEval):
+    def __init__(self, task_path, seed=1111):
+        task_path = os.path.join(task_path, 'Aspect.txt')
+        # labels: 'O', 'I'
+        PROBINGEval.__init__(self, 'Aspect', task_path, seed)
+
+class Multi_Case(PROBINGEval):
+    def __init__(self, task_path, seed=1111):
+        task_path = os.path.join(task_path, 'Case.txt')
+        # labels: 'O', 'I'
+        PROBINGEval.__init__(self, 'Case', task_path, seed)
+
+class Multi_Deixis(PROBINGEval):
+    def __init__(self, task_path, seed=1111):
+        task_path = os.path.join(task_path, 'Deixis.txt')
+        # labels: 'O', 'I'
+        PROBINGEval.__init__(self, 'Deixis', task_path, seed)
+
+class Multi_Gender(PROBINGEval):
+    def __init__(self, task_path, seed=1111):
+        task_path = os.path.join(task_path, 'Gender.txt')
+        # labels: 'O', 'I'
+        PROBINGEval.__init__(self, 'Gender', task_path, seed)
+
+class Multi_Number(PROBINGEval):
+    def __init__(self, task_path, seed=1111):
+        task_path = os.path.join(task_path, 'Number.txt')
+        # labels: 'O', 'I'
+        PROBINGEval.__init__(self, 'Number', task_path, seed)
+
+class Multi_Person(PROBINGEval):
+    def __init__(self, task_path, seed=1111):
+        task_path = os.path.join(task_path, 'Person.txt')
+        # labels: 'O', 'I'
+        PROBINGEval.__init__(self, 'Person', task_path, seed)
+
+
+class Multi_Polarity(PROBINGEval):
+    def __init__(self, task_path, seed=1111):
+        task_path = os.path.join(task_path, 'Polarity.txt')
+        # labels: 'O', 'I'
+        PROBINGEval.__init__(self, 'Polarity', task_path, seed)
+
+class Multi_PronType(PROBINGEval):
+    def __init__(self, task_path, seed=1111):
+        task_path = os.path.join(task_path, 'PronType.txt')
+        # labels: 'O', 'I'
+        PROBINGEval.__init__(self, 'PronType', task_path, seed)
+
+class Multi_Tense(PROBINGEval):
+    def __init__(self, task_path, seed=1111):
+        task_path = os.path.join(task_path, 'Tense.txt')
+        # labels: 'O', 'I'
+        PROBINGEval.__init__(self, 'Tense', task_path, seed)
+
+class Multi_VerbForm(PROBINGEval):
+    def __init__(self, task_path, seed=1111):
+        task_path = os.path.join(task_path, 'VerbForm.txt')
+        # labels: 'O', 'I'
+        PROBINGEval.__init__(self, 'VerbForm', task_path, seed)
+
