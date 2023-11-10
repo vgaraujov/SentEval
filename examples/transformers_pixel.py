@@ -162,9 +162,9 @@ if __name__ == "__main__":
         ['Length', 'WordContent', 'Depth', 'TopConstituents',
          'BigramShift', 'Tense', 'SubjNumber', 'ObjNumber', 
          'OddManOut', 'CoordinationInversion'], # probing tasks
-        ['Mr_Aspect', 'Mr_Deixis', 'Mr_Gender', 'Mr_Number', 'Mr_Person', 'Mr_Polarity',
-         'Mr_Tense', 'Mr_VerbForm']  # Marathi probing tasks
-    ] #'Mr_Case', 'Mr_PronType',
+        ['Mr_Aspect', 'Mr_Case', 'Mr_Deixis', 'Mr_Gender', 'Mr_Number', 'Mr_Person', 'Mr_Polarity',
+         'Mr_PronType', 'Mr_Tense', 'Mr_VerbForm']  # Marathi probing tasks
+    ]
 
     results = se.eval(transfer_tasks[args.task_index])
 
