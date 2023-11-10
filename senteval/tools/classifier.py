@@ -186,6 +186,9 @@ class MLP(PyTorchClassifier):
             self.model = nn.Sequential(
                 nn.Linear(self.inputdim, self.nclasses),
             ).cuda()
+            # self.model = nn.Sequential(
+            #     nn.Linear(self.inputdim, self.nclasses),
+            # )
         else:
             self.model = nn.Sequential(
                 nn.Linear(self.inputdim, params["nhid"]),

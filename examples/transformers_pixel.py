@@ -15,6 +15,7 @@ import logging
 import torch
 import code
 import argparse
+import pickle
 
 # Set PATHs
 PATH_TO_SENTEVAL = '../'
@@ -67,11 +68,15 @@ def batcher(params, batch):
     ]
 
     with torch.no_grad():
+        # batch = torch.stack(pixel_values)
+        # mask = torch.stack(attention_mask)# bs * seq_length
         batch = torch.stack(pixel_values).cuda()
         mask = torch.stack(attention_mask).cuda() # bs * seq_length
         outputs, pooled_output, hidden_states, _ = model(batch, attention_mask=mask, return_dict=False)
 
     extended_mask = torch.cat((torch.ones(mask.shape[0], 1).cuda(), mask), -1).unsqueeze(-1)
+
+    # extended_mask = torch.cat((torch.ones(mask.shape[0], 1), mask), -1).unsqueeze(-1)
     # extended_mask = mask.unsqueeze(-1)
     if pooling == "cls":
         if layer == "all":
@@ -126,36 +131,46 @@ if __name__ == "__main__":
     config.output_hidden_states = True
     config.output_attentions = True
     model = ViTModel.from_pretrained(model_dict[args.model_name], config=config).cuda()
+    # model = ViTModel.from_pretrained(model_dict[args.model_name], config=config)
     model.eval()
+
+    output_path = '{}_p={}_l={}_t={}_s={}'.format(
+        args.model_name,
+        args.pooling,
+        args.layer,
+        args.task_index,
+        args.seed)
 
     # Set params for DiscoEval or SentEval
     params = {'task_path': PATH_TO_DATA, 'usepytorch': True, 'kfold': 10, 'batch_size': 16,
-              'tokenizer': processor, "pooling": args.pooling, "layer": args.layer, "model": model, 'seed': args.seed}
+              'tokenizer': processor, 'pooling': args.pooling, 'layer': args.layer, 'model': model,
+              'seed': args.seed, 'save_emb': output_path}
+
+    # params = {'task_path': PATH_TO_DATA, 'usepytorch': True, 'kfold': 10, 'batch_size': 16,
+    #           'tokenizer': processor, 'pooling': args.pooling, 'layer': args.layer, 'model': model,
+    #           'seed': args.seed, 'save_emb': None}
+    
     params['classifier'] = {'nhid': 0, 'optim': 'adam', 'batch_size': 64,
                             'tenacity': 5, 'epoch_size': 4}
 
     se = senteval.engine.SE(params, batcher, prepare)
     transfer_tasks = [
         ['CR', 'MR', 'MPQA', 'SUBJ', 'SST2', 'SST5', 'TREC'], # stand-alone sentence classification
-        ['MRPC', 'SNLI', 'SICKEntailment'], # pair-sentence clasificationc
-        ['SICKRelatedness', 'STSBenchmark'], # supervised semantic similarity
+        ['MRPC', 'SICKEntailment'], # pair-sentence clasification
+        ['STSBenchmark', 'SICKRelatedness'], # supervised semantic similarity
         ['STS12', 'STS13', 'STS14', 'STS15', 'STS16'], # unsupervised semantic similarity
         ['Length', 'WordContent', 'Depth', 'TopConstituents',
          'BigramShift', 'Tense', 'SubjNumber', 'ObjNumber', 
          'OddManOut', 'CoordinationInversion'], # probing tasks
-        ['Mr_Aspect', 'Mr_Case', 'Mr_Deixis', 'Mr_Gender', 'Mr_Number', 'Mr_Person', 'Mr_Polarity',
-         'Mr_PronType', 'Mr_Tense', 'Mr_VerbForm'] # Marathi probing tasks
+        ['SNLI'] #moving SNLI here since it is too big, so can be run separately from others to allow us to analyse the rest while this runs 
+        #(also a sentence-pair classification)
     ]
 
     results = se.eval(transfer_tasks[args.task_index])
-    print(results)
 
-    output_path = '{}_p={}_l={}_t={}_s={}.csv'.format(
-        args.model_name,
-        args.pooling,
-        args.layer,
-        args.task_index,
-        params['seed'])
+    # deprecation: move to pickle format for ease
+    # df = pd.DataFrame(results)
+    # df.to_csv(output_path+'.csv', index=True)
 
-    df = pd.DataFrame(results)
-    df.to_csv(output_path, index=True)
+    with open(output_path+'.pickle', 'wb') as handle:
+        pickle.dump(results, handle, protocol=pickle.HIGHEST_PROTOCOL)

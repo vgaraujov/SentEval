@@ -43,13 +43,31 @@ class BinaryClassifierEval(object):
         sorted_samples = [x for (x, y, i) in sorted_corpus]
         sorted_labels = [y for (x, y, i) in sorted_corpus]
         sorted_indexes = [i for (x, y, i) in sorted_corpus]
-        logging.info('Generating sentence embeddings')
-        for ii in range(0, self.n_samples, params.batch_size):
-            batch = sorted_samples[ii:ii + params.batch_size]
-            embeddings = batcher(params, batch)
-            enc_input.append(embeddings)
-        enc_input = np.vstack(enc_input)
-        logging.info('Generated sentence embeddings')
+
+        if params.save_emb is not None:
+            data_filename = '_'.join(params.save_emb.split('_')[:-1]) + '_' + self.task_name + '.npy'
+            if os.path.isfile(data_filename):
+                logging.info('Loading sentence embeddings')
+                enc_input = np.load(data_filename)
+                logging.info('Generated sentence embeddings')
+            else:
+                logging.info('Generating sentence embeddings')
+                for ii in range(0, self.n_samples, params.batch_size):
+                    batch = sorted_samples[ii:ii + params.batch_size]
+                    embeddings = batcher(params, batch)
+                    enc_input.append(embeddings)
+                enc_input = np.vstack(enc_input)
+                logging.info('Generated sentence embeddings')
+                logging.info('Saving sentence embeddings')
+                np.save(data_filename, enc_input)
+        else:
+            logging.info('Generating sentence embeddings')
+            for ii in range(0, self.n_samples, params.batch_size):
+                batch = sorted_samples[ii:ii + params.batch_size]
+                embeddings = batcher(params, batch)
+                enc_input.append(embeddings)
+            enc_input = np.vstack(enc_input)
+            logging.info('Generated sentence embeddings')
 
         config = {'nclasses': 2, 'seed': self.seed,
                   'usepytorch': params.usepytorch,
@@ -59,12 +77,13 @@ class BinaryClassifierEval(object):
         devacc, testacc, idxs, tgts, preds = clf.run()
         logging.debug('Dev acc : {0} Test acc : {1}\n'.format(devacc, testacc))
         return {'devacc': devacc, 'acc': testacc, 'ndev': self.n_samples,
-                'ntest': self.n_samples, 'indexes': idxs,'targets': tgts, 'predictions': preds}
+                'ntest': self.n_samples, 'indexes': [sorted_samples[i] for i in idxs],'targets': tgts, 'predictions': preds}
 
 
 class CREval(BinaryClassifierEval):
     def __init__(self, task_path, seed=1111):
         logging.debug('***** Transfer task : CR *****\n\n')
+        self.task_name = os.path.basename(task_path)
         pos = self.loadFile(os.path.join(task_path, 'custrev.pos'))
         neg = self.loadFile(os.path.join(task_path, 'custrev.neg'))
         super(self.__class__, self).__init__(pos, neg, seed)
@@ -73,6 +92,7 @@ class CREval(BinaryClassifierEval):
 class MREval(BinaryClassifierEval):
     def __init__(self, task_path, seed=1111):
         logging.debug('***** Transfer task : MR *****\n\n')
+        self.task_name = os.path.basename(task_path)
         pos = self.loadFile(os.path.join(task_path, 'rt-polarity.pos'))
         neg = self.loadFile(os.path.join(task_path, 'rt-polarity.neg'))
         super(self.__class__, self).__init__(pos, neg, seed)
@@ -81,6 +101,7 @@ class MREval(BinaryClassifierEval):
 class SUBJEval(BinaryClassifierEval):
     def __init__(self, task_path, seed=1111):
         logging.debug('***** Transfer task : SUBJ *****\n\n')
+        self.task_name = os.path.basename(task_path)
         obj = self.loadFile(os.path.join(task_path, 'subj.objective'))
         subj = self.loadFile(os.path.join(task_path, 'subj.subjective'))
         super(self.__class__, self).__init__(obj, subj, seed)
@@ -89,6 +110,7 @@ class SUBJEval(BinaryClassifierEval):
 class MPQAEval(BinaryClassifierEval):
     def __init__(self, task_path, seed=1111):
         logging.debug('***** Transfer task : MPQA *****\n\n')
+        self.task_name = os.path.basename(task_path)
         pos = self.loadFile(os.path.join(task_path, 'mpqa.pos'))
         neg = self.loadFile(os.path.join(task_path, 'mpqa.neg'))
         super(self.__class__, self).__init__(pos, neg, seed)

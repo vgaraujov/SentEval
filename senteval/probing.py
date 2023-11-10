@@ -10,6 +10,7 @@ probing tasks
 '''
 
 from __future__ import absolute_import, division, unicode_literals
+
 import os
 import io
 import copy
@@ -56,23 +57,56 @@ class PROBINGEval(object):
     def run(self, params, batcher):
         task_embed = {'train': {}, 'dev': {}, 'test': {}}
         bsize = params.batch_size
-        logging.info('Computing embeddings for train/dev/test')
-        for key in self.task_data:
-            # Sort to reduce padding
-            sorted_data = sorted(zip(self.task_data[key]['X'],
-                                     self.task_data[key]['y']),
-                                 key=lambda z: (len(z[0]), z[1]))
-            self.task_data[key]['X'], self.task_data[key]['y'] = map(list, zip(*sorted_data))
 
-            task_embed[key]['X'] = []
-            for ii in range(0, len(self.task_data[key]['y']), bsize):
-                batch = self.task_data[key]['X'][ii:ii + bsize]
-                embeddings = batcher(params, batch)
-                task_embed[key]['X'].append(embeddings)
-            task_embed[key]['X'] = np.vstack(task_embed[key]['X'])
-            task_embed[key]['y'] = np.array(self.task_data[key]['y'])
-        logging.info('Computed embeddings')
+        if params.save_emb is not None:
+            data_filename = '_'.join(params.save_emb.split('_')[:-1]) + '_' + self.task + '.npy'
+            if os.path.isfile(data_filename):
+                logging.info('Loading sentence embeddings')
+                task_embed = np.load(data_filename, allow_pickle = True).item()
+                logging.info('Generated sentence embeddings')
+            else:
+                logging.info('Computing embeddings for train/dev/test')
+                for key in self.task_data:
+                    # Sort to reduce padding
+                    indexes = list(range(len(self.task_data[key]['y'])))
+                    sorted_data = sorted(zip(self.task_data[key]['X'],
+                                             self.task_data[key]['y'], indexes),
+                                         key=lambda z: (len(z[0]), z[1], z[2]))
+                    self.task_data[key]['X'], self.task_data[key]['y'], self.task_data[key]['idx'] = map(list, zip(*sorted_data))
 
+                    task_embed[key]['X'] = []
+                    for ii in range(0, len(self.task_data[key]['y']), bsize):
+                        batch = self.task_data[key]['X'][ii:ii + bsize]
+                        embeddings = batcher(params, batch)
+                        task_embed[key]['X'].append(embeddings)
+                    task_embed[key]['X'] = np.vstack(task_embed[key]['X'])
+                    task_embed[key]['y'] = np.array(self.task_data[key]['y'])
+                    task_embed[key]['idx'] = np.array(self.task_data[key]['idx'])
+                logging.info('Computed embeddings')
+                logging.info('Saving sentence embeddings')
+                np.save(data_filename, task_embed)
+        else:
+            logging.info('Computing embeddings for train/dev/test')
+            for key in self.task_data:
+                # Sort to reduce padding
+                indexes = list(range(len(self.task_data[key]['y'])))
+                sorted_data = sorted(zip(self.task_data[key]['X'],
+                                         self.task_data[key]['y'], indexes),
+                                     key=lambda z: (len(z[0]), z[1], z[2]))
+                self.task_data[key]['X'], self.task_data[key]['y'], self.task_data[key]['idx'] = map(list, zip(*sorted_data))
+
+                task_embed[key]['X'] = []
+                for ii in range(0, len(self.task_data[key]['y']), bsize):
+                    batch = self.task_data[key]['X'][ii:ii + bsize]
+                    embeddings = batcher(params, batch)
+                    task_embed[key]['X'].append(embeddings)
+                task_embed[key]['X'] = np.vstack(task_embed[key]['X'])
+                task_embed[key]['y'] = np.array(self.task_data[key]['y'])
+                task_embed[key]['idx'] = np.array(self.task_data[key]['idx'])
+            logging.info('Computed embeddings')
+
+        assert task_embed['train']['X'].shape[0] == task_embed['train']['y'].shape[0] == task_embed['train']['idx'].shape[0]
+        
         config_classifier = {'nclasses': self.nclasses, 'seed': self.seed,
                              'usepytorch': params.usepytorch,
                              'classifier': params.classifier}
@@ -89,6 +123,7 @@ class PROBINGEval(object):
                                  'valid': task_embed['dev']['y'],
                                  'test': task_embed['test']['y']},
                               config=config_classifier)
+
         devacc, testacc, predictions = clf.run()
         logging.debug('\nDev acc : %.1f Test acc : %.1f for %s classification\n' % (devacc, testacc, self.task.upper()))
 
