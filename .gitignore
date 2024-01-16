@@ -15,3 +15,6 @@ __pycache__/
 data/senteval_data*
 data/
 Pixel_Probe/
+
+#pycharm
+.idea/
