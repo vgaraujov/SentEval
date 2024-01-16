@@ -142,48 +142,94 @@ if __name__ == "__main__":
         args.seed)
 
     # Set params for DiscoEval or SentEval
-    params = {'task_path': PATH_TO_DATA, 'usepytorch': True, 'kfold': 10, 'batch_size': 16,
-              'tokenizer': processor, 'pooling': args.pooling, 'layer': args.layer, 'model': model,
-              'seed': args.seed, 'save_emb': output_path}
-
     # params = {'task_path': PATH_TO_DATA, 'usepytorch': True, 'kfold': 10, 'batch_size': 16,
     #           'tokenizer': processor, 'pooling': args.pooling, 'layer': args.layer, 'model': model,
-    #           'seed': args.seed, 'save_emb': None}
+    #           'seed': args.seed, 'save_emb': output_path}
+
+    params = {'task_path': PATH_TO_DATA, 'usepytorch': True, 'kfold': 10, 'batch_size': 16,
+              'tokenizer': processor, 'pooling': args.pooling, 'layer': args.layer, 'model': model,
+              'seed': args.seed, 'save_emb': None}
     
     params['classifier'] = {'nhid': 0, 'optim': 'adam', 'batch_size': 64,
                             'tenacity': 5, 'epoch_size': 4}
 
     se = senteval.engine.SE(params, batcher, prepare)
-    # transfer_tasks = [
-    #     ['CR', 'MR', 'MPQA', 'SUBJ', 'SST2', 'SST5', 'TREC'], # stand-alone sentence classification
-    #     ['MRPC', 'SICKEntailment'], # pair-sentence clasification
-    #     ['STSBenchmark', 'SICKRelatedness'], # supervised semantic similarity
-    #     ['STS12', 'STS13', 'STS14', 'STS15', 'STS16'], # unsupervised semantic similarity
-    #     ['Length', 'WordContent', 'Depth', 'TopConstituents',
-    #      'BigramShift', 'Tense', 'SubjNumber', 'ObjNumber',
-    #      'OddManOut', 'CoordinationInversion'], # probing tasks
-    #     ['Mr_Aspect', 'Mr_Case', 'Mr_Deixis', 'Mr_Gender', 'Mr_Number', 'Mr_Person', 'Mr_Polarity',
-    #      'Mr_PronType', 'Mr_Tense', 'Mr_VerbForm']  # Marathi probing tasks
-    # ]
+    transfer_tasks_senteval = [
+        ['CR', 'MR', 'MPQA', 'SUBJ', 'SST2', 'SST5', 'TREC'],  # stand-alone sentence classification
+        ['MRPC', 'SNLI', 'SICKEntailment'],  # pair-sentence clasificationc
+        ['SICKRelatedness', 'STSBenchmark'],  # supervised semantic similarity
+        ['STS12', 'STS13', 'STS14', 'STS15', 'STS16'],  # unsupervised semantic similarity
+        ['Length', 'WordContent', 'Depth', 'TopConstituents',
+         'BigramShift', 'Tense', 'SubjNumber', 'ObjNumber',
+         'OddManOut', 'CoordinationInversion'],  # probing tasks
+        # ['Mr_Aspect', 'Mr_Case', 'Mr_Deixis', 'Mr_Gender', 'Mr_Number', 'Mr_Person', 'Mr_Polarity',
+        # 'Mr_PronType', 'Mr_Tense', 'Mr_VerbForm']  # Marathi probing tasks
+    ]
+
     transfer_tasks = [
         ["Ar_Aspect", "Ar_Case", "Ar_Definite", "Ar_Gender", "Ar_Mood", "Ar_Number", "Ar_NumForm", "Ar_NumValue",
          "Ar_Person", "Ar_PronType", "Ar_Voice"],
         ["Zh_Aspect", "Zh_NumType", "Zh_Person", "Zh_Voice"],
         ["He_Case", "He_Definite", "He_Gender", "He_HebBinyan", "He_Number", "He_Person", "He_Polarity",
-            "He_PronType", "He_Tense","He_VerbForm", "He_Voice"],
+         "He_PronType", "He_Tense", "He_VerbForm", "He_Voice"],
         ["Hi_Aspect", "Hi_Case", "Hi_Gender", "Hi_Mood", "Hi_Number", "Hi_NumType", "Hi_Person", "Hi_PronType",
-            "Hi_Tense", "Hi_VerbForm", "Hi_Voice"],
+         "Hi_Tense", "Hi_VerbForm", "Hi_Voice"],
         ["Ru_Animacy", "Ru_Aspect", "Ru_Case", "Ru_Degree", "Ru_Gender", "Ru_Mood", "Ru_Number", "Ru_Person",
-            "Ru_Tense", "Ru_VerbForm", "Ru_Voice"],
+         "Ru_Tense", "Ru_VerbForm", "Ru_Voice"],
         ["Ta_Case", "Ta_Gender", "Ta_Mood", "Ta_Number", "Ta_NumType", "Ta_Person", "Ta_PunctType", "Ta_Tense",
-            "Ta_VerbForm"]
+         "Ta_VerbForm"]
     ]
+    if args.language == "Arabic":
+        results = se.eval(transfer_tasks[0])
+    elif args.language == "Chinese":
+        results = se.eval(transfer_tasks[1])
+    elif args.language == "Hebrew":
+        results = se.eval(transfer_tasks[2])
+    elif args.language == "Hindi":
+        results = se.eval(transfer_tasks[3])
+    elif args.language == "Russian":
+        results = se.eval(transfer_tasks[4])
+    elif args.language == "Tamil":
+        results = se.eval(transfer_tasks[5])
+    elif args.language == "English" or None:
+        assert args.task_index is not None
+        results = se.eval(transfer_tasks_senteval[args.task_index])
+    # print(results)
+    if args.language != None and args.task_index == None:
+        output_path = '{}_p={}_l={}_lg={}_s={}.csv'.format(
+            args.model_name,
+            args.pooling,
+            args.layer,
+            args.language,
+            params['seed'])
 
-    results = se.eval(transfer_tasks[args.task_index])
+        pred_path = '{}_p={}_l={}_lg={}_s={}_preds.csv'.format(
+            args.model_name,
+            args.pooling,
+            args.layer,
+            args.language,
+            params['seed'])
+
+    else:
+        output_path = '{}_p={}_l={}_t={}_s={}.csv'.format(
+            args.model_name,
+            args.pooling,
+            args.layer,
+            args.task_index,
+            params['seed'])
+
+        pred_path = '{}_p={}_l={}_t={}_s={}_preds.csv'.format(
+            args.model_name,
+            args.pooling,
+            args.layer,
+            args.task_index,
+            params['seed'])
+
+    with open(output_path + '.pickle', 'wb') as handle:
+        pickle.dump(results, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
     # deprecation: move to pickle format for ease
     # df = pd.DataFrame(results)
     # df.to_csv(output_path+'.csv', index=True)
 
-    with open(output_path+'.pickle', 'wb') as handle:
-        pickle.dump(results, handle, protocol=pickle.HIGHEST_PROTOCOL)
+

@@ -77,11 +77,14 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
     ## Required parameters
-    parser.add_argument("--model_name", default="bert", type=str, 
+    parser.add_argument("--model_name", default="mbert", type=str,
                         choices=["bert", "mbert"],
                         help="the name of transformer model to evaluate on")
-    parser.add_argument("--task_index", default=0, type=int,
-                        help="which task to perform")
+    parser.add_argument("--task_index", default=None, type=int,
+                        help="which task to perform for original senteval English tasks")
+    parser.add_argument("--language", default=None, type=str,
+                        choices=["Arabic", "Chinese", "Hebrew", "Hindi", "Russian", "Tamil", "Korean", "Japanese",
+                                 "English"])
     parser.add_argument("--pooling", default="cls", type=str,
                         choices=["cls", "mean"],
                         help="which layer to evaluate on")
@@ -110,17 +113,17 @@ if __name__ == "__main__":
                             'tenacity': 5, 'epoch_size': 4}
 
     se = senteval.engine.SE(params, batcher, prepare)
-    # transfer_tasks = [
-    #     ['CR', 'MR', 'MPQA', 'SUBJ', 'SST2', 'SST5', 'TREC'], # stand-alone sentence classification
-    #     ['MRPC', 'SNLI', 'SICKEntailment'], # pair-sentence clasificationc
-    #     ['SICKRelatedness', 'STSBenchmark'], # supervised semantic similarity
-    #     ['STS12', 'STS13', 'STS14', 'STS15', 'STS16'], # unsupervised semantic similarity
-    #     ['Length', 'WordContent', 'Depth', 'TopConstituents',
-    #      'BigramShift', 'Tense', 'SubjNumber', 'ObjNumber',
-    #      'OddManOut', 'CoordinationInversion'], # probing tasks
-    #     ['Mr_Aspect', 'Mr_Case', 'Mr_Deixis', 'Mr_Gender', 'Mr_Number', 'Mr_Person', 'Mr_Polarity',
-    #     'Mr_PronType', 'Mr_Tense', 'Mr_VerbForm']  # Marathi probing tasks
-    # ]
+    transfer_tasks_senteval = [
+        ['CR', 'MR', 'MPQA', 'SUBJ', 'SST2', 'SST5', 'TREC'], # stand-alone sentence classification
+        ['MRPC', 'SNLI', 'SICKEntailment'], # pair-sentence clasificationc
+        ['SICKRelatedness', 'STSBenchmark'], # supervised semantic similarity
+        ['STS12', 'STS13', 'STS14', 'STS15', 'STS16'], # unsupervised semantic similarity
+        ['Length', 'WordContent', 'Depth', 'TopConstituents',
+         'BigramShift', 'Tense', 'SubjNumber', 'ObjNumber',
+         'OddManOut', 'CoordinationInversion'], # probing tasks
+        # ['Mr_Aspect', 'Mr_Case', 'Mr_Deixis', 'Mr_Gender', 'Mr_Number', 'Mr_Person', 'Mr_Polarity',
+        # 'Mr_PronType', 'Mr_Tense', 'Mr_VerbForm']  # Marathi probing tasks
+    ]
 
     transfer_tasks = [
         ["Ar_Aspect", "Ar_Case", "Ar_Definite", "Ar_Gender", "Ar_Mood", "Ar_Number", "Ar_NumForm", "Ar_NumValue",
@@ -135,23 +138,51 @@ if __name__ == "__main__":
         ["Ta_Case", "Ta_Gender", "Ta_Mood", "Ta_Number", "Ta_NumType", "Ta_Person", "Ta_PunctType", "Ta_Tense",
          "Ta_VerbForm"]
     ]
-
-    results = se.eval(transfer_tasks[args.task_index])
+    if args.language == "Arabic":
+        results = se.eval(transfer_tasks[0])
+    elif args.language == "Chinese":
+        results = se.eval(transfer_tasks[1])
+    elif args.language == "Hebrew":
+        results = se.eval(transfer_tasks[2])
+    elif args.language == "Hindi":
+        results = se.eval(transfer_tasks[3])
+    elif args.language == "Russian":
+        results = se.eval(transfer_tasks[4])
+    elif args.language == "Tamil":
+        results = se.eval(transfer_tasks[5])
+    elif args.language == "English" or None:
+        assert args.task_index is not None
+        results = se.eval(transfer_tasks_senteval[args.task_index])
     #print(results)
+    if args.language != None and args.task_index == None:
+        output_path = '{}_p={}_l={}_lg={}_s={}.csv'.format(
+            args.model_name,
+            args.pooling,
+            args.layer,
+            args.language,
+            params['seed'])
 
-    output_path = '{}_p={}_l={}_t={}_s={}.csv'.format(
-        args.model_name,
-        args.pooling,
-        args.layer,
-        args.task_index,
-        params['seed'])
+        pred_path = '{}_p={}_l={}_lg={}_s={}_preds.csv'.format(
+            args.model_name,
+            args.pooling,
+            args.layer,
+            args.language,
+            params['seed'])
 
-    pred_path = '{}_p={}_l={}_t={}_s={}_preds.csv'.format(
-        args.model_name,
-        args.pooling,
-        args.layer,
-        args.task_index,
-        params['seed'])
+    else:
+        output_path = '{}_p={}_l={}_t={}_s={}.csv'.format(
+            args.model_name,
+            args.pooling,
+            args.layer,
+            args.task_index,
+            params['seed'])
+
+        pred_path = '{}_p={}_l={}_t={}_s={}_preds.csv'.format(
+            args.model_name,
+            args.pooling,
+            args.layer,
+            args.task_index,
+            params['seed'])
 
     with open(output_path + '.pickle', 'wb') as handle:
         pickle.dump(results, handle, protocol=pickle.HIGHEST_PROTOCOL)
