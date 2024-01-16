@@ -139,6 +139,134 @@ class SE(object):
         elif name == 'Mr_VerbForm':
             self.evaluation = Multi_VerbForm(tpath + '/probing/marathi', seed=self.params.seed)
 
+        # Arabic Probing Tasks
+        elif name == 'Ar_Aspect':
+            self.evaluation = Multi_Aspect(tpath + '/probing/Arabic', seed=self.params.seed)
+        elif name == 'Ar_Case':
+            self.evaluation = Multi_Case(tpath + '/probing/Arabic', seed=self.params.seed)
+        elif name == "Ar_Definite":
+            self.evaluation = Multi_Definite(tpath + '/probing/Arabic', seed=self.params.seed)
+        elif name == 'Ar_Gender':
+            self.evaluation = Multi_Gender(tpath + '/probing/Arabic', seed=self.params.seed)
+        elif name == "Ar_Mood":
+            self.evaluation = Multi_Mood(tpath + '/probing/Arabic', seed=self.params.seed)
+        elif name == "Ar_Number":
+            self.evaluation = Multi_Number(tpath + '/probing/Arabic', seed=self.params.seed)
+        elif name == "Ar_NumForm":
+            self.evaluation = Multi_NumForm(tpath + '/probing/Arabic', seed=self.params.seed)
+        elif name == "Ar_NumValue":
+            self.evaluation = Multi_NumValue(tpath + '/probing/Arabic', seed=self.params.seed)
+        elif name == "Ar_Person":
+            self.evaluation = Multi_Person(tpath + '/probing/Arabic', seed=self.params.seed)
+        elif name == 'PronType':
+            self.evaluation = Multi_PronType(tpath + '/probing/Arabic', seed=self.params.seed)
+        elif name == 'Ar_Voice':
+            self.evaluation = Multi_Voice(tpath + '/probing/Arabic', seed=self.params.seed)
+
+        # Chinese Probing Tasks
+        elif name == 'Zh_Aspect':
+            self.evaluation = Multi_Aspect(tpath + '/probing/Chinese', seed=self.params.seed)
+        elif name == 'Zh_NumType':
+            self.evaluation = Multi_NumType(tpath + '/probing/Chinese', seed=self.params.seed)
+        elif name == 'Zh_Person':
+            self.evaluation = Multi_Person(tpath + '/probing/Chinese', seed=self.params.seed)
+        elif name == 'Zh_Voice':
+            self.evaluation = Multi_Voice(tpath + '/probing/Chinese', seed=self.params.seed)
+
+        # Hebrew Probing Tasks
+        elif name == "He_Case":
+            self.evaluation = Multi_Case(tpath + '/probing/Hebrew', seed=self.params.seed)
+        elif name == "He_Definite":
+            self.evaluation = Multi_Definite(tpath + '/probing/Hebrew', seed=self.params.seed)
+        elif name == "He_Gender":
+            self.evaluation = Multi_Gender(tpath + '/probing/Hebrew', seed=self.params.seed)
+        elif name == 'He_HebBinyan':
+            self.evaluation = Multi_HebBinyan(tpath + '/probing/Hebrew', seed=self.params.seed)
+        elif name == "He_Number":
+            self.evaluation = Multi_Number(tpath + '/probing/Hebrew', seed=self.params.seed)
+        elif name == "He_Person":
+            self.evaluation = Multi_Person(tpath + '/probing/Hebrew', seed=self.params.seed)
+        elif name == "He_Polarity":
+            self.evaluation = Multi_Polarity(tpath + '/probing/Hebrew', seed=self.params.seed)
+        elif name == "He_PronType":
+            self.evaluation = Multi_PronType(tpath + '/probing/Hebrew', seed=self.params.seed)
+        elif name == "He_Tense":
+            self.evaluation = Multi_Tense(tpath + '/probing/Hebrew', seed=self.params.seed)
+        elif name == "He_VerbForm":
+            self.evaluation = Multi_VerbForm(tpath + '/probing/Hebrew', seed=self.params.seed)
+        elif name == 'He_Voice':
+            self.evaluation = Multi_Voice(tpath + '/probing/Hebrew', seed=self.params.seed)
+
+        # Hindi Probing Tasks
+        elif name == 'Hi_Aspect':
+            self.evaluation = Multi_Aspect(tpath + '/probing/Hindi', seed=self.params.seed)
+        elif name == 'Hi_Case':
+            self.evaluation = Multi_Case(tpath + '/probing/Hindi', seed=self.params.seed)
+        elif name == 'Hi_Gender':
+            self.evaluation = Multi_Gender(tpath + '/probing/Hindi', seed=self.params.seed)
+        elif name == "Hi_Mood":
+            self.evaluation = Multi_Mood(tpath + '/probing/Hindi', seed=self.params.seed)
+        elif name == "Hi_Number":
+            self.evaluation = Multi_Number(tpath + '/probing/Hindi', seed=self.params.seed)
+        elif name == "Hi_NumType":
+            self.evaluation = Multi_NumType(tpath + '/probing/Hindi', seed=self.params.seed)
+        elif name == "Hi_Person":
+            self.evaluation = Multi_Person(tpath + '/probing/Hindi', seed=self.params.seed)
+        elif name == "Hi_PronType":
+            self.evaluation = Multi_PronType(tpath + '/probing/Hindi', seed=self.params.seed)
+        elif name == "Hi_Tense":
+            self.evaluation = Multi_Tense(tpath + '/probing/Hindi', seed=self.params.seed)
+        elif name == "Hi_VerbForm":
+            self.evaluation = Multi_VerbForm(tpath + '/probing/Hindi', seed=self.params.seed)
+        elif name == 'Hi_Voice':
+            self.evaluation = Multi_Voice(tpath + '/probing/Hindi', seed=self.params.seed)
+
+        #Russian Probing Tasks
+        elif name == 'Ru_Animacy':
+            self.evaluation = Multi_Animacy(tpath + '/probing/Russian', seed=self.params.seed)
+        elif name == 'Ru_Aspect':
+            self.evaluation = Multi_Aspect(tpath + '/probing/Russian', seed=self.params.seed)
+        elif name == 'Ru_Case':
+            self.evaluation = Multi_Case(tpath + '/probing/Russian', seed=self.params.seed)
+        elif name == 'Ru_Degree':
+            self.evaluation = Multi_Degree(tpath + '/probing/Russian', seed=self.params.seed)
+        elif name == 'Ru_Gender':
+            self.evaluation = Multi_Gender(tpath + '/probing/Russian', seed=self.params.seed)
+        elif name == 'Ru_Mood':
+            self.evaluation = Multi_Mood(tpath + '/probing/Russian', seed=self.params.seed)
+        elif name == 'Ru_Number':
+            self.evaluation = Multi_Number(tpath + '/probing/Russian', seed=self.params.seed)
+        elif name == 'Ru_Person':
+            self.evaluation = Multi_Person(tpath + '/probing/Russian', seed=self.params.seed)
+        elif name == 'Ru_Tense':
+            self.evaluation = Multi_Tense(tpath + '/probing/Russian', seed=self.params.seed)
+        elif name == 'Ru_VerbForm':
+            self.evaluation = Multi_VerbForm(tpath + '/probing/Russian', seed=self.params.seed)
+        elif name == 'Ru_Voice':
+            self.evaluation = Multi_Voice(tpath + '/probing/Russian', seed=self.params.seed)
+
+        #Tamil Probing Tasks
+        elif name == 'Ta_Case':
+            self.evaluation = Multi_Case(tpath + '/probing/Tamil', seed=self.params.seed)
+        elif name == "Ta_Gender":
+            self.evaluation = Multi_Gender(tpath + '/probing/Tamil', seed=self.params.seed)
+        elif name == "Ta_Mood":
+            self.evaluation = Multi_Mood(tpath + '/probing/Tamil', seed=self.params.seed)
+        elif name == "Ta_Number":
+            self.evaluation = Multi_Number(tpath + '/probing/Tamil', seed=self.params.seed)
+        elif name == "Ta_NumType":
+            self.evaluation = Multi_NumType(tpath + '/probing/Tamil', seed=self.params.seed)
+        elif name == "Ta_Person":
+            self.evaluation = Multi_Person(tpath + '/probing/Tamil', seed=self.params.seed)
+        elif name == 'Ta_PunctType':
+            self.evaluation = Multi_PunctType(tpath + '/probing/Tamil', seed=self.params.seed)
+        elif name == "Ta_Tense":
+            self.evaluation = Multi_Tense(tpath + '/probing/Tamil', seed=self.params.seed)
+        elif name == "Ta_VerbForm":
+            self.evaluation = Multi_VerbForm(tpath + '/probing/Tamil', seed=self.params.seed)
+        elif name == 'Ta_Voice':
+            self.evaluation = Multi_Voice(tpath + '/probing/Tamil', seed=self.params.seed)
+
         self.params.current_task = name
         self.evaluation.do_prepare(self.params, self.prepare)
 

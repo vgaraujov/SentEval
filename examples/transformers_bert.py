@@ -110,14 +110,30 @@ if __name__ == "__main__":
                             'tenacity': 5, 'epoch_size': 4}
 
     se = senteval.engine.SE(params, batcher, prepare)
+    # transfer_tasks = [
+    #     ['CR', 'MR', 'MPQA', 'SUBJ', 'SST2', 'SST5', 'TREC'], # stand-alone sentence classification
+    #     ['MRPC', 'SNLI', 'SICKEntailment'], # pair-sentence clasificationc
+    #     ['SICKRelatedness', 'STSBenchmark'], # supervised semantic similarity
+    #     ['STS12', 'STS13', 'STS14', 'STS15', 'STS16'], # unsupervised semantic similarity
+    #     ['Length', 'WordContent', 'Depth', 'TopConstituents',
+    #      'BigramShift', 'Tense', 'SubjNumber', 'ObjNumber',
+    #      'OddManOut', 'CoordinationInversion'], # probing tasks
+    #     ['Mr_Aspect', 'Mr_Case', 'Mr_Deixis', 'Mr_Gender', 'Mr_Number', 'Mr_Person', 'Mr_Polarity',
+    #     'Mr_PronType', 'Mr_Tense', 'Mr_VerbForm']  # Marathi probing tasks
+    # ]
+
     transfer_tasks = [
-        ['CR', 'MR', 'MPQA', 'SUBJ', 'SST2', 'SST5', 'TREC'], # stand-alone sentence classification
-        ['MRPC', 'SNLI', 'SICKEntailment'], # pair-sentence clasificationc
-        ['SICKRelatedness', 'STSBenchmark'], # supervised semantic similarity
-        ['STS12', 'STS13', 'STS14', 'STS15', 'STS16'], # unsupervised semantic similarity
-        ['Length', 'WordContent', 'Depth', 'TopConstituents',
-         'BigramShift', 'Tense', 'SubjNumber', 'ObjNumber', 
-         'OddManOut', 'CoordinationInversion'] # probing tasks
+        ["Ar_Aspect", "Ar_Case", "Ar_Definite", "Ar_Gender", "Ar_Mood", "Ar_Number", "Ar_NumForm", "Ar_NumValue",
+         "Ar_Person", "Ar_PronType", "Ar_Voice"],
+        ["Zh_Aspect", "Zh_NumType", "Zh_Person", "Zh_Voice"],
+        ["He_Case", "He_Definite", "He_Gender", "He_HebBinyan", "He_Number", "He_Person", "He_Polarity",
+         "He_PronType", "He_Tense", "He_VerbForm", "He_Voice"],
+        ["Hi_Aspect", "Hi_Case", "Hi_Gender", "Hi_Mood", "Hi_Number", "Hi_NumType", "Hi_Person", "Hi_PronType",
+         "Hi_Tense", "Hi_VerbForm", "Hi_Voice"],
+        ["Ru_Animacy", "Ru_Aspect", "Ru_Case", "Ru_Degree", "Ru_Gender", "Ru_Mood", "Ru_Number", "Ru_Person",
+         "Ru_Tense", "Ru_VerbForm", "Ru_Voice"],
+        ["Ta_Case", "Ta_Gender", "Ta_Mood", "Ta_Number", "Ta_NumType", "Ta_Person", "Ta_PunctType", "Ta_Tense",
+         "Ta_VerbForm"]
     ]
 
     results = se.eval(transfer_tasks[args.task_index])
