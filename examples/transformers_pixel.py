@@ -109,6 +109,9 @@ if __name__ == "__main__":
                         help="the name of transformer model to evaluate on")
     parser.add_argument("--task_index", default=0, type=int,
                         help="which task to perform")
+    parser.add_argument("--language", default=None, type=str,
+                        choices=["Arabic", "Chinese", "Hebrew", "Hindi", "Russian", "Tamil", "Korean", "Japanese",
+                                 "English"])
     parser.add_argument("--pooling", default="cls", type=str,
                         choices=["cls", "mean"],
                         help="which layer to evaluate on")
