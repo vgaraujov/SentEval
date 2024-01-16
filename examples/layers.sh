@@ -10,5 +10,5 @@ layers=$3
 #        wait
 #done
 
-python transformers_pixel.py --model_name pixel --language $lang --pooling $pooling --layer $layers
+python transformers_bert.py --model_name mbert --language $lang --pooling $pooling --layer $layers
 
