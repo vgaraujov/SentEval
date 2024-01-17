@@ -107,7 +107,7 @@ if __name__ == "__main__":
     parser.add_argument("--model_name", default="pixel", type=str, 
                         choices=["pixel"],
                         help="the name of transformer model to evaluate on")
-    parser.add_argument("--task_index", default=0, type=int,
+    parser.add_argument("--task_index", default=None, type=int,
                         help="which task to perform")
     parser.add_argument("--language", default=None, type=str,
                         choices=["Arabic", "Chinese", "Hebrew", "Hindi", "Russian", "Tamil", "Korean", "Japanese",
@@ -199,14 +199,14 @@ if __name__ == "__main__":
         results = se.eval(transfer_tasks_senteval[args.task_index])
     # print(results)
     if args.language != None and args.task_index == None:
-        output_path = '{}_p={}_l={}_lg={}_s={}.csv'.format(
+        output_path = '{}_p={}_l={}_lg={}_s={}'.format(
             args.model_name,
             args.pooling,
             args.layer,
             args.language,
             params['seed'])
 
-        pred_path = '{}_p={}_l={}_lg={}_s={}_preds.csv'.format(
+        pred_path = '{}_p={}_l={}_lg={}_s={}_preds'.format(
             args.model_name,
             args.pooling,
             args.layer,
@@ -214,14 +214,14 @@ if __name__ == "__main__":
             params['seed'])
 
     else:
-        output_path = '{}_p={}_l={}_t={}_s={}.csv'.format(
+        output_path = '{}_p={}_l={}_t={}_s={}'.format(
             args.model_name,
             args.pooling,
             args.layer,
             args.task_index,
             params['seed'])
 
-        pred_path = '{}_p={}_l={}_t={}_s={}_preds.csv'.format(
+        pred_path = '{}_p={}_l={}_t={}_s={}_preds'.format(
             args.model_name,
             args.pooling,
             args.layer,
