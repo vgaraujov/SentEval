@@ -2,8 +2,8 @@
 #SBATCH --cluster=wice
 #SBATCH -A lp_lagom
 #SBATCH -N 1
-#SBATCH --ntasks=18
-#SBATCH --gpus-per-node=1
+#SBATCH --ntasks=54
+#SBATCH --gpus-per-node=3
 #SBATCH --partition=gpu
 #SBATCH --time=12:00:00
 #SBATCH --mail-type=FAIL,BEGIN,END
