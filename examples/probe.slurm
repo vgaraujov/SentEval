@@ -23,6 +23,6 @@ for layer in ${layers[@]};
 do
   python transformers_bert.py --model_name mbert --language $lang --pooling $pooling --layer $layer
   python transformers_bert.py --model_name bert --language $lang --pooling $pooling --layer $layer
-  python transformers_pixel.py --model_name pixel --task_index $lang --pooling $pooling --layer $layer
+  python transformers_pixel.py --model_name pixel --language $lang --pooling $pooling --layer $layer
 done
 
