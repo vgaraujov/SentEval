@@ -5,7 +5,7 @@
 #SBATCH --ntasks=54
 #SBATCH --gpus-per-node=3
 #SBATCH --partition=gpu
-#SBATCH --time=12:00:00
+#SBATCH --time=36:00:00
 #SBATCH --mail-type=FAIL,BEGIN,END
 #SBATCH --mail-user=kushaljayesh.tatariya@kuleuven.be
 #SBATCH --job-name=pixel_probe
