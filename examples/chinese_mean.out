@@ -1,0 +1,223 @@
+SLURM_JOB_ID: 61083066
+SLURM_JOB_USER: vsc35188
+SLURM_JOB_ACCOUNT: lp_lagom
+SLURM_JOB_NAME: bert_probe
+SLURM_CLUSTER_NAME: wice
+SLURM_JOB_PARTITION: gpu
+SLURM_NNODES: 1
+SLURM_NODELIST: k28g27
+SLURM_JOB_CPUS_PER_NODE: 54
+SLURM_JOB_GPUS: 0,1,2
+Date: Tue Jan 16 21:26:22 CET 2024
+Walltime: 00-06:00:00
+========================================================================
+2024-01-16 21:26:27,595 : Starting new HTTPS connection (1): huggingface.co:443
+2024-01-16 21:26:27,850 : https://huggingface.co:443 "HEAD /bert-base-multilingual-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-01-16 21:26:27,854 : Starting new HTTPS connection (1): huggingface.co:443
+2024-01-16 21:26:27,984 : https://huggingface.co:443 "HEAD /bert-base-multilingual-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-01-16 21:26:28,028 : Starting new HTTPS connection (1): huggingface.co:443
+2024-01-16 21:26:28,161 : https://huggingface.co:443 "HEAD /bert-base-multilingual-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-01-16 21:26:28,166 : Starting new HTTPS connection (1): huggingface.co:443
+2024-01-16 21:26:28,294 : https://huggingface.co:443 "HEAD /bert-base-multilingual-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-01-16 21:26:28,297 : Starting new HTTPS connection (1): huggingface.co:443
+2024-01-16 21:26:28,427 : https://huggingface.co:443 "HEAD /bert-base-multilingual-cased/resolve/main/vocab.txt HTTP/1.1" 200 0
+2024-01-16 21:26:28,430 : Starting new HTTPS connection (1): huggingface.co:443
+2024-01-16 21:26:28,567 : https://huggingface.co:443 "HEAD /bert-base-multilingual-cased/resolve/main/tokenizer.json HTTP/1.1" 200 0
+2024-01-16 21:26:28,571 : Starting new HTTPS connection (1): huggingface.co:443
+2024-01-16 21:26:28,704 : https://huggingface.co:443 "HEAD /bert-base-multilingual-cased/resolve/main/added_tokens.json HTTP/1.1" 404 0
+2024-01-16 21:26:28,707 : Starting new HTTPS connection (1): huggingface.co:443
+2024-01-16 21:26:28,840 : https://huggingface.co:443 "HEAD /bert-base-multilingual-cased/resolve/main/special_tokens_map.json HTTP/1.1" 404 0
+2024-01-16 21:26:28,843 : Starting new HTTPS connection (1): huggingface.co:443
+2024-01-16 21:26:28,970 : https://huggingface.co:443 "HEAD /bert-base-multilingual-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-01-16 21:26:28,973 : Starting new HTTPS connection (1): huggingface.co:443
+2024-01-16 21:26:29,103 : https://huggingface.co:443 "HEAD /bert-base-multilingual-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-01-16 21:26:29,323 : Starting new HTTPS connection (1): huggingface.co:443
+2024-01-16 21:26:29,457 : https://huggingface.co:443 "HEAD /bert-base-multilingual-cased/resolve/main/pytorch_model.bin HTTP/1.1" 302 0
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertModel: ['cls.predictions.transform.dense.weight', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.decoder.weight', 'cls.seq_relationship.bias', 'cls.seq_relationship.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.bias']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+2024-01-16 21:26:32,433 : ***** (Probing) Transfer task : ASPECT classification *****
+2024-01-16 21:26:32,437 : Loaded 661 train - 75 dev - 105 test for Aspect
+2024-01-16 21:26:32,437 : Computing embeddings for train/dev/test
+2024-01-16 21:26:33,907 : Computed embeddings
+2024-01-16 21:26:33,907 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-01-16 21:26:35,050 : [('reg:1e-05', 89.33), ('reg:0.0001', 89.33), ('reg:0.001', 89.33), ('reg:0.01', 82.67)]
+2024-01-16 21:26:35,051 : Validation : best param found is reg = 1e-05 with score             89.33
+2024-01-16 21:26:35,051 : Evaluating...
+2024-01-16 21:26:35,354 : 
+Dev acc : 89.3 Test acc : 90.5 for ASPECT classification
+
+2024-01-16 21:26:35,355 : ***** (Probing) Transfer task : NUMTYPE classification *****
+2024-01-16 21:26:35,363 : Loaded 2494 train - 296 dev - 305 test for NumType
+2024-01-16 21:26:35,363 : Computing embeddings for train/dev/test
+2024-01-16 21:26:39,083 : Computed embeddings
+2024-01-16 21:26:39,083 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-01-16 21:26:42,538 : [('reg:1e-05', 96.28), ('reg:0.0001', 96.28), ('reg:0.001', 96.28), ('reg:0.01', 93.92)]
+2024-01-16 21:26:42,538 : Validation : best param found is reg = 1e-05 with score             96.28
+2024-01-16 21:26:42,538 : Evaluating...
+2024-01-16 21:26:43,411 : 
+Dev acc : 96.3 Test acc : 97.0 for NUMTYPE classification
+
+2024-01-16 21:26:43,411 : ***** (Probing) Transfer task : PERSON classification *****
+2024-01-16 21:26:43,414 : Loaded 840 train - 106 dev - 109 test for Person
+2024-01-16 21:26:43,415 : Computing embeddings for train/dev/test
+2024-01-16 21:26:44,675 : Computed embeddings
+2024-01-16 21:26:44,675 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-01-16 21:26:45,560 : [('reg:1e-05', 97.17), ('reg:0.0001', 97.17), ('reg:0.001', 97.17), ('reg:0.01', 97.17)]
+2024-01-16 21:26:45,560 : Validation : best param found is reg = 1e-05 with score             97.17
+2024-01-16 21:26:45,561 : Evaluating...
+2024-01-16 21:26:45,782 : 
+Dev acc : 97.2 Test acc : 95.4 for PERSON classification
+
+2024-01-16 21:26:45,782 : ***** (Probing) Transfer task : VOICE classification *****
+2024-01-16 21:26:45,785 : Loaded 656 train - 76 dev - 77 test for Voice
+2024-01-16 21:26:45,785 : Computing embeddings for train/dev/test
+2024-01-16 21:26:46,805 : Computed embeddings
+2024-01-16 21:26:46,805 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-01-16 21:26:47,801 : [('reg:1e-05', 81.58), ('reg:0.0001', 81.58), ('reg:0.001', 81.58), ('reg:0.01', 81.58)]
+2024-01-16 21:26:47,801 : Validation : best param found is reg = 1e-05 with score             81.58
+2024-01-16 21:26:47,801 : Evaluating...
+2024-01-16 21:26:48,050 : 
+Dev acc : 81.6 Test acc : 74.0 for VOICE classification
+
+2024-01-16 21:26:52,960 : Starting new HTTPS connection (1): huggingface.co:443
+2024-01-16 21:26:53,093 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-01-16 21:26:53,097 : Starting new HTTPS connection (1): huggingface.co:443
+2024-01-16 21:26:53,230 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-01-16 21:26:53,234 : Starting new HTTPS connection (1): huggingface.co:443
+2024-01-16 21:26:53,367 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-01-16 21:26:53,372 : Starting new HTTPS connection (1): huggingface.co:443
+2024-01-16 21:26:53,504 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-01-16 21:26:53,508 : Starting new HTTPS connection (1): huggingface.co:443
+2024-01-16 21:26:53,639 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/vocab.txt HTTP/1.1" 200 0
+2024-01-16 21:26:53,645 : Starting new HTTPS connection (1): huggingface.co:443
+2024-01-16 21:26:53,772 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer.json HTTP/1.1" 200 0
+2024-01-16 21:26:53,775 : Starting new HTTPS connection (1): huggingface.co:443
+2024-01-16 21:26:53,905 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/added_tokens.json HTTP/1.1" 404 0
+2024-01-16 21:26:53,908 : Starting new HTTPS connection (1): huggingface.co:443
+2024-01-16 21:26:54,041 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/special_tokens_map.json HTTP/1.1" 404 0
+2024-01-16 21:26:54,045 : Starting new HTTPS connection (1): huggingface.co:443
+2024-01-16 21:26:54,178 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-01-16 21:26:54,185 : Starting new HTTPS connection (1): huggingface.co:443
+2024-01-16 21:26:54,324 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-01-16 21:26:54,463 : Starting new HTTPS connection (1): huggingface.co:443
+2024-01-16 21:26:54,593 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/pytorch_model.bin HTTP/1.1" 302 0
+Some weights of the model checkpoint at bert-base-cased were not used when initializing BertModel: ['cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.dense.weight', 'cls.seq_relationship.weight', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.bias', 'cls.seq_relationship.bias', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+2024-01-16 21:26:56,983 : ***** (Probing) Transfer task : ASPECT classification *****
+2024-01-16 21:26:56,986 : Loaded 661 train - 75 dev - 105 test for Aspect
+2024-01-16 21:26:56,987 : Computing embeddings for train/dev/test
+2024-01-16 21:26:58,469 : Computed embeddings
+2024-01-16 21:26:58,469 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-01-16 21:26:59,220 : [('reg:1e-05', 80.0), ('reg:0.0001', 80.0), ('reg:0.001', 80.0), ('reg:0.01', 80.0)]
+2024-01-16 21:26:59,220 : Validation : best param found is reg = 1e-05 with score             80.0
+2024-01-16 21:26:59,220 : Evaluating...
+2024-01-16 21:26:59,406 : 
+Dev acc : 80.0 Test acc : 87.6 for ASPECT classification
+
+2024-01-16 21:26:59,407 : ***** (Probing) Transfer task : NUMTYPE classification *****
+2024-01-16 21:26:59,415 : Loaded 2494 train - 296 dev - 305 test for NumType
+2024-01-16 21:26:59,415 : Computing embeddings for train/dev/test
+2024-01-16 21:27:03,146 : Computed embeddings
+2024-01-16 21:27:03,146 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-01-16 21:27:05,729 : [('reg:1e-05', 93.58), ('reg:0.0001', 93.58), ('reg:0.001', 93.58), ('reg:0.01', 93.58)]
+2024-01-16 21:27:05,730 : Validation : best param found is reg = 1e-05 with score             93.58
+2024-01-16 21:27:05,730 : Evaluating...
+2024-01-16 21:27:06,378 : 
+Dev acc : 93.6 Test acc : 95.7 for NUMTYPE classification
+
+2024-01-16 21:27:06,378 : ***** (Probing) Transfer task : PERSON classification *****
+2024-01-16 21:27:06,381 : Loaded 840 train - 106 dev - 109 test for Person
+2024-01-16 21:27:06,382 : Computing embeddings for train/dev/test
+2024-01-16 21:27:07,646 : Computed embeddings
+2024-01-16 21:27:07,646 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-01-16 21:27:08,579 : [('reg:1e-05', 97.17), ('reg:0.0001', 97.17), ('reg:0.001', 97.17), ('reg:0.01', 97.17)]
+2024-01-16 21:27:08,580 : Validation : best param found is reg = 1e-05 with score             97.17
+2024-01-16 21:27:08,580 : Evaluating...
+2024-01-16 21:27:08,813 : 
+Dev acc : 97.2 Test acc : 95.4 for PERSON classification
+
+2024-01-16 21:27:08,813 : ***** (Probing) Transfer task : VOICE classification *****
+2024-01-16 21:27:08,816 : Loaded 656 train - 76 dev - 77 test for Voice
+2024-01-16 21:27:08,816 : Computing embeddings for train/dev/test
+2024-01-16 21:27:09,838 : Computed embeddings
+2024-01-16 21:27:09,838 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-01-16 21:27:10,680 : [('reg:1e-05', 59.21), ('reg:0.0001', 59.21), ('reg:0.001', 59.21), ('reg:0.01', 59.21)]
+2024-01-16 21:27:10,680 : Validation : best param found is reg = 1e-05 with score             59.21
+2024-01-16 21:27:10,681 : Evaluating...
+2024-01-16 21:27:10,892 : 
+Dev acc : 59.2 Test acc : 55.8 for VOICE classification
+
+2024-01-16 21:27:16,826 : Starting new HTTPS connection (1): huggingface.co:443
+2024-01-16 21:27:16,973 : https://huggingface.co:443 "HEAD /Team-PIXEL/pixel-base/resolve/main/text_renderer_config.json HTTP/1.1" 200 0
+2024-01-16 21:27:16,974 : loading text renderer configuration file https://huggingface.co/Team-PIXEL/pixel-base/resolve/main/text_renderer_config.json from cache at /data/leuven/351/vsc35188/.cache/huggingface/transformers/892d6a02d7c441000de399de59ed70d943a81f7b0f536523b4af1111677a8508.e332b34c9c05756dd4aa51d8fa33461dbd79604752296d185f03f8004db30700
+2024-01-16 21:27:16,976 : Starting new HTTPS connection (1): huggingface.co:443
+2024-01-16 21:27:17,122 : https://huggingface.co:443 "HEAD /Team-PIXEL/pixel-base/resolve/main/GoNotoCurrent.ttf HTTP/1.1" 302 0
+2024-01-16 21:27:17,176 : loading font file https://huggingface.co/Team-PIXEL/pixel-base/resolve/main/GoNotoCurrent.ttf from cache at /data/leuven/351/vsc35188/.cache/huggingface/transformers/49e6dc219d1a1a1c9236acaf05a48b542002016a6dc877ee72baab085a84257b.3f28e7f4b38e1efe1b6da4a3732404c19d4c6a614ff32dce90a251e293d4ce58
+2024-01-16 21:27:17,176 : Loading font from /data/leuven/351/vsc35188/.cache/huggingface/transformers/49e6dc219d1a1a1c9236acaf05a48b542002016a6dc877ee72baab085a84257b.3f28e7f4b38e1efe1b6da4a3732404c19d4c6a614ff32dce90a251e293d4ce58
+2024-01-16 21:27:17,177 : Text renderer PyGameTextRenderer {
+  "background_color": "white",
+  "dpi": 120,
+  "font_color": "black",
+  "font_file": "49e6dc219d1a1a1c9236acaf05a48b542002016a6dc877ee72baab085a84257b.3f28e7f4b38e1efe1b6da4a3732404c19d4c6a614ff32dce90a251e293d4ce58",
+  "font_size": 8,
+  "max_seq_length": 529,
+  "pad_size": 3,
+  "pixels_per_patch": 16,
+  "text_renderer_type": "PyGameTextRenderer"
+}
+
+2024-01-16 21:27:17,179 : Starting new HTTPS connection (1): huggingface.co:443
+2024-01-16 21:27:17,309 : https://huggingface.co:443 "HEAD /Team-PIXEL/pixel-base/resolve/main/config.json HTTP/1.1" 200 0
+2024-01-16 21:27:17,313 : Starting new HTTPS connection (1): huggingface.co:443
+2024-01-16 21:27:17,450 : https://huggingface.co:443 "HEAD /Team-PIXEL/pixel-base/resolve/main/pytorch_model.bin HTTP/1.1" 302 0
+Some weights of the model checkpoint at Team-PIXEL/pixel-base were not used when initializing ViTModel: ['decoder.decoder_layers.0.attention.output.dense.bias', 'decoder.decoder_norm.weight', 'decoder.decoder_pos_embed', 'decoder.decoder_layers.1.layernorm_after.bias', 'decoder.decoder_layers.0.layernorm_after.bias', 'decoder.decoder_layers.2.attention.output.dense.weight', 'decoder.decoder_layers.6.attention.output.dense.bias', 'decoder.decoder_layers.7.attention.attention.key.weight', 'decoder.decoder_layers.3.attention.attention.value.weight', 'decoder.decoder_layers.4.attention.attention.key.bias', 'decoder.decoder_layers.3.layernorm_after.bias', 'decoder.decoder_layers.7.attention.attention.value.bias', 'decoder.decoder_layers.5.attention.attention.key.weight', 'decoder.decoder_layers.2.intermediate.dense.bias', 'decoder.decoder_layers.4.attention.output.dense.weight', 'decoder.decoder_layers.4.output.dense.bias', 'decoder.decoder_layers.1.attention.attention.key.bias', 'decoder.decoder_layers.0.layernorm_before.bias', 'decoder.decoder_layers.7.layernorm_after.bias', 'decoder.decoder_layers.4.attention.attention.query.bias', 'decoder.decoder_layers.7.attention.attention.query.bias', 'decoder.decoder_layers.6.output.dense.bias', 'decoder.decoder_layers.6.attention.output.dense.weight', 'decoder.decoder_layers.1.attention.output.dense.bias', 'decoder.decoder_layers.0.attention.attention.key.bias', 'decoder.decoder_layers.3.attention.attention.key.bias', 'decoder.decoder_layers.2.output.dense.weight', 'decoder.decoder_layers.0.layernorm_before.weight', 'decoder.decoder_layers.6.attention.attention.query.bias', 'decoder.decoder_layers.3.attention.attention.key.weight', 'decoder.decoder_layers.5.layernorm_after.bias', 'decoder.decoder_layers.6.attention.attention.query.weight', 'decoder.decoder_layers.1.output.dense.weight', 'decoder.decoder_layers.4.attention.attention.value.weight', 'decoder.decoder_layers.6.intermediate.dense.bias', 'decoder.decoder_layers.5.attention.attention.key.bias', 'decoder.decoder_layers.2.layernorm_before.bias', 'decoder.decoder_layers.2.attention.attention.value.weight', 'decoder.decoder_layers.6.output.dense.weight', 'decoder.decoder_layers.3.attention.attention.value.bias', 'decoder.decoder_layers.0.attention.output.dense.weight', 'decoder.decoder_layers.5.layernorm_after.weight', 'decoder.decoder_layers.3.output.dense.weight', 'decoder.decoder_layers.0.intermediate.dense.bias', 'decoder.decoder_layers.5.output.dense.weight', 'decoder.decoder_layers.4.attention.output.dense.bias', 'decoder.decoder_layers.0.attention.attention.key.weight', 'decoder.decoder_layers.7.intermediate.dense.bias', 'decoder.decoder_layers.5.attention.attention.value.bias', 'decoder.decoder_layers.2.attention.output.dense.bias', 'decoder.decoder_layers.6.attention.attention.key.weight', 'decoder.decoder_layers.1.attention.output.dense.weight', 'decoder.decoder_layers.4.attention.attention.value.bias', 'decoder.decoder_layers.6.attention.attention.key.bias', 'decoder.decoder_layers.6.intermediate.dense.weight', 'decoder.decoder_layers.5.intermediate.dense.weight', 'decoder.decoder_pred.weight', 'decoder.decoder_norm.bias', 'decoder.decoder_layers.0.output.dense.weight', 'decoder.decoder_layers.3.attention.output.dense.weight', 'decoder.decoder_layers.5.attention.attention.query.bias', 'decoder.decoder_layers.2.layernorm_after.bias', 'decoder.decoder_layers.6.layernorm_before.bias', 'decoder.decoder_layers.4.attention.attention.key.weight', 'decoder.decoder_layers.4.intermediate.dense.weight', 'decoder.decoder_layers.2.attention.attention.query.weight', 'decoder.decoder_layers.5.attention.attention.value.weight', 'decoder.decoder_layers.7.layernorm_after.weight', 'decoder.decoder_layers.3.intermediate.dense.bias', 'decoder.decoder_layers.7.attention.attention.query.weight', 'decoder.decoder_layers.7.attention.attention.value.weight', 'decoder.decoder_layers.1.attention.attention.value.weight', 'decoder.decoder_layers.7.layernorm_before.bias', 'decoder.decoder_layers.1.attention.attention.query.weight', 'decoder.decoder_layers.7.attention.output.dense.bias', 'decoder.decoder_layers.5.layernorm_before.weight', 'decoder.decoder_layers.7.intermediate.dense.weight', 'decoder.decoder_layers.2.intermediate.dense.weight', 'decoder.decoder_layers.0.attention.attention.value.bias', 'decoder.decoder_layers.1.intermediate.dense.bias', 'decoder.decoder_layers.5.layernorm_before.bias', 'decoder.decoder_embed.bias', 'decoder.decoder_layers.2.output.dense.bias', 'decoder.decoder_layers.1.attention.attention.key.weight', 'decoder.decoder_layers.7.attention.output.dense.weight', 'decoder.decoder_layers.0.attention.attention.query.weight', 'decoder.decoder_layers.1.output.dense.bias', 'decoder.decoder_layers.4.layernorm_before.weight', 'decoder.decoder_layers.6.attention.attention.value.weight', 'decoder.decoder_layers.3.layernorm_before.bias', 'decoder.decoder_layers.3.attention.attention.query.bias', 'decoder.decoder_layers.1.layernorm_before.weight', 'decoder.decoder_layers.1.layernorm_before.bias', 'decoder.decoder_layers.4.attention.attention.query.weight', 'decoder.decoder_layers.7.output.dense.bias', 'decoder.decoder_layers.2.layernorm_before.weight', 'decoder.decoder_layers.7.attention.attention.key.bias', 'decoder.decoder_layers.7.layernorm_before.weight', 'decoder.decoder_layers.4.output.dense.weight', 'decoder.decoder_layers.4.layernorm_after.bias', 'decoder.decoder_layers.6.attention.attention.value.bias', 'decoder.decoder_layers.1.attention.attention.value.bias', 'decoder.decoder_layers.0.attention.attention.value.weight', 'decoder.decoder_layers.2.attention.attention.key.bias', 'decoder.decoder_layers.0.attention.attention.query.bias', 'decoder.decoder_layers.4.layernorm_after.weight', 'decoder.decoder_layers.6.layernorm_after.weight', 'decoder.decoder_layers.2.attention.attention.query.bias', 'decoder.decoder_layers.5.attention.output.dense.weight', 'decoder.decoder_layers.2.layernorm_after.weight', 'decoder.decoder_layers.0.output.dense.bias', 'decoder.decoder_layers.3.layernorm_after.weight', 'decoder.decoder_layers.3.attention.output.dense.bias', 'decoder.decoder_layers.0.intermediate.dense.weight', 'decoder.decoder_layers.1.layernorm_after.weight', 'decoder.decoder_layers.1.intermediate.dense.weight', 'decoder.decoder_layers.5.output.dense.bias', 'decoder.decoder_layers.5.attention.attention.query.weight', 'decoder.decoder_layers.4.intermediate.dense.bias', 'decoder.decoder_layers.6.layernorm_after.bias', 'decoder.decoder_layers.3.output.dense.bias', 'decoder.decoder_layers.0.layernorm_after.weight', 'decoder.mask_token', 'decoder.decoder_embed.weight', 'decoder.decoder_pred.bias', 'decoder.decoder_layers.5.attention.output.dense.bias', 'decoder.decoder_layers.4.layernorm_before.bias', 'decoder.decoder_layers.2.attention.attention.value.bias', 'decoder.decoder_layers.1.attention.attention.query.bias', 'decoder.decoder_layers.3.attention.attention.query.weight', 'decoder.decoder_layers.2.attention.attention.key.weight', 'decoder.decoder_layers.5.intermediate.dense.bias', 'decoder.decoder_layers.6.layernorm_before.weight', 'decoder.decoder_layers.3.intermediate.dense.weight', 'decoder.decoder_layers.3.layernorm_before.weight', 'decoder.decoder_layers.7.output.dense.weight']
+- This IS expected if you are initializing ViTModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing ViTModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of ViTModel were not initialized from the model checkpoint at Team-PIXEL/pixel-base and are newly initialized: ['vit.pooler.dense.bias', 'vit.pooler.dense.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+2024-01-16 21:27:20,294 : ***** (Probing) Transfer task : ASPECT classification *****
+2024-01-16 21:27:20,298 : Loaded 661 train - 75 dev - 105 test for Aspect
+2024-01-16 21:27:20,298 : Computing embeddings for train/dev/test
+2024-01-16 21:27:32,510 : Computed embeddings
+2024-01-16 21:27:32,510 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-01-16 21:27:33,270 : [('reg:1e-05', 80.0), ('reg:0.0001', 80.0), ('reg:0.001', 80.0), ('reg:0.01', 80.0)]
+2024-01-16 21:27:33,270 : Validation : best param found is reg = 1e-05 with score             80.0
+2024-01-16 21:27:33,270 : Evaluating...
+2024-01-16 21:27:33,458 : 
+Dev acc : 80.0 Test acc : 87.6 for ASPECT classification
+
+2024-01-16 21:27:33,458 : ***** (Probing) Transfer task : NUMTYPE classification *****
+2024-01-16 21:27:33,471 : Loaded 2494 train - 296 dev - 305 test for NumType
+2024-01-16 21:27:33,472 : Computing embeddings for train/dev/test
+2024-01-16 21:28:46,249 : Computed embeddings
+2024-01-16 21:28:46,249 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-01-16 21:28:48,825 : [('reg:1e-05', 93.58), ('reg:0.0001', 93.58), ('reg:0.001', 93.58), ('reg:0.01', 93.58)]
+2024-01-16 21:28:48,825 : Validation : best param found is reg = 1e-05 with score             93.58
+2024-01-16 21:28:48,826 : Evaluating...
+2024-01-16 21:28:49,470 : 
+Dev acc : 93.6 Test acc : 95.7 for NUMTYPE classification
+
+2024-01-16 21:28:49,471 : ***** (Probing) Transfer task : PERSON classification *****
+2024-01-16 21:28:49,475 : Loaded 840 train - 106 dev - 109 test for Person
+2024-01-16 21:28:49,476 : Computing embeddings for train/dev/test
+2024-01-16 21:29:14,068 : Computed embeddings
+2024-01-16 21:29:14,068 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-01-16 21:29:15,004 : [('reg:1e-05', 97.17), ('reg:0.0001', 97.17), ('reg:0.001', 97.17), ('reg:0.01', 97.17)]
+2024-01-16 21:29:15,004 : Validation : best param found is reg = 1e-05 with score             97.17
+2024-01-16 21:29:15,005 : Evaluating...
+2024-01-16 21:29:15,237 : 
+Dev acc : 97.2 Test acc : 95.4 for PERSON classification
+
+2024-01-16 21:29:15,237 : ***** (Probing) Transfer task : VOICE classification *****
+2024-01-16 21:29:15,241 : Loaded 656 train - 76 dev - 77 test for Voice
+2024-01-16 21:29:15,242 : Computing embeddings for train/dev/test
+2024-01-16 21:29:27,754 : Computed embeddings
+2024-01-16 21:29:27,755 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-01-16 21:29:28,601 : [('reg:1e-05', 60.53), ('reg:0.0001', 60.53), ('reg:0.001', 60.53), ('reg:0.01', 60.53)]
+2024-01-16 21:29:28,601 : Validation : best param found is reg = 1e-05 with score             60.53
+2024-01-16 21:29:28,601 : Evaluating...
+2024-01-16 21:29:28,813 : 
+Dev acc : 60.5 Test acc : 57.1 for VOICE classification
+
