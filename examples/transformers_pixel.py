@@ -125,7 +125,7 @@ if __name__ == "__main__":
 
     # Set up logger
     logging.basicConfig(format='%(asctime)s : %(message)s', level=logging.DEBUG)
-    renderer_cls = PyGameTextRenderer #if model_args.rendering_backend == "pygame" else PangoCairoTextRenderer
+    renderer_cls = PangoCairoTextRenderer #if model_args.rendering_backend == "pygame" else PangoCairoTextRenderer
     processor = renderer_cls.from_pretrained(
         model_dict[args.model_name],
         rgb=False,
