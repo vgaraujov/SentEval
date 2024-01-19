@@ -23,15 +23,28 @@ processor = renderer_cls.from_pretrained(
         "Team-PIXEL/pixel-base",
         rgb=False,
     )
-sents = ["שוטר וחייל אחזו בדלתות האמבולנס , כשפניהם אל המתפרעים , כדי לסוכך על הפצוע הערבי"]
-out = [processor(text=sent) for sent in tqdm(sents)]
-# transforms = get_transforms(
-#         do_resize=True,
-#         size=(processor.pixels_per_patch, processor.pixels_per_patch * processor.max_seq_length),
-#     )
-# pixel_values = [transforms(Image.fromarray(e.pixel_values)) for e in out]
 
-#save out to a pickle file
-new_image = Image.fromarray(out[0].pixel_values)
-# new_image = transforms(new_image)
-new_image.save("test-pango-hebrew.png")
+with open("../data/probing/Hindi/Aspect.txt", "r") as f:
+    text = f.read()
+
+sents = []
+lines = text.split('\n')
+for line in lines:
+    if line != '':
+        line = line.split('\t')
+        sents.append(line[2])
+
+encodings = {}
+for sent in tqdm(sents):
+    out = processor(text=sent)
+    Image.fromarray(out.pixel_values)
+    encodings[sent] = out
+
+##See the rendered image here########
+
+# out = [processor(text=sent) for sent in tqdm(sents)]
+#
+# #save out to a pickle file
+# new_image = Image.fromarray(out[0].pixel_values)
+# # new_image = transforms(new_image)
+# new_image.save("test-pango-hebrew.png")

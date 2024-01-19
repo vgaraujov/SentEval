@@ -16,7 +16,7 @@ import torch
 import code
 import argparse
 import pickle
-
+from tqdm import tqdm
 # Set PATHs
 PATH_TO_SENTEVAL = '../'
 PATH_TO_DATA = '../data'
@@ -61,18 +61,25 @@ def batcher(params, batch):
 
     batch = [[token for token in sent] for sent in batch]
     batch = [" ".join(sent) if sent != [] else "." for sent in batch]
-    encodings = [processor(text=format_fn(a)) for a in batch]
-    pixel_values = [transforms(Image.fromarray(e.pixel_values)) for e in encodings]
+    print("computing pixel encodings...")
+    encodings = [processor(text=format_fn(a)) for a in tqdm(batch)]
+    print("done computing pixel encodings...")
+    print("computing pixel values...")
+    pixel_values = [transforms(Image.fromarray(e.pixel_values)) for e in tqdm(encodings)]
+    print("done computing pixel values...")
+    print("computing attention mask...")
     attention_mask = [
-    get_attention_mask(e.num_text_patches, seq_length=529) for e in encodings
+    get_attention_mask(e.num_text_patches, seq_length=529) for e in tqdm(encodings)
     ]
 
     with torch.no_grad():
         # batch = torch.stack(pixel_values)
         # mask = torch.stack(attention_mask)# bs * seq_length
+        print("computing model outputs...")
         batch = torch.stack(pixel_values).cuda()
         mask = torch.stack(attention_mask).cuda() # bs * seq_length
         outputs, pooled_output, hidden_states, _ = model(batch, attention_mask=mask, return_dict=False)
+        print("done computing model outputs...")
 
     extended_mask = torch.cat((torch.ones(mask.shape[0], 1).cuda(), mask), -1).unsqueeze(-1)
 
@@ -93,6 +100,7 @@ def batcher(params, batch):
             embeddings = np.mean(output, 0)
         else: 
             layer = int(layer)
+            print("computing layer outputs...")
             output = hidden_states[layer]
             output = extended_mask * output
             output = torch.sum(output, -2) / torch.sum(mask, -1).unsqueeze(-1)
