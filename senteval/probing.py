@@ -44,7 +44,8 @@ class PROBINGEval(object):
         with io.open(fpath, 'r', encoding='utf-8') as f:
             for line in f:
                 line = line.rstrip().split('\t')
-                self.task_data[self.tok2split[line[0]]]['X'].append(line[-1].split())
+                # self.task_data[self.tok2split[line[0]]]['X'].append(line[-1].split())
+                self.task_data[self.tok2split[line[0]]]['X'].append(line[-1])
                 self.task_data[self.tok2split[line[0]]]['y'].append(line[1])
 
         labels = sorted(np.unique(self.task_data['train']['y']))
