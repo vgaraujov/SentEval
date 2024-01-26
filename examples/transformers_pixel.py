@@ -59,7 +59,7 @@ def batcher(params, batch):
         size=(processor.pixels_per_patch, processor.pixels_per_patch * processor.max_seq_length),
     )
 
-    # batch = [[token for token in sent] for sent in batch]
+    batch = [sent.split() for sent in batch]
     # batch = [" ".join(sent) if sent != [] else "." for sent in batch]
     encodings = [processor(text=format_fn(a)) for a in batch]
     pixel_values = [transforms(Image.fromarray(e.pixel_values)) for e in encodings]
