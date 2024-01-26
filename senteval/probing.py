@@ -16,6 +16,7 @@ import io
 import copy
 import logging
 import numpy as np
+from pudb import set_trace
 
 from senteval.tools.validation import SplitClassifier
 
@@ -42,6 +43,7 @@ class PROBINGEval(object):
         self.tok2split = {'tr': 'train', 'va': 'dev', 'te': 'test'}
         with io.open(fpath, 'r', encoding='utf-8') as f:
             for line in f:
+                set_trace()
                 line = line.rstrip().split('\t')
                 self.task_data[self.tok2split[line[0]]]['X'].append(line[-1].split())
                 self.task_data[self.tok2split[line[0]]]['y'].append(line[1])
