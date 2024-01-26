@@ -40,8 +40,7 @@ from pixel import (
     get_attention_mask,
     get_transforms,
     glue_strip_spaces,
-    log_sequence_classification_predictions,
-    resize_model_embeddings,
+    log_sequence_classification_predictions
 )
 
 # SentEval prepare and batcher
@@ -59,7 +58,7 @@ def batcher(params, batch):
         size=(processor.pixels_per_patch, processor.pixels_per_patch * processor.max_seq_length),
     )
 
-    batch = [[token for token in sent] for sent in batch]
+    # batch = [[token for token in sent] for sent in batch]
     # batch = [" ".join(sent) if sent != [] else "." for sent in batch]
     encodings = [processor(text=format_fn(a)) for a in batch]
     pixel_values = [transforms(Image.fromarray(e.pixel_values)) for e in encodings]
