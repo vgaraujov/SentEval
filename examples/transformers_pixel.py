@@ -170,12 +170,14 @@ if __name__ == "__main__":
     processor = renderer_cls.from_pretrained(
         model_dict[args.model_name],
         rgb=False,
+        max_seq_length=args.max_seq_length,
     )
     config = PIXELConfig.from_pretrained(model_dict[args.model_name])
     config.output_hidden_states = True
     config.output_attentions = True
     model = ViTModel.from_pretrained(model_dict[args.model_name], config=config).cuda()
     # model = ViTModel.from_pretrained(model_dict[args.model_name], config=config)
+    resize_model_embeddings(model, args.max_seq_length)
     model.eval()
 
     output_path = '{}_p={}_l={}_t={}_s={}'.format(
