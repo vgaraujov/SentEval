@@ -35,8 +35,8 @@ def batcher(params, batch):
     layer = params["layer"]
     model = params["model"]
     tokenizer = params.tokenizer
-    batch = [[token for token in sent] for sent in batch]
-    batch = [" ".join(sent) if sent != [] else "." for sent in batch]
+    # batch = [[token for token in sent] for sent in batch]
+    # batch = [" ".join(sent) if sent != [] else "." for sent in batch]
     batch = [["[CLS]"] + tokenizer.tokenize(sent) + ["[SEP]"] for sent in batch]
     batch = [b[:512] for b in batch]
     seq_length = max([len(sent) for sent in batch])
