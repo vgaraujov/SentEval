@@ -16,6 +16,7 @@ import torch
 import code
 import argparse
 import pickle
+import math
 # Set PATHs
 PATH_TO_SENTEVAL = '../'
 PATH_TO_DATA = '../data'
@@ -58,12 +59,12 @@ def batcher(params, batch):
         size=(processor.pixels_per_patch, processor.pixels_per_patch * processor.max_seq_length),
     )
 
-    batch = [[token for token in sent] for sent in batch]
-    batch = [" ".join(sent) if sent != [] else "." for sent in batch]
+    # batch = [[token for token in sent] for sent in batch]
+    # batch = [" ".join(sent) if sent != [] else "." for sent in batch]
     encodings = [processor(text=format_fn(a)) for a in batch]
     pixel_values = [transforms(Image.fromarray(e.pixel_values)) for e in encodings]
     attention_mask = [
-    get_attention_mask(e.num_text_patches, seq_length=529) for e in encodings
+    get_attention_mask(e.num_text_patches, seq_length=processor.max_seq_length) for e in encodings
     ]
 
     with torch.no_grad():
@@ -99,6 +100,46 @@ def batcher(params, batch):
  
     return embeddings
 
+def resize_model_embeddings(model: ViTModel, max_seq_length: int) -> None:
+    """
+    Checks whether position embeddings need to be resized. If the specified max_seq_length is longer than
+    the model's number of patches per sequence, the position embeddings will be interpolated.
+    If max_seq_length is shorter, the position embeddings will be truncated
+
+    Args:
+        model (`ViTModel`):
+            The model for which position embeddings may be resized.
+        max_seq_length (`int`):
+            The maximum sequence length that determines the number of patches (excluding CLS patch) in the
+            model.
+    """
+    patch_size = model.config.patch_size
+    if isinstance(model.config.image_size, tuple) or isinstance(model.config.image_size, list):
+        old_height, old_width = model.config.image_size
+    else:
+        old_height, old_width = (model.config.image_size, model.config.image_size)
+
+    # ppr means patches per row (image is patchified into grid of [ppr * ppr])
+    old_ppr = math.sqrt(old_height * old_width) // patch_size
+    new_ppr = math.sqrt(max_seq_length)
+
+    if old_ppr < new_ppr:
+        # Interpolate position embeddings
+        # logger.info(f"Interpolating position embeddings to {max_seq_length}")
+        model.config.interpolate_pos_encoding = True
+    elif old_ppr > new_ppr:
+        # logger.info(f"Truncating position embeddings to {max_seq_length}")
+        # Truncate position embeddings
+        old_pos_embeds = model.embeddings.position_embeddings[:, : max_seq_length + 1, :]
+        model.embeddings.position_embeddings.data = old_pos_embeds.clone()
+        # Update image_size
+        new_height = int(new_ppr * patch_size) if old_height == old_width else int(patch_size)
+        new_width = int(new_ppr * patch_size) if old_height == old_width else int(patch_size * new_ppr ** 2)
+        model.config.image_size = [new_height, new_width]
+        model.image_size = [new_height, new_width]
+        model.embeddings.patch_embeddings.image_size = [new_height, new_width]
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
@@ -118,6 +159,8 @@ if __name__ == "__main__":
                         help="which layer to evaluate on")
     parser.add_argument("--seed", default=1111, type=int,
                         help="which seed to use")
+    parser.add_argument("--max_seq_length", default=256, type=int,
+                        help="which max length to use")
     args = parser.parse_args()
 
     model_dict = {"pixel": "Team-PIXEL/pixel-base"}

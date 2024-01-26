@@ -97,7 +97,6 @@ class PROBINGEval(object):
 
                 task_embed[key]['X'] = []
                 for ii in range(0, len(self.task_data[key]['y']), bsize):
-                    logging.info('Computing embeddings for' + str(ii/16) + 'th batch')
                     batch = self.task_data[key]['X'][ii:ii + bsize]
                     embeddings = batcher(params, batch)
                     task_embed[key]['X'].append(embeddings)
