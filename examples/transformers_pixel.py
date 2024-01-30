@@ -208,22 +208,26 @@ if __name__ == "__main__":
         ['Length', 'WordContent', 'Depth', 'TopConstituents',
          'BigramShift', 'Tense', 'SubjNumber', 'ObjNumber',
          'OddManOut', 'CoordinationInversion'],  # probing tasks
-        # ['Mr_Aspect', 'Mr_Case', 'Mr_Deixis', 'Mr_Gender', 'Mr_Number', 'Mr_Person', 'Mr_Polarity',
-        # 'Mr_PronType', 'Mr_Tense', 'Mr_VerbForm']  # Marathi probing tasks
     ]
 
     transfer_tasks = [
-        ["Ar_Aspect", "Ar_Case", "Ar_Definite", "Ar_Gender", "Ar_Mood", "Ar_Number", "Ar_NumForm", "Ar_NumValue",
-         "Ar_Person", "Ar_PronType", "Ar_Voice"],
-        ["Zh_Aspect", "Zh_NumType", "Zh_Person", "Zh_Voice"],
-        ["He_Case", "He_Definite", "He_Gender", "He_HebBinyan", "He_Number", "He_Person", "He_Polarity",
-         "He_PronType", "He_Tense", "He_VerbForm", "He_Voice"],
-        ["Hi_Aspect", "Hi_Case", "Hi_Gender", "Hi_Mood", "Hi_Number", "Hi_NumType", "Hi_Person", "Hi_PronType",
-         "Hi_Tense", "Hi_VerbForm", "Hi_Voice"],
-        ["Ru_Animacy", "Ru_Aspect", "Ru_Case", "Ru_Degree", "Ru_Gender", "Ru_Mood", "Ru_Number", "Ru_Person",
-         "Ru_Tense", "Ru_VerbForm", "Ru_Voice"],
-        ["Ta_Case", "Ta_Gender", "Ta_Mood", "Ta_Number", "Ta_NumType", "Ta_Person", "Ta_PunctType", "Ta_Tense",
-         "Ta_VerbForm"]
+        ["Ar_SubjNumber", "Ar_ObjNumber", "Ar_Aspect", "Ar_Mood", "Ar_Voice", "Ar_PronType", "Ar_SubjDefinite",
+         "Ar_ObjDefinite"],
+        ["Zh_Aspect", "Zh_Voice"],
+        ["He_Tense", "He_SubjNumber", "He_ObjNumber", "He_Voice", "He_VerbForm", "He_PronType", "He_SubjGender",
+         "He_ObjGender", "He_SubjDefinite", "He_ObjDefinite"],
+        ["Hi_Tense", "Hi_SubjNumber", "Hi_ObjNumber", "Hi_Aspect", "Hi_Mood", "Hi_Voice", "Hi_VerbForm", "Hi_PronType",
+         "Hi_SubjGender", "Hi_ObjGender"],
+        ["Ru_Tense", "Ru_SubjNumber", "Ru_ObjNumber", "Ru_Aspect", "Ru_Mood", "Ru_Voice", "Ru_VerbForm",
+         "Ru_SubjGender", "Ru_ObjGender"],
+        ["Ta_Tense", "Ta_SubjNumber", "Ta_ObjNumber", "Ta_Mood", "Ta_VerbForm"],
+        ["Cop_PronType", "Cop_SubjDefinite", "CopObjDefinite"],
+        ["Sa_Tense", "Sa_SubjNumber", "Sa_ObjNumber", "Sa_Mood", "Sa_VerbForm", "Sa_SubjGender", "Sa_ObjGender"],
+        ["En_Tense", "En_SubjNumber", "En_ObjNumber", "En_Mood", "En_VerbForm", "En_PronType"],
+        ['X_Length', 'X_WordContent', 'X_Depth',
+         'X_BigramShift', 'X_Tense', 'X_SubjNumber', 'X_ObjNumber',
+         'X_OddManOut', 'X_CoordinationInversion']
+
     ]
     if args.language == "Arabic":
         results = se.eval(transfer_tasks[0])
@@ -237,6 +241,14 @@ if __name__ == "__main__":
         results = se.eval(transfer_tasks[4])
     elif args.language == "Tamil":
         results = se.eval(transfer_tasks[5])
+    elif args.language == "Coptic":
+        results = se.eval(transfer_tasks[6])
+    elif args.language == "Sanskrit":
+        results = se.eval(transfer_tasks[7])
+    elif args.language == "English_UD":
+        results = se.eval(transfer_tasks[8])
+    elif args.language == "Xprobe":
+        results = se.eval(transfer_tasks[9])
     elif args.language == "English" or None:
         assert args.task_index is not None
         results = se.eval(transfer_tasks_senteval[args.task_index])

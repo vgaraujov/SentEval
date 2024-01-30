@@ -51,20 +51,28 @@ class SE(object):
                            'STS14', 'STS15', 'STS16',
                            'Length', 'WordContent', 'Depth', 'TopConstituents',
                            'BigramShift', 'Tense', 'SubjNumber', 'ObjNumber',
-                           'OddManOut', 'CoordinationInversion', 'Mr_Aspect', 'Mr_Case', 'Mr_Deixis',
-                           'Mr_Gender', 'Mr_Number', 'Mr_Person', 'Mr_Polarity',
-                           'Mr_PronType', 'Mr_Tense', 'Mr_VerbForm',
-                           "Ar_Aspect", "Ar_Case", "Ar_Definite", "Ar_Gender", "Ar_Mood", "Ar_Number", "Ar_NumForm",
-                           "Ar_NumValue", "Ar_Person", "Ar_PronType", "Ar_Voice",
-                           "Zh_Aspect", "Zh_NumType", "Zh_Person", "Zh_Voice",
-                           "He_Case", "He_Definite", "He_Gender", "He_HebBinyan", "He_Number", "He_Person",
-                           "He_Polarity", "He_PronType", "He_Tense", "He_VerbForm", "He_Voice",
-                           "Hi_Aspect", "Hi_Case", "Hi_Gender", "Hi_Mood", "Hi_Number", "Hi_NumType", "Hi_Person",
-                           "Hi_PronType", "Hi_Tense", "Hi_VerbForm", "Hi_Voice",
-                           "Ru_Animacy", "Ru_Aspect", "Ru_Case", "Ru_Degree", "Ru_Gender", "Ru_Mood", "Ru_Number",
-                           "Ru_Person", "Ru_Tense", "Ru_VerbForm", "Ru_Voice",
-                           "Ta_Case", "Ta_Gender", "Ta_Mood", "Ta_Number", "Ta_NumType", "Ta_Person", "Ta_PunctType",
-                           "Ta_Tense", "Ta_VerbForm"
+                           'OddManOut', 'CoordinationInversion',
+                           "Ar_SubjNumber", "Ar_ObjNumber", "Ar_Aspect", "Ar_Mood", "Ar_Voice", "Ar_PronType",
+                           "Ar_SubjDefinite",
+                           "Ar_ObjDefinite",
+                           "Zh_Aspect", "Zh_Voice",
+                           "He_Tense", "He_SubjNumber", "He_ObjNumber", "He_Voice", "He_VerbForm", "He_PronType",
+                           "He_SubjGender",
+                           "He_ObjGender", "He_SubjDefinite", "He_ObjDefinite",
+                           "Hi_Tense", "Hi_SubjNumber", "Hi_ObjNumber", "Hi_Aspect", "Hi_Mood", "Hi_Voice",
+                           "Hi_VerbForm", "Hi_PronType",
+                           "Hi_SubjGender", "Hi_ObjGender",
+                           "Ru_Tense", "Ru_SubjNumber", "Ru_ObjNumber", "Ru_Aspect", "Ru_Mood", "Ru_Voice",
+                           "Ru_VerbForm",
+                           "Ru_SubjGender", "Ru_ObjGender",
+                           "Ta_Tense", "Ta_SubjNumber", "Ta_ObjNumber", "Ta_Mood", "Ta_VerbForm",
+                           "Cop_PronType", "Cop_SubjDefinite", "CopObjDefinite",
+                           "Sa_Tense", "Sa_SubjNumber", "Sa_ObjNumber", "Sa_Mood", "Sa_VerbForm", "Sa_SubjGender",
+                           "Sa_ObjGender",
+                           "En_Tense", "En_SubjNumber", "En_ObjNumber", "En_Mood", "En_VerbForm", "En_PronType",
+                           'X_Length', 'X_WordContent', 'X_Depth',
+                           'X_BigramShift', 'X_Tense', 'X_SubjNumber', 'X_ObjNumber',
+                           'X_OddManOut', 'X_CoordinationInversion'
                            ]
 
     def eval(self, name):
@@ -130,76 +138,53 @@ class SE(object):
                 self.evaluation = CoordinationInversionEval(tpath + '/probing', seed=self.params.seed)
 
         # Multilingual Probing Tasks
-        elif name == 'Mr_Aspect':
-            self.evaluation = Multi_Aspect(tpath + '/probing/marathi', seed=self.params.seed)
-        elif name == 'Mr_Case':
-            self.evaluation = Multi_Case(tpath + '/probing/marathi', seed=self.params.seed)
-        elif name == 'Mr_Deixis':
-            self.evaluation = Multi_Deixis(tpath + '/probing/marathi', seed=self.params.seed)
-        elif name == 'Mr_Gender':
-            self.evaluation = Multi_Gender(tpath + '/probing/marathi', seed=self.params.seed)
-        elif name == 'Mr_Number':
-            self.evaluation = Multi_Number(tpath + '/probing/marathi', seed=self.params.seed)
-        elif name == 'Mr_Person':
-            self.evaluation = Multi_Person(tpath + '/probing/marathi', seed=self.params.seed)
-        elif name == 'Mr_Polarity':
-            self.evaluation = Multi_Polarity(tpath + '/probing/marathi', seed=self.params.seed)
-        elif name == 'Mr_PronType':
-            self.evaluation = Multi_PronType(tpath + '/probing/marathi', seed=self.params.seed)
-        elif name == 'Mr_Tense':
-            self.evaluation = Multi_Tense(tpath + '/probing/marathi', seed=self.params.seed)
-        elif name == 'Mr_VerbForm':
-            self.evaluation = Multi_VerbForm(tpath + '/probing/marathi', seed=self.params.seed)
+
+        #Xprobe Russian
+        elif name == 'X_Length':
+            self.evaluation = LengthEval(tpath + '/probing/Xprobe', seed=self.params.seed)
+        elif name == 'X_WordContent':
+            self.evaluation = WordContentEval(tpath + '/probing/Xprobe', seed=self.params.seed)
+        elif name == 'X_Depth':
+            self.evaluation = DepthEval(tpath + '/probing/Xprobe', seed=self.params.seed)
+        elif name == 'X_BigramShift':
+            self.evaluation = BigramShiftEval(tpath + '/probing/Xprobe', seed=self.params.seed)
+        elif name == 'X_Tense':
+            self.evaluation = TenseEval(tpath + '/probing/Xprobe', seed=self.params.seed)
+        elif name == 'X_SubjNumber':
+            self.evaluation = SubjNumberEval(tpath + '/probing/Xprobe', seed=self.params.seed)
+        elif name == 'X_ObjNumber':
+            self.evaluation = ObjNumberEval(tpath + '/probing/Xprobe', seed=self.params.seed)
+        elif name == 'X_OddManOut':
+            self.evaluation = OddManOutEval(tpath + '/probing/Xprobe', seed=self.params.seed)
+        elif name == 'X_CoordinationInversion':
+            self.evaluation = CoordinationInversionEval(tpath + '/probing/Xprobe', seed=self.params.seed)
+
 
         # Arabic Probing Tasks
-        elif name == 'Ar_Aspect':
+        elif name == "Ar_SubjNumber":
+            self.evaluation = Multi_SubjNumber(tpath + '/probing/Arabic', seed=self.params.seed)
+        elif name ==  "Ar_ObjNumber":
+            self.evaluation = Multi_ObjNumber(tpath + '/probing/Arabic', seed=self.params.seed)
+        elif name == "Ar_Aspect":
             self.evaluation = Multi_Aspect(tpath + '/probing/Arabic', seed=self.params.seed)
-        elif name == 'Ar_Case':
-            self.evaluation = Multi_Case(tpath + '/probing/Arabic', seed=self.params.seed)
-        elif name == "Ar_Definite":
-            self.evaluation = Multi_Definite(tpath + '/probing/Arabic', seed=self.params.seed)
-        elif name == 'Ar_Gender':
-            self.evaluation = Multi_Gender(tpath + '/probing/Arabic', seed=self.params.seed)
         elif name == "Ar_Mood":
             self.evaluation = Multi_Mood(tpath + '/probing/Arabic', seed=self.params.seed)
-        elif name == "Ar_Number":
-            self.evaluation = Multi_Number(tpath + '/probing/Arabic', seed=self.params.seed)
-        elif name == "Ar_NumForm":
-            self.evaluation = Multi_NumForm(tpath + '/probing/Arabic', seed=self.params.seed)
-        elif name == "Ar_NumValue":
-            self.evaluation = Multi_NumValue(tpath + '/probing/Arabic', seed=self.params.seed)
-        elif name == "Ar_Person":
-            self.evaluation = Multi_Person(tpath + '/probing/Arabic', seed=self.params.seed)
-        elif name == 'PronType':
-            self.evaluation = Multi_PronType(tpath + '/probing/Arabic', seed=self.params.seed)
-        elif name == 'Ar_Voice':
+        elif name == "Ar_Voice":
             self.evaluation = Multi_Voice(tpath + '/probing/Arabic', seed=self.params.seed)
+        elif name == "Ar_PronType":
+            self.evaluation = Multi_PronType(tpath + '/probing/Arabic', seed=self.params.seed)
+        elif name == "Ar_SubjDefinite":
+            self.evaluation = Multi_SubjDefinite(tpath + '/probing/Arabic', seed=self.params.seed)
+        elif name == "Ar_ObjDefinite":
+            self.evaluation = Multi_ObjDefinite(tpath + '/probing/Arabic', seed=self.params.seed)
 
         # Chinese Probing Tasks
         elif name == 'Zh_Aspect':
             self.evaluation = Multi_Aspect(tpath + '/probing/Chinese', seed=self.params.seed)
-        elif name == 'Zh_NumType':
-            self.evaluation = Multi_NumType(tpath + '/probing/Chinese', seed=self.params.seed)
-        elif name == 'Zh_Person':
-            self.evaluation = Multi_Person(tpath + '/probing/Chinese', seed=self.params.seed)
         elif name == 'Zh_Voice':
             self.evaluation = Multi_Voice(tpath + '/probing/Chinese', seed=self.params.seed)
 
         # Hebrew Probing Tasks
-        elif name == "He_Case":
-            self.evaluation = Multi_Case(tpath + '/probing/Hebrew', seed=self.params.seed)
-        elif name == "He_Definite":
-            self.evaluation = Multi_Definite(tpath + '/probing/Hebrew', seed=self.params.seed)
-        elif name == "He_Gender":
-            self.evaluation = Multi_Gender(tpath + '/probing/Hebrew', seed=self.params.seed)
-        elif name == 'He_HebBinyan':
-            self.evaluation = Multi_HebBinyan(tpath + '/probing/Hebrew', seed=self.params.seed)
-        elif name == "He_Number":
-            self.evaluation = Multi_Number(tpath + '/probing/Hebrew', seed=self.params.seed)
-        elif name == "He_Person":
-            self.evaluation = Multi_Person(tpath + '/probing/Hebrew', seed=self.params.seed)
-        elif name == "He_Polarity":
-            self.evaluation = Multi_Polarity(tpath + '/probing/Hebrew', seed=self.params.seed)
         elif name == "He_PronType":
             self.evaluation = Multi_PronType(tpath + '/probing/Hebrew', seed=self.params.seed)
         elif name == "He_Tense":
@@ -208,76 +193,113 @@ class SE(object):
             self.evaluation = Multi_VerbForm(tpath + '/probing/Hebrew', seed=self.params.seed)
         elif name == 'He_Voice':
             self.evaluation = Multi_Voice(tpath + '/probing/Hebrew', seed=self.params.seed)
+        elif name == 'He_SubjNumber':
+            self.evaluation = Multi_SubjNumber(tpath + '/probing/Hebrew', seed=self.params.seed)
+        elif name == 'He_ObjNumber':
+            self.evaluation = Multi_ObjNumber(tpath + '/probing/Hebrew', seed=self.params.seed)
+        elif name == "He_SubjGender":
+            self.evaluation = Multi_SubjGender(tpath + '/probing/Hebrew', seed=self.params.seed)
+        elif name == "He_ObjGender":
+            self.evaluation = Multi_ObjGender(tpath + '/probing/Hebrew', seed=self.params.seed)
+        elif name == "He_SubjDefinite":
+            self.evaluation = Multi_SubjDefinite(tpath + '/probing/Hebrew', seed=self.params.seed)
+        elif name == "He_ObjDefinite":
+            self.evaluation = Multi_ObjDefinite(tpath + '/probing/Hebrew', seed=self.params.seed)
 
         # Hindi Probing Tasks
-        elif name == 'Hi_Aspect':
-            self.evaluation = Multi_Aspect(tpath + '/probing/Hindi', seed=self.params.seed)
-        elif name == 'Hi_Case':
-            self.evaluation = Multi_Case(tpath + '/probing/Hindi', seed=self.params.seed)
-        elif name == 'Hi_Gender':
-            self.evaluation = Multi_Gender(tpath + '/probing/Hindi', seed=self.params.seed)
-        elif name == "Hi_Mood":
-            self.evaluation = Multi_Mood(tpath + '/probing/Hindi', seed=self.params.seed)
-        elif name == "Hi_Number":
-            self.evaluation = Multi_Number(tpath + '/probing/Hindi', seed=self.params.seed)
-        elif name == "Hi_NumType":
-            self.evaluation = Multi_NumType(tpath + '/probing/Hindi', seed=self.params.seed)
-        elif name == "Hi_Person":
-            self.evaluation = Multi_Person(tpath + '/probing/Hindi', seed=self.params.seed)
-        elif name == "Hi_PronType":
-            self.evaluation = Multi_PronType(tpath + '/probing/Hindi', seed=self.params.seed)
         elif name == "Hi_Tense":
             self.evaluation = Multi_Tense(tpath + '/probing/Hindi', seed=self.params.seed)
+        elif name == "Hi_SubjNumber":
+            self.evaluation = Multi_SubjNumber(tpath + '/probing/Hindi', seed=self.params.seed)
+        elif name == "Hi_ObjNumber":
+            self.evaluation = Multi_ObjNumber(tpath + '/probing/Hindi', seed=self.params.seed)
+        elif name == "Hi_Aspect":
+            self.evaluation = Multi_Aspect(tpath + '/probing/Hindi', seed=self.params.seed)
+        elif name == "Hi_Mood":
+            self.evaluation = Multi_Mood(tpath + '/probing/Hindi', seed=self.params.seed)
+        elif name == "Hi_Voice":
+            self.evaluation = Multi_Voice(tpath + '/probing/Hindi', seed=self.params.seed)
         elif name == "Hi_VerbForm":
             self.evaluation = Multi_VerbForm(tpath + '/probing/Hindi', seed=self.params.seed)
-        elif name == 'Hi_Voice':
-            self.evaluation = Multi_Voice(tpath + '/probing/Hindi', seed=self.params.seed)
+        elif name == "Hi_PronType":
+            self.evaluation = Multi_PronType(tpath + '/probing/Hindi', seed=self.params.seed)
+        elif name == "SubjGender":
+            self.evaluation = Multi_SubjGender(tpath + '/probing/Hindi', seed=self.params.seed)
+        elif name == "ObjGender":
+            self.evaluation = Multi_ObjGender(tpath + '/probing/Hindi', seed=self.params.seed)
+
 
         #Russian Probing Tasks
-        elif name == 'Ru_Animacy':
-            self.evaluation = Multi_Animacy(tpath + '/probing/Russian', seed=self.params.seed)
-        elif name == 'Ru_Aspect':
-            self.evaluation = Multi_Aspect(tpath + '/probing/Russian', seed=self.params.seed)
-        elif name == 'Ru_Case':
-            self.evaluation = Multi_Case(tpath + '/probing/Russian', seed=self.params.seed)
-        elif name == 'Ru_Degree':
-            self.evaluation = Multi_Degree(tpath + '/probing/Russian', seed=self.params.seed)
-        elif name == 'Ru_Gender':
-            self.evaluation = Multi_Gender(tpath + '/probing/Russian', seed=self.params.seed)
-        elif name == 'Ru_Mood':
-            self.evaluation = Multi_Mood(tpath + '/probing/Russian', seed=self.params.seed)
-        elif name == 'Ru_Number':
-            self.evaluation = Multi_Number(tpath + '/probing/Russian', seed=self.params.seed)
-        elif name == 'Ru_Person':
-            self.evaluation = Multi_Person(tpath + '/probing/Russian', seed=self.params.seed)
-        elif name == 'Ru_Tense':
+        elif name == "Ru_SubjNumber":
+            self.evaluation = Multi_SubjNumber(tpath + '/probing/Russian', seed=self.params.seed)
+        elif name == "Ru_ObjNumber":
+            self.evaluation = Multi_ObjNumber(tpath + '/probing/Russian', seed=self.params.seed)
+        elif name == "Ru_Tense":
             self.evaluation = Multi_Tense(tpath + '/probing/Russian', seed=self.params.seed)
-        elif name == 'Ru_VerbForm':
-            self.evaluation = Multi_VerbForm(tpath + '/probing/Russian', seed=self.params.seed)
-        elif name == 'Ru_Voice':
+        elif name == "Ru_Aspect":
+            self.evaluation = Multi_Aspect(tpath + '/probing/Russian', seed=self.params.seed)
+        elif name == "Ru_Mood":
+            self.evaluation = Multi_Mood(tpath + '/probing/Russian', seed=self.params.seed)
+        elif name == "Ru_Voice":
             self.evaluation = Multi_Voice(tpath + '/probing/Russian', seed=self.params.seed)
+        elif name == "Ru_VerbForm":
+            self.evaluation = Multi_VerbForm(tpath + '/probing/Russian', seed=self.params.seed)
+        elif name == "Ru_SubjGender":
+            self.evaluation = Multi_SubjGender(tpath + '/probing/Russian', seed=self.params.seed)
+        elif name == "Ru_ObjGender":
+            self.evaluation = Multi_ObjGender(tpath + '/probing/Russian', seed=self.params.seed)
 
         #Tamil Probing Tasks
-        elif name == 'Ta_Case':
-            self.evaluation = Multi_Case(tpath + '/probing/Tamil', seed=self.params.seed)
-        elif name == "Ta_Gender":
-            self.evaluation = Multi_Gender(tpath + '/probing/Tamil', seed=self.params.seed)
-        elif name == "Ta_Mood":
-            self.evaluation = Multi_Mood(tpath + '/probing/Tamil', seed=self.params.seed)
-        elif name == "Ta_Number":
-            self.evaluation = Multi_Number(tpath + '/probing/Tamil', seed=self.params.seed)
-        elif name == "Ta_NumType":
-            self.evaluation = Multi_NumType(tpath + '/probing/Tamil', seed=self.params.seed)
-        elif name == "Ta_Person":
-            self.evaluation = Multi_Person(tpath + '/probing/Tamil', seed=self.params.seed)
-        elif name == 'Ta_PunctType':
-            self.evaluation = Multi_PunctType(tpath + '/probing/Tamil', seed=self.params.seed)
+        elif name == "Ta_SubjNumber":
+            self.evaluation = Multi_SubjNumber(tpath + '/probing/Tamil', seed=self.params.seed)
+        elif name == "Ta_ObjNumber":
+            self.evaluation = Multi_ObjNumber(tpath + '/probing/Tamil', seed=self.params.seed)
         elif name == "Ta_Tense":
             self.evaluation = Multi_Tense(tpath + '/probing/Tamil', seed=self.params.seed)
+        elif name == "Ta_Mood":
+            self.evaluation = Multi_Mood(tpath + '/probing/Tamil', seed=self.params.seed)
         elif name == "Ta_VerbForm":
             self.evaluation = Multi_VerbForm(tpath + '/probing/Tamil', seed=self.params.seed)
-        elif name == 'Ta_Voice':
-            self.evaluation = Multi_Voice(tpath + '/probing/Tamil', seed=self.params.seed)
+
+        #Coptic Probing Tasks
+        elif name == "Cop_PronType":
+            self.evaluation = Multi_PronType(tpath + '/probing/Coptic', seed=self.params.seed)
+        elif name == "Cop_SubjDefinite":
+            self.evaluation = Multi_SubjDefinite(tpath + '/probing/Coptic', seed=self.params.seed)
+        elif name == "Cop_ObjDefinite":
+            self.evaluation = Multi_ObjDefinite(tpath + '/probing/Coptic', seed=self.params.seed)
+
+        #Sanskrit Probing Tasks
+        elif name == "Sa_SubjNumber":
+            self.evaluation = Multi_SubjNumber(tpath + '/probing/Sanskrit', seed=self.params.seed)
+        elif name == "Sa_ObjNumber":
+            self.evaluation = Multi_ObjNumber(tpath + '/probing/Sanskrit', seed=self.params.seed)
+        elif name == "Sa_Tense":
+            self.evaluation = Multi_Tense(tpath + '/probing/Sanskrit', seed=self.params.seed)
+        elif name == "Sa_Mood":
+            self.evaluation = Multi_Mood(tpath + '/probing/Sanskrit', seed=self.params.seed)
+        elif name == "Sa_VerbForm":
+            self.evaluation = Multi_VerbForm(tpath + '/probing/Sanskrit', seed=self.params.seed)
+        elif name == "Sa_SubjGender":
+            self.evaluation = Multi_SubjGender(tpath + '/probing/Sanskrit', seed=self.params.seed)
+        elif name == "Sa_ObjGender":
+            self.evaluation = Multi_ObjGender(tpath + '/probing/Sanskrit', seed=self.params.seed)
+
+        #English UD Probing Tasks
+        elif name == "En_SubjNumber":
+            self.evaluation = Multi_SubjNumber(tpath + '/probing/English', seed=self.params.seed)
+        elif name == "En_ObjNumber":
+            self.evaluation = Multi_ObjNumber(tpath + '/probing/English', seed=self.params.seed)
+        elif name == "En_Tense":
+            self.evaluation = Multi_Tense(tpath + '/probing/English', seed=self.params.seed)
+        elif name == "En_Mood":
+            self.evaluation = Multi_Mood(tpath + '/probing/English', seed=self.params.seed)
+        elif name == "En_VerbForm":
+            self.evaluation = Multi_VerbForm(tpath + '/probing/English', seed=self.params.seed)
+        elif name == "En_PronType":
+            self.evaluation = Multi_PronType(tpath + '/probing/English', seed=self.params.seed)
+
+
 
         self.params.current_task = name
         self.evaluation.do_prepare(self.params, self.prepare)
