@@ -11,10 +11,9 @@ __pycache__/
 *.txt
 
 # data files
-data/probing/
-data/
-Pixel_Probe/
-xprobe/
+SentEval/data/probing/
+SentEval/data/
+SentEval/xprobe/
 
 #pycharm
 .idea/
