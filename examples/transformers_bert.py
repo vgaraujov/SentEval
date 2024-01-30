@@ -84,7 +84,7 @@ if __name__ == "__main__":
                         help="which task to perform for original senteval English tasks")
     parser.add_argument("--language", default=None, type=str,
                         choices=["Arabic", "Chinese", "Hebrew", "Hindi", "Russian", "Tamil", "Korean", "Japanese",
-                                 "English"])
+                                 "English", "English_UD", "Coptic", "Sanskrit", "Xprobe"])
     parser.add_argument("--pooling", default="cls", type=str,
                         choices=["cls", "mean"],
                         help="which layer to evaluate on")
