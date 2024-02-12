@@ -172,6 +172,7 @@ if __name__ == "__main__":
         model_dict[args.model_name],
         rgb=False,
         max_seq_length=args.max_seq_length,
+        fallback_fonts_dir="fallback_fonts",
     )
     config = PIXELConfig.from_pretrained(model_dict[args.model_name])
     config.output_hidden_states = True
@@ -195,7 +196,7 @@ if __name__ == "__main__":
 
     params = {'task_path': PATH_TO_DATA, 'usepytorch': True, 'kfold': 10, 'batch_size': 16,
               'tokenizer': processor, 'pooling': args.pooling, 'layer': args.layer, 'model': model,
-              'seed': args.seed, 'save_emb': None}
+              'seed': args.seed, 'save_emb': False}
     
     params['classifier'] = {'nhid': 0, 'optim': 'adam', 'batch_size': 64,
                             'tenacity': 5, 'epoch_size': 4}
