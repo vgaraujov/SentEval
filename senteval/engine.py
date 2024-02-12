@@ -70,9 +70,24 @@ class SE(object):
                            "Sa_Tense", "Sa_SubjNumber", "Sa_ObjNumber", "Sa_Mood", "Sa_VerbForm", "Sa_SubjGender",
                            "Sa_ObjGender",
                            "En_Tense", "En_SubjNumber", "En_ObjNumber", "En_Mood", "En_VerbForm", "En_PronType",
-                           'X_Length', 'X_WordContent', 'X_Depth',
-                           'X_BigramShift', 'X_Tense', 'X_SubjNumber', 'X_ObjNumber',
-                           'X_OddManOut', 'X_CoordinationInversion'
+                           'Xru_Length', 'Xru_WordContent', 'Xru_Depth',
+                           'Xru_BigramShift', 'Xru_Tense', 'Xru_SubjNumber', 'Xru_ObjNumber',
+                           'Xru_OddManOut', 'Xru_CoordinationInversion',
+                           'Xde_Length', 'Xde_WordContent', 'Xde_Depth',
+                           'Xde_BigramShift', 'Xde_Tense', 'Xde_SubjNumber', 'Xde_ObjNumber',
+                           'Xde_OddManOut', 'Xde_CoordinationInversion',
+                           'Xes_Length', 'Xes_WordContent', 'Xes_Depth',
+                           'Xes_BigramShift', 'Xes_Tense', 'Xes_SubjNumber', 'Xes_ObjNumber',
+                           'Xes_OddManOut', 'Xes_CoordinationInversion',
+                           'Xfi_Length', 'Xfi_WordContent', 'Xfi_Depth',
+                           'Xfi_BigramShift', 'Xfi_Tense', 'Xfi_SubjNumber', 'Xfi_ObjNumber',
+                           'Xfi_OddManOut', 'Xfi_CoordinationInversion',
+                           'Xfr_Length', 'Xfr_WordContent', 'Xfr_Depth',
+                           'Xfr_BigramShift', 'Xfr_Tense', 'Xfr_SubjNumber', 'Xfr_ObjNumber',
+                           'Xfr_OddManOut', 'Xfr_CoordinationInversion',
+                           'Xtr_Length', 'Xtr_WordContent', 'Xtr_Depth',
+                           'Xtr_BigramShift', 'Xtr_Tense', 'Xtr_SubjNumber', 'Xtr_ObjNumber',
+                           'Xtr_OddManOut', 'Xtr_CoordinationInversion'
                            ]
 
     def eval(self, name):
@@ -140,24 +155,124 @@ class SE(object):
         # Multilingual Probing Tasks
 
         #Xprobe Russian
-        elif name == 'X_Length':
-            self.evaluation = LengthEval(tpath + '/probing/Xprobe', seed=self.params.seed)
-        elif name == 'X_WordContent':
-            self.evaluation = WordContentEval(tpath + '/probing/Xprobe', seed=self.params.seed)
-        elif name == 'X_Depth':
-            self.evaluation = DepthEval(tpath + '/probing/Xprobe', seed=self.params.seed)
-        elif name == 'X_BigramShift':
-            self.evaluation = BigramShiftEval(tpath + '/probing/Xprobe', seed=self.params.seed)
-        elif name == 'X_Tense':
-            self.evaluation = TenseEval(tpath + '/probing/Xprobe', seed=self.params.seed)
-        elif name == 'X_SubjNumber':
-            self.evaluation = SubjNumberEval(tpath + '/probing/Xprobe', seed=self.params.seed)
-        elif name == 'X_ObjNumber':
-            self.evaluation = ObjNumberEval(tpath + '/probing/Xprobe', seed=self.params.seed)
-        elif name == 'X_OddManOut':
-            self.evaluation = OddManOutEval(tpath + '/probing/Xprobe', seed=self.params.seed)
-        elif name == 'X_CoordinationInversion':
-            self.evaluation = CoordinationInversionEval(tpath + '/probing/Xprobe', seed=self.params.seed)
+        elif name == 'Xru_Length':
+            self.evaluation = LengthEval(tpath + '/probing/Xprobe/ru', seed=self.params.seed)
+        elif name == 'Xru_WordContent':
+            self.evaluation = WordContentEval(tpath + '/probing/Xprobe/ru', seed=self.params.seed)
+        elif name == 'Xru_Depth':
+            self.evaluation = DepthEval(tpath + '/probing/Xprobe/ru', seed=self.params.seed)
+        elif name == 'Xru_BigramShift':
+            self.evaluation = BigramShiftEval(tpath + '/probing/Xprobe/ru', seed=self.params.seed)
+        elif name == 'Xru_Tense':
+            self.evaluation = TenseEval(tpath + '/probing/Xprobe/ru', seed=self.params.seed)
+        elif name == 'Xru_SubjNumber':
+            self.evaluation = SubjNumberEval(tpath + '/probing/Xprobe/ru', seed=self.params.seed)
+        elif name == 'Xru_ObjNumber':
+            self.evaluation = ObjNumberEval(tpath + '/probing/Xprobe/ru', seed=self.params.seed)
+        elif name == 'Xru_OddManOut':
+            self.evaluation = OddManOutEval(tpath + '/probing/Xprobe/ru', seed=self.params.seed)
+        elif name == 'Xru_CoordinationInversion':
+            self.evaluation = CoordinationInversionEval(tpath + '/probing/Xprobe/ru', seed=self.params.seed)
+
+        #Xprobe German
+        elif name == 'Xde_Length':
+            self.evaluation = LengthEval(tpath + '/probing/Xprobe/de', seed=self.params.seed)
+        elif name == 'Xde_WordContent':
+            self.evaluation = WordContentEval(tpath + '/probing/Xprobe/de', seed=self.params.seed)
+        elif name == 'Xde_Depth':
+            self.evaluation = DepthEval(tpath + '/probing/Xprobe/de', seed=self.params.seed)
+        elif name == 'Xde_BigramShift':
+            self.evaluation = BigramShiftEval(tpath + '/probing/Xprobe/de', seed=self.params.seed)
+        elif name == 'Xde_Tense':
+            self.evaluation = TenseEval(tpath + '/probing/Xprobe/de', seed=self.params.seed)
+        elif name == 'Xde_SubjNumber':
+            self.evaluation = SubjNumberEval(tpath + '/probing/Xprobe/de', seed=self.params.seed)
+        elif name == 'Xde_ObjNumber':
+            self.evaluation = ObjNumberEval(tpath + '/probing/Xprobe/de', seed=self.params.seed)
+        elif name == 'Xde_OddManOut':
+            self.evaluation = OddManOutEval(tpath + '/probing/Xprobe/de', seed=self.params.seed)
+        elif name == 'Xde_CoordinationInversion':
+            self.evaluation = CoordinationInversionEval(tpath + '/probing/Xprobe/de', seed=self.params.seed)
+
+        #Xprobe Spanish
+        elif name == 'Xes_Length':
+            self.evaluation = LengthEval(tpath + '/probing/Xprobe/es', seed=self.params.seed)
+        elif name == 'Xes_WordContent':
+            self.evaluation = WordContentEval(tpath + '/probing/Xprobe/es', seed=self.params.seed)
+        elif name == 'Xes_Depth':
+            self.evaluation = DepthEval(tpath + '/probing/Xprobe/es', seed=self.params.seed)
+        elif name == 'Xes_BigramShift':
+            self.evaluation = BigramShiftEval(tpath + '/probing/Xprobe/es', seed=self.params.seed)
+        elif name == 'Xes_Tense':
+            self.evaluation = TenseEval(tpath + '/probing/Xprobe/es', seed=self.params.seed)
+        elif name == 'Xes_SubjNumber':
+            self.evaluation = SubjNumberEval(tpath + '/probing/Xprobe/es', seed=self.params.seed)
+        elif name == 'Xes_ObjNumber':
+            self.evaluation = ObjNumberEval(tpath + '/probing/Xprobe/es', seed=self.params.seed)
+        elif name == 'Xes_OddManOut':
+            self.evaluation = OddManOutEval(tpath + '/probing/Xprobe/es', seed=self.params.seed)
+        elif name == 'Xes_CoordinationInversion':
+            self.evaluation = CoordinationInversionEval(tpath + '/probing/Xprobe/es', seed=self.params.seed)
+
+        #Xprobe Finnish
+        elif name == 'Xfi_Length':
+            self.evaluation = LengthEval(tpath + '/probing/Xprobe/fi', seed=self.params.seed)
+        elif name == 'Xfi_WordContent':
+            self.evaluation = WordContentEval(tpath + '/probing/Xprobe/fi', seed=self.params.seed)
+        elif name == 'Xfi_Depth':
+            self.evaluation = DepthEval(tpath + '/probing/Xprobe/fi', seed=self.params.seed)
+        elif name == 'Xfi_BigramShift':
+            self.evaluation = BigramShiftEval(tpath + '/probing/Xprobe/fi', seed=self.params.seed)
+        elif name == 'Xfi_Tense':
+            self.evaluation = TenseEval(tpath + '/probing/Xprobe/fi', seed=self.params.seed)
+        elif name == 'Xfi_SubjNumber':
+            self.evaluation = SubjNumberEval(tpath + '/probing/Xprobe/fi', seed=self.params.seed)
+        elif name == 'Xfi_ObjNumber':
+            self.evaluation = ObjNumberEval(tpath + '/probing/Xprobe/fi', seed=self.params.seed)
+        elif name == 'Xfi_OddManOut':
+            self.evaluation = OddManOutEval(tpath + '/probing/Xprobe/fi', seed=self.params.seed)
+        elif name == 'Xfi_CoordinationInversion':
+            self.evaluation = CoordinationInversionEval(tpath + '/probing/Xprobe/fi', seed=self.params.seed)
+
+        #Xprobe French
+        elif name == 'Xfr_Length':
+            self.evaluation = LengthEval(tpath + '/probing/Xprobe/fr', seed=self.params.seed)
+        elif name == 'Xfr_WordContent':
+            self.evaluation = WordContentEval(tpath + '/probing/Xprobe/fr', seed=self.params.seed)
+        elif name == 'Xfr_Depth':
+            self.evaluation = DepthEval(tpath + '/probing/Xprobe/fr', seed=self.params.seed)
+        elif name == 'Xfr_BigramShift':
+            self.evaluation = BigramShiftEval(tpath + '/probing/Xprobe/fr', seed=self.params.seed)
+        elif name == 'Xfr_Tense':
+            self.evaluation = TenseEval(tpath + '/probing/Xprobe/fr', seed=self.params.seed)
+        elif name == 'Xfr_SubjNumber':
+            self.evaluation = SubjNumberEval(tpath + '/probing/Xprobe/fr', seed=self.params.seed)
+        elif name == 'Xfr_ObjNumber':
+            self.evaluation = ObjNumberEval(tpath + '/probing/Xprobe/fr', seed=self.params.seed)
+        elif name == 'Xfr_OddManOut':
+            self.evaluation = OddManOutEval(tpath + '/probing/Xprobe/fr', seed=self.params.seed)
+        elif name == 'Xfr_CoordinationInversion':
+            self.evaluation = CoordinationInversionEval(tpath + '/probing/Xprobe/fr', seed=self.params.seed)
+
+        #Xprobe Turkish
+        elif name == 'Xtr_Length':
+            self.evaluation = LengthEval(tpath + '/probing/Xprobe/tr', seed=self.params.seed)
+        elif name == 'Xtr_WordContent':
+            self.evaluation = WordContentEval(tpath + '/probing/Xprobe/tr', seed=self.params.seed)
+        elif name == 'Xtr_Depth':
+            self.evaluation = DepthEval(tpath + '/probing/Xprobe/tr', seed=self.params.seed)
+        elif name == 'Xtr_BigramShift':
+            self.evaluation = BigramShiftEval(tpath + '/probing/Xprobe/tr', seed=self.params.seed)
+        elif name == 'Xtr_Tense':
+            self.evaluation = TenseEval(tpath + '/probing/Xprobe/tr', seed=self.params.seed)
+        elif name == 'Xtr_SubjNumber':
+            self.evaluation = SubjNumberEval(tpath + '/probing/Xprobe/tr', seed=self.params.seed)
+        elif name == 'Xtr_ObjNumber':
+            self.evaluation = ObjNumberEval(tpath + '/probing/Xprobe/tr', seed=self.params.seed)
+        elif name == 'Xtr_OddManOut':
+            self.evaluation = OddManOutEval(tpath + '/probing/Xprobe/tr', seed=self.params.seed)
+        elif name == 'Xtr_CoordinationInversion':
+            self.evaluation = CoordinationInversionEval(tpath + '/probing/Xprobe/tr', seed=self.params.seed)
 
 
         # Arabic Probing Tasks

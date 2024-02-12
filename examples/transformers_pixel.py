@@ -150,7 +150,8 @@ if __name__ == "__main__":
                         help="which task to perform")
     parser.add_argument("--language", default=None, type=str,
                         choices=["Arabic", "Chinese", "Hebrew", "Hindi", "Russian", "Tamil", "Korean", "Japanese",
-                                 "English", "English_UD", "Coptic", "Sanskrit", "Xprobe"])
+                                 "English", "English_UD", "Coptic", "Sanskrit",
+                                 "Xru", "Xde", "Xes", "Xfi", "Xfr", "Xtr" ])
     parser.add_argument("--pooling", default="cls", type=str,
                         choices=["cls", "mean"],
                         help="which layer to evaluate on")
@@ -224,9 +225,24 @@ if __name__ == "__main__":
         ["Cop_PronType", "Cop_SubjDefinite", "CopObjDefinite"],
         ["Sa_Tense", "Sa_SubjNumber", "Sa_ObjNumber", "Sa_Mood", "Sa_VerbForm", "Sa_SubjGender", "Sa_ObjGender"],
         ["En_Tense", "En_SubjNumber", "En_ObjNumber", "En_Mood", "En_VerbForm", "En_PronType"],
-        ['X_Length', 'X_WordContent', 'X_Depth',
-         'X_BigramShift', 'X_Tense', 'X_SubjNumber', 'X_ObjNumber',
-         'X_OddManOut', 'X_CoordinationInversion']
+        ['Xde_Length', 'Xde_WordContent', 'Xde_Depth',
+         'Xde_BigramShift', 'Xde_Tense', 'Xde_SubjNumber', 'Xde_ObjNumber',
+         'Xde_OddManOut', 'Xde_CoordinationInversion'],
+        ['Xes_Length', 'Xes_WordContent', 'Xes_Depth',
+         'Xes_BigramShift', 'Xes_Tense', 'Xes_SubjNumber', 'Xes_ObjNumber',
+         'Xes_OddManOut', 'Xes_CoordinationInversion'],
+        ['Xfi_Length', 'Xfi_WordContent', 'Xfi_Depth',
+         'Xfi_BigramShift', 'Xfi_Tense', 'Xfi_SubjNumber', 'Xfi_ObjNumber',
+         'Xfi_OddManOut', 'Xfi_CoordinationInversion'],
+        ['Xfr_Length', 'Xfr_WordContent', 'Xfr_Depth',
+         'Xfr_BigramShift', 'Xfr_Tense', 'Xfr_SubjNumber', 'Xfr_ObjNumber',
+         'Xfr_OddManOut', 'Xfr_CoordinationInversion'],
+        ['Xru_Length', 'Xru_WordContent', 'Xru_Depth',
+         'Xru_BigramShift', 'Xru_Tense', 'Xru_SubjNumber', 'Xru_ObjNumber',
+         'Xru_OddManOut', 'Xru_CoordinationInversion'],
+        ['Xtr_Length', 'Xtr_WordContent', 'Xtr_Depth',
+         'Xtr_BigramShift', 'Xtr_Tense', 'Xtr_SubjNumber', 'Xtr_ObjNumber',
+         'Xtr_OddManOut', 'Xtr_CoordinationInversion']
 
     ]
     if args.language == "Arabic":
@@ -247,8 +263,18 @@ if __name__ == "__main__":
         results = se.eval(transfer_tasks[7])
     elif args.language == "English_UD":
         results = se.eval(transfer_tasks[8])
-    elif args.language == "Xprobe":
+    elif args.language == "Xde":
         results = se.eval(transfer_tasks[9])
+    elif args.language == "Xes":
+        results = se.eval(transfer_tasks[10])
+    elif args.language == "Xfi":
+        results = se.eval(transfer_tasks[11])
+    elif args.language == "Xfr":
+        results = se.eval(transfer_tasks[12])
+    elif args.language == "Xru":
+        results = se.eval(transfer_tasks[13])
+    elif args.language == "Xtr":
+        results = se.eval(transfer_tasks[14])
     elif args.language == "English" or None:
         assert args.task_index is not None
         results = se.eval(transfer_tasks_senteval[args.task_index])
