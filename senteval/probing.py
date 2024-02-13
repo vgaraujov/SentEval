@@ -45,8 +45,11 @@ class PROBINGEval(object):
             for line in f:
                 line = line.rstrip().split('\t')
                 # self.task_data[self.tok2split[line[0]]]['X'].append(line[-1].split())
-                self.task_data[self.tok2split[line[0]]]['X'].append(line[-1])
-                self.task_data[self.tok2split[line[0]]]['y'].append(line[1])
+                try:
+                    self.task_data[self.tok2split[line[0]]]['X'].append(line[-1])
+                    self.task_data[self.tok2split[line[0]]]['y'].append(line[1])
+                except:
+                    set_trace()
 
         labels = sorted(np.unique(self.task_data['train']['y']))
         self.tok2label = dict(zip(labels, range(len(labels))))
