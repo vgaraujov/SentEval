@@ -161,10 +161,12 @@ if __name__ == "__main__":
                         help="which seed to use")
     parser.add_argument("--max_seq_length", default=256, type=int,
                         help="which max length to use")
+    parser.add_argument("--auth", default=None, type=str,
+                        help="hf authentication token")
     args = parser.parse_args()
 
     model_dict = {"pixel": "Team-PIXEL/pixel-base", "mpixel": "Team-PIXEL/mpixel-base2"}
-    access_token = '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'
+    access_token = args.auth
 
     # Set up logger
     logging.basicConfig(format='%(asctime)s : %(message)s', level=logging.DEBUG)
