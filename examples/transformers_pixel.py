@@ -144,7 +144,7 @@ if __name__ == "__main__":
 
     ## Required parameters
     parser.add_argument("--model_name", default="pixel", type=str, 
-                        choices=["pixel"],
+                        choices=["pixel", "mpixel"],
                         help="the name of transformer model to evaluate on")
     parser.add_argument("--task_index", default=None, type=int,
                         help="which task to perform")
@@ -163,7 +163,8 @@ if __name__ == "__main__":
                         help="which max length to use")
     args = parser.parse_args()
 
-    model_dict = {"pixel": "Team-PIXEL/pixel-base"}
+    model_dict = {"pixel": "Team-PIXEL/pixel-base", "mpixel": "Team-PIXEL/mpixel-base2"}
+    access_token = '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'
 
     # Set up logger
     logging.basicConfig(format='%(asctime)s : %(message)s', level=logging.DEBUG)
@@ -173,11 +174,12 @@ if __name__ == "__main__":
         rgb=False,
         max_seq_length=args.max_seq_length,
         fallback_fonts_dir="fallback_fonts",
+        use_auth_token=access_token
     )
-    config = PIXELConfig.from_pretrained(model_dict[args.model_name])
+    config = PIXELConfig.from_pretrained(model_dict[args.model_name], use_auth_token=access_token)
     config.output_hidden_states = True
     config.output_attentions = True
-    model = ViTModel.from_pretrained(model_dict[args.model_name], config=config).cuda()
+    model = ViTModel.from_pretrained(model_dict[args.model_name], config=config, use_auth_token=access_token).cuda()
     # model = ViTModel.from_pretrained(model_dict[args.model_name], config=config)
     resize_model_embeddings(model, args.max_seq_length)
     model.eval()
