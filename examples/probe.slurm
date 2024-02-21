@@ -16,7 +16,7 @@ source activate pixel-env
 cd $SLURM_SUBMIT_DIR
 
 layers=(1 2 3 4 5 6 7 8 9 10 11 12 'all')
-pooling=$2 #mean,cls
+#pooling=$2 #mean,cls
 lang=$1
 
 for layer in ${layers[@]};
@@ -24,7 +24,7 @@ do
 #  python transformers_bert.py --model_name mbert --language $lang --pooling $pooling --layer $layer
 #  python transformers_bert.py --model_name bert --language $lang --pooling $pooling --layer $layer
 #  python transformers_pixel.py --model_name pixel --language $lang --pooling $pooling --layer $layer
-  python transformers_pixel.py --model_name mpixel --language $lang --pooling $pooling --layer $layer
+  python transformers_pixel.py --model_name mpixel --language $lang --pooling mean --layer $layer
 done
 
 
