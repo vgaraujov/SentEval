@@ -4,11 +4,12 @@
 lang=$1 #1_Arabic, 2_Chinese, 3_Hebrew, 4_Hindi, 5_Russian, 6_Tamil
 pooling=$2
 layers=$3
+auth="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"
 
 #for layer in ${layers[@]}; do
  #       python transformers_bert.py --model_name bert --task_index $task --pooling $pooling --layer $layer
 #        wait
 #done
 
-python transformers_bert.py --model_name mbert --language $lang --pooling $pooling --layer $layers
+python transformers_pixel.py --model_name mpixel --language $lang --pooling $pooling --layer $layers --auth $auth
 
