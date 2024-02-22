@@ -3,7 +3,7 @@
 layers=(1 2 3 4 5 6 7 8 9 10 11 12 'all')
 lang=$1 #1_Arabic, 2_Chinese, 3_Hebrew, 4_Hindi, 5_Russian, 6_Tamil
 #layers=$3
-auth="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"
+
 
 #for layer in ${layers[@]}; do
 #        python transformers_bert.py --model_name mt5 --language $lang --pooling mean --layer $layer
