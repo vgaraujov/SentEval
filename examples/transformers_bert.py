@@ -78,7 +78,7 @@ if __name__ == "__main__":
 
     ## Required parameters
     parser.add_argument("--model_name", default="mbert", type=str,
-                        choices=["bert", "mbert"],
+                        choices=["bert", "mbert", "mt5"],
                         help="the name of transformer model to evaluate on")
     parser.add_argument("--task_index", default=None, type=int,
                         help="which task to perform for original senteval English tasks")
@@ -96,7 +96,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     model_dict = {"bert": "bert-base-cased",
-                  "mbert": "bert-base-multilingual-cased"}
+                  "mbert": "bert-base-multilingual-cased",
+                  "mt5": "google/mt5-base"}
 
     # Set up logger
     logging.basicConfig(format='%(asctime)s : %(message)s', level=logging.DEBUG)
