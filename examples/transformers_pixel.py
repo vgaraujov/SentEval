@@ -53,10 +53,16 @@ def batcher(params, batch):
     model = params["model"]
     processor = params.tokenizer
     format_fn = glue_strip_spaces
-    transforms = get_transforms(
-        do_resize=True,
-        size=(processor.pixels_per_patch, processor.pixels_per_patch * processor.max_seq_length),
-    )
+    if "vit" in model.config._name_or_path:
+        transforms = get_transforms(
+            do_resize=False,
+            do_squarify=True
+        )
+    else:
+        transforms = get_transforms(
+            do_resize=True,
+            size=(processor.pixels_per_patch, processor.pixels_per_patch * processor.max_seq_length),
+        )
 
     # batch = [[token for token in sent] for sent in batch]
     # batch = [" ".join(sent) if sent != [] else "." for sent in batch]
@@ -165,12 +171,14 @@ if __name__ == "__main__":
                         help="hf authentication token")
     args = parser.parse_args()
 
-    model_dict = {"pixel": "Team-PIXEL/pixel-base", "mpixel": "Team-PIXEL/mpixel-base2"}
+    model_dict = {"pixel": "Team-PIXEL/pixel-base", "mpixel": "Team-PIXEL/mpixel-base2", "vit-mae": "facebook/vit-mae-base"}
     access_token = args.auth
 
     # Set up logger
     logging.basicConfig(format='%(asctime)s : %(message)s', level=logging.DEBUG)
-    renderer_cls = PangoCairoTextRenderer #if model_args.rendering_backend == "pygame" else PangoCairoTextRenderer
+    if args.model_name == "vit-mae": args.max_seq_length = 196
+
+    renderer_cls = PangoCairoTextRenderer
     processor = renderer_cls.from_pretrained(
         model_dict[args.model_name],
         rgb=False,
