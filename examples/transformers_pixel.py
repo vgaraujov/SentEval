@@ -150,7 +150,7 @@ if __name__ == "__main__":
 
     ## Required parameters
     parser.add_argument("--model_name", default="pixel", type=str, 
-                        choices=["pixel", "mpixel"],
+                        choices=["pixel", "mpixel", "vit-mae"],
                         help="the name of transformer model to evaluate on")
     parser.add_argument("--task_index", default=None, type=int,
                         help="which task to perform")
