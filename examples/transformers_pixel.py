@@ -176,16 +176,24 @@ if __name__ == "__main__":
 
     # Set up logger
     logging.basicConfig(format='%(asctime)s : %(message)s', level=logging.DEBUG)
-    if args.model_name == "vit-mae": args.max_seq_length = 196
-
     renderer_cls = PangoCairoTextRenderer
-    processor = renderer_cls.from_pretrained(
-        model_dict[args.model_name],
-        rgb=False,
-        max_seq_length=args.max_seq_length,
-        fallback_fonts_dir="fallback_fonts",
-        use_auth_token=access_token
-    )
+    if args.model_name == "vit-mae":
+        processor = renderer_cls.from_pretrained(
+            model_dict["pixel"],
+            rgb=False,
+            max_seq_length=196,
+            fallback_fonts_dir="fallback_fonts",
+            use_auth_token=access_token
+        )
+    else:
+        processor = renderer_cls.from_pretrained(
+            model_dict[args.model_name],
+            rgb=False,
+            max_seq_length=args.max_seq_length,
+            fallback_fonts_dir="fallback_fonts",
+            use_auth_token=access_token
+        )
+
     config = PIXELConfig.from_pretrained(model_dict[args.model_name], use_auth_token=access_token)
     config.output_hidden_states = True
     config.output_attentions = True
