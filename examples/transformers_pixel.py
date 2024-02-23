@@ -191,7 +191,8 @@ if __name__ == "__main__":
     config.output_attentions = True
     model = ViTModel.from_pretrained(model_dict[args.model_name], config=config, use_auth_token=access_token).cuda()
     # model = ViTModel.from_pretrained(model_dict[args.model_name], config=config)
-    resize_model_embeddings(model, args.max_seq_length)
+    if "pixel" in args.model_name:
+        resize_model_embeddings(model, args.max_seq_length)
     model.eval()
 
     output_path = '{}_p={}_l={}_t={}_s={}'.format(
