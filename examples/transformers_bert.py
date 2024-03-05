@@ -81,7 +81,7 @@ if __name__ == "__main__":
 
     ## Required parameters
     parser.add_argument("--model_name", default="mbert", type=str,
-                        choices=["bert", "mbert", "mt5"],
+                        choices=["bert", "mbert", "xlmr"],
                         help="the name of transformer model to evaluate on")
     parser.add_argument("--task_index", default=None, type=int,
                         help="which task to perform for original senteval English tasks")
