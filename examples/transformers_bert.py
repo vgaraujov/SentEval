@@ -37,7 +37,10 @@ def batcher(params, batch):
     tokenizer = params.tokenizer
     # batch = [[token for token in sent] for sent in batch]
     # batch = [" ".join(sent) if sent != [] else "." for sent in batch]
-    batch = [["[CLS]"] + tokenizer.tokenize(sent) + ["[SEP]"] for sent in batch]
+    if "xlm" in model.config._name_or_path:
+        batch = [["<s>"] + tokenizer.tokenize(sent) + ["</s>"] for sent in batch]
+    else:
+        batch = [["[CLS]"] + tokenizer.tokenize(sent) + ["[SEP]"] for sent in batch]
     batch = [b[:512] for b in batch]
     seq_length = max([len(sent) for sent in batch])
     mask = [[1]*len(sent) + [0]*(seq_length-len(sent)) for sent in batch]
@@ -97,7 +100,7 @@ if __name__ == "__main__":
 
     model_dict = {"bert": "bert-base-cased",
                   "mbert": "bert-base-multilingual-cased",
-                  "mt5": "google/mt5-base"}
+                  "xlmr": "xlm-roberta-base",}
 
     # Set up logger
     logging.basicConfig(format='%(asctime)s : %(message)s', level=logging.DEBUG)
