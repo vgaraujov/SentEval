@@ -1,5 +1,4 @@
 #!/bin/bash
-#SBATCH --cluster=wice
 #SBATCH -A lp_lagom
 #SBATCH -N 1
 #SBATCH --ntasks=4
