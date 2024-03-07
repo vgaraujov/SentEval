@@ -1,4 +1,5 @@
 #!/bin/bash
+#SBATCH --clusters=genius
 #SBATCH -A lp_lagom
 #SBATCH -N 1
 #SBATCH --ntasks=4
