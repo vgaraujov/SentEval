@@ -8,7 +8,7 @@
 #SBATCH --time=36:00:00
 #SBATCH --mail-type=FAIL,BEGIN,END
 #SBATCH --mail-user=kushaljayesh.tatariya@kuleuven.be
-#SBATCH --job-name=pixel_probe
+#SBATCH --job-name=probe_36
 
 cd /data/leuven/351/vsc35188/miniconda3/bin/
 source activate pixel-env
@@ -16,14 +16,33 @@ source activate pixel-env
 cd $SLURM_SUBMIT_DIR
 
 layers=(1 2 3 4 5 6 7 8 9 10 11 12 'all')
-pooling=$2 #mean,cls
+#pooling=$2 #mean,cls
 lang=$1
+model=$2
 
-for layer in ${layers[@]};
-do
-  python transformers_bert.py --model_name mbert --language $lang --pooling $pooling --layer $layer
-  python transformers_bert.py --model_name bert --language $lang --pooling $pooling --layer $layer
-  python transformers_pixel.py --model_name pixel --language $lang --pooling $pooling --layer $layer
-done
+if [ $model == "pixel" ]; then
+  script="transformers_pixel.py"
+elif [ $model == "bert" ]; then
+  script="transformers_bert.py"
+elif [ $model == "vit-mae" ]; then
+  script="transformers_pixel.py"
+elif [ $model == "mbert" ]; then
+  script="transformers_bert.py"
+elif [ $model == "xlmr" ]; then
+  script="transformers_bert.py"
+else
+  echo "Invalid model name"
+  exit 1
+fi
 
-
+if [ $lang == "English"]; then
+  for layer in ${layers[@]};
+  do
+    python $script --model_name $model --language $lang --pooling mean --layer $layer --task_index 4
+  done
+else
+  for layer in ${layers[@]};
+  do
+    python $script --model_name $model --language $lang --pooling mean --layer $layer
+  done
+fi

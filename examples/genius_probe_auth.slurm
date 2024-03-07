@@ -8,7 +8,7 @@
 #SBATCH --time=16:00:00
 #SBATCH --mail-type=FAIL,BEGIN,END
 #SBATCH --mail-user=kushaljayesh.tatariya@kuleuven.be
-#SBATCH --job-name=mpixel_probe
+#SBATCH --job-name=genuis_probe_auth
 
 cd /data/leuven/351/vsc35188/miniconda3/bin/
 source activate pixel-env
@@ -18,14 +18,16 @@ cd $SLURM_SUBMIT_DIR
 layers=(1 2 3 4 5 6 7 8 9 10 11 12 'all')
 #pooling=$2 #mean,cls
 lang=$1
+auth = ""
 
-
-for layer in ${layers[@]};
-do
-#  python transformers_bert.py --model_name mbert --language $lang --pooling $pooling --layer $layer
-#  python transformers_bert.py --model_name bert --language $lang --pooling $pooling --layer $layer
-#  python transformers_pixel.py --model_name pixel --language $lang --pooling $pooling --layer $layer
-  python transformers_pixel.py --model_name mpixel --language $lang --pooling mean --layer $layer --auth $auth --task_index 4
-done
-
-
+if [ $lang == "English"]; then
+  for layer in ${layers[@]};
+  do
+    python transformers_pixel.py --model_name mpixel --language $lang --pooling mean --layer $layer --task_index 4 --auth $auth
+  done
+else
+  for layer in ${layers[@]};
+  do
+    python transformers_pixel.py --model_name mpixel --language $lang --pooling mean --layer $layer --auth $auth
+  done
+fi
