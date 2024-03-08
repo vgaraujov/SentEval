@@ -14,7 +14,7 @@ export CONFIG="Team-PIXEL/pixel-base"
 
 export RUN_NAME="${TREEBANK}-$(basename ${MODEL})-${SEQ_LEN}-${BSZ}-${GRAD_ACCUM}-${LR}-${NUM_STEPS}-${SEED}"
 
-python scripts/training/run_pos.py \
+python run_pos.py \
   --model_name_or_path=${MODEL} \
   --config_name=${CONFIG} \
   --processor_name=${CONFIG} \
