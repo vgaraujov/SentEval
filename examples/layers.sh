@@ -21,7 +21,7 @@ else
 fi
 
 
-if [ $lang == "English"]; then
+if [$lang == "English"]; then
   python $script --model_name $model --language $lang --pooling mean --layer $layer --task_index 4
 else
   python $script --model_name $model --language $lang --pooling mean --layer $layer
