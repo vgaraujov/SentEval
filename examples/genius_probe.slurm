@@ -15,7 +15,7 @@ source activate pixel-env
 
 cd $SLURM_SUBMIT_DIR
 
-layers=(1 2 3 4 5 6 7 8 9 10 11 12 'all')
+layers=(8 9 10 11 12 'all')
 #pooling=$2 #mean,cls
 lang=$1
 model=$2
