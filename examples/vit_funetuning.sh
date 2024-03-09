@@ -16,7 +16,6 @@ export RUN_NAME="${TREEBANK}-$(basename ${MODEL})-${SEQ_LEN}-${BSZ}-${GRAD_ACCUM
 
 python run_pos.py \
   --model_name_or_path=${MODEL} \
-  --config_name=${CONFIG} \
   --processor_name=${CONFIG} \
   --remove_unused_columns=False \
   --data_dir=${DATA_DIR} \
