@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export TREEBANK="UD_Vietnamese-VTB"
-export DATA_DIR="../data/ud-treebanks-v2.10/${TREEBANK}"
+export DATA_DIR="../data/${TREEBANK}"
 export FALLBACK_FONTS_DIR="fallback_fonts"  # let's say this is where we downloaded the fonts to
 export MODEL="facebook/vit-mae-base" # also works with "bert-base-cased", "roberta-base", etc.
 export SEQ_LEN=196
