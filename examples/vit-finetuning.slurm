@@ -14,7 +14,7 @@ cd /data/leuven/351/vsc35188/miniconda3/bin/
 source activate pixel-new
 
 cd $SLURM_SUBMIT_DIR
-export WAND_DISABLED=True
+export WANDB_DISABLED=True
 export TREEBANK="UD_Vietnamese-VTB"
 export DATA_DIR="../data/${TREEBANK}"
 export FALLBACK_FONTS_DIR="fallback_fonts"  # let's say this is where we downloaded the fonts to
