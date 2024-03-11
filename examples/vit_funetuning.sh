@@ -1,6 +1,10 @@
 #!/bin/bash
 
-export TREEBANK="UD_Vietnamese-VTB"
+source activate pixel-new
+
+export WANDB_API_KEY=$2
+export WANDB_PROJECT="vit-mae-finetuning"
+export TREEBANK=$1
 export DATA_DIR="../data/${TREEBANK}"
 export FALLBACK_FONTS_DIR="fallback_fonts"  # let's say this is where we downloaded the fonts to
 export MODEL="facebook/vit-mae-base" # also works with "bert-base-cased", "roberta-base", etc.
@@ -16,7 +20,6 @@ export RUN_NAME="${TREEBANK}-$(basename ${MODEL})-${SEQ_LEN}-${BSZ}-${GRAD_ACCUM
 
 python run_pos.py \
   --model_name_or_path=${MODEL} \
-  --processor_name=${CONFIG} \
   --remove_unused_columns=False \
   --data_dir=${DATA_DIR} \
   --do_train \
@@ -43,6 +46,7 @@ python run_pos.py \
   --save_strategy=steps \
   --save_steps=500 \
   --save_total_limit=5 \
+  --report_to=wandb \
   --log_predictions \
   --load_best_model_at_end=True \
   --metric_for_best_model="eval_accuracy" \
