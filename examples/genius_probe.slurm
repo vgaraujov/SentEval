@@ -19,6 +19,7 @@ layers=(8 9 10 11 12 'all')
 #pooling=$2 #mean,cls
 lang=$1
 model=$2
+seed=$3
 
 if [ $model == "pixel" ]; then
   script="transformers_pixel.py"
@@ -38,12 +39,12 @@ fi
 if [ $lang == "English"]; then
   for layer in ${layers[@]};
   do
-    python $script --model_name $model --language $lang --pooling mean --layer $layer --task_index 4
+    python $script --model_name $model --language $lang --pooling mean --layer $layer --task_index 4 --seed $seed
   done
 else
   for layer in ${layers[@]};
   do
-    python $script --model_name $model --language $lang --pooling mean --layer $layer
+    python $script --model_name $model --language $lang --pooling mean --layer $layer --seed $seed
   done
 fi
 
