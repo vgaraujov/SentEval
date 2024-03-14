@@ -2,10 +2,10 @@
 #SBATCH --clusters=genius
 #SBATCH -A lp_lagom
 #SBATCH -N 1
-#SBATCH --ntasks=4
+#SBATCH --ntasks=9
 #SBATCH --gpus-per-node=1
-#SBATCH --partition=gpu_v100
-#SBATCH --time=16:00:00
+#SBATCH --partition=gpu_p100
+#SBATCH --time=04:00:00
 #SBATCH --mail-type=FAIL,BEGIN,END
 #SBATCH --mail-user=kushaljayesh.tatariya@kuleuven.be
 #SBATCH --job-name=genuis_probe_auth
