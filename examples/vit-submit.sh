@@ -1,0 +1,8 @@
+#!/bin/bash
+
+sbatch vit-finetuning.slurm UD_Arabic-PADT 2f9506e16930f137abbd18a3fb16f6b31840a830
+sbatch vit-finetuning.slurm UD_Korean-GSD 2f9506e16930f137abbd18a3fb16f6b31840a830
+sbatch vit-finetuning.slurm UD_Japanese-GSD 2f9506e16930f137abbd18a3fb16f6b31840a830
+sbatch vit-finetuning.slurm UD_Chinese-GSD 2f9506e16930f137abbd18a3fb16f6b31840a830
+sbatch vit-finetuning.slurm UD_Tamil-TTB 2f9506e16930f137abbd18a3fb16f6b31840a830
+sbatch vit-finetuning.slurm UD_Hindi-HDTB 2f9506e16930f137abbd18a3fb16f6b31840a830
