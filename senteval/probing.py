@@ -64,7 +64,7 @@ class PROBINGEval(object):
         bsize = params.batch_size
 
         if params.save_emb is not None:
-            data_filename = '_'.join(params.save_emb.split('_')[:-1]) + '_' + self.task + '.npy'
+            data_filename = 'npy/' + '_'.join(params.save_emb.split('_')[:-1]) + '_' + self.task + '.npy'
             if os.path.isfile(data_filename):
                 logging.info('Loading sentence embeddings')
                 task_embed = np.load(data_filename, allow_pickle = True).item()

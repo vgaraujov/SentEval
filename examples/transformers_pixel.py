@@ -211,13 +211,13 @@ if __name__ == "__main__":
         args.seed)
 
     # Set params for DiscoEval or SentEval
-    # params = {'task_path': PATH_TO_DATA, 'usepytorch': True, 'kfold': 10, 'batch_size': 16,
-    #           'tokenizer': processor, 'pooling': args.pooling, 'layer': args.layer, 'model': model,
-    #           'seed': args.seed, 'save_emb': output_path}
-
     params = {'task_path': PATH_TO_DATA, 'usepytorch': True, 'kfold': 10, 'batch_size': 16,
               'tokenizer': processor, 'pooling': args.pooling, 'layer': args.layer, 'model': model,
-              'seed': args.seed, 'save_emb': None}
+              'seed': args.seed, 'save_emb': output_path}
+
+    # params = {'task_path': PATH_TO_DATA, 'usepytorch': True, 'kfold': 10, 'batch_size': 16,
+    #           'tokenizer': processor, 'pooling': args.pooling, 'layer': args.layer, 'model': model,
+    #           'seed': args.seed, 'save_emb': None}
     
     params['classifier'] = {'nhid': 0, 'optim': 'adam', 'batch_size': 64,
                             'tenacity': 5, 'epoch_size': 4}
