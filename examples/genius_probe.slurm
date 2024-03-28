@@ -36,18 +36,18 @@ else
   exit 1
 fi
 
-if [ $lang == "English"]; then
-  for layer in ${layers[@]};
-  do
-    python $script --model_name $model --language $lang --pooling mean --layer $layer --task_index 4 --seed $seed
-  done
-else
-  for layer in ${layers[@]};
-  do
-    python $script --model_name $model --language $lang --pooling mean --layer $layer --seed $seed
-  done
-fi
+#if [ $lang == "English"]; then
+#  for layer in ${layers[@]};
+#  do
+#    python $script --model_name $model --language $lang --pooling mean --layer $layer --task_index 4 --seed $seed
+#  done
+#else
+#  for layer in ${layers[@]};
+#  do
+#    python $script --model_name $model --language $lang --pooling mean --layer $layer --seed $seed
+#  done
+#fi
 
-
+python $script --model_name $model --language $lang --pooling mean --layer $layer --task_index 4 --seed $seed
 
 
