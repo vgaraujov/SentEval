@@ -16,7 +16,7 @@ elif [ $model == "mbert" ]; then
 elif [ $model == "xlmr" ]; then
   script="transformers_bert.py"
 elif [ $model == "pixel-hindi" ]; then
-  script="transformers_pixel.py"
+  script="transformers_pixel_finetuned.py"
 else
   echo "Invalid model name"
   exit 1
