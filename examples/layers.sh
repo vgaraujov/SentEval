@@ -15,13 +15,15 @@ elif [ $model == "mbert" ]; then
   script="transformers_bert.py"
 elif [ $model == "xlmr" ]; then
   script="transformers_bert.py"
+elif [ $model == "pixel-hindi" ]; then
+  script="transformers_pixel.py"
 else
   echo "Invalid model name"
   exit 1
 fi
 
 
-if [$lang == "English"]; then
+if [ $lang == "English" ]; then
   python $script --model_name $model --language $lang --pooling mean --layer $layer --task_index 4
 else
   python $script --model_name $model --language $lang --pooling mean --layer $layer
