@@ -48,6 +48,18 @@ fi
 #  done
 #fi
 
-python $script --model_name $model --language $lang --pooling mean --layer $layer --task_index 4 --seed $seed
+python $script --model_name $model --language $lang --pooling mean --layer 1 --task_index 4 --seed $seed
+python $script --model_name $model --language $lang --pooling mean --layer 2 --task_index 4 --seed $seed
+python $script --model_name $model --language $lang --pooling mean --layer 3 --task_index 4 --seed $seed
+python $script --model_name $model --language $lang --pooling mean --layer 4 --task_index 4 --seed $seed
+python $script --model_name $model --language $lang --pooling mean --layer 5 --task_index 4 --seed $seed
+python $script --model_name $model --language $lang --pooling mean --layer 6 --task_index 4 --seed $seed
+python $script --model_name $model --language $lang --pooling mean --layer 7 --task_index 4 --seed $seed
+python $script --model_name $model --language $lang --pooling mean --layer 8 --task_index 4 --seed $seed
+python $script --model_name $model --language $lang --pooling mean --layer 9 --task_index 4 --seed $seed
+python $script --model_name $model --language $lang --pooling mean --layer 10 --task_index 4 --seed $seed
+python $script --model_name $model --language $lang --pooling mean --layer 11 --task_index 4 --seed $seed
+python $script --model_name $model --language $lang --pooling mean --layer 12 --task_index 4 --seed $seed
+python $script --model_name $model --language $lang --pooling mean --layer all --task_index 4 --seed $seed
 
 
