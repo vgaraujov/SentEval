@@ -1,5 +1,12 @@
 #!/bin/bash
 
+sbatch random-model.slurm pos UD_Arabic-PADT 2f9506e16930f137abbd18a3fb16f6b31840a830
+sbatch random-model.slurm pos UD_Korean-GSD 2f9506e16930f137abbd18a3fb16f6b31840a830
+sbatch random-model.slurm pos UD_Japanese-GSD 2f9506e16930f137abbd18a3fb16f6b31840a830
+sbatch random-model.slurm pos UD_Chinese-GSD 2f9506e16930f137abbd18a3fb16f6b31840a830
+sbatch random-model.slurm pos UD_Tamil-TTB 2f9506e16930f137abbd18a3fb16f6b31840a830
+sbatch random-model.slurm pos UD_Hindi-HDTB 2f9506e16930f137abbd18a3fb16f6b31840a830
+
 sbatch vit-finetuning.slurm dep UD_Arabic-PADT 2f9506e16930f137abbd18a3fb16f6b31840a830
 sbatch vit-finetuning.slurm dep UD_Korean-GSD 2f9506e16930f137abbd18a3fb16f6b31840a830
 sbatch vit-finetuning.slurm dep UD_Japanese-GSD 2f9506e16930f137abbd18a3fb16f6b31840a830
