@@ -15,26 +15,26 @@ source activate pixel-new
 
 cd $SLURM_SUBMIT_DIR
 
-export WANDB_API_KEY=$3
-export WANDB_PROJECT="vit-mae-finetuning"
-export DATA=$2
-export DATA_DIR="../data/${DATA}"
-export FALLBACK_FONTS_DIR="fallback_fonts"  # let's say this is where we downloaded the fonts to
-export MODEL="facebook/vit-mae-base" # also works with "bert-base-cased", "roberta-base", etc.
-export SEQ_LEN=196
-export BSZ=64
-export GRAD_ACCUM=1
-export LR=5e-5
-export SEED=42
-export NUM_STEPS=15000
-export CONFIG="Team-PIXEL/pixel-base"
-export TASK=$1
+WANDB_API_KEY=$3
+WANDB_PROJECT="vit-mae-finetuning"
+DATA=$2
+DATA_DIR="../data/${DATA}"
+FALLBACK_FONTS_DIR="fallback_fonts"  # let's say this is where we downloaded the fonts to
+MODEL="facebook/vit-mae-base" # also works with "bert-base-cased", "roberta-base", etc.
+SEQ_LEN=196
+BSZ=64
+GRAD_ACCUM=1
+LR=5e-5
+SEED=42
+NUM_STEPS=15000
+CONFIG="Team-PIXEL/pixel-base"
+TASK=$1
 
 
-export RUN_NAME="${DATA}-${TASK}-$(basename ${MODEL})-${SEQ_LEN}-${BSZ}-${GRAD_ACCUM}-${LR}-${NUM_STEPS}-${SEED}"
+RUN_NAME="${DATA}-${TASK}-$(basename ${MODEL})-${SEQ_LEN}-${BSZ}-${GRAD_ACCUM}-${LR}-${NUM_STEPS}-${SEED}"
 
 
-if [[ "$task" == "pos" ]]; then
+if [[ "$TASK" == "pos" ]]; then
   python run_pos.py \
     --model_name_or_path=${MODEL} \
     --processor_name=${CONFIG} \
@@ -73,7 +73,7 @@ if [[ "$task" == "pos" ]]; then
     --fallback_fonts_dir=${FALLBACK_FONTS_DIR} \
     --seed=${SEED}
 
-elif [[ "$task" == "ner" ]]; then
+elif [[ "$TASK" == "ner" ]]; then
   python run_ner.py \
     --model_name_or_path=${MODEL} \
     --processor_name=${CONFIG} \
@@ -114,7 +114,7 @@ elif [[ "$task" == "ner" ]]; then
 
 
 
-elif [[ "$task" == "dep" ]]; then
+elif [[ "$TASK" == "dep" ]]; then
   python run_ud.py \
     --model_name_or_path=${MODEL} \
     --processor_name=${CONFIG} \
