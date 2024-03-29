@@ -2,9 +2,9 @@
 #SBATCH --clusters=genius
 #SBATCH -A lp_lagom
 #SBATCH -N 1
-#SBATCH --ntasks=4
+#SBATCH --ntasks=9
 #SBATCH --gpus-per-node=1
-#SBATCH --partition=gpu_v100
+#SBATCH --partition=gpu_p100
 #SBATCH --time=12:00:00
 #SBATCH --mail-type=FAIL,BEGIN,END
 #SBATCH --mail-user=kushaljayesh.tatariya@kuleuven.be
@@ -34,7 +34,7 @@ export TASK=$1
 export RUN_NAME="${DATA}-${TASK}-$(basename ${MODEL})-${SEQ_LEN}-${BSZ}-${GRAD_ACCUM}-${LR}-${NUM_STEPS}-${SEED}"
 
 
-if [ $task == "pos" ]; then
+if [ "$task" = "pos" ]; then
   python run_pos.py \
     --model_name_or_path=${MODEL} \
     --processor_name=${CONFIG} \
@@ -73,7 +73,7 @@ if [ $task == "pos" ]; then
     --fallback_fonts_dir=${FALLBACK_FONTS_DIR} \
     --seed=${SEED}
 
-elif [ $task == "ner" ]; then
+elif [ "$task" = "ner" ]; then
   python run_ner.py \
     --model_name_or_path=${MODEL} \
     --processor_name=${CONFIG} \
@@ -114,7 +114,7 @@ elif [ $task == "ner" ]; then
 
 
 
-elif [ $task == 'dep' ]; then
+elif [ "$task" = "dep" ]; then
   python run_ud.py \
     --model_name_or_path=${MODEL} \
     --processor_name=${CONFIG} \
