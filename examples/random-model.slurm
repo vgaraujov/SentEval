@@ -19,8 +19,8 @@ export WANDB_API_KEY=$3
 export WANDB_PROJECT="vit-mae-finetuning"
 export DATA=$2
 export DATA_DIR="../data/${DATA}"
-export FALLBACK_FONTS_DIR="fallback_fonts"  # let's say this is where we downloaded the fonts to
-export MODEL="random_model" # also works with "bert-base-cased", "roberta-base", etc.
+export FALLBACK_FONTS_DIR="fallback_fonts"
+export MODEL="random_model" 
 export SEQ_LEN=196
 export BSZ=64
 export GRAD_ACCUM=1
@@ -34,7 +34,7 @@ export TASK=$1
 export RUN_NAME="${DATA}-${TASK}-$(basename ${MODEL})-${SEQ_LEN}-${BSZ}-${GRAD_ACCUM}-${LR}-${NUM_STEPS}-${SEED}"
 
 
-if [ "$task" = "pos" ]; then
+if [[ "$task" = "pos" ]]; then
   python run_pos.py \
     --model_name_or_path=${MODEL} \
     --processor_name=${CONFIG} \
@@ -73,7 +73,7 @@ if [ "$task" = "pos" ]; then
     --fallback_fonts_dir=${FALLBACK_FONTS_DIR} \
     --seed=${SEED}
 
-elif [ "$task" = "ner" ]; then
+elif [[ "$task" = "ner" ]]; then
   python run_ner.py \
     --model_name_or_path=${MODEL} \
     --processor_name=${CONFIG} \
@@ -114,7 +114,7 @@ elif [ "$task" = "ner" ]; then
 
 
 
-elif [ "$task" = "dep" ]; then
+elif [[ "$task" = "dep" ]]; then
   python run_ud.py \
     --model_name_or_path=${MODEL} \
     --processor_name=${CONFIG} \
