@@ -15,7 +15,8 @@ source activate pixel-new
 
 cd $SLURM_SUBMIT_DIR
 
-
+WANDB_API_KEY="2f9506e16930f137abbd18a3fb16f6b31840a830"
+WAND_PROJECT="vit-finetuning"
 DATA=$2
 DATA_DIR="../data/${DATA}"
 FALLBACK_FONTS_DIR="fallback_fonts"  # let's say this is where we downloaded the fonts to
