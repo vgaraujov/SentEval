@@ -16,6 +16,7 @@ source activate pixel-new
 cd $SLURM_SUBMIT_DIR
 
 WANDB_API_KEY="2f9506e16930f137abbd18a3fb16f6b31840a830"
+wandb login $WANDB_API_KEY
 WAND_PROJECT="vit-finetuning"
 DATA=$2
 DATA_DIR="../data/${DATA}"
