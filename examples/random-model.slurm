@@ -15,8 +15,7 @@ source activate pixel-new
 
 cd $SLURM_SUBMIT_DIR
 
-WANDB_API_KEY=$3
-WANDB_PROJECT="vit-mae-finetuning"
+
 DATA=$2
 DATA_DIR="../data/${DATA}"
 FALLBACK_FONTS_DIR="fallback_fonts"

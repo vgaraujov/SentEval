@@ -1,27 +1,27 @@
 #!/bin/bash
 
-sbatch random-model.slurm pos UD_Arabic-PADT 2f9506e16930f137abbd18a3fb16f6b31840a830
-sbatch random-model.slurm pos UD_Korean-GSD 2f9506e16930f137abbd18a3fb16f6b31840a830
-sbatch random-model.slurm pos UD_Japanese-GSD 2f9506e16930f137abbd18a3fb16f6b31840a830
-sbatch random-model.slurm pos UD_Chinese-GSD 2f9506e16930f137abbd18a3fb16f6b31840a830
-sbatch random-model.slurm pos UD_Tamil-TTB 2f9506e16930f137abbd18a3fb16f6b31840a830
-sbatch random-model.slurm pos UD_Hindi-HDTB 2f9506e16930f137abbd18a3fb16f6b31840a830
+sbatch random-model.slurm pos UD_Arabic-PADT
+sbatch random-model.slurm pos UD_Korean-GSD
+sbatch random-model.slurm pos UD_Japanese-GSD
+sbatch random-model.slurm pos UD_Chinese-GSD
+sbatch random-model.slurm pos UD_Tamil-TTB
+sbatch random-model.slurm pos UD_Hindi-HDTB
 
-sbatch vit-finetuning.slurm dep UD_Arabic-PADT 2f9506e16930f137abbd18a3fb16f6b31840a830
-sbatch vit-finetuning.slurm dep UD_Korean-GSD 2f9506e16930f137abbd18a3fb16f6b31840a830
-sbatch vit-finetuning.slurm dep UD_Japanese-GSD 2f9506e16930f137abbd18a3fb16f6b31840a830
-sbatch vit-finetuning.slurm dep UD_Chinese-GSD 2f9506e16930f137abbd18a3fb16f6b31840a830
-sbatch vit-finetuning.slurm dep UD_Tamil-TTB 2f9506e16930f137abbd18a3fb16f6b31840a830
-sbatch vit-finetuning.slurm dep UD_Hindi-HDTB 2f9506e16930f137abbd18a3fb16f6b31840a830
+sbatch vit-finetuning.slurm dep UD_Arabic-PADT
+sbatch vit-finetuning.slurm dep UD_Korean-GSD
+sbatch vit-finetuning.slurm dep UD_Japanese-GSD
+sbatch vit-finetuning.slurm dep UD_Chinese-GSD
+sbatch vit-finetuning.slurm dep UD_Tamil-TTB
+sbatch vit-finetuning.slurm dep UD_Hindi-HDTB
 
-sbatch vit-finetuning.slurm ner ner/amh 2f9506e16930f137abbd18a3fb16f6b31840a830
-sbatch vit-finetuning.slurm ner ner/hau 2f9506e16930f137abbd18a3fb16f6b31840a830
-sbatch vit-finetuning.slurm ner ner/ibo 2f9506e16930f137abbd18a3fb16f6b31840a830
-sbatch vit-finetuning.slurm ner ner/kin 2f9506e16930f137abbd18a3fb16f6b31840a830
-sbatch vit-finetuning.slurm ner ner/lug 2f9506e16930f137abbd18a3fb16f6b31840a830
-sbatch vit-finetuning.slurm ner ner/luo 2f9506e16930f137abbd18a3fb16f6b31840a830
-sbatch vit-finetuning.slurm ner ner/pcm 2f9506e16930f137abbd18a3fb16f6b31840a830
-sbatch vit-finetuning.slurm ner ner/swa 2f9506e16930f137abbd18a3fb16f6b31840a830
-sbatch vit-finetuning.slurm ner ner/yor 2f9506e16930f137abbd18a3fb16f6b31840a830
-sbatch vit-finetuning.slurm ner ner/wol 2f9506e16930f137abbd18a3fb16f6b31840a830
+sbatch vit-finetuning.slurm ner ner/amh
+sbatch vit-finetuning.slurm ner ner/hau
+sbatch vit-finetuning.slurm ner ner/ibo
+sbatch vit-finetuning.slurm ner ner/kin
+sbatch vit-finetuning.slurm ner ner/lug
+sbatch vit-finetuning.slurm ner ner/luo
+sbatch vit-finetuning.slurm ner ner/pcm
+sbatch vit-finetuning.slurm ner ner/swa
+sbatch vit-finetuning.slurm ner ner/yor
+sbatch vit-finetuning.slurm ner ner/wol
 
