@@ -1,11 +1,5 @@
 #!/bin/bash
 
-sbatch random-model.slurm pos UD_Arabic-PADT
-sbatch random-model.slurm pos UD_Korean-GSD
-sbatch random-model.slurm pos UD_Japanese-GSD
-sbatch random-model.slurm pos UD_Chinese-GSD
-sbatch random-model.slurm pos UD_Tamil-TTB
-sbatch random-model.slurm pos UD_Hindi-HDTB
 
 sbatch vit-finetuning.slurm dep UD_Arabic-PADT
 sbatch vit-finetuning.slurm dep UD_Korean-GSD
