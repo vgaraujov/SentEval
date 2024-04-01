@@ -197,7 +197,7 @@ def get_dataset(
     if modality == Modality.IMAGE:
 
         transforms = get_transforms(
-            do_resize=True,
+            do_resize=False,
             do_squarify=True
         )
     else:
