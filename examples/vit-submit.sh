@@ -1,17 +1,21 @@
 #!/bin/bash
 
 
-sbatch random-model.slurm ner ner/amh
-sbatch random-model.slurm ner ner/hau
-sbatch random-model.slurm ner ner/ibo
-sbatch random-model.slurm ner ner/kin
-sbatch random-model.slurm ner ner/lug
-sbatch random-model.slurm ner ner/luo
-sbatch random-model.slurm ner ner/pcm
-sbatch random-model.slurm ner ner/swa
-sbatch random-model.slurm ner ner/wol
-sbatch random-model.slurm ner ner/yor
-sbatch random-model.slurm ner ner/zh
+sbatch random-model.slurm dep UD_Arabic-PADT
+sbatch random-model.slurm dep UD_Chinese-GSD
+sbatch random-model.slurm dep UD_Coptic-Scriptorium
+sbatch random-model.slurm dep UD_Hindi-HDTB
+sbatch random-model.slurm dep UD_Japanese-GSD
+sbatch random-model.slurm dep UD_Korean-GSD
+sbatch random-model.slurm dep UD_Tamil-TTB
+sbatch random-model.slurm dep UD_Vietnamese-VTB
 
 
-
+sbatch vit-finetuning.slurm pos UD_Arabic-PADT
+sbatch vit-finetuning.slurm pos UD_Chinese-GSD
+sbatch vit-finetuning.slurm pos UD_Coptic-Scriptorium
+sbatch vit-finetuning.slurm pos UD_Hindi-HDTB
+sbatch vit-finetuning.slurm pos UD_Japanese-GSD
+sbatch vit-finetuning.slurm pos UD_Korean-GSD
+sbatch vit-finetuning.slurm pos UD_Tamil-TTB
+sbatch vit-finetuning.slurm pos UD_Vietnamese-VTB
