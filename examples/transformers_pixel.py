@@ -66,7 +66,10 @@ def batcher(params, batch):
 
     # batch = [[token for token in sent] for sent in batch]
     # batch = [" ".join(sent) if sent != [] else "." for sent in batch]
-    encodings = [processor(text=format_fn(a)) for a in batch]
+    if params["words"]:
+        encodings = [processor(text=a.split()) for a in batch]
+    else:
+        encodings = [processor(text=format_fn(a)) for a in batch]
     pixel_values = [transforms(Image.fromarray(e.pixel_values)) for e in encodings]
     attention_mask = [
     get_attention_mask(e.num_text_patches, seq_length=processor.max_seq_length) for e in encodings
@@ -169,6 +172,8 @@ if __name__ == "__main__":
                         help="which max length to use")
     parser.add_argument("--auth", default=None, type=str,
                         help="hf authentication token")
+    parser.add_argument("--words", default=True, type=bool,
+                        help="whether to add horizontal spacing between words")
     args = parser.parse_args()
 
     model_dict = {"pixel": "Team-PIXEL/pixel-base", "mpixel": "Team-PIXEL/mpixel-base2", "vit-mae": "facebook/vit-mae-base"}
