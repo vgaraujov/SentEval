@@ -209,7 +209,18 @@ class CoordinationInversionEval(PROBINGEval):
         # labels: 'O', 'I'
         PROBINGEval.__init__(self, 'CoordinationInversion', task_path, seed)
 
-### Multilingual Probing Experiments ###
+"""
+Visual Information
+"""
+
+class MaxCharacter(PROBINGEval):
+    def __init__(self, task_path, seed=1111):
+        task_path = os.path.join(task_path, 'max_character.txt')
+        PROBINGEval.__init__(self, 'MaxCharacter', task_path, seed)
+
+"""
+Multilingual Probing Experiments
+"""
 
 class Multi_Tense(PROBINGEval):
     def __init__(self, task_path, seed=1111):

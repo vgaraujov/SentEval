@@ -87,7 +87,8 @@ class SE(object):
                            'Xfr_OddManOut', 'Xfr_CoordinationInversion',
                            'Xtr_Length', 'Xtr_WordContent', 'Xtr_Depth',
                            'Xtr_BigramShift', 'Xtr_Tense', 'Xtr_SubjNumber', 'Xtr_ObjNumber',
-                           'Xtr_OddManOut', 'Xtr_CoordinationInversion'
+                           'Xtr_OddManOut', 'Xtr_CoordinationInversion',
+                           'Vis_MaxCharacter'
                            ]
 
     def eval(self, name):
@@ -151,6 +152,10 @@ class SE(object):
                 self.evaluation = OddManOutEval(tpath + '/probing', seed=self.params.seed)
         elif name == 'CoordinationInversion':
                 self.evaluation = CoordinationInversionEval(tpath + '/probing', seed=self.params.seed)
+
+        # Visual Probing Tasks
+        elif name == 'Vis_MaxCharacter':
+            self.evaluation = MaxCharacter(tpath + '/probing/Visual', seed=self.params.seed)
 
         # Multilingual Probing Tasks
 

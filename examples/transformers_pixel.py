@@ -160,7 +160,7 @@ if __name__ == "__main__":
     parser.add_argument("--language", default=None, type=str,
                         choices=["Arabic", "Chinese", "Hebrew", "Hindi", "Russian", "Tamil", "Korean", "Japanese",
                                  "English", "English_UD", "Coptic", "Sanskrit",
-                                 "Xru", "Xde", "Xes", "Xfi", "Xfr", "Xtr" ])
+                                 "Xru", "Xde", "Xes", "Xfi", "Xfr", "Xtr", "Vision"])
     parser.add_argument("--pooling", default="cls", type=str,
                         choices=["cls", "mean"],
                         help="which layer to evaluate on")
@@ -216,13 +216,13 @@ if __name__ == "__main__":
         args.seed)
 
     # Set params for DiscoEval or SentEval
-    params = {'task_path': PATH_TO_DATA, 'usepytorch': True, 'kfold': 10, 'batch_size': 16,
-              'tokenizer': processor, 'pooling': args.pooling, 'layer': args.layer, 'model': model,
-              'seed': args.seed, 'save_emb': output_path}
-
     # params = {'task_path': PATH_TO_DATA, 'usepytorch': True, 'kfold': 10, 'batch_size': 16,
     #           'tokenizer': processor, 'pooling': args.pooling, 'layer': args.layer, 'model': model,
-    #           'seed': args.seed, 'save_emb': None}
+    #           'seed': args.seed, 'save_emb': output_path}
+
+    params = {'task_path': PATH_TO_DATA, 'usepytorch': True, 'kfold': 10, 'batch_size': 16,
+              'tokenizer': processor, 'pooling': args.pooling, 'layer': args.layer, 'model': model,
+              'seed': args.seed, 'save_emb': None}
     
     params['classifier'] = {'nhid': 0, 'optim': 'adam', 'batch_size': 64,
                             'tenacity': 5, 'epoch_size': 4}
@@ -269,7 +269,8 @@ if __name__ == "__main__":
          'Xru_OddManOut', 'Xru_CoordinationInversion'],
         ['Xtr_Length', 'Xtr_WordContent', 'Xtr_Depth',
          'Xtr_BigramShift', 'Xtr_Tense', 'Xtr_SubjNumber', 'Xtr_ObjNumber',
-         'Xtr_OddManOut', 'Xtr_CoordinationInversion']
+         'Xtr_OddManOut', 'Xtr_CoordinationInversion'],
+        ["Vis_MaxCharacter"]
 
     ]
     if args.language == "Arabic":
@@ -302,39 +303,49 @@ if __name__ == "__main__":
         results = se.eval(transfer_tasks[13])
     elif args.language == "Xtr":
         results = se.eval(transfer_tasks[14])
+    elif args.language == "Vision":
+        results = se.eval(transfer_tasks[15])
     elif args.language == "English" or None:
         assert args.task_index is not None
         results = se.eval(transfer_tasks_senteval[args.task_index])
     # print(results)
-    if args.language != None and args.task_index == None:
-        output_path = '{}_p={}_l={}_lg={}_s={}'.format(
+    if args.words:
+        output_path = '{}_p={}_l={}_lg={}_s={}_words'.format(
             args.model_name,
             args.pooling,
             args.layer,
             args.language,
             params['seed'])
-
-        pred_path = '{}_p={}_l={}_lg={}_s={}_preds'.format(
-            args.model_name,
-            args.pooling,
-            args.layer,
-            args.language,
-            params['seed'])
-
     else:
-        output_path = '{}_p={}_l={}_t={}_s={}'.format(
-            args.model_name,
-            args.pooling,
-            args.layer,
-            args.task_index,
-            params['seed'])
+        if args.language != None and args.task_index == None:
+            output_path = '{}_p={}_l={}_lg={}_s={}'.format(
+                args.model_name,
+                args.pooling,
+                args.layer,
+                args.language,
+                params['seed'])
 
-        pred_path = '{}_p={}_l={}_t={}_s={}_preds'.format(
-            args.model_name,
-            args.pooling,
-            args.layer,
-            args.task_index,
-            params['seed'])
+            pred_path = '{}_p={}_l={}_lg={}_s={}_preds'.format(
+                args.model_name,
+                args.pooling,
+                args.layer,
+                args.language,
+                params['seed'])
+
+        else:
+            output_path = '{}_p={}_l={}_t={}_s={}'.format(
+                args.model_name,
+                args.pooling,
+                args.layer,
+                args.task_index,
+                params['seed'])
+
+            pred_path = '{}_p={}_l={}_t={}_s={}_preds'.format(
+                args.model_name,
+                args.pooling,
+                args.layer,
+                args.task_index,
+                params['seed'])
 
     with open(output_path + '.pickle', 'wb') as handle:
         pickle.dump(results, handle, protocol=pickle.HIGHEST_PROTOCOL)
