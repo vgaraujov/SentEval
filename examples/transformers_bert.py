@@ -88,7 +88,7 @@ if __name__ == "__main__":
     parser.add_argument("--language", default=None, type=str,
                         choices=["Arabic", "Chinese", "Hebrew", "Hindi", "Russian", "Tamil", "Korean", "Japanese",
                                  "English", "English_UD", "Coptic", "Sanskrit",
-                                 "Xru", "Xde", "Xes", "Xfi", "Xfr", "Xtr" ])
+                                 "Xru", "Xde", "Xes", "Xfi", "Xfr", "Xtr", "Visual"])
     parser.add_argument("--pooling", default="cls", type=str,
                         choices=["cls", "mean"],
                         help="which layer to evaluate on")
@@ -159,7 +159,9 @@ if __name__ == "__main__":
          'Xru_OddManOut', 'Xru_CoordinationInversion'],
         ['Xtr_Length', 'Xtr_WordContent', 'Xtr_Depth',
          'Xtr_BigramShift', 'Xtr_Tense', 'Xtr_SubjNumber', 'Xtr_ObjNumber',
-         'Xtr_OddManOut', 'Xtr_CoordinationInversion']
+         'Xtr_OddManOut', 'Xtr_CoordinationInversion'],
+         ["Vis_MaxCharacter"]
+
     ]
     if args.language == "Arabic":
         results = se.eval(transfer_tasks[0])
@@ -191,6 +193,8 @@ if __name__ == "__main__":
         results = se.eval(transfer_tasks[13])
     elif args.language == "Xtr":
         results = se.eval(transfer_tasks[14])
+    elif args.language == "Visual":
+        results = se.eval(transfer_tasks[15])
     elif args.language == "English" or None:
         assert args.task_index is not None
         results = se.eval(transfer_tasks_senteval[args.task_index])
