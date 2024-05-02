@@ -51,6 +51,7 @@ def batcher(params, batch):
     pooling = params["pooling"]
     layer = params["layer"]
     model = params["model"]
+    model_name = params["model_name"]
     processor = params.tokenizer
     format_fn = glue_strip_spaces
     if "vit" in model.config._name_or_path:
@@ -66,7 +67,7 @@ def batcher(params, batch):
 
     # batch = [[token for token in sent] for sent in batch]
     # batch = [" ".join(sent) if sent != [] else "." for sent in batch]
-    if params["words"]:
+    if model_name == "pixel-words" or model_name == "pixel_r":
         encodings = [processor(text=a.split()) for a in batch]
     else:
         encodings = [processor(text=format_fn(a)) for a in batch]
@@ -153,14 +154,14 @@ if __name__ == "__main__":
 
     ## Required parameters
     parser.add_argument("--model_name", default="pixel", type=str, 
-                        choices=["pixel", "mpixel", "vit-mae"],
+                        choices=["pixel", "mpixel", "vit-mae", "pixel-words", "pixel-r"],
                         help="the name of transformer model to evaluate on")
     parser.add_argument("--task_index", default=None, type=int,
                         help="which task to perform")
     parser.add_argument("--language", default=None, type=str,
                         choices=["Arabic", "Chinese", "Hebrew", "Hindi", "Russian", "Tamil", "Korean", "Japanese",
                                  "English", "English_UD", "Coptic", "Sanskrit",
-                                 "Xru", "Xde", "Xes", "Xfi", "Xfr", "Xtr", "Vision"])
+                                 "Xru", "Xde", "Xes", "Xfi", "Xfr", "Xtr", "Visual"])
     parser.add_argument("--pooling", default="cls", type=str,
                         choices=["cls", "mean"],
                         help="which layer to evaluate on")
@@ -172,11 +173,10 @@ if __name__ == "__main__":
                         help="which max length to use")
     parser.add_argument("--auth", default=None, type=str,
                         help="hf authentication token")
-    parser.add_argument("--words", default=True, type=bool,
-                        help="whether to add horizontal spacing between words")
     args = parser.parse_args()
 
-    model_dict = {"pixel": "Team-PIXEL/pixel-base", "mpixel": "Team-PIXEL/mpixel-base2", "vit-mae": "facebook/vit-mae-base"}
+    model_dict = {"pixel": "Team-PIXEL/pixel-base", "mpixel": "Team-PIXEL/mpixel-base2", "vit-mae": "facebook/vit-mae-base",
+                  "pixel-r": "Team-PIXEL/pixel-base", "pixel-words": "Team-PIXEL/pixel-small-words"}
     access_token = args.auth
 
     # Set up logger
@@ -222,6 +222,7 @@ if __name__ == "__main__":
 
     params = {'task_path': PATH_TO_DATA, 'usepytorch': True, 'kfold': 10, 'batch_size': 16,
               'tokenizer': processor, 'pooling': args.pooling, 'layer': args.layer, 'model': model,
+              'model_name': args.model_name,
               'seed': args.seed, 'save_emb': None}
     
     params['classifier'] = {'nhid': 0, 'optim': 'adam', 'batch_size': 64,
@@ -303,49 +304,42 @@ if __name__ == "__main__":
         results = se.eval(transfer_tasks[13])
     elif args.language == "Xtr":
         results = se.eval(transfer_tasks[14])
-    elif args.language == "Vision":
+    elif args.language == "Visual":
         results = se.eval(transfer_tasks[15])
     elif args.language == "English" or None:
         assert args.task_index is not None
         results = se.eval(transfer_tasks_senteval[args.task_index])
     # print(results)
-    if args.words:
-        output_path = '{}_p={}_l={}_lg={}_s={}_words'.format(
+
+    if args.language != None and args.task_index == None:
+        output_path = '{}_p={}_l={}_lg={}_s={}'.format(
             args.model_name,
             args.pooling,
             args.layer,
             args.language,
             params['seed'])
+
+        pred_path = '{}_p={}_l={}_lg={}_s={}_preds'.format(
+            args.model_name,
+            args.pooling,
+            args.layer,
+            args.language,
+            params['seed'])
+
     else:
-        if args.language != None and args.task_index == None:
-            output_path = '{}_p={}_l={}_lg={}_s={}'.format(
-                args.model_name,
-                args.pooling,
-                args.layer,
-                args.language,
-                params['seed'])
+        output_path = '{}_p={}_l={}_t={}_s={}'.format(
+            args.model_name,
+            args.pooling,
+            args.layer,
+            args.task_index,
+            params['seed'])
 
-            pred_path = '{}_p={}_l={}_lg={}_s={}_preds'.format(
-                args.model_name,
-                args.pooling,
-                args.layer,
-                args.language,
-                params['seed'])
-
-        else:
-            output_path = '{}_p={}_l={}_t={}_s={}'.format(
-                args.model_name,
-                args.pooling,
-                args.layer,
-                args.task_index,
-                params['seed'])
-
-            pred_path = '{}_p={}_l={}_t={}_s={}_preds'.format(
-                args.model_name,
-                args.pooling,
-                args.layer,
-                args.task_index,
-                params['seed'])
+        pred_path = '{}_p={}_l={}_t={}_s={}_preds'.format(
+            args.model_name,
+            args.pooling,
+            args.layer,
+            args.task_index,
+            params['seed'])
 
     with open(output_path + '.pickle', 'wb') as handle:
         pickle.dump(results, handle, protocol=pickle.HIGHEST_PROTOCOL)
