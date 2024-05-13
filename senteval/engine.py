@@ -88,7 +88,9 @@ class SE(object):
                            'Xtr_Length', 'Xtr_WordContent', 'Xtr_Depth',
                            'Xtr_BigramShift', 'Xtr_Tense', 'Xtr_SubjNumber', 'Xtr_ObjNumber',
                            'Xtr_OddManOut', 'Xtr_CoordinationInversion',
-                           'Vis_MaxCharacter'
+                           'Vis_MaxCharacter', 'Vis_CountCharSent', "Vis_CountCharWords",
+                            "Vis_MaxCountSent", "Vis_MaxCountWords", "Vis_OddCharSent",
+                             "Vis_OddCharWords"
                            ]
 
     def eval(self, name):
@@ -156,6 +158,18 @@ class SE(object):
         # Visual Probing Tasks
         elif name == 'Vis_MaxCharacter':
             self.evaluation = MaxCharacter(tpath + '/probing/Visual', seed=self.params.seed)
+        elif name == 'Vis_CountCharSent':
+            self.evaluation = CountCharSent(tpath + '/probing/Visual', seed=self.params.seed)
+        elif name == 'Vis_CountCharWords':
+            self.evaluation = CountCharWords(tpath + '/probing/Visual', seed=self.params.seed)
+        elif name == 'Vis_MaxCountSent':
+            self.evaluation = MaxCountSent(tpath + '/probing/Visual', seed=self.params.seed)
+        elif name == 'Vis_MaxCountWords':
+            self.evaluation = MaxCountWords(tpath + '/probing/Visual', seed=self.params.seed)
+        elif name == 'Vis_OddCharSent':
+            self.evaluation = OddCharSent(tpath + '/probing/Visual', seed=self.params.seed)
+        elif name == 'Vis_OddCharWords':
+            self.evaluation = OddCharWords(tpath + '/probing/Visual', seed=self.params.seed)
 
         # Multilingual Probing Tasks
 

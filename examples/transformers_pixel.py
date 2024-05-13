@@ -283,7 +283,9 @@ if __name__ == "__main__":
         ['Xtr_Length', 'Xtr_WordContent', 'Xtr_Depth',
          'Xtr_BigramShift', 'Xtr_Tense', 'Xtr_SubjNumber', 'Xtr_ObjNumber',
          'Xtr_OddManOut', 'Xtr_CoordinationInversion'],
-        ["Vis_MaxCharacter"]
+        ["Vis_MaxCharacter", "Vis_CountCharSent", "Vis_CountCharWords",
+         "Vis_MaxCountSent", "Vis_MaxCountWords", "Vis_OddCharSent",
+         "Vis_OddCharWords"]
 
     ]
     if args.language == "Arabic":

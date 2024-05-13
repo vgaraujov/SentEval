@@ -218,6 +218,36 @@ class MaxCharacter(PROBINGEval):
         task_path = os.path.join(task_path, 'max_character.txt')
         PROBINGEval.__init__(self, 'MaxCharacter', task_path, seed)
 
+class CountCharSent(PROBINGEval):
+    def __init__(self, task_path, seed=1111):
+        task_path = os.path.join(task_path, 'count_character_sentences.txt')
+        PROBINGEval.__init__(self, 'CountCharSent', task_path, seed)
+
+class CountCharWords(PROBINGEval):
+    def __init__(self, task_path, seed=1111):
+        task_path = os.path.join(task_path, 'count_character_words.txt')
+        PROBINGEval.__init__(self, 'CountCharWord', task_path, seed)
+
+class MaxCountSent(PROBINGEval):
+    def __init__(self, task_path, seed=1111):
+        task_path = os.path.join(task_path, 'max_count_sentences.txt')
+        PROBINGEval.__init__(self, 'MaxCountSent', task_path, seed)
+
+class MaxCountWords(PROBINGEval):
+    def __init__(self, task_path, seed=1111):
+        task_path = os.path.join(task_path, 'max_count_words.txt')
+        PROBINGEval.__init__(self, 'MaxCountWord', task_path, seed)
+
+class OddCharSent(PROBINGEval):
+    def __init__(self, task_path, seed=1111):
+        task_path = os.path.join(task_path, 'odd_character_out_sentences.txt')
+        PROBINGEval.__init__(self, 'OddCharSent', task_path, seed)
+
+class OddCharWords(PROBINGEval):
+    def __init__(self, task_path, seed=1111):
+        task_path = os.path.join(task_path, 'odd_character_out_words.txt')
+        PROBINGEval.__init__(self, 'OddCharWord', task_path, seed)
+
 """
 Multilingual Probing Experiments
 """
