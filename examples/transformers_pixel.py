@@ -68,7 +68,7 @@ def batcher(params, batch):
 
     # batch = [[token for token in sent] for sent in batch]
     # batch = [" ".join(sent) if sent != [] else "." for sent in batch]
-    if model_name == "pixel-words" or model_name == "pixel_r":
+    if model_name == "pixel-words" or model_name == "pixel_r" or model_name == 'pixel-bigrams':
         encodings = [processor(text=a.split()) for a in batch]
     else:
         encodings = [processor(text=format_fn(a)) for a in batch]
