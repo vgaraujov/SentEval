@@ -1,11 +1,12 @@
 #!/bin/bash
 
 
-sbatch genius_probe.slurm English pixel 14768
-sbatch genius_probe.slurm English bert 14768
-sbatch genius_probe.slurm English vit-mae 14768
+sbatch -o pixel-words.out probe_h100.slurm English pixel-words
+sbatch -o pixel-bigrams.out probe_h100.slurm English pixel-bigrams
+sbatch -o pixel-bigrams-r.out probe_h100.slurm English pixel-bigrams-r
 
-sbatch genius_probe.slurm English pixel 74629
-sbatch genius_probe.slurm English bert 74629
-sbatch genius_probe.slurm English vit-mae 74629
+
+
+# sbatch -o visual_bert probe_h100.slurm Visual bert
+# sbatch -o visual_pixel probe_h100.slurm Visual pixel
 

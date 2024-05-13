@@ -31,6 +31,7 @@ from pixel import (
     AutoModelForSequenceClassification,
     Modality,
     PangoCairoTextRenderer,
+    PangoCairoBigramsRenderer,
     PIXELConfig,
     ViTModel,
     PIXELTrainer,
@@ -154,7 +155,7 @@ if __name__ == "__main__":
 
     ## Required parameters
     parser.add_argument("--model_name", default="pixel", type=str, 
-                        choices=["pixel", "mpixel", "vit-mae", "pixel-words", "pixel-r"],
+                        choices=["pixel", "mpixel", "vit-mae", "pixel-words", "pixel-r", "pixel-bigrams", "pixel-bigrams-r", "pixel-words-r"],
                         help="the name of transformer model to evaluate on")
     parser.add_argument("--task_index", default=None, type=int,
                         help="which task to perform")
@@ -176,12 +177,16 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     model_dict = {"pixel": "Team-PIXEL/pixel-base", "mpixel": "Team-PIXEL/mpixel-base2", "vit-mae": "facebook/vit-mae-base",
-                  "pixel-r": "Team-PIXEL/pixel-base", "pixel-words": "Team-PIXEL/pixel-small-words"}
+                  "pixel-r": "Team-PIXEL/pixel-base", "pixel-words": "Team-PIXEL/pixel-small-words", "pixel-bigrams": "Team-PIXEL/pixel-base-bigrams",
+                  "pixel-words-r": "Team-PIXEL/pixel-small-words", "pixel-bigrams-r": "Team-PIXEL/pixel-base-bigrams"}
     access_token = args.auth
 
     # Set up logger
     logging.basicConfig(format='%(asctime)s : %(message)s', level=logging.DEBUG)
-    renderer_cls = PangoCairoTextRenderer
+    if args.model_name == "pixel-bigrams":
+        renderer_cls = PangoCairoBigramsRenderer
+    else:
+        renderer_cls = PangoCairoTextRenderer
     if args.model_name == "vit-mae":
         processor = renderer_cls.from_pretrained(
             model_dict["pixel"],
@@ -189,6 +194,13 @@ if __name__ == "__main__":
             max_seq_length=196,
             fallback_fonts_dir="fallback_fonts",
             use_auth_token=access_token
+        )
+    elif args.model_name == "pixel-bigrams":
+        processor = renderer_cls.from_pretrained(
+            "test_text_renderer_config.json",
+            rgb=False,
+            max_seq_length=args.max_seq_length,
+            fallback_fonts_dir="fallback_fonts"
         )
     else:
         processor = renderer_cls.from_pretrained(

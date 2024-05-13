@@ -1,258 +1,0 @@
-SLURM_JOB_ID: 61083065
-SLURM_JOB_USER: vsc35188
-SLURM_JOB_ACCOUNT: lp_lagom
-SLURM_JOB_NAME: bert_probe
-SLURM_CLUSTER_NAME: wice
-SLURM_JOB_PARTITION: gpu
-SLURM_NNODES: 1
-SLURM_NODELIST: k28g27
-SLURM_JOB_CPUS_PER_NODE: 54
-SLURM_JOB_GPUS: 0,1,2
-Date: Tue Jan 16 21:22:13 CET 2024
-Walltime: 00-06:00:00
-========================================================================
-2024-01-16 21:22:25,551 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:22:25,707 : https://huggingface.co:443 "HEAD /bert-base-multilingual-cased/resolve/main/config.json HTTP/1.1" 200 0
-2024-01-16 21:22:25,730 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:22:25,862 : https://huggingface.co:443 "HEAD /bert-base-multilingual-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
-2024-01-16 21:22:25,867 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:22:26,026 : https://huggingface.co:443 "HEAD /bert-base-multilingual-cased/resolve/main/config.json HTTP/1.1" 200 0
-2024-01-16 21:22:26,031 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:22:26,166 : https://huggingface.co:443 "HEAD /bert-base-multilingual-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
-2024-01-16 21:22:26,169 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:22:26,313 : https://huggingface.co:443 "HEAD /bert-base-multilingual-cased/resolve/main/vocab.txt HTTP/1.1" 200 0
-2024-01-16 21:22:26,316 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:22:26,447 : https://huggingface.co:443 "HEAD /bert-base-multilingual-cased/resolve/main/tokenizer.json HTTP/1.1" 200 0
-2024-01-16 21:22:26,450 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:22:26,583 : https://huggingface.co:443 "HEAD /bert-base-multilingual-cased/resolve/main/added_tokens.json HTTP/1.1" 404 0
-2024-01-16 21:22:26,586 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:22:26,717 : https://huggingface.co:443 "HEAD /bert-base-multilingual-cased/resolve/main/special_tokens_map.json HTTP/1.1" 404 0
-2024-01-16 21:22:26,720 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:22:26,848 : https://huggingface.co:443 "HEAD /bert-base-multilingual-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
-2024-01-16 21:22:26,853 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:22:26,983 : https://huggingface.co:443 "HEAD /bert-base-multilingual-cased/resolve/main/config.json HTTP/1.1" 200 0
-2024-01-16 21:22:27,380 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:22:27,512 : https://huggingface.co:443 "HEAD /bert-base-multilingual-cased/resolve/main/pytorch_model.bin HTTP/1.1" 302 0
-Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertModel: ['cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.predictions.bias']
-- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
-- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-2024-01-16 21:22:36,805 : ***** (Probing) Transfer task : ASPECT classification *****
-2024-01-16 21:22:36,870 : Loaded 661 train - 75 dev - 105 test for Aspect
-2024-01-16 21:22:36,870 : Computing embeddings for train/dev/test
-2024-01-16 21:22:42,354 : Computed embeddings
-2024-01-16 21:22:42,354 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
-2024-01-16 21:22:43,535 : [('reg:1e-05', 84.0), ('reg:0.0001', 84.0), ('reg:0.001', 84.0), ('reg:0.01', 81.33)]
-2024-01-16 21:22:43,536 : Validation : best param found is reg = 1e-05 with score             84.0
-2024-01-16 21:22:43,536 : Evaluating...
-2024-01-16 21:22:43,798 : 
-Dev acc : 84.0 Test acc : 87.6 for ASPECT classification
-
-2024-01-16 21:22:43,798 : ***** (Probing) Transfer task : NUMTYPE classification *****
-2024-01-16 21:22:43,848 : Loaded 2494 train - 296 dev - 305 test for NumType
-2024-01-16 21:22:43,848 : Computing embeddings for train/dev/test
-2024-01-16 21:22:48,285 : Computed embeddings
-2024-01-16 21:22:48,286 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
-2024-01-16 21:22:51,628 : [('reg:1e-05', 94.59), ('reg:0.0001', 94.59), ('reg:0.001', 94.59), ('reg:0.01', 93.58)]
-2024-01-16 21:22:51,628 : Validation : best param found is reg = 1e-05 with score             94.59
-2024-01-16 21:22:51,628 : Evaluating...
-2024-01-16 21:22:52,558 : 
-Dev acc : 94.6 Test acc : 96.4 for NUMTYPE classification
-
-2024-01-16 21:22:52,559 : ***** (Probing) Transfer task : PERSON classification *****
-2024-01-16 21:22:52,601 : Loaded 840 train - 106 dev - 109 test for Person
-2024-01-16 21:22:52,602 : Computing embeddings for train/dev/test
-2024-01-16 21:22:54,118 : Computed embeddings
-2024-01-16 21:22:54,118 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
-2024-01-16 21:22:55,192 : [('reg:1e-05', 98.11), ('reg:0.0001', 98.11), ('reg:0.001', 98.11), ('reg:0.01', 98.11)]
-2024-01-16 21:22:55,192 : Validation : best param found is reg = 1e-05 with score             98.11
-2024-01-16 21:22:55,192 : Evaluating...
-2024-01-16 21:22:55,462 : 
-Dev acc : 98.1 Test acc : 95.4 for PERSON classification
-
-2024-01-16 21:22:55,463 : ***** (Probing) Transfer task : VOICE classification *****
-2024-01-16 21:22:55,508 : Loaded 656 train - 76 dev - 77 test for Voice
-2024-01-16 21:22:55,509 : Computing embeddings for train/dev/test
-2024-01-16 21:22:56,778 : Computed embeddings
-2024-01-16 21:22:56,778 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
-2024-01-16 21:22:57,809 : [('reg:1e-05', 80.26), ('reg:0.0001', 80.26), ('reg:0.001', 80.26), ('reg:0.01', 78.95)]
-2024-01-16 21:22:57,809 : Validation : best param found is reg = 1e-05 with score             80.26
-2024-01-16 21:22:57,809 : Evaluating...
-2024-01-16 21:22:58,074 : 
-Dev acc : 80.3 Test acc : 70.1 for VOICE classification
-
-2024-01-16 21:23:05,320 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:23:05,462 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
-2024-01-16 21:23:05,462 : Attempting to acquire lock 23411397647888 on /data/leuven/351/vsc35188/.cache/huggingface/transformers/a803e0468a8fe090683bdc453f4fac622804f49de86d7cecaee92365d4a0f829.a64a22196690e0e82ead56f388a3ef3a50de93335926ccfa20610217db589307.lock
-2024-01-16 21:23:05,464 : Lock 23411397647888 acquired on /data/leuven/351/vsc35188/.cache/huggingface/transformers/a803e0468a8fe090683bdc453f4fac622804f49de86d7cecaee92365d4a0f829.a64a22196690e0e82ead56f388a3ef3a50de93335926ccfa20610217db589307.lock
-2024-01-16 21:23:05,467 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:23:05,599 : https://huggingface.co:443 "GET /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 570
-Downloading:   0%|          | 0.00/570 [00:00<?, ?B/s]Downloading: 100%|██████████| 570/570 [00:00<00:00, 4.62MB/s]
-2024-01-16 21:23:05,606 : Attempting to release lock 23411397647888 on /data/leuven/351/vsc35188/.cache/huggingface/transformers/a803e0468a8fe090683bdc453f4fac622804f49de86d7cecaee92365d4a0f829.a64a22196690e0e82ead56f388a3ef3a50de93335926ccfa20610217db589307.lock
-2024-01-16 21:23:05,607 : Lock 23411397647888 released on /data/leuven/351/vsc35188/.cache/huggingface/transformers/a803e0468a8fe090683bdc453f4fac622804f49de86d7cecaee92365d4a0f829.a64a22196690e0e82ead56f388a3ef3a50de93335926ccfa20610217db589307.lock
-2024-01-16 21:23:05,611 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:23:05,741 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
-2024-01-16 21:23:05,741 : Attempting to acquire lock 23406812849168 on /data/leuven/351/vsc35188/.cache/huggingface/transformers/ec84e86ee39bfe112543192cf981deebf7e6cbe8c91b8f7f8f63c9be44366158.ec5c189f89475aac7d8cbd243960a0655cfadc3d0474da8ff2ed0bf1699c2a5f.lock
-2024-01-16 21:23:05,743 : Lock 23406812849168 acquired on /data/leuven/351/vsc35188/.cache/huggingface/transformers/ec84e86ee39bfe112543192cf981deebf7e6cbe8c91b8f7f8f63c9be44366158.ec5c189f89475aac7d8cbd243960a0655cfadc3d0474da8ff2ed0bf1699c2a5f.lock
-2024-01-16 21:23:05,745 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:23:05,879 : https://huggingface.co:443 "GET /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 29
-Downloading:   0%|          | 0.00/29.0 [00:00<?, ?B/s]Downloading: 100%|██████████| 29.0/29.0 [00:00<00:00, 249kB/s]
-2024-01-16 21:23:05,883 : Attempting to release lock 23406812849168 on /data/leuven/351/vsc35188/.cache/huggingface/transformers/ec84e86ee39bfe112543192cf981deebf7e6cbe8c91b8f7f8f63c9be44366158.ec5c189f89475aac7d8cbd243960a0655cfadc3d0474da8ff2ed0bf1699c2a5f.lock
-2024-01-16 21:23:05,884 : Lock 23406812849168 released on /data/leuven/351/vsc35188/.cache/huggingface/transformers/ec84e86ee39bfe112543192cf981deebf7e6cbe8c91b8f7f8f63c9be44366158.ec5c189f89475aac7d8cbd243960a0655cfadc3d0474da8ff2ed0bf1699c2a5f.lock
-2024-01-16 21:23:05,888 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:23:06,024 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
-2024-01-16 21:23:06,030 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:23:06,163 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
-2024-01-16 21:23:06,167 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:23:06,301 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/vocab.txt HTTP/1.1" 200 0
-2024-01-16 21:23:06,302 : Attempting to acquire lock 23406733410064 on /data/leuven/351/vsc35188/.cache/huggingface/transformers/6508e60ab3c1200bffa26c95f4b58ac6b6d95fba4db1f195f632fa3cd7bc64cc.437aa611e89f6fc6675a049d2b5545390adbc617e7d655286421c191d2be2791.lock
-2024-01-16 21:23:06,304 : Lock 23406733410064 acquired on /data/leuven/351/vsc35188/.cache/huggingface/transformers/6508e60ab3c1200bffa26c95f4b58ac6b6d95fba4db1f195f632fa3cd7bc64cc.437aa611e89f6fc6675a049d2b5545390adbc617e7d655286421c191d2be2791.lock
-2024-01-16 21:23:06,307 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:23:06,441 : https://huggingface.co:443 "GET /bert-base-cased/resolve/main/vocab.txt HTTP/1.1" 200 213450
-Downloading:   0%|          | 0.00/208k [00:00<?, ?B/s]Downloading:  47%|████▋     | 98.0k/208k [00:00<00:00, 622kB/s]Downloading: 100%|██████████| 208k/208k [00:00<00:00, 1.29MB/s]
-2024-01-16 21:23:06,612 : Attempting to release lock 23406733410064 on /data/leuven/351/vsc35188/.cache/huggingface/transformers/6508e60ab3c1200bffa26c95f4b58ac6b6d95fba4db1f195f632fa3cd7bc64cc.437aa611e89f6fc6675a049d2b5545390adbc617e7d655286421c191d2be2791.lock
-2024-01-16 21:23:06,613 : Lock 23406733410064 released on /data/leuven/351/vsc35188/.cache/huggingface/transformers/6508e60ab3c1200bffa26c95f4b58ac6b6d95fba4db1f195f632fa3cd7bc64cc.437aa611e89f6fc6675a049d2b5545390adbc617e7d655286421c191d2be2791.lock
-2024-01-16 21:23:06,616 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:23:06,750 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer.json HTTP/1.1" 200 0
-2024-01-16 21:23:06,750 : Attempting to acquire lock 23406733336592 on /data/leuven/351/vsc35188/.cache/huggingface/transformers/226a307193a9f4344264cdc76a12988448a25345ba172f2c7421f3b6810fddad.3dab63143af66769bbb35e3811f75f7e16b2320e12b7935e216bd6159ce6d9a6.lock
-2024-01-16 21:23:06,752 : Lock 23406733336592 acquired on /data/leuven/351/vsc35188/.cache/huggingface/transformers/226a307193a9f4344264cdc76a12988448a25345ba172f2c7421f3b6810fddad.3dab63143af66769bbb35e3811f75f7e16b2320e12b7935e216bd6159ce6d9a6.lock
-2024-01-16 21:23:06,754 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:23:06,888 : https://huggingface.co:443 "GET /bert-base-cased/resolve/main/tokenizer.json HTTP/1.1" 200 435797
-Downloading:   0%|          | 0.00/426k [00:00<?, ?B/s]Downloading:  27%|██▋       | 114k/426k [00:00<00:00, 726kB/s]Downloading: 100%|██████████| 426k/426k [00:00<00:00, 1.78MB/s]
-2024-01-16 21:23:07,143 : Attempting to release lock 23406733336592 on /data/leuven/351/vsc35188/.cache/huggingface/transformers/226a307193a9f4344264cdc76a12988448a25345ba172f2c7421f3b6810fddad.3dab63143af66769bbb35e3811f75f7e16b2320e12b7935e216bd6159ce6d9a6.lock
-2024-01-16 21:23:07,144 : Lock 23406733336592 released on /data/leuven/351/vsc35188/.cache/huggingface/transformers/226a307193a9f4344264cdc76a12988448a25345ba172f2c7421f3b6810fddad.3dab63143af66769bbb35e3811f75f7e16b2320e12b7935e216bd6159ce6d9a6.lock
-2024-01-16 21:23:07,146 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:23:07,281 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/added_tokens.json HTTP/1.1" 404 0
-2024-01-16 21:23:07,285 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:23:07,419 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/special_tokens_map.json HTTP/1.1" 404 0
-2024-01-16 21:23:07,422 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:23:07,555 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
-2024-01-16 21:23:07,558 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:23:07,689 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
-2024-01-16 21:23:07,844 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:23:07,973 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/pytorch_model.bin HTTP/1.1" 302 0
-2024-01-16 21:23:07,975 : Attempting to acquire lock 23406725715920 on /data/leuven/351/vsc35188/.cache/huggingface/transformers/092cc582560fc3833e556b3f833695c26343cb54b7e88cd02d40821462a74999.1f48cab6c959fc6c360d22bea39d06959e90f5b002e77e836d2da45464875cda.lock
-2024-01-16 21:23:07,976 : Lock 23406725715920 acquired on /data/leuven/351/vsc35188/.cache/huggingface/transformers/092cc582560fc3833e556b3f833695c26343cb54b7e88cd02d40821462a74999.1f48cab6c959fc6c360d22bea39d06959e90f5b002e77e836d2da45464875cda.lock
-2024-01-16 21:23:07,979 : Starting new HTTPS connection (1): cdn-lfs.huggingface.co:443
-2024-01-16 21:23:08,051 : https://cdn-lfs.huggingface.co:443 "GET /bert-base-cased/d6992b8cd27d7a132eafce6a8210272329a371b1c762d453588795dd3835593e?response-content-disposition=attachment%3B+filename*%3DUTF-8%27%27pytorch_model.bin%3B+filename%3D%22pytorch_model.bin%22%3B&response-content-type=application%2Foctet-stream&Expires=1705694796&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTcwNTY5NDc5Nn19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy5odWdnaW5nZmFjZS5jby9iZXJ0LWJhc2UtY2FzZWQvZDY5OTJiOGNkMjdkN2ExMzJlYWZjZTZhODIxMDI3MjMyOWEzNzFiMWM3NjJkNDUzNTg4Nzk1ZGQzODM1NTkzZT9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPSomcmVzcG9uc2UtY29udGVudC10eXBlPSoifV19&Signature=x1l86GyD8~G6tzo3u4JNZnobtYaxdQx2jjspdtV8-o8uUygqE5QvhTlEe6E6pagyk58jHHB8bvgSfsNdebvcqAqV9qDlHtjZhZWwgMQG5yLxKADosoKix9L0kDfSFRVtq-gHomguNIozu6kXs782EO3~4-N6Wu6R7B5GFwxSpowimjrWjhM2hMiMMulQYKZKMWAznonPwScWzKsOoFHoAmA3DDg2kxYOXiVX2Ub9OtD8ibONCyoo34B0-1ZjXNiu~SYRUMQwtxSBfHd2qQ1g4UpTxCwbuLGHk97B~c9Tggfpj8JaILfZ9i8dyX8WlbhD2qgOXytso-EFV~0IFov0zQ__&Key-Pair-Id=KVTP0A1DKRTAX HTTP/1.1" 200 435779157
-Downloading:   0%|          | 0.00/416M [00:00<?, ?B/s]Downloading:   2%|▏         | 9.03M/416M [00:00<00:04, 94.7MB/s]Downloading:   5%|▍         | 20.7M/416M [00:00<00:03, 111MB/s] Downloading:   8%|▊         | 32.4M/416M [00:00<00:03, 116MB/s]Downloading:  11%|█         | 44.2M/416M [00:00<00:03, 119MB/s]Downloading:  13%|█▎        | 55.9M/416M [00:00<00:03, 121MB/s]Downloading:  16%|█▋        | 67.7M/416M [00:00<00:03, 121MB/s]Downloading:  19%|█▉        | 79.4M/416M [00:00<00:02, 122MB/s]Downloading:  22%|██▏       | 91.2M/416M [00:00<00:02, 123MB/s]Downloading:  25%|██▍       | 103M/416M [00:00<00:02, 123MB/s] Downloading:  28%|██▊       | 115M/416M [00:01<00:02, 122MB/s]Downloading:  30%|███       | 126M/416M [00:01<00:02, 123MB/s]Downloading:  33%|███▎      | 138M/416M [00:01<00:02, 123MB/s]Downloading:  36%|███▌      | 150M/416M [00:01<00:02, 123MB/s]Downloading:  39%|███▉      | 162M/416M [00:01<00:02, 123MB/s]Downloading:  42%|████▏     | 173M/416M [00:01<00:02, 123MB/s]Downloading:  45%|████▍     | 185M/416M [00:01<00:01, 123MB/s]Downloading:  47%|████▋     | 197M/416M [00:01<00:01, 123MB/s]Downloading:  50%|█████     | 209M/416M [00:01<00:01, 123MB/s]Downloading:  53%|█████▎    | 220M/416M [00:01<00:01, 123MB/s]Downloading:  56%|█████▌    | 232M/416M [00:02<00:01, 123MB/s]Downloading:  59%|█████▊    | 244M/416M [00:02<00:01, 123MB/s]Downloading:  62%|██████▏   | 256M/416M [00:02<00:01, 123MB/s]Downloading:  64%|██████▍   | 268M/416M [00:02<00:01, 123MB/s]Downloading:  67%|██████▋   | 279M/416M [00:02<00:01, 123MB/s]Downloading:  70%|███████   | 291M/416M [00:02<00:01, 123MB/s]Downloading:  73%|███████▎  | 303M/416M [00:02<00:00, 123MB/s]Downloading:  76%|███████▌  | 315M/416M [00:02<00:00, 123MB/s]Downloading:  79%|███████▊  | 326M/416M [00:02<00:00, 123MB/s]Downloading:  81%|████████▏ | 338M/416M [00:02<00:00, 123MB/s]Downloading:  84%|████████▍ | 350M/416M [00:03<00:00, 123MB/s]Downloading:  87%|████████▋ | 362M/416M [00:03<00:00, 123MB/s]Downloading:  90%|████████▉ | 373M/416M [00:03<00:00, 123MB/s]Downloading:  93%|█████████▎| 385M/416M [00:03<00:00, 123MB/s]Downloading:  96%|█████████▌| 397M/416M [00:03<00:00, 109MB/s]Downloading:  98%|█████████▊| 409M/416M [00:03<00:00, 113MB/s]Downloading: 100%|██████████| 416M/416M [00:03<00:00, 121MB/s]
-2024-01-16 21:23:12,204 : Attempting to release lock 23406725715920 on /data/leuven/351/vsc35188/.cache/huggingface/transformers/092cc582560fc3833e556b3f833695c26343cb54b7e88cd02d40821462a74999.1f48cab6c959fc6c360d22bea39d06959e90f5b002e77e836d2da45464875cda.lock
-2024-01-16 21:23:12,206 : Lock 23406725715920 released on /data/leuven/351/vsc35188/.cache/huggingface/transformers/092cc582560fc3833e556b3f833695c26343cb54b7e88cd02d40821462a74999.1f48cab6c959fc6c360d22bea39d06959e90f5b002e77e836d2da45464875cda.lock
-Some weights of the model checkpoint at bert-base-cased were not used when initializing BertModel: ['cls.predictions.transform.dense.weight', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.decoder.weight', 'cls.predictions.transform.dense.bias', 'cls.seq_relationship.weight', 'cls.predictions.bias', 'cls.predictions.transform.LayerNorm.bias', 'cls.seq_relationship.bias']
-- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
-- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-2024-01-16 21:23:16,019 : ***** (Probing) Transfer task : ASPECT classification *****
-2024-01-16 21:23:16,025 : Loaded 661 train - 75 dev - 105 test for Aspect
-2024-01-16 21:23:16,026 : Computing embeddings for train/dev/test
-2024-01-16 21:23:17,779 : Computed embeddings
-2024-01-16 21:23:17,779 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
-2024-01-16 21:23:18,526 : [('reg:1e-05', 80.0), ('reg:0.0001', 80.0), ('reg:0.001', 80.0), ('reg:0.01', 80.0)]
-2024-01-16 21:23:18,526 : Validation : best param found is reg = 1e-05 with score             80.0
-2024-01-16 21:23:18,526 : Evaluating...
-2024-01-16 21:23:18,711 : 
-Dev acc : 80.0 Test acc : 87.6 for ASPECT classification
-
-2024-01-16 21:23:18,712 : ***** (Probing) Transfer task : NUMTYPE classification *****
-2024-01-16 21:23:18,720 : Loaded 2494 train - 296 dev - 305 test for NumType
-2024-01-16 21:23:18,720 : Computing embeddings for train/dev/test
-2024-01-16 21:23:23,380 : Computed embeddings
-2024-01-16 21:23:23,380 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
-2024-01-16 21:23:25,925 : [('reg:1e-05', 93.58), ('reg:0.0001', 93.58), ('reg:0.001', 93.58), ('reg:0.01', 93.58)]
-2024-01-16 21:23:25,925 : Validation : best param found is reg = 1e-05 with score             93.58
-2024-01-16 21:23:25,925 : Evaluating...
-2024-01-16 21:23:26,566 : 
-Dev acc : 93.6 Test acc : 95.7 for NUMTYPE classification
-
-2024-01-16 21:23:26,566 : ***** (Probing) Transfer task : PERSON classification *****
-2024-01-16 21:23:26,569 : Loaded 840 train - 106 dev - 109 test for Person
-2024-01-16 21:23:26,570 : Computing embeddings for train/dev/test
-2024-01-16 21:23:28,125 : Computed embeddings
-2024-01-16 21:23:28,125 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
-2024-01-16 21:23:29,054 : [('reg:1e-05', 97.17), ('reg:0.0001', 97.17), ('reg:0.001', 97.17), ('reg:0.01', 97.17)]
-2024-01-16 21:23:29,055 : Validation : best param found is reg = 1e-05 with score             97.17
-2024-01-16 21:23:29,055 : Evaluating...
-2024-01-16 21:23:29,287 : 
-Dev acc : 97.2 Test acc : 95.4 for PERSON classification
-
-2024-01-16 21:23:29,287 : ***** (Probing) Transfer task : VOICE classification *****
-2024-01-16 21:23:29,290 : Loaded 656 train - 76 dev - 77 test for Voice
-2024-01-16 21:23:29,290 : Computing embeddings for train/dev/test
-2024-01-16 21:23:30,591 : Computed embeddings
-2024-01-16 21:23:30,592 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
-2024-01-16 21:23:31,425 : [('reg:1e-05', 59.21), ('reg:0.0001', 59.21), ('reg:0.001', 59.21), ('reg:0.01', 57.89)]
-2024-01-16 21:23:31,425 : Validation : best param found is reg = 1e-05 with score             59.21
-2024-01-16 21:23:31,425 : Evaluating...
-2024-01-16 21:23:31,634 : 
-Dev acc : 59.2 Test acc : 50.6 for VOICE classification
-
-2024-01-16 21:23:42,199 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:23:42,360 : https://huggingface.co:443 "HEAD /Team-PIXEL/pixel-base/resolve/main/text_renderer_config.json HTTP/1.1" 200 0
-2024-01-16 21:23:42,362 : loading text renderer configuration file https://huggingface.co/Team-PIXEL/pixel-base/resolve/main/text_renderer_config.json from cache at /data/leuven/351/vsc35188/.cache/huggingface/transformers/892d6a02d7c441000de399de59ed70d943a81f7b0f536523b4af1111677a8508.e332b34c9c05756dd4aa51d8fa33461dbd79604752296d185f03f8004db30700
-2024-01-16 21:23:42,364 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:23:42,544 : https://huggingface.co:443 "HEAD /Team-PIXEL/pixel-base/resolve/main/GoNotoCurrent.ttf HTTP/1.1" 302 0
-2024-01-16 21:23:42,546 : loading font file https://huggingface.co/Team-PIXEL/pixel-base/resolve/main/GoNotoCurrent.ttf from cache at /data/leuven/351/vsc35188/.cache/huggingface/transformers/49e6dc219d1a1a1c9236acaf05a48b542002016a6dc877ee72baab085a84257b.3f28e7f4b38e1efe1b6da4a3732404c19d4c6a614ff32dce90a251e293d4ce58
-2024-01-16 21:23:42,547 : Loading font from /data/leuven/351/vsc35188/.cache/huggingface/transformers/49e6dc219d1a1a1c9236acaf05a48b542002016a6dc877ee72baab085a84257b.3f28e7f4b38e1efe1b6da4a3732404c19d4c6a614ff32dce90a251e293d4ce58
-2024-01-16 21:23:42,587 : Text renderer PyGameTextRenderer {
-  "background_color": "white",
-  "dpi": 120,
-  "font_color": "black",
-  "font_file": "49e6dc219d1a1a1c9236acaf05a48b542002016a6dc877ee72baab085a84257b.3f28e7f4b38e1efe1b6da4a3732404c19d4c6a614ff32dce90a251e293d4ce58",
-  "font_size": 8,
-  "max_seq_length": 529,
-  "pad_size": 3,
-  "pixels_per_patch": 16,
-  "text_renderer_type": "PyGameTextRenderer"
-}
-
-2024-01-16 21:23:42,589 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:23:42,727 : https://huggingface.co:443 "HEAD /Team-PIXEL/pixel-base/resolve/main/config.json HTTP/1.1" 200 0
-2024-01-16 21:23:42,732 : Starting new HTTPS connection (1): huggingface.co:443
-2024-01-16 21:23:42,872 : https://huggingface.co:443 "HEAD /Team-PIXEL/pixel-base/resolve/main/pytorch_model.bin HTTP/1.1" 302 0
-Some weights of the model checkpoint at Team-PIXEL/pixel-base were not used when initializing ViTModel: ['decoder.decoder_layers.1.layernorm_before.bias', 'decoder.decoder_layers.2.layernorm_before.weight', 'decoder.decoder_layers.6.layernorm_after.bias', 'decoder.decoder_layers.7.attention.attention.key.bias', 'decoder.decoder_layers.3.attention.attention.value.weight', 'decoder.decoder_layers.2.attention.output.dense.bias', 'decoder.decoder_layers.1.attention.attention.query.weight', 'decoder.decoder_layers.6.attention.attention.value.bias', 'decoder.decoder_layers.7.layernorm_before.weight', 'decoder.decoder_layers.6.intermediate.dense.bias', 'decoder.decoder_layers.1.intermediate.dense.bias', 'decoder.decoder_layers.7.attention.attention.value.bias', 'decoder.decoder_layers.3.attention.attention.key.bias', 'decoder.decoder_layers.3.attention.attention.key.weight', 'decoder.decoder_layers.5.attention.attention.value.bias', 'decoder.decoder_layers.0.layernorm_after.bias', 'decoder.decoder_layers.6.layernorm_before.bias', 'decoder.decoder_layers.0.attention.attention.value.bias', 'decoder.decoder_layers.0.intermediate.dense.bias', 'decoder.decoder_layers.0.output.dense.bias', 'decoder.mask_token', 'decoder.decoder_layers.3.layernorm_after.weight', 'decoder.decoder_layers.6.attention.attention.value.weight', 'decoder.decoder_layers.3.attention.output.dense.bias', 'decoder.decoder_layers.0.output.dense.weight', 'decoder.decoder_layers.3.output.dense.bias', 'decoder.decoder_layers.2.attention.attention.query.weight', 'decoder.decoder_layers.1.output.dense.bias', 'decoder.decoder_layers.7.intermediate.dense.weight', 'decoder.decoder_layers.2.intermediate.dense.weight', 'decoder.decoder_layers.4.output.dense.bias', 'decoder.decoder_layers.0.attention.attention.query.bias', 'decoder.decoder_layers.3.intermediate.dense.weight', 'decoder.decoder_layers.6.output.dense.bias', 'decoder.decoder_layers.4.attention.attention.query.weight', 'decoder.decoder_layers.3.attention.attention.value.bias', 'decoder.decoder_layers.3.intermediate.dense.bias', 'decoder.decoder_layers.0.attention.output.dense.weight', 'decoder.decoder_layers.7.attention.attention.value.weight', 'decoder.decoder_layers.2.attention.output.dense.weight', 'decoder.decoder_layers.5.layernorm_after.bias', 'decoder.decoder_layers.1.attention.attention.query.bias', 'decoder.decoder_layers.0.layernorm_before.weight', 'decoder.decoder_layers.1.output.dense.weight', 'decoder.decoder_layers.5.intermediate.dense.weight', 'decoder.decoder_layers.4.attention.attention.key.bias', 'decoder.decoder_layers.4.attention.attention.value.weight', 'decoder.decoder_layers.5.attention.attention.key.weight', 'decoder.decoder_layers.5.attention.output.dense.bias', 'decoder.decoder_layers.2.layernorm_after.bias', 'decoder.decoder_layers.6.layernorm_before.weight', 'decoder.decoder_layers.7.output.dense.bias', 'decoder.decoder_layers.1.attention.attention.key.bias', 'decoder.decoder_layers.6.attention.output.dense.bias', 'decoder.decoder_layers.1.attention.attention.key.weight', 'decoder.decoder_layers.2.layernorm_before.bias', 'decoder.decoder_layers.7.layernorm_after.weight', 'decoder.decoder_layers.4.attention.attention.query.bias', 'decoder.decoder_layers.4.layernorm_before.weight', 'decoder.decoder_pred.weight', 'decoder.decoder_layers.5.output.dense.bias', 'decoder.decoder_layers.4.attention.output.dense.bias', 'decoder.decoder_layers.6.attention.attention.key.bias', 'decoder.decoder_layers.7.layernorm_after.bias', 'decoder.decoder_layers.2.layernorm_after.weight', 'decoder.decoder_layers.7.attention.attention.key.weight', 'decoder.decoder_layers.3.attention.attention.query.bias', 'decoder.decoder_layers.0.attention.attention.value.weight', 'decoder.decoder_layers.7.attention.attention.query.weight', 'decoder.decoder_layers.3.attention.attention.query.weight', 'decoder.decoder_embed.weight', 'decoder.decoder_layers.0.layernorm_after.weight', 'decoder.decoder_layers.4.intermediate.dense.weight', 'decoder.decoder_layers.5.intermediate.dense.bias', 'decoder.decoder_layers.7.output.dense.weight', 'decoder.decoder_layers.4.layernorm_after.bias', 'decoder.decoder_norm.bias', 'decoder.decoder_layers.6.output.dense.weight', 'decoder.decoder_layers.2.attention.attention.key.bias', 'decoder.decoder_pos_embed', 'decoder.decoder_layers.5.output.dense.weight', 'decoder.decoder_layers.0.attention.output.dense.bias', 'decoder.decoder_layers.4.layernorm_after.weight', 'decoder.decoder_layers.0.intermediate.dense.weight', 'decoder.decoder_layers.5.attention.attention.value.weight', 'decoder.decoder_layers.4.attention.attention.value.bias', 'decoder.decoder_layers.1.layernorm_before.weight', 'decoder.decoder_layers.6.attention.attention.query.bias', 'decoder.decoder_layers.1.layernorm_after.weight', 'decoder.decoder_layers.1.attention.attention.value.weight', 'decoder.decoder_layers.2.attention.attention.query.bias', 'decoder.decoder_layers.0.attention.attention.key.bias', 'decoder.decoder_layers.5.layernorm_after.weight', 'decoder.decoder_layers.5.attention.attention.key.bias', 'decoder.decoder_layers.1.intermediate.dense.weight', 'decoder.decoder_layers.0.layernorm_before.bias', 'decoder.decoder_norm.weight', 'decoder.decoder_layers.1.layernorm_after.bias', 'decoder.decoder_layers.6.intermediate.dense.weight', 'decoder.decoder_layers.2.output.dense.weight', 'decoder.decoder_layers.3.attention.output.dense.weight', 'decoder.decoder_layers.4.attention.output.dense.weight', 'decoder.decoder_layers.1.attention.output.dense.weight', 'decoder.decoder_layers.3.layernorm_before.bias', 'decoder.decoder_layers.4.layernorm_before.bias', 'decoder.decoder_layers.0.attention.attention.key.weight', 'decoder.decoder_layers.4.attention.attention.key.weight', 'decoder.decoder_layers.7.attention.attention.query.bias', 'decoder.decoder_layers.7.intermediate.dense.bias', 'decoder.decoder_layers.2.attention.attention.key.weight', 'decoder.decoder_layers.3.output.dense.weight', 'decoder.decoder_layers.7.attention.output.dense.weight', 'decoder.decoder_layers.6.layernorm_after.weight', 'decoder.decoder_layers.3.layernorm_after.bias', 'decoder.decoder_layers.6.attention.output.dense.weight', 'decoder.decoder_layers.1.attention.output.dense.bias', 'decoder.decoder_layers.2.attention.attention.value.bias', 'decoder.decoder_layers.5.layernorm_before.weight', 'decoder.decoder_layers.5.attention.output.dense.weight', 'decoder.decoder_layers.5.attention.attention.query.weight', 'decoder.decoder_pred.bias', 'decoder.decoder_layers.2.attention.attention.value.weight', 'decoder.decoder_layers.2.intermediate.dense.bias', 'decoder.decoder_layers.5.attention.attention.query.bias', 'decoder.decoder_layers.4.output.dense.weight', 'decoder.decoder_layers.7.attention.output.dense.bias', 'decoder.decoder_layers.7.layernorm_before.bias', 'decoder.decoder_layers.3.layernorm_before.weight', 'decoder.decoder_layers.0.attention.attention.query.weight', 'decoder.decoder_layers.4.intermediate.dense.bias', 'decoder.decoder_layers.1.attention.attention.value.bias', 'decoder.decoder_layers.5.layernorm_before.bias', 'decoder.decoder_layers.2.output.dense.bias', 'decoder.decoder_layers.6.attention.attention.key.weight', 'decoder.decoder_layers.6.attention.attention.query.weight', 'decoder.decoder_embed.bias']
-- This IS expected if you are initializing ViTModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
-- This IS NOT expected if you are initializing ViTModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-Some weights of ViTModel were not initialized from the model checkpoint at Team-PIXEL/pixel-base and are newly initialized: ['vit.pooler.dense.bias', 'vit.pooler.dense.weight']
-You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
-2024-01-16 21:23:51,837 : ***** (Probing) Transfer task : ASPECT classification *****
-2024-01-16 21:23:51,841 : Loaded 661 train - 75 dev - 105 test for Aspect
-2024-01-16 21:23:51,841 : Computing embeddings for train/dev/test
-2024-01-16 21:24:17,897 : Computed embeddings
-2024-01-16 21:24:17,898 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
-2024-01-16 21:24:18,647 : [('reg:1e-05', 80.0), ('reg:0.0001', 80.0), ('reg:0.001', 80.0), ('reg:0.01', 80.0)]
-2024-01-16 21:24:18,647 : Validation : best param found is reg = 1e-05 with score             80.0
-2024-01-16 21:24:18,647 : Evaluating...
-2024-01-16 21:24:18,830 : 
-Dev acc : 80.0 Test acc : 87.6 for ASPECT classification
-
-2024-01-16 21:24:18,830 : ***** (Probing) Transfer task : NUMTYPE classification *****
-2024-01-16 21:24:18,846 : Loaded 2494 train - 296 dev - 305 test for NumType
-2024-01-16 21:24:18,846 : Computing embeddings for train/dev/test
-2024-01-16 21:25:28,132 : Computed embeddings
-2024-01-16 21:25:28,132 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
-2024-01-16 21:25:32,077 : [('reg:1e-05', 93.58), ('reg:0.0001', 93.58), ('reg:0.001', 93.58), ('reg:0.01', 93.58)]
-2024-01-16 21:25:32,077 : Validation : best param found is reg = 1e-05 with score             93.58
-2024-01-16 21:25:32,077 : Evaluating...
-2024-01-16 21:25:33,112 : 
-Dev acc : 93.6 Test acc : 95.7 for NUMTYPE classification
-
-2024-01-16 21:25:33,113 : ***** (Probing) Transfer task : PERSON classification *****
-2024-01-16 21:25:33,117 : Loaded 840 train - 106 dev - 109 test for Person
-2024-01-16 21:25:33,118 : Computing embeddings for train/dev/test
-2024-01-16 21:25:54,745 : Computed embeddings
-2024-01-16 21:25:54,746 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
-2024-01-16 21:25:56,224 : [('reg:1e-05', 97.17), ('reg:0.0001', 97.17), ('reg:0.001', 97.17), ('reg:0.01', 97.17)]
-2024-01-16 21:25:56,225 : Validation : best param found is reg = 1e-05 with score             97.17
-2024-01-16 21:25:56,225 : Evaluating...
-2024-01-16 21:25:56,575 : 
-Dev acc : 97.2 Test acc : 95.4 for PERSON classification
-
-2024-01-16 21:25:56,575 : ***** (Probing) Transfer task : VOICE classification *****
-2024-01-16 21:25:56,578 : Loaded 656 train - 76 dev - 77 test for Voice
-2024-01-16 21:25:56,579 : Computing embeddings for train/dev/test
-2024-01-16 21:26:12,172 : Computed embeddings
-2024-01-16 21:26:12,172 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
-2024-01-16 21:26:13,740 : [('reg:1e-05', 60.53), ('reg:0.0001', 60.53), ('reg:0.001', 60.53), ('reg:0.01', 59.21)]
-2024-01-16 21:26:13,740 : Validation : best param found is reg = 1e-05 with score             60.53
-2024-01-16 21:26:13,740 : Evaluating...
-2024-01-16 21:26:14,141 : 
-Dev acc : 60.5 Test acc : 63.6 for VOICE classification
-
