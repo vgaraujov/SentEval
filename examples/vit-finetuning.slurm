@@ -11,7 +11,7 @@
 #SBATCH --job-name=vit-finetune
 
 cd /data/leuven/351/vsc35188/miniconda3/bin/
-source activate pixel-new
+source activate pixel-env
 
 cd $SLURM_SUBMIT_DIR
 
