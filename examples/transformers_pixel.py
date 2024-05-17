@@ -68,8 +68,10 @@ def batcher(params, batch):
 
     # batch = [[token for token in sent] for sent in batch]
     # batch = [" ".join(sent) if sent != [] else "." for sent in batch]
-    if model_name == "pixel-words" or model_name == "pixel_r" or model_name == 'pixel-bigrams':
+    if model_name == "pixel-words" or model_name == "pixel_r":
         encodings = [processor(text=a.split()) for a in batch]
+    elif model_name == "pixel-bigrams":
+        encodings = [processor(a, preprocessor="whitespace_only") for a in batch]
     else:
         encodings = [processor(text=format_fn(a)) for a in batch]
     pixel_values = [transforms(Image.fromarray(e.pixel_values)) for e in encodings]
@@ -284,7 +286,7 @@ if __name__ == "__main__":
          'Xtr_BigramShift', 'Xtr_Tense', 'Xtr_SubjNumber', 'Xtr_ObjNumber',
          'Xtr_OddManOut', 'Xtr_CoordinationInversion'],
         ["Vis_MaxCharacter", "Vis_CountCharSent", "Vis_CountCharWords",
-         "Vis_MaxCountSent", "Vis_MaxCountWords", "Vis_OddCharSent",
+         "Vis_MaxCountSent", "Vis_MaxCountWords", "Vis_OddCharSent", 
          "Vis_OddCharWords"]
 
     ]

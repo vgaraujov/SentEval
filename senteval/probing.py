@@ -45,11 +45,9 @@ class PROBINGEval(object):
             for line in f:
                 line = line.rstrip().split('\t')
                 # self.task_data[self.tok2split[line[0]]]['X'].append(line[-1].split())
-                try:
-                    self.task_data[self.tok2split[line[0]]]['X'].append(line[-1])
-                    self.task_data[self.tok2split[line[0]]]['y'].append(line[1])
-                except:
-                    set_trace()
+                self.task_data[self.tok2split[line[0]]]['X'].append(line[-1])
+                self.task_data[self.tok2split[line[0]]]['y'].append(line[1])
+
 
         labels = sorted(np.unique(self.task_data['train']['y']))
         self.tok2label = dict(zip(labels, range(len(labels))))
@@ -57,7 +55,12 @@ class PROBINGEval(object):
 
         for split in self.task_data:
             for i, y in enumerate(self.task_data[split]['y']):
-                self.task_data[split]['y'][i] = self.tok2label[y]
+                try:
+                    self.task_data[split]['y'][i] = self.tok2label[y]
+                except:
+                    print(y)
+                    print(self.task_data[split]['X'][i])
+                    quit()
 
     def run(self, params, batcher):
         task_embed = {'train': {}, 'dev': {}, 'test': {}}
