@@ -50,12 +50,13 @@ def batcher(params, batch):
 
 dataset = load_dataset("mnist")
 dataset_val = dataset['train'].train_test_split(test_size=10000)
-dataset["train"] = dataset_val["train"][:50]
-dataset["validation"] = dataset_val["test"][:10]
-dataset["test"] = dataset["test"][:10]
+dataset["train"] = dataset_val["train"]
+dataset["validation"] = dataset_val["test"]
+dataset["test"] = dataset["test"]
 print(dataset)
 
 model = ViTModel.from_pretrained("Team-PIXEL/pixel-base")
+model.to("cuda")
 
 resize_model_embeddings(model)
 model.eval()
