@@ -1,0 +1,2273 @@
+SLURM_JOB_ID: 56210478
+SLURM_JOB_USER: vsc35188
+SLURM_JOB_ACCOUNT: lp_lagom
+SLURM_JOB_NAME: genius_probe_per_layer
+SLURM_CLUSTER_NAME: genius
+SLURM_JOB_PARTITION: gpu_v100
+SLURM_NNODES: 1
+SLURM_NODELIST: r24g09
+SLURM_JOB_CPUS_PER_NODE: 4
+SLURM_JOB_GPUS: 4
+Date: Fri May 24 16:17:32 CEST 2024
+Walltime: 00-15:00:00
+========================================================================
+2024-05-24 16:17:39,385 : loading text renderer configuration file UD_English-EWT-dep-pixel-small-words-196-64-1-5e-5-15000-42/text_renderer_config.json
+2024-05-24 16:17:39,398 : loading font file UD_English-EWT-dep-pixel-small-words-196-64-1-5e-5-15000-42/f992c3c235a50254b24f7acbcba7ce1ddc3974d3ba9adf00eef4619e25854aaa.3f28e7f4b38e1efe1b6da4a3732404c19d4c6a614ff32dce90a251e293d4ce58
+2024-05-24 16:17:39,398 : Loading font from UD_English-EWT-dep-pixel-small-words-196-64-1-5e-5-15000-42/f992c3c235a50254b24f7acbcba7ce1ddc3974d3ba9adf00eef4619e25854aaa.3f28e7f4b38e1efe1b6da4a3732404c19d4c6a614ff32dce90a251e293d4ce58
+2024-05-24 16:17:39,547 : Loading fallback font fallback_fonts/NotoSansElymaic-Regular.ttf
+2024-05-24 16:17:39,548 : Loading fallback font fallback_fonts/NotoKufiArabic-Regular.ttf
+2024-05-24 16:17:39,548 : Loading fallback font fallback_fonts/NotoSansTifinaghAzawagh-Regular.ttf
+2024-05-24 16:17:39,548 : Loading fallback font fallback_fonts/NotoSansThaana-Regular.ttf
+2024-05-24 16:17:39,548 : Loading fallback font fallback_fonts/NotoSansBengali-Regular.ttf
+2024-05-24 16:17:39,549 : Loading fallback font fallback_fonts/NotoSansOldPermic-Regular.ttf
+2024-05-24 16:17:39,549 : Loading fallback font fallback_fonts/NotoSansPahawhHmong-Regular.ttf
+2024-05-24 16:17:39,549 : Loading fallback font fallback_fonts/NotoSansSogdian-Regular.ttf
+2024-05-24 16:17:39,549 : Loading fallback font fallback_fonts/NotoSansJavanese-Regular.ttf
+2024-05-24 16:17:39,550 : Loading fallback font fallback_fonts/NotoSansTifinaghAir-Regular.ttf
+2024-05-24 16:17:39,550 : Loading fallback font fallback_fonts/NotoSansUgaritic-Regular.ttf
+2024-05-24 16:17:39,550 : Loading fallback font fallback_fonts/NotoSansGrantha-Regular.ttf
+2024-05-24 16:17:39,550 : Loading fallback font fallback_fonts/NotoSansCJKjp-Regular.otf
+2024-05-24 16:17:39,553 : Loading fallback font fallback_fonts/NotoSansSoraSompeng-Regular.ttf
+2024-05-24 16:17:39,553 : Loading fallback font fallback_fonts/NotoSansVai-Regular.ttf
+2024-05-24 16:17:39,553 : Loading fallback font fallback_fonts/NotoSansCarian-Regular.ttf
+2024-05-24 16:17:39,553 : Loading fallback font fallback_fonts/NotoSansPalmyrene-Regular.ttf
+2024-05-24 16:17:39,554 : Loading fallback font fallback_fonts/NotoSansGujarati-Regular.ttf
+2024-05-24 16:17:39,554 : Loading fallback font fallback_fonts/NotoSansModi-Regular.ttf
+2024-05-24 16:17:39,554 : Loading fallback font fallback_fonts/NotoTraditionalNushu-Regular.ttf
+2024-05-24 16:17:39,554 : Loading fallback font fallback_fonts/NotoSansThaiLoopedUI-Regular.ttf
+2024-05-24 16:17:39,555 : Loading fallback font fallback_fonts/NotoSansHebrewDroid-Regular.ttf
+2024-05-24 16:17:39,555 : Loading fallback font fallback_fonts/NotoSansElbasan-Regular.ttf
+2024-05-24 16:17:39,555 : Loading fallback font fallback_fonts/NotoSansAdlam-Regular.ttf
+2024-05-24 16:17:39,555 : Loading fallback font fallback_fonts/NotoSansMath-Regular.ttf
+2024-05-24 16:17:39,556 : Loading fallback font fallback_fonts/NotoSansMarchen-Regular.ttf
+2024-05-24 16:17:39,556 : Loading fallback font fallback_fonts/AppleColorEmoji.ttf
+2024-05-24 16:17:39,556 : Loading fallback font fallback_fonts/NotoSansMedefaidrin-Regular.ttf
+2024-05-24 16:17:39,557 : Loading fallback font fallback_fonts/NotoSansSharada-Regular.ttf
+2024-05-24 16:17:39,557 : Loading fallback font fallback_fonts/NotoSansTagbanwa-Regular.ttf
+2024-05-24 16:17:39,557 : Loading fallback font fallback_fonts/NotoSansTifinaghAgrawImazighen-Regular.ttf
+2024-05-24 16:17:39,557 : Loading fallback font fallback_fonts/NotoSansGunjalaGondi-Regular.ttf
+2024-05-24 16:17:39,558 : Loading fallback font fallback_fonts/NotoSansBuginese-Regular.ttf
+2024-05-24 16:17:39,558 : Loading fallback font fallback_fonts/NotoSansThaiLooped-Regular.ttf
+2024-05-24 16:17:39,558 : Loading fallback font fallback_fonts/NotoSansNKo-Regular.ttf
+2024-05-24 16:17:39,558 : Loading fallback font fallback_fonts/NotoSansWarangCiti-Regular.ttf
+2024-05-24 16:17:39,559 : Loading fallback font fallback_fonts/NotoSansNKoUnjoined-Regular.ttf
+2024-05-24 16:17:39,559 : Loading fallback font fallback_fonts/NotoSansBuhid-Regular.ttf
+2024-05-24 16:17:39,559 : Loading fallback font fallback_fonts/NotoSansBengaliUI-Regular.ttf
+2024-05-24 16:17:39,559 : Loading fallback font fallback_fonts/NotoSansLaoLooped-Regular.ttf
+2024-05-24 16:17:39,560 : Loading fallback font fallback_fonts/NotoSansInscriptionalPahlavi-Regular.ttf
+2024-05-24 16:17:39,560 : Loading fallback font fallback_fonts/NotoSansTifinaghAPT-Regular.ttf
+2024-05-24 16:17:39,560 : Loading fallback font fallback_fonts/NotoSansOlChiki-Regular.ttf
+2024-05-24 16:17:39,560 : Loading fallback font fallback_fonts/NotoSansNabataean-Regular.ttf
+2024-05-24 16:17:39,561 : Loading fallback font fallback_fonts/NotoSansHanifiRohingya-Regular.ttf
+2024-05-24 16:17:39,561 : Loading fallback font fallback_fonts/NotoSansTifinaghRhissaIxa-Regular.ttf
+2024-05-24 16:17:39,561 : Loading fallback font fallback_fonts/NotoSansSyriacWestern-Regular.ttf
+2024-05-24 16:17:39,561 : Loading fallback font fallback_fonts/NotoSansMyanmar-Regular.ttf
+2024-05-24 16:17:39,562 : Loading fallback font fallback_fonts/NotoSansMandaic-Regular.ttf
+2024-05-24 16:17:39,562 : Loading fallback font fallback_fonts/NotoSansKharoshthi-Regular.ttf
+2024-05-24 16:17:39,562 : Loading fallback font fallback_fonts/NotoSansCoptic-Regular.ttf
+2024-05-24 16:17:39,562 : Loading fallback font fallback_fonts/NotoSansHebrew-Regular.ttf
+2024-05-24 16:17:39,563 : Loading fallback font fallback_fonts/NotoFangsongKSSVertical-Regular.ttf
+2024-05-24 16:17:39,563 : Loading fallback font fallback_fonts/NotoSansLaoUI-Regular.ttf
+2024-05-24 16:17:39,563 : Loading fallback font fallback_fonts/NotoSansGeorgian-Regular.ttf
+2024-05-24 16:17:39,563 : Loading fallback font fallback_fonts/NotoSansOldHungarian-Regular.ttf
+2024-05-24 16:17:39,564 : Loading fallback font fallback_fonts/NotoSansMahajani-Regular.ttf
+2024-05-24 16:17:39,564 : Loading fallback font fallback_fonts/NotoSansBalinese-Regular.ttf
+2024-05-24 16:17:39,564 : Loading fallback font fallback_fonts/NotoSansPhoenician-Regular.ttf
+2024-05-24 16:17:39,564 : Loading fallback font fallback_fonts/NotoSansGurmukhi-Regular.ttf
+2024-05-24 16:17:39,564 : Loading fallback font fallback_fonts/NotoSansHanunoo-Regular.ttf
+2024-05-24 16:17:39,565 : Loading fallback font fallback_fonts/NotoSansArabic-Regular.ttf
+2024-05-24 16:17:39,565 : Loading fallback font fallback_fonts/NotoNaskhArabicUI-Regular.ttf
+2024-05-24 16:17:39,565 : Loading fallback font fallback_fonts/NotoSansSinhala-Regular.ttf
+2024-05-24 16:17:39,566 : Loading fallback font fallback_fonts/NotoSansLepcha-Regular.ttf
+2024-05-24 16:17:39,566 : Loading fallback font fallback_fonts/NotoSansLisu-Regular.ttf
+2024-05-24 16:17:39,566 : Loading fallback font fallback_fonts/NotoSansTangsa-Regular.ttf
+2024-05-24 16:17:39,566 : Loading fallback font fallback_fonts/NotoSansShavian-Regular.ttf
+2024-05-24 16:17:39,566 : Loading fallback font fallback_fonts/NotoSansCypriot-Regular.ttf
+2024-05-24 16:17:39,567 : Loading fallback font fallback_fonts/NotoSansOldSouthArabian-Regular.ttf
+2024-05-24 16:17:39,567 : Loading fallback font fallback_fonts/NotoSansTaiViet-Regular.ttf
+2024-05-24 16:17:39,567 : Loading fallback font fallback_fonts/NotoSansCJKhk-Regular.otf
+2024-05-24 16:17:39,569 : Loading fallback font fallback_fonts/NotoSansTamilSupplement-Regular.ttf
+2024-05-24 16:17:39,569 : Loading fallback font fallback_fonts/NotoSansTaiTham-Regular.ttf
+2024-05-24 16:17:39,570 : Loading fallback font fallback_fonts/NotoSansTaiLe-Regular.ttf
+2024-05-24 16:17:39,570 : Loading fallback font fallback_fonts/NotoSansLao-Regular.ttf
+2024-05-24 16:17:39,570 : Loading fallback font fallback_fonts/NotoSansSymbols2-Regular.ttf
+2024-05-24 16:17:39,570 : Loading fallback font fallback_fonts/NotoSansSylotiNagri-Regular.ttf
+2024-05-24 16:17:39,571 : Loading fallback font fallback_fonts/NotoSansEgyptianHieroglyphs-Regular.ttf
+2024-05-24 16:17:39,571 : Loading fallback font fallback_fonts/NotoSansMendeKikakui-Regular.ttf
+2024-05-24 16:17:39,571 : Loading fallback font fallback_fonts/NotoSansSyriac-Regular.ttf
+2024-05-24 16:17:39,571 : Loading fallback font fallback_fonts/NotoSansBhaiksuki-Regular.ttf
+2024-05-24 16:17:39,572 : Loading fallback font fallback_fonts/NotoSansTamilUI-Regular.ttf
+2024-05-24 16:17:39,572 : Loading fallback font fallback_fonts/NotoSansTamil-Regular.ttf
+2024-05-24 16:17:39,572 : Loading fallback font fallback_fonts/NotoSansVithkuqi-Regular.ttf
+2024-05-24 16:17:39,572 : Loading fallback font fallback_fonts/NotoSansDuployan-Regular.ttf
+2024-05-24 16:17:39,573 : Loading fallback font fallback_fonts/NotoSansNewTaiLue-Regular.ttf
+2024-05-24 16:17:39,573 : Loading fallback font fallback_fonts/NotoSansMayanNumerals-Regular.ttf
+2024-05-24 16:17:39,573 : Loading fallback font fallback_fonts/NotoSansKannadaUI-Regular.ttf
+2024-05-24 16:17:39,574 : Loading fallback font fallback_fonts/NotoSansSaurashtra-Regular.ttf
+2024-05-24 16:17:39,574 : Loading fallback font fallback_fonts/NotoSansCJKkr-Regular.otf
+2024-05-24 16:17:39,576 : Loading fallback font fallback_fonts/NotoMusic-Regular.ttf
+2024-05-24 16:17:39,576 : Loading fallback font fallback_fonts/NotoSansTifinaghSIL-Regular.ttf
+2024-05-24 16:17:39,576 : Loading fallback font fallback_fonts/NotoSansMiao-Regular.ttf
+2024-05-24 16:17:39,577 : Loading fallback font fallback_fonts/NotoSansLydian-Regular.ttf
+2024-05-24 16:17:39,577 : Loading fallback font fallback_fonts/NotoSansInscriptionalParthian-Regular.ttf
+2024-05-24 16:17:39,577 : Loading fallback font fallback_fonts/NotoSansGlagolitic-Regular.ttf
+2024-05-24 16:17:39,577 : Loading fallback font fallback_fonts/NotoSansMyanmarUI-Regular.ttf
+2024-05-24 16:17:39,578 : Loading fallback font fallback_fonts/NotoSansKhmerUI-Regular.ttf
+2024-05-24 16:17:39,578 : Loading fallback font fallback_fonts/NotoSans-Regular.ttf
+2024-05-24 16:17:39,578 : Loading fallback font fallback_fonts/NotoSansPauCinHau-Regular.ttf
+2024-05-24 16:17:39,578 : Loading fallback font fallback_fonts/NotoSansOldHungarianUI-Regular.ttf
+2024-05-24 16:17:39,579 : Loading fallback font fallback_fonts/NotoSansManichaean-Regular.ttf
+2024-05-24 16:17:39,579 : Loading fallback font fallback_fonts/NotoSansTifinaghTawellemmet-Regular.ttf
+2024-05-24 16:17:39,579 : Loading fallback font fallback_fonts/NotoSansArmenian-Regular.ttf
+2024-05-24 16:17:39,579 : Loading fallback font fallback_fonts/NotoSansIndicSiyaqNumbers-Regular.ttf
+2024-05-24 16:17:39,580 : Loading fallback font fallback_fonts/NotoSansWancho-Regular.ttf
+2024-05-24 16:17:39,580 : Loading fallback font fallback_fonts/GoNotoCurrent.ttf
+2024-05-24 16:17:39,581 : Loading fallback font fallback_fonts/NotoSansKhojki-Regular.ttf
+2024-05-24 16:17:39,581 : Loading fallback font fallback_fonts/NotoSansMeroitic-Regular.ttf
+2024-05-24 16:17:39,582 : Loading fallback font fallback_fonts/NotoSansMro-Regular.ttf
+2024-05-24 16:17:39,582 : Loading fallback font fallback_fonts/NotoSansGothic-Regular.ttf
+2024-05-24 16:17:39,582 : Loading fallback font fallback_fonts/NotoSansSyriacEastern-Regular.ttf
+2024-05-24 16:17:39,582 : Loading fallback font fallback_fonts/NotoSansCyproMinoan-Regular.ttf
+2024-05-24 16:17:39,583 : Loading fallback font fallback_fonts/NotoSansLinearB-Regular.ttf
+2024-05-24 16:17:39,583 : Loading fallback font fallback_fonts/NotoSansOriya-Regular.ttf
+2024-05-24 16:17:39,583 : Loading fallback font fallback_fonts/NotoSansLimbu-Regular.ttf
+2024-05-24 16:17:39,583 : Loading fallback font fallback_fonts/NotoSansLycian-Regular.ttf
+2024-05-24 16:17:39,583 : Loading fallback font fallback_fonts/NotoSansKaithi-Regular.ttf
+2024-05-24 16:17:39,584 : Loading fallback font fallback_fonts/NotoSansThaiUI-Regular.ttf
+2024-05-24 16:17:39,584 : Loading fallback font fallback_fonts/NotoSansTifinaghGhat-Regular.ttf
+2024-05-24 16:17:39,584 : Loading fallback font fallback_fonts/NotoSansBatak-Regular.ttf
+2024-05-24 16:17:39,584 : Loading fallback font fallback_fonts/NotoSansNandinagari-Regular.ttf
+2024-05-24 16:17:39,585 : Loading fallback font fallback_fonts/NotoSansEthiopic-Regular.ttf
+2024-05-24 16:17:39,585 : Loading fallback font fallback_fonts/NotoSansKayahLi-Regular.ttf
+2024-05-24 16:17:39,585 : Loading fallback font fallback_fonts/NotoSansNushu-Regular.ttf
+2024-05-24 16:17:39,585 : Loading fallback font fallback_fonts/NotoSansChakma-Regular.ttf
+2024-05-24 16:17:39,586 : Loading fallback font fallback_fonts/NotoSansOsage-Regular.ttf
+2024-05-24 16:17:39,586 : Loading fallback font fallback_fonts/NotoSansTelugu-Regular.ttf
+2024-05-24 16:17:39,586 : Loading fallback font fallback_fonts/NotoSansKhmer-Regular.ttf
+2024-05-24 16:17:39,586 : Loading fallback font fallback_fonts/NotoSansRunic-Regular.ttf
+2024-05-24 16:17:39,587 : Loading fallback font fallback_fonts/NotoSansNagMundari-Regular.ttf
+2024-05-24 16:17:39,587 : Loading fallback font fallback_fonts/NotoSansNewa-Regular.ttf
+2024-05-24 16:17:39,587 : Loading fallback font fallback_fonts/NotoSansLinearA-Regular.ttf
+2024-05-24 16:17:39,587 : Loading fallback font fallback_fonts/NotoSansGurmukhiUI-Regular.ttf
+2024-05-24 16:17:39,588 : Loading fallback font fallback_fonts/NotoSansTest-Regular.ttf
+2024-05-24 16:17:39,588 : Loading fallback font fallback_fonts/NotoSansPhagsPa-Regular.ttf
+2024-05-24 16:17:39,588 : Loading fallback font fallback_fonts/NotoSansBamum-Regular.ttf
+2024-05-24 16:17:39,588 : Loading fallback font fallback_fonts/NotoSansCham-Regular.ttf
+2024-05-24 16:17:39,589 : Loading fallback font fallback_fonts/NotoSansMalayalamUI-Regular.ttf
+2024-05-24 16:17:39,589 : Loading fallback font fallback_fonts/NotoSansLaoLoopedUI-Regular.ttf
+2024-05-24 16:17:39,589 : Loading fallback font fallback_fonts/NotoSansCuneiform-Regular.ttf
+2024-05-24 16:17:39,589 : Loading fallback font fallback_fonts/NotoSansAdlamUnjoined-Regular.ttf
+2024-05-24 16:17:39,590 : Loading fallback font fallback_fonts/NotoSansPsalterPahlavi-Regular.ttf
+2024-05-24 16:17:39,590 : Loading fallback font fallback_fonts/NotoSansTifinaghAhaggar-Regular.ttf
+2024-05-24 16:17:39,590 : Loading fallback font fallback_fonts/NotoSansChorasmian-Regular.ttf
+2024-05-24 16:17:39,590 : Loading fallback font fallback_fonts/NotoSansDevanagari-Regular.ttf
+2024-05-24 16:17:39,591 : Loading fallback font fallback_fonts/NotoSansSoyombo-Regular.ttf
+2024-05-24 16:17:39,591 : Loading fallback font fallback_fonts/NotoSansAvestan-Regular.ttf
+2024-05-24 16:17:39,591 : Loading fallback font fallback_fonts/NotoSansOsmanya-Regular.ttf
+2024-05-24 16:17:39,591 : Loading fallback font fallback_fonts/NotoSansOldItalic-Regular.ttf
+2024-05-24 16:17:39,591 : Loading fallback font fallback_fonts/NotoSansGujaratiUI-Regular.ttf
+2024-05-24 16:17:39,592 : Loading fallback font fallback_fonts/NotoSansTagalog-Regular.ttf
+2024-05-24 16:17:39,592 : Loading fallback font fallback_fonts/NotoSansSignWriting-Regular.ttf
+2024-05-24 16:17:39,592 : Loading fallback font fallback_fonts/NotoSansMono-Regular.ttf
+2024-05-24 16:17:39,593 : Loading fallback font fallback_fonts/NotoSansRejang-Regular.ttf
+2024-05-24 16:17:39,593 : Loading fallback font fallback_fonts/NotoSansOldTurkic-Regular.ttf
+2024-05-24 16:17:39,593 : Loading fallback font fallback_fonts/NotoSansMasaramGondi-Regular.ttf
+2024-05-24 16:17:39,593 : Loading fallback font fallback_fonts/NotoSansDeseret-Regular.ttf
+2024-05-24 16:17:39,594 : Loading fallback font fallback_fonts/NotoSansThai-Regular.ttf
+2024-05-24 16:17:39,594 : Loading fallback font fallback_fonts/NotoSansKhudawadi-Regular.ttf
+2024-05-24 16:17:39,594 : Loading fallback font fallback_fonts/NotoSansOgham-Regular.ttf
+2024-05-24 16:17:39,594 : Loading fallback font fallback_fonts/NotoSansYi-Regular.ttf
+2024-05-24 16:17:39,595 : Loading fallback font fallback_fonts/NotoSansDevanagariUI-Regular.ttf
+2024-05-24 16:17:39,595 : Loading fallback font fallback_fonts/NotoRashiHebrew-Regular.ttf
+2024-05-24 16:17:39,595 : Loading fallback font fallback_fonts/NotoSansDuployan-Regular.otf
+2024-05-24 16:17:39,596 : Loading fallback font fallback_fonts/NotoSansTifinaghHawad-Regular.ttf
+2024-05-24 16:17:39,596 : Loading fallback font fallback_fonts/NotoSansKawi-Regular.ttf
+2024-05-24 16:17:39,596 : Loading fallback font fallback_fonts/NotoSansKannada-Regular.ttf
+2024-05-24 16:17:39,596 : Loading fallback font fallback_fonts/NotoSansTifinagh-Regular.ttf
+2024-05-24 16:17:39,597 : Loading fallback font fallback_fonts/NotoSansOldNorthArabian-Regular.ttf
+2024-05-24 16:17:39,597 : Loading fallback font fallback_fonts/NotoNastaliqUrdu-Regular.ttf
+2024-05-24 16:17:39,597 : Loading fallback font fallback_fonts/NotoSansCJKsc-Regular.otf
+2024-05-24 16:17:39,599 : Loading fallback font fallback_fonts/NotoFangsongKSSRotated-Regular.ttf
+2024-05-24 16:17:39,599 : Loading fallback font fallback_fonts/NotoSansSinhalaUI-Regular.ttf
+2024-05-24 16:17:39,600 : Loading fallback font fallback_fonts/NotoSansTifinaghAdrar-Regular.ttf
+2024-05-24 16:17:39,600 : Loading fallback font fallback_fonts/NotoSansMultani-Regular.ttf
+2024-05-24 16:17:39,600 : Loading fallback font fallback_fonts/NotoSansHatran-Regular.ttf
+2024-05-24 16:17:39,600 : Loading fallback font fallback_fonts/NotoSansCanadianAboriginal-Regular.ttf
+2024-05-24 16:17:39,601 : Loading fallback font fallback_fonts/NotoSansSundanese-Regular.ttf
+2024-05-24 16:17:39,601 : Loading fallback font fallback_fonts/NotoSansSamaritan-Regular.ttf
+2024-05-24 16:17:39,601 : Loading fallback font fallback_fonts/NotoSansTeluguUI-Regular.ttf
+2024-05-24 16:17:39,601 : Loading fallback font fallback_fonts/NotoSansSymbols-Regular.ttf
+2024-05-24 16:17:39,601 : Loading fallback font fallback_fonts/NotoSansBassaVah-Regular.ttf
+2024-05-24 16:17:39,602 : Loading fallback font fallback_fonts/NotoSansMeeteiMayek-Regular.ttf
+2024-05-24 16:17:39,602 : Loading fallback font fallback_fonts/NotoSansCJKtc-Regular.otf
+2024-05-24 16:17:39,604 : Loading fallback font fallback_fonts/NotoSansTakri-Regular.ttf
+2024-05-24 16:17:39,604 : Loading fallback font fallback_fonts/NotoSansAnatolianHieroglyphs-Regular.ttf
+2024-05-24 16:17:39,604 : Loading fallback font fallback_fonts/NotoSansTirhuta-Regular.ttf
+2024-05-24 16:17:39,605 : Loading fallback font fallback_fonts/NotoSansOldPersian-Regular.ttf
+2024-05-24 16:17:39,605 : Loading fallback font fallback_fonts/NotoSansBrahmi-Regular.ttf
+2024-05-24 16:17:39,605 : Loading fallback font fallback_fonts/NotoSansCherokee-Regular.ttf
+2024-05-24 16:17:39,605 : Loading fallback font fallback_fonts/NotoSansSiddham-Regular.ttf
+2024-05-24 16:17:39,606 : Loading fallback font fallback_fonts/NotoSansMongolian-Regular.ttf
+2024-05-24 16:17:39,606 : Loading fallback font fallback_fonts/NotoSansMalayalam-Regular.ttf
+2024-05-24 16:17:39,606 : Loading fallback font fallback_fonts/NotoSansCaucasianAlbanian-Regular.ttf
+2024-05-24 16:17:39,606 : Loading fallback font fallback_fonts/NotoSansOldSogdian-Regular.ttf
+2024-05-24 16:17:39,607 : Loading fallback font fallback_fonts/NotoSansZanabazarSquare-Regular.ttf
+2024-05-24 16:17:39,607 : Loading fallback font fallback_fonts/NotoSansImperialAramaic-Regular.ttf
+2024-05-24 16:17:39,670 : Reading 'name' table from disk
+2024-05-24 16:17:39,701 : Decompiling 'name' table
+2024-05-24 16:17:39,702 : Text renderer PangoCairoTextRenderer {
+  "background_color": "white",
+  "dpi": 120,
+  "font_color": "black",
+  "font_file": "f992c3c235a50254b24f7acbcba7ce1ddc3974d3ba9adf00eef4619e25854aaa.3f28e7f4b38e1efe1b6da4a3732404c19d4c6a614ff32dce90a251e293d4ce58",
+  "font_size": 8,
+  "fonts_list": [
+    "Apple Color Emoji",
+    "C059",
+    "Cantarell",
+    "D050000L",
+    "DejaVu LGC Sans",
+    "DejaVu Sans",
+    "DejaVu Sans Mono",
+    "Droid Sans",
+    "Droid Sans Arabic",
+    "Droid Sans Armenian",
+    "Droid Sans Devanagari",
+    "Droid Sans Ethiopic",
+    "Droid Sans Fallback",
+    "Droid Sans Georgian",
+    "Droid Sans Hebrew",
+    "Droid Sans Japanese",
+    "Droid Sans Tamil",
+    "Droid Sans Thai",
+    "Go Noto Current",
+    "Inconsolata",
+    "Liberation Mono",
+    "Monospace",
+    "Nimbus Mono PS",
+    "Nimbus Roman",
+    "Nimbus Sans",
+    "Nimbus Sans Narrow",
+    "Noto Fangsong KSS Rotated",
+    "Noto Fangsong KSS Vertical",
+    "Noto Kufi Arabic",
+    "Noto Music",
+    "Noto Naskh Arabic UI",
+    "Noto Nastaliq Urdu",
+    "Noto Rashi Hebrew",
+    "Noto Sans",
+    "Noto Sans Adlam",
+    "Noto Sans Adlam Unjoined",
+    "Noto Sans Anatolian Hieroglyphs",
+    "Noto Sans Arabic",
+    "Noto Sans Armenian",
+    "Noto Sans Avestan",
+    "Noto Sans Balinese",
+    "Noto Sans Bamum",
+    "Noto Sans Bassa Vah",
+    "Noto Sans Batak",
+    "Noto Sans Bengali",
+    "Noto Sans Bengali UI",
+    "Noto Sans Bhaiksuki",
+    "Noto Sans Brahmi",
+    "Noto Sans Buginese",
+    "Noto Sans Buhid",
+    "Noto Sans CJK HK",
+    "Noto Sans CJK JP",
+    "Noto Sans CJK KR",
+    "Noto Sans CJK SC",
+    "Noto Sans CJK TC",
+    "Noto Sans Canadian Aboriginal",
+    "Noto Sans Carian",
+    "Noto Sans Caucasian Albanian",
+    "Noto Sans Chakma",
+    "Noto Sans Cham",
+    "Noto Sans Cherokee",
+    "Noto Sans Chorasmian",
+    "Noto Sans Coptic",
+    "Noto Sans Cuneiform",
+    "Noto Sans Cypriot",
+    "Noto Sans Cypro Minoan",
+    "Noto Sans Deseret",
+    "Noto Sans Devanagari",
+    "Noto Sans Devanagari UI",
+    "Noto Sans Duployan",
+    "Noto Sans Egyptian Hieroglyphs",
+    "Noto Sans Elbasan",
+    "Noto Sans Elymaic",
+    "Noto Sans Ethiopic",
+    "Noto Sans Georgian",
+    "Noto Sans Glagolitic",
+    "Noto Sans Gothic",
+    "Noto Sans Grantha",
+    "Noto Sans Gujarati",
+    "Noto Sans Gujarati UI",
+    "Noto Sans Gunjala Gondi",
+    "Noto Sans Gurmukhi",
+    "Noto Sans Gurmukhi UI",
+    "Noto Sans Hanifi Rohingya",
+    "Noto Sans Hanunoo",
+    "Noto Sans Hatran",
+    "Noto Sans Hebrew",
+    "Noto Sans Hebrew Droid",
+    "Noto Sans Imperial Aramaic",
+    "Noto Sans Indic Siyaq Numbers",
+    "Noto Sans Inscriptional Pahlavi",
+    "Noto Sans Inscriptional Parthian",
+    "Noto Sans Javanese",
+    "Noto Sans Kaithi",
+    "Noto Sans Kannada",
+    "Noto Sans Kannada UI",
+    "Noto Sans Kawi",
+    "Noto Sans Kayah Li",
+    "Noto Sans Kharoshthi",
+    "Noto Sans Khmer",
+    "Noto Sans Khmer UI",
+    "Noto Sans Khojki",
+    "Noto Sans Khudawadi",
+    "Noto Sans Lao",
+    "Noto Sans Lao Looped",
+    "Noto Sans Lao Looped UI",
+    "Noto Sans Lao UI",
+    "Noto Sans Lepcha",
+    "Noto Sans Limbu",
+    "Noto Sans Linear A",
+    "Noto Sans Linear B",
+    "Noto Sans Lisu",
+    "Noto Sans Lycian",
+    "Noto Sans Lydian",
+    "Noto Sans Mahajani",
+    "Noto Sans Malayalam",
+    "Noto Sans Malayalam UI",
+    "Noto Sans Mandaic",
+    "Noto Sans Manichaean",
+    "Noto Sans Marchen",
+    "Noto Sans Masaram Gondi",
+    "Noto Sans Math",
+    "Noto Sans Mayan Numerals",
+    "Noto Sans Medefaidrin",
+    "Noto Sans Meetei Mayek",
+    "Noto Sans Mende Kikakui",
+    "Noto Sans Meroitic",
+    "Noto Sans Miao",
+    "Noto Sans Modi",
+    "Noto Sans Mongolian",
+    "Noto Sans Mono",
+    "Noto Sans Mro",
+    "Noto Sans Multani",
+    "Noto Sans Myanmar",
+    "Noto Sans Myanmar UI",
+    "Noto Sans NKo",
+    "Noto Sans NKo Unjoined",
+    "Noto Sans Nabataean",
+    "Noto Sans Nag Mundari",
+    "Noto Sans Nandinagari",
+    "Noto Sans New Tai Lue",
+    "Noto Sans Newa",
+    "Noto Sans Nushu",
+    "Noto Sans Ogham",
+    "Noto Sans Ol Chiki",
+    "Noto Sans Old Hungarian",
+    "Noto Sans Old Italic",
+    "Noto Sans Old North Arabian",
+    "Noto Sans Old Permic",
+    "Noto Sans Old Persian",
+    "Noto Sans Old Sogdian",
+    "Noto Sans Old South Arabian",
+    "Noto Sans Old Turkic",
+    "Noto Sans Oriya",
+    "Noto Sans Osage",
+    "Noto Sans Osmanya",
+    "Noto Sans Pahawh Hmong",
+    "Noto Sans Palmyrene",
+    "Noto Sans Pau Cin Hau",
+    "Noto Sans PhagsPa",
+    "Noto Sans Phoenician",
+    "Noto Sans Psalter Pahlavi",
+    "Noto Sans Rejang",
+    "Noto Sans Runic",
+    "Noto Sans Samaritan",
+    "Noto Sans Saurashtra",
+    "Noto Sans Sharada",
+    "Noto Sans Shavian",
+    "Noto Sans Siddham",
+    "Noto Sans SignWriting",
+    "Noto Sans Sinhala",
+    "Noto Sans Sinhala UI",
+    "Noto Sans Sogdian",
+    "Noto Sans Sora Sompeng",
+    "Noto Sans Soyombo",
+    "Noto Sans Sundanese",
+    "Noto Sans Syloti Nagri",
+    "Noto Sans Symbols",
+    "Noto Sans Symbols 2",
+    "Noto Sans Syriac",
+    "Noto Sans Syriac Eastern",
+    "Noto Sans Syriac Western",
+    "Noto Sans Tagalog",
+    "Noto Sans Tagbanwa",
+    "Noto Sans Tai Le",
+    "Noto Sans Tai Tham",
+    "Noto Sans Tai Viet",
+    "Noto Sans Takri",
+    "Noto Sans Tamil",
+    "Noto Sans Tamil Supplement",
+    "Noto Sans Tamil UI",
+    "Noto Sans Tangsa",
+    "Noto Sans Telugu",
+    "Noto Sans Telugu UI",
+    "Noto Sans Test",
+    "Noto Sans Thaana",
+    "Noto Sans Thai",
+    "Noto Sans Thai Looped",
+    "Noto Sans Thai Looped UI",
+    "Noto Sans Thai UI",
+    "Noto Sans Tifinagh",
+    "Noto Sans Tifinagh APT",
+    "Noto Sans Tifinagh Adrar",
+    "Noto Sans Tifinagh Agraw Imazighen",
+    "Noto Sans Tifinagh Ahaggar",
+    "Noto Sans Tifinagh Air",
+    "Noto Sans Tifinagh Azawagh",
+    "Noto Sans Tifinagh Ghat",
+    "Noto Sans Tifinagh Hawad",
+    "Noto Sans Tifinagh Rhissa Ixa",
+    "Noto Sans Tifinagh SIL",
+    "Noto Sans Tifinagh Tawellemmet",
+    "Noto Sans Tirhuta",
+    "Noto Sans Ugaritic",
+    "Noto Sans Vai",
+    "Noto Sans Vithkuqi",
+    "Noto Sans Wancho",
+    "Noto Sans Warang Citi",
+    "Noto Sans Yi",
+    "Noto Sans Zanabazar Square",
+    "Noto Traditional Nushu",
+    "NotoSansOldHungarianUI",
+    "P052",
+    "Sans",
+    "Serif",
+    "Source Code Pro",
+    "System-ui",
+    "URW Bookman",
+    "URW Gothic",
+    "Ubuntu",
+    "Ubuntu Condensed",
+    "Ubuntu Mono",
+    "Z003"
+  ],
+  "max_seq_length": 196,
+  "pad_size": 3,
+  "pixels_per_patch": 16,
+  "rgb": false,
+  "text_renderer_type": "PangoCairoTextRenderer"
+}
+
+Some weights of the model checkpoint at UD_English-EWT-dep-pixel-small-words-196-64-1-5e-5-15000-42 were not used when initializing ViTModel: ['classifier.bias', 'classifier.weight', 'biaffine_rels.weight', 'biaffine_arcs.weight']
+- This IS expected if you are initializing ViTModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing ViTModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+2024-05-24 16:17:41,295 : ***** (Probing) Transfer task : LENGTH classification *****
+2024-05-24 16:17:41,384 : Loaded 99996 train - 9996 dev - 9996 test for Length
+2024-05-24 16:17:41,387 : Computing embeddings for train/dev/test
+2024-05-24 16:22:00,805 : Computed embeddings
+2024-05-24 16:22:00,806 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 16:25:32,603 : [('reg:1e-05', 93.5), ('reg:0.0001', 92.97), ('reg:0.001', 90.18), ('reg:0.01', 83.35)]
+2024-05-24 16:25:32,604 : Validation : best param found is reg = 1e-05 with score             93.5
+2024-05-24 16:25:32,604 : Evaluating...
+2024-05-24 16:26:40,584 : 
+Dev acc : 93.5 Test acc : 93.7 for LENGTH classification
+
+2024-05-24 16:26:40,597 : ***** (Probing) Transfer task : WORDCONTENT classification *****
+2024-05-24 16:26:40,915 : Loaded 100000 train - 10000 dev - 10000 test for WordContent
+2024-05-24 16:26:40,930 : Computing embeddings for train/dev/test
+2024-05-24 16:30:50,125 : Computed embeddings
+2024-05-24 16:30:50,125 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 16:34:51,504 : [('reg:1e-05', 45.91), ('reg:0.0001', 35.37), ('reg:0.001', 12.72), ('reg:0.01', 1.56)]
+2024-05-24 16:34:51,505 : Validation : best param found is reg = 1e-05 with score             45.91
+2024-05-24 16:34:51,505 : Evaluating...
+2024-05-24 16:36:16,684 : 
+Dev acc : 45.9 Test acc : 45.8 for WORDCONTENT classification
+
+2024-05-24 16:36:16,698 : ***** (Probing) Transfer task : DEPTH classification *****
+2024-05-24 16:36:16,970 : Loaded 100000 train - 10000 dev - 10000 test for Depth
+2024-05-24 16:36:16,986 : Computing embeddings for train/dev/test
+2024-05-24 16:40:18,800 : Computed embeddings
+2024-05-24 16:40:18,801 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 16:43:21,060 : [('reg:1e-05', 44.94), ('reg:0.0001', 44.67), ('reg:0.001', 43.96), ('reg:0.01', 40.9)]
+2024-05-24 16:43:21,061 : Validation : best param found is reg = 1e-05 with score             44.94
+2024-05-24 16:43:21,061 : Evaluating...
+2024-05-24 16:44:06,068 : 
+Dev acc : 44.9 Test acc : 43.5 for DEPTH classification
+
+2024-05-24 16:44:06,080 : ***** (Probing) Transfer task : TOPCONSTITUENTS classification *****
+2024-05-24 16:44:06,410 : Loaded 100000 train - 10000 dev - 10000 test for TopConstituents
+2024-05-24 16:44:06,426 : Computing embeddings for train/dev/test
+2024-05-24 16:48:06,572 : Computed embeddings
+2024-05-24 16:48:06,572 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 16:51:44,595 : [('reg:1e-05', 80.15), ('reg:0.0001', 80.16), ('reg:0.001', 78.15), ('reg:0.01', 71.8)]
+2024-05-24 16:51:44,596 : Validation : best param found is reg = 0.0001 with score             80.16
+2024-05-24 16:51:44,596 : Evaluating...
+2024-05-24 16:52:46,066 : 
+Dev acc : 80.2 Test acc : 80.3 for TOPCONSTITUENTS classification
+
+2024-05-24 16:52:46,078 : ***** (Probing) Transfer task : BIGRAMSHIFT classification *****
+2024-05-24 16:52:46,323 : Loaded 100000 train - 10000 dev - 10000 test for BigramShift
+2024-05-24 16:52:46,341 : Computing embeddings for train/dev/test
+2024-05-24 16:56:50,999 : Computed embeddings
+2024-05-24 16:56:51,000 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 16:58:55,346 : [('reg:1e-05', 78.4), ('reg:0.0001', 78.36), ('reg:0.001', 78.39), ('reg:0.01', 78.0)]
+2024-05-24 16:58:55,346 : Validation : best param found is reg = 1e-05 with score             78.4
+2024-05-24 16:58:55,346 : Evaluating...
+2024-05-24 16:59:23,558 : 
+Dev acc : 78.4 Test acc : 78.3 for BIGRAMSHIFT classification
+
+2024-05-24 16:59:23,571 : ***** (Probing) Transfer task : TENSE classification *****
+2024-05-24 16:59:23,874 : Loaded 100000 train - 10000 dev - 10000 test for Tense
+2024-05-24 16:59:23,889 : Computing embeddings for train/dev/test
+2024-05-24 17:03:36,564 : Computed embeddings
+2024-05-24 17:03:36,565 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 17:05:52,817 : [('reg:1e-05', 90.25), ('reg:0.0001', 90.23), ('reg:0.001', 90.28), ('reg:0.01', 90.24)]
+2024-05-24 17:05:52,818 : Validation : best param found is reg = 0.001 with score             90.28
+2024-05-24 17:05:52,818 : Evaluating...
+2024-05-24 17:06:25,740 : 
+Dev acc : 90.3 Test acc : 88.7 for TENSE classification
+
+2024-05-24 17:06:25,752 : ***** (Probing) Transfer task : SUBJNUMBER classification *****
+2024-05-24 17:06:26,078 : Loaded 100000 train - 10000 dev - 10000 test for SubjNumber
+2024-05-24 17:06:26,094 : Computing embeddings for train/dev/test
+2024-05-24 17:10:35,948 : Computed embeddings
+2024-05-24 17:10:35,948 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 17:12:55,042 : [('reg:1e-05', 88.15), ('reg:0.0001', 88.13), ('reg:0.001', 88.1), ('reg:0.01', 87.1)]
+2024-05-24 17:12:55,042 : Validation : best param found is reg = 1e-05 with score             88.15
+2024-05-24 17:12:55,042 : Evaluating...
+2024-05-24 17:13:28,721 : 
+Dev acc : 88.2 Test acc : 86.6 for SUBJNUMBER classification
+
+2024-05-24 17:13:28,734 : ***** (Probing) Transfer task : OBJNUMBER classification *****
+2024-05-24 17:13:29,046 : Loaded 100000 train - 10000 dev - 10000 test for ObjNumber
+2024-05-24 17:13:29,061 : Computing embeddings for train/dev/test
+2024-05-24 17:17:32,360 : Computed embeddings
+2024-05-24 17:17:32,360 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 17:20:19,076 : [('reg:1e-05', 87.22), ('reg:0.0001', 87.19), ('reg:0.001', 87.05), ('reg:0.01', 85.88)]
+2024-05-24 17:20:19,076 : Validation : best param found is reg = 1e-05 with score             87.22
+2024-05-24 17:20:19,076 : Evaluating...
+2024-05-24 17:21:05,040 : 
+Dev acc : 87.2 Test acc : 87.1 for OBJNUMBER classification
+
+2024-05-24 17:21:05,053 : ***** (Probing) Transfer task : ODDMANOUT classification *****
+2024-05-24 17:21:05,438 : Loaded 100000 train - 10000 dev - 10000 test for OddManOut
+2024-05-24 17:21:05,454 : Computing embeddings for train/dev/test
+2024-05-24 17:25:28,321 : Computed embeddings
+2024-05-24 17:25:28,321 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 17:27:49,834 : [('reg:1e-05', 52.16), ('reg:0.0001', 52.11), ('reg:0.001', 52.08), ('reg:0.01', 51.63)]
+2024-05-24 17:27:49,836 : Validation : best param found is reg = 1e-05 with score             52.16
+2024-05-24 17:27:49,836 : Evaluating...
+2024-05-24 17:28:23,545 : 
+Dev acc : 52.2 Test acc : 50.6 for ODDMANOUT classification
+
+2024-05-24 17:28:23,559 : ***** (Probing) Transfer task : COORDINATIONINVERSION classification *****
+2024-05-24 17:28:23,879 : Loaded 100002 train - 10002 dev - 10002 test for CoordinationInversion
+2024-05-24 17:28:23,895 : Computing embeddings for train/dev/test
+2024-05-24 17:32:37,502 : Computed embeddings
+2024-05-24 17:32:37,502 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 17:35:23,660 : [('reg:1e-05', 60.55), ('reg:0.0001', 60.48), ('reg:0.001', 60.45), ('reg:0.01', 59.4)]
+2024-05-24 17:35:23,660 : Validation : best param found is reg = 1e-05 with score             60.55
+2024-05-24 17:35:23,660 : Evaluating...
+2024-05-24 17:36:07,260 : 
+Dev acc : 60.5 Test acc : 60.8 for COORDINATIONINVERSION classification
+
+2024-05-24 17:36:18,316 : loading text renderer configuration file UD_English-EWT-dep-pixel-small-words-196-64-1-5e-5-15000-42/text_renderer_config.json
+2024-05-24 17:36:18,334 : loading font file UD_English-EWT-dep-pixel-small-words-196-64-1-5e-5-15000-42/f992c3c235a50254b24f7acbcba7ce1ddc3974d3ba9adf00eef4619e25854aaa.3f28e7f4b38e1efe1b6da4a3732404c19d4c6a614ff32dce90a251e293d4ce58
+2024-05-24 17:36:18,334 : Loading font from UD_English-EWT-dep-pixel-small-words-196-64-1-5e-5-15000-42/f992c3c235a50254b24f7acbcba7ce1ddc3974d3ba9adf00eef4619e25854aaa.3f28e7f4b38e1efe1b6da4a3732404c19d4c6a614ff32dce90a251e293d4ce58
+2024-05-24 17:36:18,453 : Loading fallback font fallback_fonts/NotoSansElymaic-Regular.ttf
+2024-05-24 17:36:18,526 : Loading fallback font fallback_fonts/NotoKufiArabic-Regular.ttf
+2024-05-24 17:36:18,552 : Loading fallback font fallback_fonts/NotoSansTifinaghAzawagh-Regular.ttf
+2024-05-24 17:36:18,613 : Loading fallback font fallback_fonts/NotoSansThaana-Regular.ttf
+2024-05-24 17:36:18,643 : Loading fallback font fallback_fonts/NotoSansBengali-Regular.ttf
+2024-05-24 17:36:18,694 : Loading fallback font fallback_fonts/NotoSansOldPermic-Regular.ttf
+2024-05-24 17:36:18,727 : Loading fallback font fallback_fonts/NotoSansPahawhHmong-Regular.ttf
+2024-05-24 17:36:18,791 : Loading fallback font fallback_fonts/NotoSansSogdian-Regular.ttf
+2024-05-24 17:36:18,824 : Loading fallback font fallback_fonts/NotoSansJavanese-Regular.ttf
+2024-05-24 17:36:18,863 : Loading fallback font fallback_fonts/NotoSansTifinaghAir-Regular.ttf
+2024-05-24 17:36:18,903 : Loading fallback font fallback_fonts/NotoSansUgaritic-Regular.ttf
+2024-05-24 17:36:18,924 : Loading fallback font fallback_fonts/NotoSansGrantha-Regular.ttf
+2024-05-24 17:36:19,037 : Loading fallback font fallback_fonts/NotoSansCJKjp-Regular.otf
+2024-05-24 17:36:19,312 : Loading fallback font fallback_fonts/NotoSansSoraSompeng-Regular.ttf
+2024-05-24 17:36:19,343 : Loading fallback font fallback_fonts/NotoSansVai-Regular.ttf
+2024-05-24 17:36:19,379 : Loading fallback font fallback_fonts/NotoSansCarian-Regular.ttf
+2024-05-24 17:36:19,429 : Loading fallback font fallback_fonts/NotoSansPalmyrene-Regular.ttf
+2024-05-24 17:36:19,460 : Loading fallback font fallback_fonts/NotoSansGujarati-Regular.ttf
+2024-05-24 17:36:19,524 : Loading fallback font fallback_fonts/NotoSansModi-Regular.ttf
+2024-05-24 17:36:19,576 : Loading fallback font fallback_fonts/NotoTraditionalNushu-Regular.ttf
+2024-05-24 17:36:19,616 : Loading fallback font fallback_fonts/NotoSansThaiLoopedUI-Regular.ttf
+2024-05-24 17:36:19,667 : Loading fallback font fallback_fonts/NotoSansHebrewDroid-Regular.ttf
+2024-05-24 17:36:19,703 : Loading fallback font fallback_fonts/NotoSansElbasan-Regular.ttf
+2024-05-24 17:36:19,730 : Loading fallback font fallback_fonts/NotoSansAdlam-Regular.ttf
+2024-05-24 17:36:19,772 : Loading fallback font fallback_fonts/NotoSansMath-Regular.ttf
+2024-05-24 17:36:19,847 : Loading fallback font fallback_fonts/NotoSansMarchen-Regular.ttf
+2024-05-24 17:36:19,893 : Loading fallback font fallback_fonts/AppleColorEmoji.ttf
+2024-05-24 17:36:19,975 : Loading fallback font fallback_fonts/NotoSansMedefaidrin-Regular.ttf
+2024-05-24 17:36:19,996 : Loading fallback font fallback_fonts/NotoSansSharada-Regular.ttf
+2024-05-24 17:36:20,037 : Loading fallback font fallback_fonts/NotoSansTagbanwa-Regular.ttf
+2024-05-24 17:36:20,077 : Loading fallback font fallback_fonts/NotoSansTifinaghAgrawImazighen-Regular.ttf
+2024-05-24 17:36:20,134 : Loading fallback font fallback_fonts/NotoSansGunjalaGondi-Regular.ttf
+2024-05-24 17:36:20,182 : Loading fallback font fallback_fonts/NotoSansBuginese-Regular.ttf
+2024-05-24 17:36:20,229 : Loading fallback font fallback_fonts/NotoSansThaiLooped-Regular.ttf
+2024-05-24 17:36:20,279 : Loading fallback font fallback_fonts/NotoSansNKo-Regular.ttf
+2024-05-24 17:36:20,336 : Loading fallback font fallback_fonts/NotoSansWarangCiti-Regular.ttf
+2024-05-24 17:36:20,352 : Loading fallback font fallback_fonts/NotoSansNKoUnjoined-Regular.ttf
+2024-05-24 17:36:20,363 : Loading fallback font fallback_fonts/NotoSansBuhid-Regular.ttf
+2024-05-24 17:36:20,407 : Loading fallback font fallback_fonts/NotoSansBengaliUI-Regular.ttf
+2024-05-24 17:36:20,519 : Loading fallback font fallback_fonts/NotoSansLaoLooped-Regular.ttf
+2024-05-24 17:36:20,544 : Loading fallback font fallback_fonts/NotoSansInscriptionalPahlavi-Regular.ttf
+2024-05-24 17:36:20,551 : Loading fallback font fallback_fonts/NotoSansTifinaghAPT-Regular.ttf
+2024-05-24 17:36:20,577 : Loading fallback font fallback_fonts/NotoSansOlChiki-Regular.ttf
+2024-05-24 17:36:20,610 : Loading fallback font fallback_fonts/NotoSansNabataean-Regular.ttf
+2024-05-24 17:36:20,636 : Loading fallback font fallback_fonts/NotoSansHanifiRohingya-Regular.ttf
+2024-05-24 17:36:20,658 : Loading fallback font fallback_fonts/NotoSansTifinaghRhissaIxa-Regular.ttf
+2024-05-24 17:36:20,689 : Loading fallback font fallback_fonts/NotoSansSyriacWestern-Regular.ttf
+2024-05-24 17:36:20,736 : Loading fallback font fallback_fonts/NotoSansMyanmar-Regular.ttf
+2024-05-24 17:36:20,828 : Loading fallback font fallback_fonts/NotoSansMandaic-Regular.ttf
+2024-05-24 17:36:20,844 : Loading fallback font fallback_fonts/NotoSansKharoshthi-Regular.ttf
+2024-05-24 17:36:20,876 : Loading fallback font fallback_fonts/NotoSansCoptic-Regular.ttf
+2024-05-24 17:36:20,882 : Loading fallback font fallback_fonts/NotoSansHebrew-Regular.ttf
+2024-05-24 17:36:20,929 : Loading fallback font fallback_fonts/NotoFangsongKSSVertical-Regular.ttf
+2024-05-24 17:36:21,022 : Loading fallback font fallback_fonts/NotoSansLaoUI-Regular.ttf
+2024-05-24 17:36:21,098 : Loading fallback font fallback_fonts/NotoSansGeorgian-Regular.ttf
+2024-05-24 17:36:21,126 : Loading fallback font fallback_fonts/NotoSansOldHungarian-Regular.ttf
+2024-05-24 17:36:21,157 : Loading fallback font fallback_fonts/NotoSansMahajani-Regular.ttf
+2024-05-24 17:36:21,178 : Loading fallback font fallback_fonts/NotoSansBalinese-Regular.ttf
+2024-05-24 17:36:21,233 : Loading fallback font fallback_fonts/NotoSansPhoenician-Regular.ttf
+2024-05-24 17:36:21,270 : Loading fallback font fallback_fonts/NotoSansGurmukhi-Regular.ttf
+2024-05-24 17:36:21,296 : Loading fallback font fallback_fonts/NotoSansHanunoo-Regular.ttf
+2024-05-24 17:36:21,339 : Loading fallback font fallback_fonts/NotoSansArabic-Regular.ttf
+2024-05-24 17:36:21,420 : Loading fallback font fallback_fonts/NotoNaskhArabicUI-Regular.ttf
+2024-05-24 17:36:21,513 : Loading fallback font fallback_fonts/NotoSansSinhala-Regular.ttf
+2024-05-24 17:36:21,549 : Loading fallback font fallback_fonts/NotoSansLepcha-Regular.ttf
+2024-05-24 17:36:21,564 : Loading fallback font fallback_fonts/NotoSansLisu-Regular.ttf
+2024-05-24 17:36:21,609 : Loading fallback font fallback_fonts/NotoSansTangsa-Regular.ttf
+2024-05-24 17:36:21,640 : Loading fallback font fallback_fonts/NotoSansShavian-Regular.ttf
+2024-05-24 17:36:21,675 : Loading fallback font fallback_fonts/NotoSansCypriot-Regular.ttf
+2024-05-24 17:36:21,702 : Loading fallback font fallback_fonts/NotoSansOldSouthArabian-Regular.ttf
+2024-05-24 17:36:21,715 : Loading fallback font fallback_fonts/NotoSansTaiViet-Regular.ttf
+2024-05-24 17:36:21,752 : Loading fallback font fallback_fonts/NotoSansCJKhk-Regular.otf
+2024-05-24 17:36:21,998 : Loading fallback font fallback_fonts/NotoSansTamilSupplement-Regular.ttf
+2024-05-24 17:36:22,026 : Loading fallback font fallback_fonts/NotoSansTaiTham-Regular.ttf
+2024-05-24 17:36:22,055 : Loading fallback font fallback_fonts/NotoSansTaiLe-Regular.ttf
+2024-05-24 17:36:22,070 : Loading fallback font fallback_fonts/NotoSansLao-Regular.ttf
+2024-05-24 17:36:22,076 : Loading fallback font fallback_fonts/NotoSansSymbols2-Regular.ttf
+2024-05-24 17:36:22,118 : Loading fallback font fallback_fonts/NotoSansSylotiNagri-Regular.ttf
+2024-05-24 17:36:22,159 : Loading fallback font fallback_fonts/NotoSansEgyptianHieroglyphs-Regular.ttf
+2024-05-24 17:36:22,216 : Loading fallback font fallback_fonts/NotoSansMendeKikakui-Regular.ttf
+2024-05-24 17:36:22,229 : Loading fallback font fallback_fonts/NotoSansSyriac-Regular.ttf
+2024-05-24 17:36:22,265 : Loading fallback font fallback_fonts/NotoSansBhaiksuki-Regular.ttf
+2024-05-24 17:36:22,350 : Loading fallback font fallback_fonts/NotoSansTamilUI-Regular.ttf
+2024-05-24 17:36:22,371 : Loading fallback font fallback_fonts/NotoSansTamil-Regular.ttf
+2024-05-24 17:36:22,419 : Loading fallback font fallback_fonts/NotoSansVithkuqi-Regular.ttf
+2024-05-24 17:36:22,420 : Loading fallback font fallback_fonts/NotoSansDuployan-Regular.ttf
+2024-05-24 17:36:22,548 : Loading fallback font fallback_fonts/NotoSansNewTaiLue-Regular.ttf
+2024-05-24 17:36:22,578 : Loading fallback font fallback_fonts/NotoSansMayanNumerals-Regular.ttf
+2024-05-24 17:36:22,580 : Loading fallback font fallback_fonts/NotoSansKannadaUI-Regular.ttf
+2024-05-24 17:36:22,627 : Loading fallback font fallback_fonts/NotoSansSaurashtra-Regular.ttf
+2024-05-24 17:36:22,628 : Loading fallback font fallback_fonts/NotoSansCJKkr-Regular.otf
+2024-05-24 17:36:22,809 : Loading fallback font fallback_fonts/NotoMusic-Regular.ttf
+2024-05-24 17:36:22,840 : Loading fallback font fallback_fonts/NotoSansTifinaghSIL-Regular.ttf
+2024-05-24 17:36:22,872 : Loading fallback font fallback_fonts/NotoSansMiao-Regular.ttf
+2024-05-24 17:36:22,896 : Loading fallback font fallback_fonts/NotoSansLydian-Regular.ttf
+2024-05-24 17:36:22,931 : Loading fallback font fallback_fonts/NotoSansInscriptionalParthian-Regular.ttf
+2024-05-24 17:36:22,972 : Loading fallback font fallback_fonts/NotoSansGlagolitic-Regular.ttf
+2024-05-24 17:36:22,987 : Loading fallback font fallback_fonts/NotoSansMyanmarUI-Regular.ttf
+2024-05-24 17:36:23,080 : Loading fallback font fallback_fonts/NotoSansKhmerUI-Regular.ttf
+2024-05-24 17:36:23,136 : Loading fallback font fallback_fonts/NotoSans-Regular.ttf
+2024-05-24 17:36:23,216 : Loading fallback font fallback_fonts/NotoSansPauCinHau-Regular.ttf
+2024-05-24 17:36:23,248 : Loading fallback font fallback_fonts/NotoSansOldHungarianUI-Regular.ttf
+2024-05-24 17:36:23,249 : Loading fallback font fallback_fonts/NotoSansManichaean-Regular.ttf
+2024-05-24 17:36:23,273 : Loading fallback font fallback_fonts/NotoSansTifinaghTawellemmet-Regular.ttf
+2024-05-24 17:36:23,294 : Loading fallback font fallback_fonts/NotoSansArmenian-Regular.ttf
+2024-05-24 17:36:23,307 : Loading fallback font fallback_fonts/NotoSansIndicSiyaqNumbers-Regular.ttf
+2024-05-24 17:36:23,342 : Loading fallback font fallback_fonts/NotoSansWancho-Regular.ttf
+2024-05-24 17:36:23,372 : Loading fallback font fallback_fonts/GoNotoCurrent.ttf
+2024-05-24 17:36:23,539 : Loading fallback font fallback_fonts/NotoSansKhojki-Regular.ttf
+2024-05-24 17:36:23,584 : Loading fallback font fallback_fonts/NotoSansMeroitic-Regular.ttf
+2024-05-24 17:36:23,628 : Loading fallback font fallback_fonts/NotoSansMro-Regular.ttf
+2024-05-24 17:36:23,676 : Loading fallback font fallback_fonts/NotoSansGothic-Regular.ttf
+2024-05-24 17:36:23,715 : Loading fallback font fallback_fonts/NotoSansSyriacEastern-Regular.ttf
+2024-05-24 17:36:23,748 : Loading fallback font fallback_fonts/NotoSansCyproMinoan-Regular.ttf
+2024-05-24 17:36:23,767 : Loading fallback font fallback_fonts/NotoSansLinearB-Regular.ttf
+2024-05-24 17:36:23,820 : Loading fallback font fallback_fonts/NotoSansOriya-Regular.ttf
+2024-05-24 17:36:23,875 : Loading fallback font fallback_fonts/NotoSansLimbu-Regular.ttf
+2024-05-24 17:36:23,906 : Loading fallback font fallback_fonts/NotoSansLycian-Regular.ttf
+2024-05-24 17:36:23,925 : Loading fallback font fallback_fonts/NotoSansKaithi-Regular.ttf
+2024-05-24 17:36:23,963 : Loading fallback font fallback_fonts/NotoSansThaiUI-Regular.ttf
+2024-05-24 17:36:24,004 : Loading fallback font fallback_fonts/NotoSansTifinaghGhat-Regular.ttf
+2024-05-24 17:36:24,040 : Loading fallback font fallback_fonts/NotoSansBatak-Regular.ttf
+2024-05-24 17:36:24,059 : Loading fallback font fallback_fonts/NotoSansNandinagari-Regular.ttf
+2024-05-24 17:36:24,118 : Loading fallback font fallback_fonts/NotoSansEthiopic-Regular.ttf
+2024-05-24 17:36:24,186 : Loading fallback font fallback_fonts/NotoSansKayahLi-Regular.ttf
+2024-05-24 17:36:24,214 : Loading fallback font fallback_fonts/NotoSansNushu-Regular.ttf
+2024-05-24 17:36:24,259 : Loading fallback font fallback_fonts/NotoSansChakma-Regular.ttf
+2024-05-24 17:36:24,281 : Loading fallback font fallback_fonts/NotoSansOsage-Regular.ttf
+2024-05-24 17:36:24,329 : Loading fallback font fallback_fonts/NotoSansTelugu-Regular.ttf
+2024-05-24 17:36:24,331 : Loading fallback font fallback_fonts/NotoSansKhmer-Regular.ttf
+2024-05-24 17:36:24,405 : Loading fallback font fallback_fonts/NotoSansRunic-Regular.ttf
+2024-05-24 17:36:24,441 : Loading fallback font fallback_fonts/NotoSansNagMundari-Regular.ttf
+2024-05-24 17:36:24,475 : Loading fallback font fallback_fonts/NotoSansNewa-Regular.ttf
+2024-05-24 17:36:24,532 : Loading fallback font fallback_fonts/NotoSansLinearA-Regular.ttf
+2024-05-24 17:36:24,561 : Loading fallback font fallback_fonts/NotoSansGurmukhiUI-Regular.ttf
+2024-05-24 17:36:24,571 : Loading fallback font fallback_fonts/NotoSansTest-Regular.ttf
+2024-05-24 17:36:24,598 : Loading fallback font fallback_fonts/NotoSansPhagsPa-Regular.ttf
+2024-05-24 17:36:24,611 : Loading fallback font fallback_fonts/NotoSansBamum-Regular.ttf
+2024-05-24 17:36:24,664 : Loading fallback font fallback_fonts/NotoSansCham-Regular.ttf
+2024-05-24 17:36:24,666 : Loading fallback font fallback_fonts/NotoSansMalayalamUI-Regular.ttf
+2024-05-24 17:36:24,741 : Loading fallback font fallback_fonts/NotoSansLaoLoopedUI-Regular.ttf
+2024-05-24 17:36:24,779 : Loading fallback font fallback_fonts/NotoSansCuneiform-Regular.ttf
+2024-05-24 17:36:24,840 : Loading fallback font fallback_fonts/NotoSansAdlamUnjoined-Regular.ttf
+2024-05-24 17:36:24,872 : Loading fallback font fallback_fonts/NotoSansPsalterPahlavi-Regular.ttf
+2024-05-24 17:36:24,887 : Loading fallback font fallback_fonts/NotoSansTifinaghAhaggar-Regular.ttf
+2024-05-24 17:36:24,963 : Loading fallback font fallback_fonts/NotoSansChorasmian-Regular.ttf
+2024-05-24 17:36:25,071 : Loading fallback font fallback_fonts/NotoSansDevanagari-Regular.ttf
+2024-05-24 17:36:25,152 : Loading fallback font fallback_fonts/NotoSansSoyombo-Regular.ttf
+2024-05-24 17:36:25,219 : Loading fallback font fallback_fonts/NotoSansAvestan-Regular.ttf
+2024-05-24 17:36:25,236 : Loading fallback font fallback_fonts/NotoSansOsmanya-Regular.ttf
+2024-05-24 17:36:25,250 : Loading fallback font fallback_fonts/NotoSansOldItalic-Regular.ttf
+2024-05-24 17:36:25,267 : Loading fallback font fallback_fonts/NotoSansGujaratiUI-Regular.ttf
+2024-05-24 17:36:25,314 : Loading fallback font fallback_fonts/NotoSansTagalog-Regular.ttf
+2024-05-24 17:36:25,331 : Loading fallback font fallback_fonts/NotoSansSignWriting-Regular.ttf
+2024-05-24 17:36:25,410 : Loading fallback font fallback_fonts/NotoSansMono-Regular.ttf
+2024-05-24 17:36:25,496 : Loading fallback font fallback_fonts/NotoSansRejang-Regular.ttf
+2024-05-24 17:36:25,525 : Loading fallback font fallback_fonts/NotoSansOldTurkic-Regular.ttf
+2024-05-24 17:36:25,579 : Loading fallback font fallback_fonts/NotoSansMasaramGondi-Regular.ttf
+2024-05-24 17:36:25,615 : Loading fallback font fallback_fonts/NotoSansDeseret-Regular.ttf
+2024-05-24 17:36:25,688 : Loading fallback font fallback_fonts/NotoSansThai-Regular.ttf
+2024-05-24 17:36:25,724 : Loading fallback font fallback_fonts/NotoSansKhudawadi-Regular.ttf
+2024-05-24 17:36:25,725 : Loading fallback font fallback_fonts/NotoSansOgham-Regular.ttf
+2024-05-24 17:36:25,764 : Loading fallback font fallback_fonts/NotoSansYi-Regular.ttf
+2024-05-24 17:36:25,806 : Loading fallback font fallback_fonts/NotoSansDevanagariUI-Regular.ttf
+2024-05-24 17:36:25,839 : Loading fallback font fallback_fonts/NotoRashiHebrew-Regular.ttf
+2024-05-24 17:36:25,850 : Loading fallback font fallback_fonts/NotoSansDuployan-Regular.otf
+2024-05-24 17:36:25,955 : Loading fallback font fallback_fonts/NotoSansTifinaghHawad-Regular.ttf
+2024-05-24 17:36:25,983 : Loading fallback font fallback_fonts/NotoSansKawi-Regular.ttf
+2024-05-24 17:36:26,034 : Loading fallback font fallback_fonts/NotoSansKannada-Regular.ttf
+2024-05-24 17:36:26,071 : Loading fallback font fallback_fonts/NotoSansTifinagh-Regular.ttf
+2024-05-24 17:36:26,073 : Loading fallback font fallback_fonts/NotoSansOldNorthArabian-Regular.ttf
+2024-05-24 17:36:26,090 : Loading fallback font fallback_fonts/NotoNastaliqUrdu-Regular.ttf
+2024-05-24 17:36:26,140 : Loading fallback font fallback_fonts/NotoSansCJKsc-Regular.otf
+2024-05-24 17:36:26,543 : Loading fallback font fallback_fonts/NotoFangsongKSSRotated-Regular.ttf
+2024-05-24 17:36:26,593 : Loading fallback font fallback_fonts/NotoSansSinhalaUI-Regular.ttf
+2024-05-24 17:36:26,653 : Loading fallback font fallback_fonts/NotoSansTifinaghAdrar-Regular.ttf
+2024-05-24 17:36:26,695 : Loading fallback font fallback_fonts/NotoSansMultani-Regular.ttf
+2024-05-24 17:36:26,710 : Loading fallback font fallback_fonts/NotoSansHatran-Regular.ttf
+2024-05-24 17:36:26,750 : Loading fallback font fallback_fonts/NotoSansCanadianAboriginal-Regular.ttf
+2024-05-24 17:36:26,794 : Loading fallback font fallback_fonts/NotoSansSundanese-Regular.ttf
+2024-05-24 17:36:26,834 : Loading fallback font fallback_fonts/NotoSansSamaritan-Regular.ttf
+2024-05-24 17:36:26,854 : Loading fallback font fallback_fonts/NotoSansTeluguUI-Regular.ttf
+2024-05-24 17:36:26,901 : Loading fallback font fallback_fonts/NotoSansSymbols-Regular.ttf
+2024-05-24 17:36:26,970 : Loading fallback font fallback_fonts/NotoSansBassaVah-Regular.ttf
+2024-05-24 17:36:27,007 : Loading fallback font fallback_fonts/NotoSansMeeteiMayek-Regular.ttf
+2024-05-24 17:36:27,043 : Loading fallback font fallback_fonts/NotoSansCJKtc-Regular.otf
+2024-05-24 17:36:27,287 : Loading fallback font fallback_fonts/NotoSansTakri-Regular.ttf
+2024-05-24 17:36:27,307 : Loading fallback font fallback_fonts/NotoSansAnatolianHieroglyphs-Regular.ttf
+2024-05-24 17:36:27,380 : Loading fallback font fallback_fonts/NotoSansTirhuta-Regular.ttf
+2024-05-24 17:36:27,408 : Loading fallback font fallback_fonts/NotoSansOldPersian-Regular.ttf
+2024-05-24 17:36:27,425 : Loading fallback font fallback_fonts/NotoSansBrahmi-Regular.ttf
+2024-05-24 17:36:27,427 : Loading fallback font fallback_fonts/NotoSansCherokee-Regular.ttf
+2024-05-24 17:36:27,456 : Loading fallback font fallback_fonts/NotoSansSiddham-Regular.ttf
+2024-05-24 17:36:27,500 : Loading fallback font fallback_fonts/NotoSansMongolian-Regular.ttf
+2024-05-24 17:36:27,547 : Loading fallback font fallback_fonts/NotoSansMalayalam-Regular.ttf
+2024-05-24 17:36:27,618 : Loading fallback font fallback_fonts/NotoSansCaucasianAlbanian-Regular.ttf
+2024-05-24 17:36:27,632 : Loading fallback font fallback_fonts/NotoSansOldSogdian-Regular.ttf
+2024-05-24 17:36:27,649 : Loading fallback font fallback_fonts/NotoSansZanabazarSquare-Regular.ttf
+2024-05-24 17:36:27,672 : Loading fallback font fallback_fonts/NotoSansImperialAramaic-Regular.ttf
+2024-05-24 17:36:27,734 : Reading 'name' table from disk
+2024-05-24 17:36:27,771 : Decompiling 'name' table
+2024-05-24 17:36:27,773 : Text renderer PangoCairoTextRenderer {
+  "background_color": "white",
+  "dpi": 120,
+  "font_color": "black",
+  "font_file": "f992c3c235a50254b24f7acbcba7ce1ddc3974d3ba9adf00eef4619e25854aaa.3f28e7f4b38e1efe1b6da4a3732404c19d4c6a614ff32dce90a251e293d4ce58",
+  "font_size": 8,
+  "fonts_list": [
+    "Apple Color Emoji",
+    "C059",
+    "Cantarell",
+    "D050000L",
+    "DejaVu LGC Sans",
+    "DejaVu Sans",
+    "DejaVu Sans Mono",
+    "Droid Sans",
+    "Droid Sans Arabic",
+    "Droid Sans Armenian",
+    "Droid Sans Devanagari",
+    "Droid Sans Ethiopic",
+    "Droid Sans Fallback",
+    "Droid Sans Georgian",
+    "Droid Sans Hebrew",
+    "Droid Sans Japanese",
+    "Droid Sans Tamil",
+    "Droid Sans Thai",
+    "Go Noto Current",
+    "Inconsolata",
+    "Liberation Mono",
+    "Monospace",
+    "Nimbus Mono PS",
+    "Nimbus Roman",
+    "Nimbus Sans",
+    "Nimbus Sans Narrow",
+    "Noto Fangsong KSS Rotated",
+    "Noto Fangsong KSS Vertical",
+    "Noto Kufi Arabic",
+    "Noto Music",
+    "Noto Naskh Arabic UI",
+    "Noto Nastaliq Urdu",
+    "Noto Rashi Hebrew",
+    "Noto Sans",
+    "Noto Sans Adlam",
+    "Noto Sans Adlam Unjoined",
+    "Noto Sans Anatolian Hieroglyphs",
+    "Noto Sans Arabic",
+    "Noto Sans Armenian",
+    "Noto Sans Avestan",
+    "Noto Sans Balinese",
+    "Noto Sans Bamum",
+    "Noto Sans Bassa Vah",
+    "Noto Sans Batak",
+    "Noto Sans Bengali",
+    "Noto Sans Bengali UI",
+    "Noto Sans Bhaiksuki",
+    "Noto Sans Brahmi",
+    "Noto Sans Buginese",
+    "Noto Sans Buhid",
+    "Noto Sans CJK HK",
+    "Noto Sans CJK JP",
+    "Noto Sans CJK KR",
+    "Noto Sans CJK SC",
+    "Noto Sans CJK TC",
+    "Noto Sans Canadian Aboriginal",
+    "Noto Sans Carian",
+    "Noto Sans Caucasian Albanian",
+    "Noto Sans Chakma",
+    "Noto Sans Cham",
+    "Noto Sans Cherokee",
+    "Noto Sans Chorasmian",
+    "Noto Sans Coptic",
+    "Noto Sans Cuneiform",
+    "Noto Sans Cypriot",
+    "Noto Sans Cypro Minoan",
+    "Noto Sans Deseret",
+    "Noto Sans Devanagari",
+    "Noto Sans Devanagari UI",
+    "Noto Sans Duployan",
+    "Noto Sans Egyptian Hieroglyphs",
+    "Noto Sans Elbasan",
+    "Noto Sans Elymaic",
+    "Noto Sans Ethiopic",
+    "Noto Sans Georgian",
+    "Noto Sans Glagolitic",
+    "Noto Sans Gothic",
+    "Noto Sans Grantha",
+    "Noto Sans Gujarati",
+    "Noto Sans Gujarati UI",
+    "Noto Sans Gunjala Gondi",
+    "Noto Sans Gurmukhi",
+    "Noto Sans Gurmukhi UI",
+    "Noto Sans Hanifi Rohingya",
+    "Noto Sans Hanunoo",
+    "Noto Sans Hatran",
+    "Noto Sans Hebrew",
+    "Noto Sans Hebrew Droid",
+    "Noto Sans Imperial Aramaic",
+    "Noto Sans Indic Siyaq Numbers",
+    "Noto Sans Inscriptional Pahlavi",
+    "Noto Sans Inscriptional Parthian",
+    "Noto Sans Javanese",
+    "Noto Sans Kaithi",
+    "Noto Sans Kannada",
+    "Noto Sans Kannada UI",
+    "Noto Sans Kawi",
+    "Noto Sans Kayah Li",
+    "Noto Sans Kharoshthi",
+    "Noto Sans Khmer",
+    "Noto Sans Khmer UI",
+    "Noto Sans Khojki",
+    "Noto Sans Khudawadi",
+    "Noto Sans Lao",
+    "Noto Sans Lao Looped",
+    "Noto Sans Lao Looped UI",
+    "Noto Sans Lao UI",
+    "Noto Sans Lepcha",
+    "Noto Sans Limbu",
+    "Noto Sans Linear A",
+    "Noto Sans Linear B",
+    "Noto Sans Lisu",
+    "Noto Sans Lycian",
+    "Noto Sans Lydian",
+    "Noto Sans Mahajani",
+    "Noto Sans Malayalam",
+    "Noto Sans Malayalam UI",
+    "Noto Sans Mandaic",
+    "Noto Sans Manichaean",
+    "Noto Sans Marchen",
+    "Noto Sans Masaram Gondi",
+    "Noto Sans Math",
+    "Noto Sans Mayan Numerals",
+    "Noto Sans Medefaidrin",
+    "Noto Sans Meetei Mayek",
+    "Noto Sans Mende Kikakui",
+    "Noto Sans Meroitic",
+    "Noto Sans Miao",
+    "Noto Sans Modi",
+    "Noto Sans Mongolian",
+    "Noto Sans Mono",
+    "Noto Sans Mro",
+    "Noto Sans Multani",
+    "Noto Sans Myanmar",
+    "Noto Sans Myanmar UI",
+    "Noto Sans NKo",
+    "Noto Sans NKo Unjoined",
+    "Noto Sans Nabataean",
+    "Noto Sans Nag Mundari",
+    "Noto Sans Nandinagari",
+    "Noto Sans New Tai Lue",
+    "Noto Sans Newa",
+    "Noto Sans Nushu",
+    "Noto Sans Ogham",
+    "Noto Sans Ol Chiki",
+    "Noto Sans Old Hungarian",
+    "Noto Sans Old Italic",
+    "Noto Sans Old North Arabian",
+    "Noto Sans Old Permic",
+    "Noto Sans Old Persian",
+    "Noto Sans Old Sogdian",
+    "Noto Sans Old South Arabian",
+    "Noto Sans Old Turkic",
+    "Noto Sans Oriya",
+    "Noto Sans Osage",
+    "Noto Sans Osmanya",
+    "Noto Sans Pahawh Hmong",
+    "Noto Sans Palmyrene",
+    "Noto Sans Pau Cin Hau",
+    "Noto Sans PhagsPa",
+    "Noto Sans Phoenician",
+    "Noto Sans Psalter Pahlavi",
+    "Noto Sans Rejang",
+    "Noto Sans Runic",
+    "Noto Sans Samaritan",
+    "Noto Sans Saurashtra",
+    "Noto Sans Sharada",
+    "Noto Sans Shavian",
+    "Noto Sans Siddham",
+    "Noto Sans SignWriting",
+    "Noto Sans Sinhala",
+    "Noto Sans Sinhala UI",
+    "Noto Sans Sogdian",
+    "Noto Sans Sora Sompeng",
+    "Noto Sans Soyombo",
+    "Noto Sans Sundanese",
+    "Noto Sans Syloti Nagri",
+    "Noto Sans Symbols",
+    "Noto Sans Symbols 2",
+    "Noto Sans Syriac",
+    "Noto Sans Syriac Eastern",
+    "Noto Sans Syriac Western",
+    "Noto Sans Tagalog",
+    "Noto Sans Tagbanwa",
+    "Noto Sans Tai Le",
+    "Noto Sans Tai Tham",
+    "Noto Sans Tai Viet",
+    "Noto Sans Takri",
+    "Noto Sans Tamil",
+    "Noto Sans Tamil Supplement",
+    "Noto Sans Tamil UI",
+    "Noto Sans Tangsa",
+    "Noto Sans Telugu",
+    "Noto Sans Telugu UI",
+    "Noto Sans Test",
+    "Noto Sans Thaana",
+    "Noto Sans Thai",
+    "Noto Sans Thai Looped",
+    "Noto Sans Thai Looped UI",
+    "Noto Sans Thai UI",
+    "Noto Sans Tifinagh",
+    "Noto Sans Tifinagh APT",
+    "Noto Sans Tifinagh Adrar",
+    "Noto Sans Tifinagh Agraw Imazighen",
+    "Noto Sans Tifinagh Ahaggar",
+    "Noto Sans Tifinagh Air",
+    "Noto Sans Tifinagh Azawagh",
+    "Noto Sans Tifinagh Ghat",
+    "Noto Sans Tifinagh Hawad",
+    "Noto Sans Tifinagh Rhissa Ixa",
+    "Noto Sans Tifinagh SIL",
+    "Noto Sans Tifinagh Tawellemmet",
+    "Noto Sans Tirhuta",
+    "Noto Sans Ugaritic",
+    "Noto Sans Vai",
+    "Noto Sans Vithkuqi",
+    "Noto Sans Wancho",
+    "Noto Sans Warang Citi",
+    "Noto Sans Yi",
+    "Noto Sans Zanabazar Square",
+    "Noto Traditional Nushu",
+    "NotoSansOldHungarianUI",
+    "P052",
+    "Sans",
+    "Serif",
+    "Source Code Pro",
+    "System-ui",
+    "URW Bookman",
+    "URW Gothic",
+    "Ubuntu",
+    "Ubuntu Condensed",
+    "Ubuntu Mono",
+    "Z003"
+  ],
+  "max_seq_length": 196,
+  "pad_size": 3,
+  "pixels_per_patch": 16,
+  "rgb": false,
+  "text_renderer_type": "PangoCairoTextRenderer"
+}
+
+Some weights of the model checkpoint at UD_English-EWT-dep-pixel-small-words-196-64-1-5e-5-15000-42 were not used when initializing ViTModel: ['classifier.weight', 'classifier.bias', 'biaffine_rels.weight', 'biaffine_arcs.weight']
+- This IS expected if you are initializing ViTModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing ViTModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+2024-05-24 17:36:29,449 : ***** (Probing) Transfer task : LENGTH classification *****
+2024-05-24 17:36:29,736 : Loaded 99996 train - 9996 dev - 9996 test for Length
+2024-05-24 17:36:29,740 : Computing embeddings for train/dev/test
+2024-05-24 17:40:48,226 : Computed embeddings
+2024-05-24 17:40:48,226 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 17:44:55,072 : [('reg:1e-05', 92.77), ('reg:0.0001', 92.2), ('reg:0.001', 89.45), ('reg:0.01', 82.93)]
+2024-05-24 17:44:55,072 : Validation : best param found is reg = 1e-05 with score             92.77
+2024-05-24 17:44:55,073 : Evaluating...
+2024-05-24 17:46:16,646 : 
+Dev acc : 92.8 Test acc : 93.2 for LENGTH classification
+
+2024-05-24 17:46:16,659 : ***** (Probing) Transfer task : WORDCONTENT classification *****
+2024-05-24 17:46:16,972 : Loaded 100000 train - 10000 dev - 10000 test for WordContent
+2024-05-24 17:46:16,988 : Computing embeddings for train/dev/test
+2024-05-24 17:50:35,032 : Computed embeddings
+2024-05-24 17:50:35,032 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 17:54:37,318 : [('reg:1e-05', 40.77), ('reg:0.0001', 32.98), ('reg:0.001', 13.69), ('reg:0.01', 2.05)]
+2024-05-24 17:54:37,318 : Validation : best param found is reg = 1e-05 with score             40.77
+2024-05-24 17:54:37,319 : Evaluating...
+2024-05-24 17:56:02,725 : 
+Dev acc : 40.8 Test acc : 40.3 for WORDCONTENT classification
+
+2024-05-24 17:56:02,739 : ***** (Probing) Transfer task : DEPTH classification *****
+2024-05-24 17:56:02,983 : Loaded 100000 train - 10000 dev - 10000 test for Depth
+2024-05-24 17:56:02,998 : Computing embeddings for train/dev/test
+2024-05-24 18:00:02,999 : Computed embeddings
+2024-05-24 18:00:02,999 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 18:02:48,516 : [('reg:1e-05', 44.34), ('reg:0.0001', 44.52), ('reg:0.001', 44.01), ('reg:0.01', 41.49)]
+2024-05-24 18:02:48,516 : Validation : best param found is reg = 0.0001 with score             44.52
+2024-05-24 18:02:48,516 : Evaluating...
+2024-05-24 18:03:33,468 : 
+Dev acc : 44.5 Test acc : 44.5 for DEPTH classification
+
+2024-05-24 18:03:33,480 : ***** (Probing) Transfer task : TOPCONSTITUENTS classification *****
+2024-05-24 18:03:33,773 : Loaded 100000 train - 10000 dev - 10000 test for TopConstituents
+2024-05-24 18:03:33,788 : Computing embeddings for train/dev/test
+2024-05-24 18:07:32,233 : Computed embeddings
+2024-05-24 18:07:32,233 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 18:10:39,823 : [('reg:1e-05', 79.62), ('reg:0.0001', 79.66), ('reg:0.001', 78.15), ('reg:0.01', 72.53)]
+2024-05-24 18:10:39,824 : Validation : best param found is reg = 0.0001 with score             79.66
+2024-05-24 18:10:39,824 : Evaluating...
+2024-05-24 18:11:27,512 : 
+Dev acc : 79.7 Test acc : 79.7 for TOPCONSTITUENTS classification
+
+2024-05-24 18:11:27,524 : ***** (Probing) Transfer task : BIGRAMSHIFT classification *****
+2024-05-24 18:11:27,778 : Loaded 100000 train - 10000 dev - 10000 test for BigramShift
+2024-05-24 18:11:27,794 : Computing embeddings for train/dev/test
+2024-05-24 18:15:39,509 : Computed embeddings
+2024-05-24 18:15:39,536 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 18:17:52,923 : [('reg:1e-05', 78.91), ('reg:0.0001', 78.94), ('reg:0.001', 78.85), ('reg:0.01', 78.51)]
+2024-05-24 18:17:52,950 : Validation : best param found is reg = 0.0001 with score             78.94
+2024-05-24 18:17:52,950 : Evaluating...
+2024-05-24 18:18:25,578 : 
+Dev acc : 78.9 Test acc : 78.5 for BIGRAMSHIFT classification
+
+2024-05-24 18:18:25,590 : ***** (Probing) Transfer task : TENSE classification *****
+2024-05-24 18:18:25,742 : Loaded 100000 train - 10000 dev - 10000 test for Tense
+2024-05-24 18:18:25,757 : Computing embeddings for train/dev/test
+2024-05-24 18:22:25,555 : Computed embeddings
+2024-05-24 18:22:25,556 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 18:24:26,124 : [('reg:1e-05', 90.24), ('reg:0.0001', 90.26), ('reg:0.001', 90.37), ('reg:0.01', 90.57)]
+2024-05-24 18:24:26,124 : Validation : best param found is reg = 0.01 with score             90.57
+2024-05-24 18:24:26,124 : Evaluating...
+2024-05-24 18:25:01,479 : 
+Dev acc : 90.6 Test acc : 89.2 for TENSE classification
+
+2024-05-24 18:25:01,491 : ***** (Probing) Transfer task : SUBJNUMBER classification *****
+2024-05-24 18:25:01,592 : Loaded 100000 train - 10000 dev - 10000 test for SubjNumber
+2024-05-24 18:25:01,608 : Computing embeddings for train/dev/test
+2024-05-24 18:29:10,500 : Computed embeddings
+2024-05-24 18:29:10,500 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 18:31:29,795 : [('reg:1e-05', 89.07), ('reg:0.0001', 89.06), ('reg:0.001', 88.95), ('reg:0.01', 88.12)]
+2024-05-24 18:31:29,795 : Validation : best param found is reg = 1e-05 with score             89.07
+2024-05-24 18:31:29,796 : Evaluating...
+2024-05-24 18:32:03,505 : 
+Dev acc : 89.1 Test acc : 87.4 for SUBJNUMBER classification
+
+2024-05-24 18:32:03,518 : ***** (Probing) Transfer task : OBJNUMBER classification *****
+2024-05-24 18:32:03,621 : Loaded 100000 train - 10000 dev - 10000 test for ObjNumber
+2024-05-24 18:32:03,637 : Computing embeddings for train/dev/test
+2024-05-24 18:36:06,686 : Computed embeddings
+2024-05-24 18:36:06,686 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 18:38:55,471 : [('reg:1e-05', 87.22), ('reg:0.0001', 87.3), ('reg:0.001', 87.15), ('reg:0.01', 86.51)]
+2024-05-24 18:38:55,471 : Validation : best param found is reg = 0.0001 with score             87.3
+2024-05-24 18:38:55,472 : Evaluating...
+2024-05-24 18:39:35,968 : 
+Dev acc : 87.3 Test acc : 87.6 for OBJNUMBER classification
+
+2024-05-24 18:39:35,981 : ***** (Probing) Transfer task : ODDMANOUT classification *****
+2024-05-24 18:39:36,074 : Loaded 100000 train - 10000 dev - 10000 test for OddManOut
+2024-05-24 18:39:36,089 : Computing embeddings for train/dev/test
+2024-05-24 18:43:47,608 : Computed embeddings
+2024-05-24 18:43:47,609 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 18:46:24,555 : [('reg:1e-05', 51.59), ('reg:0.0001', 51.63), ('reg:0.001', 51.37), ('reg:0.01', 51.74)]
+2024-05-24 18:46:24,556 : Validation : best param found is reg = 0.01 with score             51.74
+2024-05-24 18:46:24,556 : Evaluating...
+2024-05-24 18:47:06,985 : 
+Dev acc : 51.7 Test acc : 51.2 for ODDMANOUT classification
+
+2024-05-24 18:47:06,999 : ***** (Probing) Transfer task : COORDINATIONINVERSION classification *****
+2024-05-24 18:47:07,090 : Loaded 100002 train - 10002 dev - 10002 test for CoordinationInversion
+2024-05-24 18:47:07,107 : Computing embeddings for train/dev/test
+2024-05-24 18:51:33,560 : Computed embeddings
+2024-05-24 18:51:33,560 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 18:54:00,307 : [('reg:1e-05', 60.61), ('reg:0.0001', 60.67), ('reg:0.001', 60.53), ('reg:0.01', 59.92)]
+2024-05-24 18:54:00,308 : Validation : best param found is reg = 0.0001 with score             60.67
+2024-05-24 18:54:00,308 : Evaluating...
+2024-05-24 18:54:38,492 : 
+Dev acc : 60.7 Test acc : 60.8 for COORDINATIONINVERSION classification
+
+2024-05-24 18:54:46,184 : loading text renderer configuration file UD_English-EWT-dep-pixel-small-words-196-64-1-5e-5-15000-42/text_renderer_config.json
+2024-05-24 18:54:46,185 : loading font file UD_English-EWT-dep-pixel-small-words-196-64-1-5e-5-15000-42/f992c3c235a50254b24f7acbcba7ce1ddc3974d3ba9adf00eef4619e25854aaa.3f28e7f4b38e1efe1b6da4a3732404c19d4c6a614ff32dce90a251e293d4ce58
+2024-05-24 18:54:46,185 : Loading font from UD_English-EWT-dep-pixel-small-words-196-64-1-5e-5-15000-42/f992c3c235a50254b24f7acbcba7ce1ddc3974d3ba9adf00eef4619e25854aaa.3f28e7f4b38e1efe1b6da4a3732404c19d4c6a614ff32dce90a251e293d4ce58
+2024-05-24 18:54:46,300 : Loading fallback font fallback_fonts/NotoSansElymaic-Regular.ttf
+2024-05-24 18:54:46,300 : Loading fallback font fallback_fonts/NotoKufiArabic-Regular.ttf
+2024-05-24 18:54:46,300 : Loading fallback font fallback_fonts/NotoSansTifinaghAzawagh-Regular.ttf
+2024-05-24 18:54:46,301 : Loading fallback font fallback_fonts/NotoSansThaana-Regular.ttf
+2024-05-24 18:54:46,301 : Loading fallback font fallback_fonts/NotoSansBengali-Regular.ttf
+2024-05-24 18:54:46,301 : Loading fallback font fallback_fonts/NotoSansOldPermic-Regular.ttf
+2024-05-24 18:54:46,301 : Loading fallback font fallback_fonts/NotoSansPahawhHmong-Regular.ttf
+2024-05-24 18:54:46,302 : Loading fallback font fallback_fonts/NotoSansSogdian-Regular.ttf
+2024-05-24 18:54:46,302 : Loading fallback font fallback_fonts/NotoSansJavanese-Regular.ttf
+2024-05-24 18:54:46,302 : Loading fallback font fallback_fonts/NotoSansTifinaghAir-Regular.ttf
+2024-05-24 18:54:46,303 : Loading fallback font fallback_fonts/NotoSansUgaritic-Regular.ttf
+2024-05-24 18:54:46,303 : Loading fallback font fallback_fonts/NotoSansGrantha-Regular.ttf
+2024-05-24 18:54:46,303 : Loading fallback font fallback_fonts/NotoSansCJKjp-Regular.otf
+2024-05-24 18:54:46,305 : Loading fallback font fallback_fonts/NotoSansSoraSompeng-Regular.ttf
+2024-05-24 18:54:46,305 : Loading fallback font fallback_fonts/NotoSansVai-Regular.ttf
+2024-05-24 18:54:46,306 : Loading fallback font fallback_fonts/NotoSansCarian-Regular.ttf
+2024-05-24 18:54:46,306 : Loading fallback font fallback_fonts/NotoSansPalmyrene-Regular.ttf
+2024-05-24 18:54:46,306 : Loading fallback font fallback_fonts/NotoSansGujarati-Regular.ttf
+2024-05-24 18:54:46,306 : Loading fallback font fallback_fonts/NotoSansModi-Regular.ttf
+2024-05-24 18:54:46,307 : Loading fallback font fallback_fonts/NotoTraditionalNushu-Regular.ttf
+2024-05-24 18:54:46,307 : Loading fallback font fallback_fonts/NotoSansThaiLoopedUI-Regular.ttf
+2024-05-24 18:54:46,307 : Loading fallback font fallback_fonts/NotoSansHebrewDroid-Regular.ttf
+2024-05-24 18:54:46,308 : Loading fallback font fallback_fonts/NotoSansElbasan-Regular.ttf
+2024-05-24 18:54:46,308 : Loading fallback font fallback_fonts/NotoSansAdlam-Regular.ttf
+2024-05-24 18:54:46,308 : Loading fallback font fallback_fonts/NotoSansMath-Regular.ttf
+2024-05-24 18:54:46,308 : Loading fallback font fallback_fonts/NotoSansMarchen-Regular.ttf
+2024-05-24 18:54:46,309 : Loading fallback font fallback_fonts/AppleColorEmoji.ttf
+2024-05-24 18:54:46,309 : Loading fallback font fallback_fonts/NotoSansMedefaidrin-Regular.ttf
+2024-05-24 18:54:46,309 : Loading fallback font fallback_fonts/NotoSansSharada-Regular.ttf
+2024-05-24 18:54:46,310 : Loading fallback font fallback_fonts/NotoSansTagbanwa-Regular.ttf
+2024-05-24 18:54:46,310 : Loading fallback font fallback_fonts/NotoSansTifinaghAgrawImazighen-Regular.ttf
+2024-05-24 18:54:46,310 : Loading fallback font fallback_fonts/NotoSansGunjalaGondi-Regular.ttf
+2024-05-24 18:54:46,310 : Loading fallback font fallback_fonts/NotoSansBuginese-Regular.ttf
+2024-05-24 18:54:46,311 : Loading fallback font fallback_fonts/NotoSansThaiLooped-Regular.ttf
+2024-05-24 18:54:46,311 : Loading fallback font fallback_fonts/NotoSansNKo-Regular.ttf
+2024-05-24 18:54:46,311 : Loading fallback font fallback_fonts/NotoSansWarangCiti-Regular.ttf
+2024-05-24 18:54:46,311 : Loading fallback font fallback_fonts/NotoSansNKoUnjoined-Regular.ttf
+2024-05-24 18:54:46,312 : Loading fallback font fallback_fonts/NotoSansBuhid-Regular.ttf
+2024-05-24 18:54:46,312 : Loading fallback font fallback_fonts/NotoSansBengaliUI-Regular.ttf
+2024-05-24 18:54:46,312 : Loading fallback font fallback_fonts/NotoSansLaoLooped-Regular.ttf
+2024-05-24 18:54:46,312 : Loading fallback font fallback_fonts/NotoSansInscriptionalPahlavi-Regular.ttf
+2024-05-24 18:54:46,313 : Loading fallback font fallback_fonts/NotoSansTifinaghAPT-Regular.ttf
+2024-05-24 18:54:46,313 : Loading fallback font fallback_fonts/NotoSansOlChiki-Regular.ttf
+2024-05-24 18:54:46,313 : Loading fallback font fallback_fonts/NotoSansNabataean-Regular.ttf
+2024-05-24 18:54:46,313 : Loading fallback font fallback_fonts/NotoSansHanifiRohingya-Regular.ttf
+2024-05-24 18:54:46,314 : Loading fallback font fallback_fonts/NotoSansTifinaghRhissaIxa-Regular.ttf
+2024-05-24 18:54:46,314 : Loading fallback font fallback_fonts/NotoSansSyriacWestern-Regular.ttf
+2024-05-24 18:54:46,314 : Loading fallback font fallback_fonts/NotoSansMyanmar-Regular.ttf
+2024-05-24 18:54:46,315 : Loading fallback font fallback_fonts/NotoSansMandaic-Regular.ttf
+2024-05-24 18:54:46,315 : Loading fallback font fallback_fonts/NotoSansKharoshthi-Regular.ttf
+2024-05-24 18:54:46,315 : Loading fallback font fallback_fonts/NotoSansCoptic-Regular.ttf
+2024-05-24 18:54:46,315 : Loading fallback font fallback_fonts/NotoSansHebrew-Regular.ttf
+2024-05-24 18:54:46,316 : Loading fallback font fallback_fonts/NotoFangsongKSSVertical-Regular.ttf
+2024-05-24 18:54:46,316 : Loading fallback font fallback_fonts/NotoSansLaoUI-Regular.ttf
+2024-05-24 18:54:46,316 : Loading fallback font fallback_fonts/NotoSansGeorgian-Regular.ttf
+2024-05-24 18:54:46,316 : Loading fallback font fallback_fonts/NotoSansOldHungarian-Regular.ttf
+2024-05-24 18:54:46,317 : Loading fallback font fallback_fonts/NotoSansMahajani-Regular.ttf
+2024-05-24 18:54:46,317 : Loading fallback font fallback_fonts/NotoSansBalinese-Regular.ttf
+2024-05-24 18:54:46,317 : Loading fallback font fallback_fonts/NotoSansPhoenician-Regular.ttf
+2024-05-24 18:54:46,317 : Loading fallback font fallback_fonts/NotoSansGurmukhi-Regular.ttf
+2024-05-24 18:54:46,318 : Loading fallback font fallback_fonts/NotoSansHanunoo-Regular.ttf
+2024-05-24 18:54:46,318 : Loading fallback font fallback_fonts/NotoSansArabic-Regular.ttf
+2024-05-24 18:54:46,318 : Loading fallback font fallback_fonts/NotoNaskhArabicUI-Regular.ttf
+2024-05-24 18:54:46,319 : Loading fallback font fallback_fonts/NotoSansSinhala-Regular.ttf
+2024-05-24 18:54:46,319 : Loading fallback font fallback_fonts/NotoSansLepcha-Regular.ttf
+2024-05-24 18:54:46,319 : Loading fallback font fallback_fonts/NotoSansLisu-Regular.ttf
+2024-05-24 18:54:46,319 : Loading fallback font fallback_fonts/NotoSansTangsa-Regular.ttf
+2024-05-24 18:54:46,320 : Loading fallback font fallback_fonts/NotoSansShavian-Regular.ttf
+2024-05-24 18:54:46,320 : Loading fallback font fallback_fonts/NotoSansCypriot-Regular.ttf
+2024-05-24 18:54:46,320 : Loading fallback font fallback_fonts/NotoSansOldSouthArabian-Regular.ttf
+2024-05-24 18:54:46,320 : Loading fallback font fallback_fonts/NotoSansTaiViet-Regular.ttf
+2024-05-24 18:54:46,321 : Loading fallback font fallback_fonts/NotoSansCJKhk-Regular.otf
+2024-05-24 18:54:46,323 : Loading fallback font fallback_fonts/NotoSansTamilSupplement-Regular.ttf
+2024-05-24 18:54:46,323 : Loading fallback font fallback_fonts/NotoSansTaiTham-Regular.ttf
+2024-05-24 18:54:46,323 : Loading fallback font fallback_fonts/NotoSansTaiLe-Regular.ttf
+2024-05-24 18:54:46,323 : Loading fallback font fallback_fonts/NotoSansLao-Regular.ttf
+2024-05-24 18:54:46,324 : Loading fallback font fallback_fonts/NotoSansSymbols2-Regular.ttf
+2024-05-24 18:54:46,324 : Loading fallback font fallback_fonts/NotoSansSylotiNagri-Regular.ttf
+2024-05-24 18:54:46,324 : Loading fallback font fallback_fonts/NotoSansEgyptianHieroglyphs-Regular.ttf
+2024-05-24 18:54:46,324 : Loading fallback font fallback_fonts/NotoSansMendeKikakui-Regular.ttf
+2024-05-24 18:54:46,325 : Loading fallback font fallback_fonts/NotoSansSyriac-Regular.ttf
+2024-05-24 18:54:46,325 : Loading fallback font fallback_fonts/NotoSansBhaiksuki-Regular.ttf
+2024-05-24 18:54:46,325 : Loading fallback font fallback_fonts/NotoSansTamilUI-Regular.ttf
+2024-05-24 18:54:46,326 : Loading fallback font fallback_fonts/NotoSansTamil-Regular.ttf
+2024-05-24 18:54:46,326 : Loading fallback font fallback_fonts/NotoSansVithkuqi-Regular.ttf
+2024-05-24 18:54:46,326 : Loading fallback font fallback_fonts/NotoSansDuployan-Regular.ttf
+2024-05-24 18:54:46,327 : Loading fallback font fallback_fonts/NotoSansNewTaiLue-Regular.ttf
+2024-05-24 18:54:46,327 : Loading fallback font fallback_fonts/NotoSansMayanNumerals-Regular.ttf
+2024-05-24 18:54:46,327 : Loading fallback font fallback_fonts/NotoSansKannadaUI-Regular.ttf
+2024-05-24 18:54:46,327 : Loading fallback font fallback_fonts/NotoSansSaurashtra-Regular.ttf
+2024-05-24 18:54:46,328 : Loading fallback font fallback_fonts/NotoSansCJKkr-Regular.otf
+2024-05-24 18:54:46,330 : Loading fallback font fallback_fonts/NotoMusic-Regular.ttf
+2024-05-24 18:54:46,330 : Loading fallback font fallback_fonts/NotoSansTifinaghSIL-Regular.ttf
+2024-05-24 18:54:46,330 : Loading fallback font fallback_fonts/NotoSansMiao-Regular.ttf
+2024-05-24 18:54:46,330 : Loading fallback font fallback_fonts/NotoSansLydian-Regular.ttf
+2024-05-24 18:54:46,331 : Loading fallback font fallback_fonts/NotoSansInscriptionalParthian-Regular.ttf
+2024-05-24 18:54:46,331 : Loading fallback font fallback_fonts/NotoSansGlagolitic-Regular.ttf
+2024-05-24 18:54:46,331 : Loading fallback font fallback_fonts/NotoSansMyanmarUI-Regular.ttf
+2024-05-24 18:54:46,331 : Loading fallback font fallback_fonts/NotoSansKhmerUI-Regular.ttf
+2024-05-24 18:54:46,332 : Loading fallback font fallback_fonts/NotoSans-Regular.ttf
+2024-05-24 18:54:46,332 : Loading fallback font fallback_fonts/NotoSansPauCinHau-Regular.ttf
+2024-05-24 18:54:46,332 : Loading fallback font fallback_fonts/NotoSansOldHungarianUI-Regular.ttf
+2024-05-24 18:54:46,332 : Loading fallback font fallback_fonts/NotoSansManichaean-Regular.ttf
+2024-05-24 18:54:46,333 : Loading fallback font fallback_fonts/NotoSansTifinaghTawellemmet-Regular.ttf
+2024-05-24 18:54:46,333 : Loading fallback font fallback_fonts/NotoSansArmenian-Regular.ttf
+2024-05-24 18:54:46,333 : Loading fallback font fallback_fonts/NotoSansIndicSiyaqNumbers-Regular.ttf
+2024-05-24 18:54:46,334 : Loading fallback font fallback_fonts/NotoSansWancho-Regular.ttf
+2024-05-24 18:54:46,334 : Loading fallback font fallback_fonts/GoNotoCurrent.ttf
+2024-05-24 18:54:46,335 : Loading fallback font fallback_fonts/NotoSansKhojki-Regular.ttf
+2024-05-24 18:54:46,335 : Loading fallback font fallback_fonts/NotoSansMeroitic-Regular.ttf
+2024-05-24 18:54:46,336 : Loading fallback font fallback_fonts/NotoSansMro-Regular.ttf
+2024-05-24 18:54:46,336 : Loading fallback font fallback_fonts/NotoSansGothic-Regular.ttf
+2024-05-24 18:54:46,336 : Loading fallback font fallback_fonts/NotoSansSyriacEastern-Regular.ttf
+2024-05-24 18:54:46,336 : Loading fallback font fallback_fonts/NotoSansCyproMinoan-Regular.ttf
+2024-05-24 18:54:46,337 : Loading fallback font fallback_fonts/NotoSansLinearB-Regular.ttf
+2024-05-24 18:54:46,337 : Loading fallback font fallback_fonts/NotoSansOriya-Regular.ttf
+2024-05-24 18:54:46,337 : Loading fallback font fallback_fonts/NotoSansLimbu-Regular.ttf
+2024-05-24 18:54:46,337 : Loading fallback font fallback_fonts/NotoSansLycian-Regular.ttf
+2024-05-24 18:54:46,338 : Loading fallback font fallback_fonts/NotoSansKaithi-Regular.ttf
+2024-05-24 18:54:46,338 : Loading fallback font fallback_fonts/NotoSansThaiUI-Regular.ttf
+2024-05-24 18:54:46,338 : Loading fallback font fallback_fonts/NotoSansTifinaghGhat-Regular.ttf
+2024-05-24 18:54:46,338 : Loading fallback font fallback_fonts/NotoSansBatak-Regular.ttf
+2024-05-24 18:54:46,339 : Loading fallback font fallback_fonts/NotoSansNandinagari-Regular.ttf
+2024-05-24 18:54:46,339 : Loading fallback font fallback_fonts/NotoSansEthiopic-Regular.ttf
+2024-05-24 18:54:46,339 : Loading fallback font fallback_fonts/NotoSansKayahLi-Regular.ttf
+2024-05-24 18:54:46,340 : Loading fallback font fallback_fonts/NotoSansNushu-Regular.ttf
+2024-05-24 18:54:46,340 : Loading fallback font fallback_fonts/NotoSansChakma-Regular.ttf
+2024-05-24 18:54:46,340 : Loading fallback font fallback_fonts/NotoSansOsage-Regular.ttf
+2024-05-24 18:54:46,340 : Loading fallback font fallback_fonts/NotoSansTelugu-Regular.ttf
+2024-05-24 18:54:46,341 : Loading fallback font fallback_fonts/NotoSansKhmer-Regular.ttf
+2024-05-24 18:54:46,341 : Loading fallback font fallback_fonts/NotoSansRunic-Regular.ttf
+2024-05-24 18:54:46,341 : Loading fallback font fallback_fonts/NotoSansNagMundari-Regular.ttf
+2024-05-24 18:54:46,341 : Loading fallback font fallback_fonts/NotoSansNewa-Regular.ttf
+2024-05-24 18:54:46,342 : Loading fallback font fallback_fonts/NotoSansLinearA-Regular.ttf
+2024-05-24 18:54:46,342 : Loading fallback font fallback_fonts/NotoSansGurmukhiUI-Regular.ttf
+2024-05-24 18:54:46,342 : Loading fallback font fallback_fonts/NotoSansTest-Regular.ttf
+2024-05-24 18:54:46,342 : Loading fallback font fallback_fonts/NotoSansPhagsPa-Regular.ttf
+2024-05-24 18:54:46,343 : Loading fallback font fallback_fonts/NotoSansBamum-Regular.ttf
+2024-05-24 18:54:46,343 : Loading fallback font fallback_fonts/NotoSansCham-Regular.ttf
+2024-05-24 18:54:46,344 : Loading fallback font fallback_fonts/NotoSansMalayalamUI-Regular.ttf
+2024-05-24 18:54:46,344 : Loading fallback font fallback_fonts/NotoSansLaoLoopedUI-Regular.ttf
+2024-05-24 18:54:46,344 : Loading fallback font fallback_fonts/NotoSansCuneiform-Regular.ttf
+2024-05-24 18:54:46,344 : Loading fallback font fallback_fonts/NotoSansAdlamUnjoined-Regular.ttf
+2024-05-24 18:54:46,345 : Loading fallback font fallback_fonts/NotoSansPsalterPahlavi-Regular.ttf
+2024-05-24 18:54:46,345 : Loading fallback font fallback_fonts/NotoSansTifinaghAhaggar-Regular.ttf
+2024-05-24 18:54:46,345 : Loading fallback font fallback_fonts/NotoSansChorasmian-Regular.ttf
+2024-05-24 18:54:46,345 : Loading fallback font fallback_fonts/NotoSansDevanagari-Regular.ttf
+2024-05-24 18:54:46,346 : Loading fallback font fallback_fonts/NotoSansSoyombo-Regular.ttf
+2024-05-24 18:54:46,346 : Loading fallback font fallback_fonts/NotoSansAvestan-Regular.ttf
+2024-05-24 18:54:46,346 : Loading fallback font fallback_fonts/NotoSansOsmanya-Regular.ttf
+2024-05-24 18:54:46,347 : Loading fallback font fallback_fonts/NotoSansOldItalic-Regular.ttf
+2024-05-24 18:54:46,347 : Loading fallback font fallback_fonts/NotoSansGujaratiUI-Regular.ttf
+2024-05-24 18:54:46,347 : Loading fallback font fallback_fonts/NotoSansTagalog-Regular.ttf
+2024-05-24 18:54:46,347 : Loading fallback font fallback_fonts/NotoSansSignWriting-Regular.ttf
+2024-05-24 18:54:46,348 : Loading fallback font fallback_fonts/NotoSansMono-Regular.ttf
+2024-05-24 18:54:46,348 : Loading fallback font fallback_fonts/NotoSansRejang-Regular.ttf
+2024-05-24 18:54:46,348 : Loading fallback font fallback_fonts/NotoSansOldTurkic-Regular.ttf
+2024-05-24 18:54:46,349 : Loading fallback font fallback_fonts/NotoSansMasaramGondi-Regular.ttf
+2024-05-24 18:54:46,349 : Loading fallback font fallback_fonts/NotoSansDeseret-Regular.ttf
+2024-05-24 18:54:46,349 : Loading fallback font fallback_fonts/NotoSansThai-Regular.ttf
+2024-05-24 18:54:46,349 : Loading fallback font fallback_fonts/NotoSansKhudawadi-Regular.ttf
+2024-05-24 18:54:46,350 : Loading fallback font fallback_fonts/NotoSansOgham-Regular.ttf
+2024-05-24 18:54:46,350 : Loading fallback font fallback_fonts/NotoSansYi-Regular.ttf
+2024-05-24 18:54:46,350 : Loading fallback font fallback_fonts/NotoSansDevanagariUI-Regular.ttf
+2024-05-24 18:54:46,350 : Loading fallback font fallback_fonts/NotoRashiHebrew-Regular.ttf
+2024-05-24 18:54:46,351 : Loading fallback font fallback_fonts/NotoSansDuployan-Regular.otf
+2024-05-24 18:54:46,351 : Loading fallback font fallback_fonts/NotoSansTifinaghHawad-Regular.ttf
+2024-05-24 18:54:46,352 : Loading fallback font fallback_fonts/NotoSansKawi-Regular.ttf
+2024-05-24 18:54:46,352 : Loading fallback font fallback_fonts/NotoSansKannada-Regular.ttf
+2024-05-24 18:54:46,352 : Loading fallback font fallback_fonts/NotoSansTifinagh-Regular.ttf
+2024-05-24 18:54:46,352 : Loading fallback font fallback_fonts/NotoSansOldNorthArabian-Regular.ttf
+2024-05-24 18:54:46,353 : Loading fallback font fallback_fonts/NotoNastaliqUrdu-Regular.ttf
+2024-05-24 18:54:46,353 : Loading fallback font fallback_fonts/NotoSansCJKsc-Regular.otf
+2024-05-24 18:54:46,355 : Loading fallback font fallback_fonts/NotoFangsongKSSRotated-Regular.ttf
+2024-05-24 18:54:46,355 : Loading fallback font fallback_fonts/NotoSansSinhalaUI-Regular.ttf
+2024-05-24 18:54:46,356 : Loading fallback font fallback_fonts/NotoSansTifinaghAdrar-Regular.ttf
+2024-05-24 18:54:46,356 : Loading fallback font fallback_fonts/NotoSansMultani-Regular.ttf
+2024-05-24 18:54:46,356 : Loading fallback font fallback_fonts/NotoSansHatran-Regular.ttf
+2024-05-24 18:54:46,356 : Loading fallback font fallback_fonts/NotoSansCanadianAboriginal-Regular.ttf
+2024-05-24 18:54:46,357 : Loading fallback font fallback_fonts/NotoSansSundanese-Regular.ttf
+2024-05-24 18:54:46,357 : Loading fallback font fallback_fonts/NotoSansSamaritan-Regular.ttf
+2024-05-24 18:54:46,357 : Loading fallback font fallback_fonts/NotoSansTeluguUI-Regular.ttf
+2024-05-24 18:54:46,357 : Loading fallback font fallback_fonts/NotoSansSymbols-Regular.ttf
+2024-05-24 18:54:46,358 : Loading fallback font fallback_fonts/NotoSansBassaVah-Regular.ttf
+2024-05-24 18:54:46,358 : Loading fallback font fallback_fonts/NotoSansMeeteiMayek-Regular.ttf
+2024-05-24 18:54:46,358 : Loading fallback font fallback_fonts/NotoSansCJKtc-Regular.otf
+2024-05-24 18:54:46,360 : Loading fallback font fallback_fonts/NotoSansTakri-Regular.ttf
+2024-05-24 18:54:46,360 : Loading fallback font fallback_fonts/NotoSansAnatolianHieroglyphs-Regular.ttf
+2024-05-24 18:54:46,361 : Loading fallback font fallback_fonts/NotoSansTirhuta-Regular.ttf
+2024-05-24 18:54:46,361 : Loading fallback font fallback_fonts/NotoSansOldPersian-Regular.ttf
+2024-05-24 18:54:46,361 : Loading fallback font fallback_fonts/NotoSansBrahmi-Regular.ttf
+2024-05-24 18:54:46,361 : Loading fallback font fallback_fonts/NotoSansCherokee-Regular.ttf
+2024-05-24 18:54:46,362 : Loading fallback font fallback_fonts/NotoSansSiddham-Regular.ttf
+2024-05-24 18:54:46,362 : Loading fallback font fallback_fonts/NotoSansMongolian-Regular.ttf
+2024-05-24 18:54:46,362 : Loading fallback font fallback_fonts/NotoSansMalayalam-Regular.ttf
+2024-05-24 18:54:46,363 : Loading fallback font fallback_fonts/NotoSansCaucasianAlbanian-Regular.ttf
+2024-05-24 18:54:46,363 : Loading fallback font fallback_fonts/NotoSansOldSogdian-Regular.ttf
+2024-05-24 18:54:46,363 : Loading fallback font fallback_fonts/NotoSansZanabazarSquare-Regular.ttf
+2024-05-24 18:54:46,363 : Loading fallback font fallback_fonts/NotoSansImperialAramaic-Regular.ttf
+2024-05-24 18:54:46,413 : Reading 'name' table from disk
+2024-05-24 18:54:46,452 : Decompiling 'name' table
+2024-05-24 18:54:46,454 : Text renderer PangoCairoTextRenderer {
+  "background_color": "white",
+  "dpi": 120,
+  "font_color": "black",
+  "font_file": "f992c3c235a50254b24f7acbcba7ce1ddc3974d3ba9adf00eef4619e25854aaa.3f28e7f4b38e1efe1b6da4a3732404c19d4c6a614ff32dce90a251e293d4ce58",
+  "font_size": 8,
+  "fonts_list": [
+    "Apple Color Emoji",
+    "C059",
+    "Cantarell",
+    "D050000L",
+    "DejaVu LGC Sans",
+    "DejaVu Sans",
+    "DejaVu Sans Mono",
+    "Droid Sans",
+    "Droid Sans Arabic",
+    "Droid Sans Armenian",
+    "Droid Sans Devanagari",
+    "Droid Sans Ethiopic",
+    "Droid Sans Fallback",
+    "Droid Sans Georgian",
+    "Droid Sans Hebrew",
+    "Droid Sans Japanese",
+    "Droid Sans Tamil",
+    "Droid Sans Thai",
+    "Go Noto Current",
+    "Inconsolata",
+    "Liberation Mono",
+    "Monospace",
+    "Nimbus Mono PS",
+    "Nimbus Roman",
+    "Nimbus Sans",
+    "Nimbus Sans Narrow",
+    "Noto Fangsong KSS Rotated",
+    "Noto Fangsong KSS Vertical",
+    "Noto Kufi Arabic",
+    "Noto Music",
+    "Noto Naskh Arabic UI",
+    "Noto Nastaliq Urdu",
+    "Noto Rashi Hebrew",
+    "Noto Sans",
+    "Noto Sans Adlam",
+    "Noto Sans Adlam Unjoined",
+    "Noto Sans Anatolian Hieroglyphs",
+    "Noto Sans Arabic",
+    "Noto Sans Armenian",
+    "Noto Sans Avestan",
+    "Noto Sans Balinese",
+    "Noto Sans Bamum",
+    "Noto Sans Bassa Vah",
+    "Noto Sans Batak",
+    "Noto Sans Bengali",
+    "Noto Sans Bengali UI",
+    "Noto Sans Bhaiksuki",
+    "Noto Sans Brahmi",
+    "Noto Sans Buginese",
+    "Noto Sans Buhid",
+    "Noto Sans CJK HK",
+    "Noto Sans CJK JP",
+    "Noto Sans CJK KR",
+    "Noto Sans CJK SC",
+    "Noto Sans CJK TC",
+    "Noto Sans Canadian Aboriginal",
+    "Noto Sans Carian",
+    "Noto Sans Caucasian Albanian",
+    "Noto Sans Chakma",
+    "Noto Sans Cham",
+    "Noto Sans Cherokee",
+    "Noto Sans Chorasmian",
+    "Noto Sans Coptic",
+    "Noto Sans Cuneiform",
+    "Noto Sans Cypriot",
+    "Noto Sans Cypro Minoan",
+    "Noto Sans Deseret",
+    "Noto Sans Devanagari",
+    "Noto Sans Devanagari UI",
+    "Noto Sans Duployan",
+    "Noto Sans Egyptian Hieroglyphs",
+    "Noto Sans Elbasan",
+    "Noto Sans Elymaic",
+    "Noto Sans Ethiopic",
+    "Noto Sans Georgian",
+    "Noto Sans Glagolitic",
+    "Noto Sans Gothic",
+    "Noto Sans Grantha",
+    "Noto Sans Gujarati",
+    "Noto Sans Gujarati UI",
+    "Noto Sans Gunjala Gondi",
+    "Noto Sans Gurmukhi",
+    "Noto Sans Gurmukhi UI",
+    "Noto Sans Hanifi Rohingya",
+    "Noto Sans Hanunoo",
+    "Noto Sans Hatran",
+    "Noto Sans Hebrew",
+    "Noto Sans Hebrew Droid",
+    "Noto Sans Imperial Aramaic",
+    "Noto Sans Indic Siyaq Numbers",
+    "Noto Sans Inscriptional Pahlavi",
+    "Noto Sans Inscriptional Parthian",
+    "Noto Sans Javanese",
+    "Noto Sans Kaithi",
+    "Noto Sans Kannada",
+    "Noto Sans Kannada UI",
+    "Noto Sans Kawi",
+    "Noto Sans Kayah Li",
+    "Noto Sans Kharoshthi",
+    "Noto Sans Khmer",
+    "Noto Sans Khmer UI",
+    "Noto Sans Khojki",
+    "Noto Sans Khudawadi",
+    "Noto Sans Lao",
+    "Noto Sans Lao Looped",
+    "Noto Sans Lao Looped UI",
+    "Noto Sans Lao UI",
+    "Noto Sans Lepcha",
+    "Noto Sans Limbu",
+    "Noto Sans Linear A",
+    "Noto Sans Linear B",
+    "Noto Sans Lisu",
+    "Noto Sans Lycian",
+    "Noto Sans Lydian",
+    "Noto Sans Mahajani",
+    "Noto Sans Malayalam",
+    "Noto Sans Malayalam UI",
+    "Noto Sans Mandaic",
+    "Noto Sans Manichaean",
+    "Noto Sans Marchen",
+    "Noto Sans Masaram Gondi",
+    "Noto Sans Math",
+    "Noto Sans Mayan Numerals",
+    "Noto Sans Medefaidrin",
+    "Noto Sans Meetei Mayek",
+    "Noto Sans Mende Kikakui",
+    "Noto Sans Meroitic",
+    "Noto Sans Miao",
+    "Noto Sans Modi",
+    "Noto Sans Mongolian",
+    "Noto Sans Mono",
+    "Noto Sans Mro",
+    "Noto Sans Multani",
+    "Noto Sans Myanmar",
+    "Noto Sans Myanmar UI",
+    "Noto Sans NKo",
+    "Noto Sans NKo Unjoined",
+    "Noto Sans Nabataean",
+    "Noto Sans Nag Mundari",
+    "Noto Sans Nandinagari",
+    "Noto Sans New Tai Lue",
+    "Noto Sans Newa",
+    "Noto Sans Nushu",
+    "Noto Sans Ogham",
+    "Noto Sans Ol Chiki",
+    "Noto Sans Old Hungarian",
+    "Noto Sans Old Italic",
+    "Noto Sans Old North Arabian",
+    "Noto Sans Old Permic",
+    "Noto Sans Old Persian",
+    "Noto Sans Old Sogdian",
+    "Noto Sans Old South Arabian",
+    "Noto Sans Old Turkic",
+    "Noto Sans Oriya",
+    "Noto Sans Osage",
+    "Noto Sans Osmanya",
+    "Noto Sans Pahawh Hmong",
+    "Noto Sans Palmyrene",
+    "Noto Sans Pau Cin Hau",
+    "Noto Sans PhagsPa",
+    "Noto Sans Phoenician",
+    "Noto Sans Psalter Pahlavi",
+    "Noto Sans Rejang",
+    "Noto Sans Runic",
+    "Noto Sans Samaritan",
+    "Noto Sans Saurashtra",
+    "Noto Sans Sharada",
+    "Noto Sans Shavian",
+    "Noto Sans Siddham",
+    "Noto Sans SignWriting",
+    "Noto Sans Sinhala",
+    "Noto Sans Sinhala UI",
+    "Noto Sans Sogdian",
+    "Noto Sans Sora Sompeng",
+    "Noto Sans Soyombo",
+    "Noto Sans Sundanese",
+    "Noto Sans Syloti Nagri",
+    "Noto Sans Symbols",
+    "Noto Sans Symbols 2",
+    "Noto Sans Syriac",
+    "Noto Sans Syriac Eastern",
+    "Noto Sans Syriac Western",
+    "Noto Sans Tagalog",
+    "Noto Sans Tagbanwa",
+    "Noto Sans Tai Le",
+    "Noto Sans Tai Tham",
+    "Noto Sans Tai Viet",
+    "Noto Sans Takri",
+    "Noto Sans Tamil",
+    "Noto Sans Tamil Supplement",
+    "Noto Sans Tamil UI",
+    "Noto Sans Tangsa",
+    "Noto Sans Telugu",
+    "Noto Sans Telugu UI",
+    "Noto Sans Test",
+    "Noto Sans Thaana",
+    "Noto Sans Thai",
+    "Noto Sans Thai Looped",
+    "Noto Sans Thai Looped UI",
+    "Noto Sans Thai UI",
+    "Noto Sans Tifinagh",
+    "Noto Sans Tifinagh APT",
+    "Noto Sans Tifinagh Adrar",
+    "Noto Sans Tifinagh Agraw Imazighen",
+    "Noto Sans Tifinagh Ahaggar",
+    "Noto Sans Tifinagh Air",
+    "Noto Sans Tifinagh Azawagh",
+    "Noto Sans Tifinagh Ghat",
+    "Noto Sans Tifinagh Hawad",
+    "Noto Sans Tifinagh Rhissa Ixa",
+    "Noto Sans Tifinagh SIL",
+    "Noto Sans Tifinagh Tawellemmet",
+    "Noto Sans Tirhuta",
+    "Noto Sans Ugaritic",
+    "Noto Sans Vai",
+    "Noto Sans Vithkuqi",
+    "Noto Sans Wancho",
+    "Noto Sans Warang Citi",
+    "Noto Sans Yi",
+    "Noto Sans Zanabazar Square",
+    "Noto Traditional Nushu",
+    "NotoSansOldHungarianUI",
+    "P052",
+    "Sans",
+    "Serif",
+    "Source Code Pro",
+    "System-ui",
+    "URW Bookman",
+    "URW Gothic",
+    "Ubuntu",
+    "Ubuntu Condensed",
+    "Ubuntu Mono",
+    "Z003"
+  ],
+  "max_seq_length": 196,
+  "pad_size": 3,
+  "pixels_per_patch": 16,
+  "rgb": false,
+  "text_renderer_type": "PangoCairoTextRenderer"
+}
+
+Some weights of the model checkpoint at UD_English-EWT-dep-pixel-small-words-196-64-1-5e-5-15000-42 were not used when initializing ViTModel: ['biaffine_arcs.weight', 'classifier.weight', 'classifier.bias', 'biaffine_rels.weight']
+- This IS expected if you are initializing ViTModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing ViTModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+2024-05-24 18:54:48,108 : ***** (Probing) Transfer task : LENGTH classification *****
+2024-05-24 18:54:48,202 : Loaded 99996 train - 9996 dev - 9996 test for Length
+2024-05-24 18:54:48,206 : Computing embeddings for train/dev/test
+2024-05-24 18:59:13,173 : Computed embeddings
+2024-05-24 18:59:13,174 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 19:02:51,833 : [('reg:1e-05', 90.47), ('reg:0.0001', 90.13), ('reg:0.001', 87.29), ('reg:0.01', 80.35)]
+2024-05-24 19:02:51,833 : Validation : best param found is reg = 1e-05 with score             90.47
+2024-05-24 19:02:51,833 : Evaluating...
+2024-05-24 19:03:58,568 : 
+Dev acc : 90.5 Test acc : 90.4 for LENGTH classification
+
+2024-05-24 19:03:58,582 : ***** (Probing) Transfer task : WORDCONTENT classification *****
+2024-05-24 19:03:58,705 : Loaded 100000 train - 10000 dev - 10000 test for WordContent
+2024-05-24 19:03:58,720 : Computing embeddings for train/dev/test
+2024-05-24 19:08:05,672 : Computed embeddings
+2024-05-24 19:08:05,672 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 19:11:46,875 : [('reg:1e-05', 35.64), ('reg:0.0001', 29.97), ('reg:0.001', 13.49), ('reg:0.01', 2.15)]
+2024-05-24 19:11:46,875 : Validation : best param found is reg = 1e-05 with score             35.64
+2024-05-24 19:11:46,875 : Evaluating...
+2024-05-24 19:12:58,102 : 
+Dev acc : 35.6 Test acc : 35.0 for WORDCONTENT classification
+
+2024-05-24 19:12:58,115 : ***** (Probing) Transfer task : DEPTH classification *****
+2024-05-24 19:12:58,360 : Loaded 100000 train - 10000 dev - 10000 test for Depth
+2024-05-24 19:12:58,377 : Computing embeddings for train/dev/test
+2024-05-24 19:16:59,862 : Computed embeddings
+2024-05-24 19:16:59,862 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 19:19:42,847 : [('reg:1e-05', 44.11), ('reg:0.0001', 44.09), ('reg:0.001', 43.75), ('reg:0.01', 41.07)]
+2024-05-24 19:19:42,847 : Validation : best param found is reg = 1e-05 with score             44.11
+2024-05-24 19:19:42,848 : Evaluating...
+2024-05-24 19:20:25,905 : 
+Dev acc : 44.1 Test acc : 43.9 for DEPTH classification
+
+2024-05-24 19:20:25,918 : ***** (Probing) Transfer task : TOPCONSTITUENTS classification *****
+2024-05-24 19:20:26,231 : Loaded 100000 train - 10000 dev - 10000 test for TopConstituents
+2024-05-24 19:20:26,248 : Computing embeddings for train/dev/test
+2024-05-24 19:24:33,495 : Computed embeddings
+2024-05-24 19:24:33,495 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 19:27:24,226 : [('reg:1e-05', 79.55), ('reg:0.0001', 79.53), ('reg:0.001', 78.14), ('reg:0.01', 73.02)]
+2024-05-24 19:27:24,226 : Validation : best param found is reg = 1e-05 with score             79.55
+2024-05-24 19:27:24,226 : Evaluating...
+2024-05-24 19:28:13,969 : 
+Dev acc : 79.5 Test acc : 79.7 for TOPCONSTITUENTS classification
+
+2024-05-24 19:28:13,981 : ***** (Probing) Transfer task : BIGRAMSHIFT classification *****
+2024-05-24 19:28:14,074 : Loaded 100000 train - 10000 dev - 10000 test for BigramShift
+2024-05-24 19:28:14,091 : Computing embeddings for train/dev/test
+2024-05-24 19:32:17,074 : Computed embeddings
+2024-05-24 19:32:17,074 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 19:34:41,679 : [('reg:1e-05', 78.46), ('reg:0.0001', 78.46), ('reg:0.001', 78.5), ('reg:0.01', 78.17)]
+2024-05-24 19:34:41,680 : Validation : best param found is reg = 0.001 with score             78.5
+2024-05-24 19:34:41,680 : Evaluating...
+2024-05-24 19:35:13,435 : 
+Dev acc : 78.5 Test acc : 77.7 for BIGRAMSHIFT classification
+
+2024-05-24 19:35:13,448 : ***** (Probing) Transfer task : TENSE classification *****
+2024-05-24 19:35:13,583 : Loaded 100000 train - 10000 dev - 10000 test for Tense
+2024-05-24 19:35:13,599 : Computing embeddings for train/dev/test
+2024-05-24 19:39:25,130 : Computed embeddings
+2024-05-24 19:39:25,130 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 19:41:29,234 : [('reg:1e-05', 89.83), ('reg:0.0001', 89.89), ('reg:0.001', 89.97), ('reg:0.01', 90.12)]
+2024-05-24 19:41:29,234 : Validation : best param found is reg = 0.01 with score             90.12
+2024-05-24 19:41:29,234 : Evaluating...
+2024-05-24 19:42:02,356 : 
+Dev acc : 90.1 Test acc : 89.0 for TENSE classification
+
+2024-05-24 19:42:02,369 : ***** (Probing) Transfer task : SUBJNUMBER classification *****
+2024-05-24 19:42:02,478 : Loaded 100000 train - 10000 dev - 10000 test for SubjNumber
+2024-05-24 19:42:02,495 : Computing embeddings for train/dev/test
+2024-05-24 19:46:17,609 : Computed embeddings
+2024-05-24 19:46:17,609 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 19:48:23,607 : [('reg:1e-05', 88.61), ('reg:0.0001', 88.59), ('reg:0.001', 88.66), ('reg:0.01', 87.99)]
+2024-05-24 19:48:23,608 : Validation : best param found is reg = 0.001 with score             88.66
+2024-05-24 19:48:23,608 : Evaluating...
+2024-05-24 19:49:01,798 : 
+Dev acc : 88.7 Test acc : 87.4 for SUBJNUMBER classification
+
+2024-05-24 19:49:01,812 : ***** (Probing) Transfer task : OBJNUMBER classification *****
+2024-05-24 19:49:01,916 : Loaded 100000 train - 10000 dev - 10000 test for ObjNumber
+2024-05-24 19:49:01,932 : Computing embeddings for train/dev/test
+2024-05-24 19:53:05,470 : Computed embeddings
+2024-05-24 19:53:05,470 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 19:56:05,141 : [('reg:1e-05', 87.08), ('reg:0.0001', 87.17), ('reg:0.001', 87.03), ('reg:0.01', 86.49)]
+2024-05-24 19:56:05,142 : Validation : best param found is reg = 0.0001 with score             87.17
+2024-05-24 19:56:05,142 : Evaluating...
+2024-05-24 19:56:52,196 : 
+Dev acc : 87.2 Test acc : 87.4 for OBJNUMBER classification
+
+2024-05-24 19:56:52,209 : ***** (Probing) Transfer task : ODDMANOUT classification *****
+2024-05-24 19:56:52,306 : Loaded 100000 train - 10000 dev - 10000 test for OddManOut
+2024-05-24 19:56:52,321 : Computing embeddings for train/dev/test
+2024-05-24 20:01:12,805 : Computed embeddings
+2024-05-24 20:01:12,806 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 20:03:35,324 : [('reg:1e-05', 52.02), ('reg:0.0001', 52.03), ('reg:0.001', 52.09), ('reg:0.01', 51.94)]
+2024-05-24 20:03:35,324 : Validation : best param found is reg = 0.001 with score             52.09
+2024-05-24 20:03:35,324 : Evaluating...
+2024-05-24 20:04:12,100 : 
+Dev acc : 52.1 Test acc : 51.3 for ODDMANOUT classification
+
+2024-05-24 20:04:12,114 : ***** (Probing) Transfer task : COORDINATIONINVERSION classification *****
+2024-05-24 20:04:12,280 : Loaded 100002 train - 10002 dev - 10002 test for CoordinationInversion
+2024-05-24 20:04:12,293 : Computing embeddings for train/dev/test
+2024-05-24 20:08:22,756 : Computed embeddings
+2024-05-24 20:08:22,756 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 20:10:44,908 : [('reg:1e-05', 60.84), ('reg:0.0001', 60.86), ('reg:0.001', 60.9), ('reg:0.01', 60.07)]
+2024-05-24 20:10:44,908 : Validation : best param found is reg = 0.001 with score             60.9
+2024-05-24 20:10:44,908 : Evaluating...
+2024-05-24 20:11:21,102 : 
+Dev acc : 60.9 Test acc : 60.8 for COORDINATIONINVERSION classification
+
+2024-05-24 20:11:29,242 : loading text renderer configuration file UD_English-EWT-dep-pixel-small-words-196-64-1-5e-5-15000-42/text_renderer_config.json
+2024-05-24 20:11:29,242 : loading font file UD_English-EWT-dep-pixel-small-words-196-64-1-5e-5-15000-42/f992c3c235a50254b24f7acbcba7ce1ddc3974d3ba9adf00eef4619e25854aaa.3f28e7f4b38e1efe1b6da4a3732404c19d4c6a614ff32dce90a251e293d4ce58
+2024-05-24 20:11:29,243 : Loading font from UD_English-EWT-dep-pixel-small-words-196-64-1-5e-5-15000-42/f992c3c235a50254b24f7acbcba7ce1ddc3974d3ba9adf00eef4619e25854aaa.3f28e7f4b38e1efe1b6da4a3732404c19d4c6a614ff32dce90a251e293d4ce58
+2024-05-24 20:11:29,395 : Loading fallback font fallback_fonts/NotoSansElymaic-Regular.ttf
+2024-05-24 20:11:29,395 : Loading fallback font fallback_fonts/NotoKufiArabic-Regular.ttf
+2024-05-24 20:11:29,395 : Loading fallback font fallback_fonts/NotoSansTifinaghAzawagh-Regular.ttf
+2024-05-24 20:11:29,396 : Loading fallback font fallback_fonts/NotoSansThaana-Regular.ttf
+2024-05-24 20:11:29,396 : Loading fallback font fallback_fonts/NotoSansBengali-Regular.ttf
+2024-05-24 20:11:29,397 : Loading fallback font fallback_fonts/NotoSansOldPermic-Regular.ttf
+2024-05-24 20:11:29,397 : Loading fallback font fallback_fonts/NotoSansPahawhHmong-Regular.ttf
+2024-05-24 20:11:29,397 : Loading fallback font fallback_fonts/NotoSansSogdian-Regular.ttf
+2024-05-24 20:11:29,397 : Loading fallback font fallback_fonts/NotoSansJavanese-Regular.ttf
+2024-05-24 20:11:29,398 : Loading fallback font fallback_fonts/NotoSansTifinaghAir-Regular.ttf
+2024-05-24 20:11:29,398 : Loading fallback font fallback_fonts/NotoSansUgaritic-Regular.ttf
+2024-05-24 20:11:29,398 : Loading fallback font fallback_fonts/NotoSansGrantha-Regular.ttf
+2024-05-24 20:11:29,398 : Loading fallback font fallback_fonts/NotoSansCJKjp-Regular.otf
+2024-05-24 20:11:29,401 : Loading fallback font fallback_fonts/NotoSansSoraSompeng-Regular.ttf
+2024-05-24 20:11:29,401 : Loading fallback font fallback_fonts/NotoSansVai-Regular.ttf
+2024-05-24 20:11:29,401 : Loading fallback font fallback_fonts/NotoSansCarian-Regular.ttf
+2024-05-24 20:11:29,401 : Loading fallback font fallback_fonts/NotoSansPalmyrene-Regular.ttf
+2024-05-24 20:11:29,402 : Loading fallback font fallback_fonts/NotoSansGujarati-Regular.ttf
+2024-05-24 20:11:29,402 : Loading fallback font fallback_fonts/NotoSansModi-Regular.ttf
+2024-05-24 20:11:29,402 : Loading fallback font fallback_fonts/NotoTraditionalNushu-Regular.ttf
+2024-05-24 20:11:29,402 : Loading fallback font fallback_fonts/NotoSansThaiLoopedUI-Regular.ttf
+2024-05-24 20:11:29,403 : Loading fallback font fallback_fonts/NotoSansHebrewDroid-Regular.ttf
+2024-05-24 20:11:29,403 : Loading fallback font fallback_fonts/NotoSansElbasan-Regular.ttf
+2024-05-24 20:11:29,403 : Loading fallback font fallback_fonts/NotoSansAdlam-Regular.ttf
+2024-05-24 20:11:29,403 : Loading fallback font fallback_fonts/NotoSansMath-Regular.ttf
+2024-05-24 20:11:29,404 : Loading fallback font fallback_fonts/NotoSansMarchen-Regular.ttf
+2024-05-24 20:11:29,404 : Loading fallback font fallback_fonts/AppleColorEmoji.ttf
+2024-05-24 20:11:29,404 : Loading fallback font fallback_fonts/NotoSansMedefaidrin-Regular.ttf
+2024-05-24 20:11:29,405 : Loading fallback font fallback_fonts/NotoSansSharada-Regular.ttf
+2024-05-24 20:11:29,405 : Loading fallback font fallback_fonts/NotoSansTagbanwa-Regular.ttf
+2024-05-24 20:11:29,405 : Loading fallback font fallback_fonts/NotoSansTifinaghAgrawImazighen-Regular.ttf
+2024-05-24 20:11:29,405 : Loading fallback font fallback_fonts/NotoSansGunjalaGondi-Regular.ttf
+2024-05-24 20:11:29,406 : Loading fallback font fallback_fonts/NotoSansBuginese-Regular.ttf
+2024-05-24 20:11:29,406 : Loading fallback font fallback_fonts/NotoSansThaiLooped-Regular.ttf
+2024-05-24 20:11:29,406 : Loading fallback font fallback_fonts/NotoSansNKo-Regular.ttf
+2024-05-24 20:11:29,406 : Loading fallback font fallback_fonts/NotoSansWarangCiti-Regular.ttf
+2024-05-24 20:11:29,407 : Loading fallback font fallback_fonts/NotoSansNKoUnjoined-Regular.ttf
+2024-05-24 20:11:29,407 : Loading fallback font fallback_fonts/NotoSansBuhid-Regular.ttf
+2024-05-24 20:11:29,407 : Loading fallback font fallback_fonts/NotoSansBengaliUI-Regular.ttf
+2024-05-24 20:11:29,407 : Loading fallback font fallback_fonts/NotoSansLaoLooped-Regular.ttf
+2024-05-24 20:11:29,408 : Loading fallback font fallback_fonts/NotoSansInscriptionalPahlavi-Regular.ttf
+2024-05-24 20:11:29,408 : Loading fallback font fallback_fonts/NotoSansTifinaghAPT-Regular.ttf
+2024-05-24 20:11:29,408 : Loading fallback font fallback_fonts/NotoSansOlChiki-Regular.ttf
+2024-05-24 20:11:29,408 : Loading fallback font fallback_fonts/NotoSansNabataean-Regular.ttf
+2024-05-24 20:11:29,409 : Loading fallback font fallback_fonts/NotoSansHanifiRohingya-Regular.ttf
+2024-05-24 20:11:29,409 : Loading fallback font fallback_fonts/NotoSansTifinaghRhissaIxa-Regular.ttf
+2024-05-24 20:11:29,409 : Loading fallback font fallback_fonts/NotoSansSyriacWestern-Regular.ttf
+2024-05-24 20:11:29,409 : Loading fallback font fallback_fonts/NotoSansMyanmar-Regular.ttf
+2024-05-24 20:11:29,410 : Loading fallback font fallback_fonts/NotoSansMandaic-Regular.ttf
+2024-05-24 20:11:29,410 : Loading fallback font fallback_fonts/NotoSansKharoshthi-Regular.ttf
+2024-05-24 20:11:29,410 : Loading fallback font fallback_fonts/NotoSansCoptic-Regular.ttf
+2024-05-24 20:11:29,410 : Loading fallback font fallback_fonts/NotoSansHebrew-Regular.ttf
+2024-05-24 20:11:29,411 : Loading fallback font fallback_fonts/NotoFangsongKSSVertical-Regular.ttf
+2024-05-24 20:11:29,411 : Loading fallback font fallback_fonts/NotoSansLaoUI-Regular.ttf
+2024-05-24 20:11:29,411 : Loading fallback font fallback_fonts/NotoSansGeorgian-Regular.ttf
+2024-05-24 20:11:29,411 : Loading fallback font fallback_fonts/NotoSansOldHungarian-Regular.ttf
+2024-05-24 20:11:29,412 : Loading fallback font fallback_fonts/NotoSansMahajani-Regular.ttf
+2024-05-24 20:11:29,412 : Loading fallback font fallback_fonts/NotoSansBalinese-Regular.ttf
+2024-05-24 20:11:29,412 : Loading fallback font fallback_fonts/NotoSansPhoenician-Regular.ttf
+2024-05-24 20:11:29,412 : Loading fallback font fallback_fonts/NotoSansGurmukhi-Regular.ttf
+2024-05-24 20:11:29,413 : Loading fallback font fallback_fonts/NotoSansHanunoo-Regular.ttf
+2024-05-24 20:11:29,413 : Loading fallback font fallback_fonts/NotoSansArabic-Regular.ttf
+2024-05-24 20:11:29,413 : Loading fallback font fallback_fonts/NotoNaskhArabicUI-Regular.ttf
+2024-05-24 20:11:29,413 : Loading fallback font fallback_fonts/NotoSansSinhala-Regular.ttf
+2024-05-24 20:11:29,414 : Loading fallback font fallback_fonts/NotoSansLepcha-Regular.ttf
+2024-05-24 20:11:29,414 : Loading fallback font fallback_fonts/NotoSansLisu-Regular.ttf
+2024-05-24 20:11:29,414 : Loading fallback font fallback_fonts/NotoSansTangsa-Regular.ttf
+2024-05-24 20:11:29,414 : Loading fallback font fallback_fonts/NotoSansShavian-Regular.ttf
+2024-05-24 20:11:29,415 : Loading fallback font fallback_fonts/NotoSansCypriot-Regular.ttf
+2024-05-24 20:11:29,415 : Loading fallback font fallback_fonts/NotoSansOldSouthArabian-Regular.ttf
+2024-05-24 20:11:29,415 : Loading fallback font fallback_fonts/NotoSansTaiViet-Regular.ttf
+2024-05-24 20:11:29,415 : Loading fallback font fallback_fonts/NotoSansCJKhk-Regular.otf
+2024-05-24 20:11:29,417 : Loading fallback font fallback_fonts/NotoSansTamilSupplement-Regular.ttf
+2024-05-24 20:11:29,418 : Loading fallback font fallback_fonts/NotoSansTaiTham-Regular.ttf
+2024-05-24 20:11:29,418 : Loading fallback font fallback_fonts/NotoSansTaiLe-Regular.ttf
+2024-05-24 20:11:29,418 : Loading fallback font fallback_fonts/NotoSansLao-Regular.ttf
+2024-05-24 20:11:29,418 : Loading fallback font fallback_fonts/NotoSansSymbols2-Regular.ttf
+2024-05-24 20:11:29,419 : Loading fallback font fallback_fonts/NotoSansSylotiNagri-Regular.ttf
+2024-05-24 20:11:29,419 : Loading fallback font fallback_fonts/NotoSansEgyptianHieroglyphs-Regular.ttf
+2024-05-24 20:11:29,419 : Loading fallback font fallback_fonts/NotoSansMendeKikakui-Regular.ttf
+2024-05-24 20:11:29,420 : Loading fallback font fallback_fonts/NotoSansSyriac-Regular.ttf
+2024-05-24 20:11:29,420 : Loading fallback font fallback_fonts/NotoSansBhaiksuki-Regular.ttf
+2024-05-24 20:11:29,420 : Loading fallback font fallback_fonts/NotoSansTamilUI-Regular.ttf
+2024-05-24 20:11:29,420 : Loading fallback font fallback_fonts/NotoSansTamil-Regular.ttf
+2024-05-24 20:11:29,421 : Loading fallback font fallback_fonts/NotoSansVithkuqi-Regular.ttf
+2024-05-24 20:11:29,421 : Loading fallback font fallback_fonts/NotoSansDuployan-Regular.ttf
+2024-05-24 20:11:29,421 : Loading fallback font fallback_fonts/NotoSansNewTaiLue-Regular.ttf
+2024-05-24 20:11:29,422 : Loading fallback font fallback_fonts/NotoSansMayanNumerals-Regular.ttf
+2024-05-24 20:11:29,422 : Loading fallback font fallback_fonts/NotoSansKannadaUI-Regular.ttf
+2024-05-24 20:11:29,422 : Loading fallback font fallback_fonts/NotoSansSaurashtra-Regular.ttf
+2024-05-24 20:11:29,422 : Loading fallback font fallback_fonts/NotoSansCJKkr-Regular.otf
+2024-05-24 20:11:29,424 : Loading fallback font fallback_fonts/NotoMusic-Regular.ttf
+2024-05-24 20:11:29,424 : Loading fallback font fallback_fonts/NotoSansTifinaghSIL-Regular.ttf
+2024-05-24 20:11:29,425 : Loading fallback font fallback_fonts/NotoSansMiao-Regular.ttf
+2024-05-24 20:11:29,425 : Loading fallback font fallback_fonts/NotoSansLydian-Regular.ttf
+2024-05-24 20:11:29,425 : Loading fallback font fallback_fonts/NotoSansInscriptionalParthian-Regular.ttf
+2024-05-24 20:11:29,426 : Loading fallback font fallback_fonts/NotoSansGlagolitic-Regular.ttf
+2024-05-24 20:11:29,426 : Loading fallback font fallback_fonts/NotoSansMyanmarUI-Regular.ttf
+2024-05-24 20:11:29,426 : Loading fallback font fallback_fonts/NotoSansKhmerUI-Regular.ttf
+2024-05-24 20:11:29,426 : Loading fallback font fallback_fonts/NotoSans-Regular.ttf
+2024-05-24 20:11:29,427 : Loading fallback font fallback_fonts/NotoSansPauCinHau-Regular.ttf
+2024-05-24 20:11:29,427 : Loading fallback font fallback_fonts/NotoSansOldHungarianUI-Regular.ttf
+2024-05-24 20:11:29,427 : Loading fallback font fallback_fonts/NotoSansManichaean-Regular.ttf
+2024-05-24 20:11:29,427 : Loading fallback font fallback_fonts/NotoSansTifinaghTawellemmet-Regular.ttf
+2024-05-24 20:11:29,428 : Loading fallback font fallback_fonts/NotoSansArmenian-Regular.ttf
+2024-05-24 20:11:29,428 : Loading fallback font fallback_fonts/NotoSansIndicSiyaqNumbers-Regular.ttf
+2024-05-24 20:11:29,428 : Loading fallback font fallback_fonts/NotoSansWancho-Regular.ttf
+2024-05-24 20:11:29,428 : Loading fallback font fallback_fonts/GoNotoCurrent.ttf
+2024-05-24 20:11:29,430 : Loading fallback font fallback_fonts/NotoSansKhojki-Regular.ttf
+2024-05-24 20:11:29,430 : Loading fallback font fallback_fonts/NotoSansMeroitic-Regular.ttf
+2024-05-24 20:11:29,430 : Loading fallback font fallback_fonts/NotoSansMro-Regular.ttf
+2024-05-24 20:11:29,430 : Loading fallback font fallback_fonts/NotoSansGothic-Regular.ttf
+2024-05-24 20:11:29,431 : Loading fallback font fallback_fonts/NotoSansSyriacEastern-Regular.ttf
+2024-05-24 20:11:29,431 : Loading fallback font fallback_fonts/NotoSansCyproMinoan-Regular.ttf
+2024-05-24 20:11:29,431 : Loading fallback font fallback_fonts/NotoSansLinearB-Regular.ttf
+2024-05-24 20:11:29,431 : Loading fallback font fallback_fonts/NotoSansOriya-Regular.ttf
+2024-05-24 20:11:29,432 : Loading fallback font fallback_fonts/NotoSansLimbu-Regular.ttf
+2024-05-24 20:11:29,432 : Loading fallback font fallback_fonts/NotoSansLycian-Regular.ttf
+2024-05-24 20:11:29,432 : Loading fallback font fallback_fonts/NotoSansKaithi-Regular.ttf
+2024-05-24 20:11:29,432 : Loading fallback font fallback_fonts/NotoSansThaiUI-Regular.ttf
+2024-05-24 20:11:29,433 : Loading fallback font fallback_fonts/NotoSansTifinaghGhat-Regular.ttf
+2024-05-24 20:11:29,433 : Loading fallback font fallback_fonts/NotoSansBatak-Regular.ttf
+2024-05-24 20:11:29,433 : Loading fallback font fallback_fonts/NotoSansNandinagari-Regular.ttf
+2024-05-24 20:11:29,433 : Loading fallback font fallback_fonts/NotoSansEthiopic-Regular.ttf
+2024-05-24 20:11:29,434 : Loading fallback font fallback_fonts/NotoSansKayahLi-Regular.ttf
+2024-05-24 20:11:29,434 : Loading fallback font fallback_fonts/NotoSansNushu-Regular.ttf
+2024-05-24 20:11:29,434 : Loading fallback font fallback_fonts/NotoSansChakma-Regular.ttf
+2024-05-24 20:11:29,434 : Loading fallback font fallback_fonts/NotoSansOsage-Regular.ttf
+2024-05-24 20:11:29,435 : Loading fallback font fallback_fonts/NotoSansTelugu-Regular.ttf
+2024-05-24 20:11:29,435 : Loading fallback font fallback_fonts/NotoSansKhmer-Regular.ttf
+2024-05-24 20:11:29,435 : Loading fallback font fallback_fonts/NotoSansRunic-Regular.ttf
+2024-05-24 20:11:29,435 : Loading fallback font fallback_fonts/NotoSansNagMundari-Regular.ttf
+2024-05-24 20:11:29,436 : Loading fallback font fallback_fonts/NotoSansNewa-Regular.ttf
+2024-05-24 20:11:29,436 : Loading fallback font fallback_fonts/NotoSansLinearA-Regular.ttf
+2024-05-24 20:11:29,436 : Loading fallback font fallback_fonts/NotoSansGurmukhiUI-Regular.ttf
+2024-05-24 20:11:29,436 : Loading fallback font fallback_fonts/NotoSansTest-Regular.ttf
+2024-05-24 20:11:29,437 : Loading fallback font fallback_fonts/NotoSansPhagsPa-Regular.ttf
+2024-05-24 20:11:29,437 : Loading fallback font fallback_fonts/NotoSansBamum-Regular.ttf
+2024-05-24 20:11:29,437 : Loading fallback font fallback_fonts/NotoSansCham-Regular.ttf
+2024-05-24 20:11:29,437 : Loading fallback font fallback_fonts/NotoSansMalayalamUI-Regular.ttf
+2024-05-24 20:11:29,438 : Loading fallback font fallback_fonts/NotoSansLaoLoopedUI-Regular.ttf
+2024-05-24 20:11:29,438 : Loading fallback font fallback_fonts/NotoSansCuneiform-Regular.ttf
+2024-05-24 20:11:29,438 : Loading fallback font fallback_fonts/NotoSansAdlamUnjoined-Regular.ttf
+2024-05-24 20:11:29,438 : Loading fallback font fallback_fonts/NotoSansPsalterPahlavi-Regular.ttf
+2024-05-24 20:11:29,439 : Loading fallback font fallback_fonts/NotoSansTifinaghAhaggar-Regular.ttf
+2024-05-24 20:11:29,439 : Loading fallback font fallback_fonts/NotoSansChorasmian-Regular.ttf
+2024-05-24 20:11:29,439 : Loading fallback font fallback_fonts/NotoSansDevanagari-Regular.ttf
+2024-05-24 20:11:29,439 : Loading fallback font fallback_fonts/NotoSansSoyombo-Regular.ttf
+2024-05-24 20:11:29,440 : Loading fallback font fallback_fonts/NotoSansAvestan-Regular.ttf
+2024-05-24 20:11:29,440 : Loading fallback font fallback_fonts/NotoSansOsmanya-Regular.ttf
+2024-05-24 20:11:29,440 : Loading fallback font fallback_fonts/NotoSansOldItalic-Regular.ttf
+2024-05-24 20:11:29,440 : Loading fallback font fallback_fonts/NotoSansGujaratiUI-Regular.ttf
+2024-05-24 20:11:29,441 : Loading fallback font fallback_fonts/NotoSansTagalog-Regular.ttf
+2024-05-24 20:11:29,441 : Loading fallback font fallback_fonts/NotoSansSignWriting-Regular.ttf
+2024-05-24 20:11:29,441 : Loading fallback font fallback_fonts/NotoSansMono-Regular.ttf
+2024-05-24 20:11:29,442 : Loading fallback font fallback_fonts/NotoSansRejang-Regular.ttf
+2024-05-24 20:11:29,442 : Loading fallback font fallback_fonts/NotoSansOldTurkic-Regular.ttf
+2024-05-24 20:11:29,442 : Loading fallback font fallback_fonts/NotoSansMasaramGondi-Regular.ttf
+2024-05-24 20:11:29,442 : Loading fallback font fallback_fonts/NotoSansDeseret-Regular.ttf
+2024-05-24 20:11:29,443 : Loading fallback font fallback_fonts/NotoSansThai-Regular.ttf
+2024-05-24 20:11:29,443 : Loading fallback font fallback_fonts/NotoSansKhudawadi-Regular.ttf
+2024-05-24 20:11:29,443 : Loading fallback font fallback_fonts/NotoSansOgham-Regular.ttf
+2024-05-24 20:11:29,443 : Loading fallback font fallback_fonts/NotoSansYi-Regular.ttf
+2024-05-24 20:11:29,444 : Loading fallback font fallback_fonts/NotoSansDevanagariUI-Regular.ttf
+2024-05-24 20:11:29,444 : Loading fallback font fallback_fonts/NotoRashiHebrew-Regular.ttf
+2024-05-24 20:11:29,444 : Loading fallback font fallback_fonts/NotoSansDuployan-Regular.otf
+2024-05-24 20:11:29,445 : Loading fallback font fallback_fonts/NotoSansTifinaghHawad-Regular.ttf
+2024-05-24 20:11:29,445 : Loading fallback font fallback_fonts/NotoSansKawi-Regular.ttf
+2024-05-24 20:11:29,445 : Loading fallback font fallback_fonts/NotoSansKannada-Regular.ttf
+2024-05-24 20:11:29,445 : Loading fallback font fallback_fonts/NotoSansTifinagh-Regular.ttf
+2024-05-24 20:11:29,446 : Loading fallback font fallback_fonts/NotoSansOldNorthArabian-Regular.ttf
+2024-05-24 20:11:29,446 : Loading fallback font fallback_fonts/NotoNastaliqUrdu-Regular.ttf
+2024-05-24 20:11:29,446 : Loading fallback font fallback_fonts/NotoSansCJKsc-Regular.otf
+2024-05-24 20:11:29,448 : Loading fallback font fallback_fonts/NotoFangsongKSSRotated-Regular.ttf
+2024-05-24 20:11:29,448 : Loading fallback font fallback_fonts/NotoSansSinhalaUI-Regular.ttf
+2024-05-24 20:11:29,449 : Loading fallback font fallback_fonts/NotoSansTifinaghAdrar-Regular.ttf
+2024-05-24 20:11:29,449 : Loading fallback font fallback_fonts/NotoSansMultani-Regular.ttf
+2024-05-24 20:11:29,449 : Loading fallback font fallback_fonts/NotoSansHatran-Regular.ttf
+2024-05-24 20:11:29,449 : Loading fallback font fallback_fonts/NotoSansCanadianAboriginal-Regular.ttf
+2024-05-24 20:11:29,450 : Loading fallback font fallback_fonts/NotoSansSundanese-Regular.ttf
+2024-05-24 20:11:29,450 : Loading fallback font fallback_fonts/NotoSansSamaritan-Regular.ttf
+2024-05-24 20:11:29,450 : Loading fallback font fallback_fonts/NotoSansTeluguUI-Regular.ttf
+2024-05-24 20:11:29,450 : Loading fallback font fallback_fonts/NotoSansSymbols-Regular.ttf
+2024-05-24 20:11:29,451 : Loading fallback font fallback_fonts/NotoSansBassaVah-Regular.ttf
+2024-05-24 20:11:29,451 : Loading fallback font fallback_fonts/NotoSansMeeteiMayek-Regular.ttf
+2024-05-24 20:11:29,451 : Loading fallback font fallback_fonts/NotoSansCJKtc-Regular.otf
+2024-05-24 20:11:29,453 : Loading fallback font fallback_fonts/NotoSansTakri-Regular.ttf
+2024-05-24 20:11:29,453 : Loading fallback font fallback_fonts/NotoSansAnatolianHieroglyphs-Regular.ttf
+2024-05-24 20:11:29,453 : Loading fallback font fallback_fonts/NotoSansTirhuta-Regular.ttf
+2024-05-24 20:11:29,454 : Loading fallback font fallback_fonts/NotoSansOldPersian-Regular.ttf
+2024-05-24 20:11:29,454 : Loading fallback font fallback_fonts/NotoSansBrahmi-Regular.ttf
+2024-05-24 20:11:29,454 : Loading fallback font fallback_fonts/NotoSansCherokee-Regular.ttf
+2024-05-24 20:11:29,454 : Loading fallback font fallback_fonts/NotoSansSiddham-Regular.ttf
+2024-05-24 20:11:29,455 : Loading fallback font fallback_fonts/NotoSansMongolian-Regular.ttf
+2024-05-24 20:11:29,455 : Loading fallback font fallback_fonts/NotoSansMalayalam-Regular.ttf
+2024-05-24 20:11:29,455 : Loading fallback font fallback_fonts/NotoSansCaucasianAlbanian-Regular.ttf
+2024-05-24 20:11:29,455 : Loading fallback font fallback_fonts/NotoSansOldSogdian-Regular.ttf
+2024-05-24 20:11:29,456 : Loading fallback font fallback_fonts/NotoSansZanabazarSquare-Regular.ttf
+2024-05-24 20:11:29,456 : Loading fallback font fallback_fonts/NotoSansImperialAramaic-Regular.ttf
+2024-05-24 20:11:29,501 : Reading 'name' table from disk
+2024-05-24 20:11:29,537 : Decompiling 'name' table
+2024-05-24 20:11:29,539 : Text renderer PangoCairoTextRenderer {
+  "background_color": "white",
+  "dpi": 120,
+  "font_color": "black",
+  "font_file": "f992c3c235a50254b24f7acbcba7ce1ddc3974d3ba9adf00eef4619e25854aaa.3f28e7f4b38e1efe1b6da4a3732404c19d4c6a614ff32dce90a251e293d4ce58",
+  "font_size": 8,
+  "fonts_list": [
+    "Apple Color Emoji",
+    "C059",
+    "Cantarell",
+    "D050000L",
+    "DejaVu LGC Sans",
+    "DejaVu Sans",
+    "DejaVu Sans Mono",
+    "Droid Sans",
+    "Droid Sans Arabic",
+    "Droid Sans Armenian",
+    "Droid Sans Devanagari",
+    "Droid Sans Ethiopic",
+    "Droid Sans Fallback",
+    "Droid Sans Georgian",
+    "Droid Sans Hebrew",
+    "Droid Sans Japanese",
+    "Droid Sans Tamil",
+    "Droid Sans Thai",
+    "Go Noto Current",
+    "Inconsolata",
+    "Liberation Mono",
+    "Monospace",
+    "Nimbus Mono PS",
+    "Nimbus Roman",
+    "Nimbus Sans",
+    "Nimbus Sans Narrow",
+    "Noto Fangsong KSS Rotated",
+    "Noto Fangsong KSS Vertical",
+    "Noto Kufi Arabic",
+    "Noto Music",
+    "Noto Naskh Arabic UI",
+    "Noto Nastaliq Urdu",
+    "Noto Rashi Hebrew",
+    "Noto Sans",
+    "Noto Sans Adlam",
+    "Noto Sans Adlam Unjoined",
+    "Noto Sans Anatolian Hieroglyphs",
+    "Noto Sans Arabic",
+    "Noto Sans Armenian",
+    "Noto Sans Avestan",
+    "Noto Sans Balinese",
+    "Noto Sans Bamum",
+    "Noto Sans Bassa Vah",
+    "Noto Sans Batak",
+    "Noto Sans Bengali",
+    "Noto Sans Bengali UI",
+    "Noto Sans Bhaiksuki",
+    "Noto Sans Brahmi",
+    "Noto Sans Buginese",
+    "Noto Sans Buhid",
+    "Noto Sans CJK HK",
+    "Noto Sans CJK JP",
+    "Noto Sans CJK KR",
+    "Noto Sans CJK SC",
+    "Noto Sans CJK TC",
+    "Noto Sans Canadian Aboriginal",
+    "Noto Sans Carian",
+    "Noto Sans Caucasian Albanian",
+    "Noto Sans Chakma",
+    "Noto Sans Cham",
+    "Noto Sans Cherokee",
+    "Noto Sans Chorasmian",
+    "Noto Sans Coptic",
+    "Noto Sans Cuneiform",
+    "Noto Sans Cypriot",
+    "Noto Sans Cypro Minoan",
+    "Noto Sans Deseret",
+    "Noto Sans Devanagari",
+    "Noto Sans Devanagari UI",
+    "Noto Sans Duployan",
+    "Noto Sans Egyptian Hieroglyphs",
+    "Noto Sans Elbasan",
+    "Noto Sans Elymaic",
+    "Noto Sans Ethiopic",
+    "Noto Sans Georgian",
+    "Noto Sans Glagolitic",
+    "Noto Sans Gothic",
+    "Noto Sans Grantha",
+    "Noto Sans Gujarati",
+    "Noto Sans Gujarati UI",
+    "Noto Sans Gunjala Gondi",
+    "Noto Sans Gurmukhi",
+    "Noto Sans Gurmukhi UI",
+    "Noto Sans Hanifi Rohingya",
+    "Noto Sans Hanunoo",
+    "Noto Sans Hatran",
+    "Noto Sans Hebrew",
+    "Noto Sans Hebrew Droid",
+    "Noto Sans Imperial Aramaic",
+    "Noto Sans Indic Siyaq Numbers",
+    "Noto Sans Inscriptional Pahlavi",
+    "Noto Sans Inscriptional Parthian",
+    "Noto Sans Javanese",
+    "Noto Sans Kaithi",
+    "Noto Sans Kannada",
+    "Noto Sans Kannada UI",
+    "Noto Sans Kawi",
+    "Noto Sans Kayah Li",
+    "Noto Sans Kharoshthi",
+    "Noto Sans Khmer",
+    "Noto Sans Khmer UI",
+    "Noto Sans Khojki",
+    "Noto Sans Khudawadi",
+    "Noto Sans Lao",
+    "Noto Sans Lao Looped",
+    "Noto Sans Lao Looped UI",
+    "Noto Sans Lao UI",
+    "Noto Sans Lepcha",
+    "Noto Sans Limbu",
+    "Noto Sans Linear A",
+    "Noto Sans Linear B",
+    "Noto Sans Lisu",
+    "Noto Sans Lycian",
+    "Noto Sans Lydian",
+    "Noto Sans Mahajani",
+    "Noto Sans Malayalam",
+    "Noto Sans Malayalam UI",
+    "Noto Sans Mandaic",
+    "Noto Sans Manichaean",
+    "Noto Sans Marchen",
+    "Noto Sans Masaram Gondi",
+    "Noto Sans Math",
+    "Noto Sans Mayan Numerals",
+    "Noto Sans Medefaidrin",
+    "Noto Sans Meetei Mayek",
+    "Noto Sans Mende Kikakui",
+    "Noto Sans Meroitic",
+    "Noto Sans Miao",
+    "Noto Sans Modi",
+    "Noto Sans Mongolian",
+    "Noto Sans Mono",
+    "Noto Sans Mro",
+    "Noto Sans Multani",
+    "Noto Sans Myanmar",
+    "Noto Sans Myanmar UI",
+    "Noto Sans NKo",
+    "Noto Sans NKo Unjoined",
+    "Noto Sans Nabataean",
+    "Noto Sans Nag Mundari",
+    "Noto Sans Nandinagari",
+    "Noto Sans New Tai Lue",
+    "Noto Sans Newa",
+    "Noto Sans Nushu",
+    "Noto Sans Ogham",
+    "Noto Sans Ol Chiki",
+    "Noto Sans Old Hungarian",
+    "Noto Sans Old Italic",
+    "Noto Sans Old North Arabian",
+    "Noto Sans Old Permic",
+    "Noto Sans Old Persian",
+    "Noto Sans Old Sogdian",
+    "Noto Sans Old South Arabian",
+    "Noto Sans Old Turkic",
+    "Noto Sans Oriya",
+    "Noto Sans Osage",
+    "Noto Sans Osmanya",
+    "Noto Sans Pahawh Hmong",
+    "Noto Sans Palmyrene",
+    "Noto Sans Pau Cin Hau",
+    "Noto Sans PhagsPa",
+    "Noto Sans Phoenician",
+    "Noto Sans Psalter Pahlavi",
+    "Noto Sans Rejang",
+    "Noto Sans Runic",
+    "Noto Sans Samaritan",
+    "Noto Sans Saurashtra",
+    "Noto Sans Sharada",
+    "Noto Sans Shavian",
+    "Noto Sans Siddham",
+    "Noto Sans SignWriting",
+    "Noto Sans Sinhala",
+    "Noto Sans Sinhala UI",
+    "Noto Sans Sogdian",
+    "Noto Sans Sora Sompeng",
+    "Noto Sans Soyombo",
+    "Noto Sans Sundanese",
+    "Noto Sans Syloti Nagri",
+    "Noto Sans Symbols",
+    "Noto Sans Symbols 2",
+    "Noto Sans Syriac",
+    "Noto Sans Syriac Eastern",
+    "Noto Sans Syriac Western",
+    "Noto Sans Tagalog",
+    "Noto Sans Tagbanwa",
+    "Noto Sans Tai Le",
+    "Noto Sans Tai Tham",
+    "Noto Sans Tai Viet",
+    "Noto Sans Takri",
+    "Noto Sans Tamil",
+    "Noto Sans Tamil Supplement",
+    "Noto Sans Tamil UI",
+    "Noto Sans Tangsa",
+    "Noto Sans Telugu",
+    "Noto Sans Telugu UI",
+    "Noto Sans Test",
+    "Noto Sans Thaana",
+    "Noto Sans Thai",
+    "Noto Sans Thai Looped",
+    "Noto Sans Thai Looped UI",
+    "Noto Sans Thai UI",
+    "Noto Sans Tifinagh",
+    "Noto Sans Tifinagh APT",
+    "Noto Sans Tifinagh Adrar",
+    "Noto Sans Tifinagh Agraw Imazighen",
+    "Noto Sans Tifinagh Ahaggar",
+    "Noto Sans Tifinagh Air",
+    "Noto Sans Tifinagh Azawagh",
+    "Noto Sans Tifinagh Ghat",
+    "Noto Sans Tifinagh Hawad",
+    "Noto Sans Tifinagh Rhissa Ixa",
+    "Noto Sans Tifinagh SIL",
+    "Noto Sans Tifinagh Tawellemmet",
+    "Noto Sans Tirhuta",
+    "Noto Sans Ugaritic",
+    "Noto Sans Vai",
+    "Noto Sans Vithkuqi",
+    "Noto Sans Wancho",
+    "Noto Sans Warang Citi",
+    "Noto Sans Yi",
+    "Noto Sans Zanabazar Square",
+    "Noto Traditional Nushu",
+    "NotoSansOldHungarianUI",
+    "P052",
+    "Sans",
+    "Serif",
+    "Source Code Pro",
+    "System-ui",
+    "URW Bookman",
+    "URW Gothic",
+    "Ubuntu",
+    "Ubuntu Condensed",
+    "Ubuntu Mono",
+    "Z003"
+  ],
+  "max_seq_length": 196,
+  "pad_size": 3,
+  "pixels_per_patch": 16,
+  "rgb": false,
+  "text_renderer_type": "PangoCairoTextRenderer"
+}
+
+Some weights of the model checkpoint at UD_English-EWT-dep-pixel-small-words-196-64-1-5e-5-15000-42 were not used when initializing ViTModel: ['classifier.weight', 'classifier.bias', 'biaffine_rels.weight', 'biaffine_arcs.weight']
+- This IS expected if you are initializing ViTModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing ViTModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+2024-05-24 20:11:31,214 : ***** (Probing) Transfer task : LENGTH classification *****
+2024-05-24 20:11:31,304 : Loaded 99996 train - 9996 dev - 9996 test for Length
+2024-05-24 20:11:31,308 : Computing embeddings for train/dev/test
+2024-05-24 20:15:57,038 : Computed embeddings
+2024-05-24 20:15:57,039 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 20:19:52,071 : [('reg:1e-05', 95.75), ('reg:0.0001', 94.45), ('reg:0.001', 88.75), ('reg:0.01', 79.53)]
+2024-05-24 20:19:52,071 : Validation : best param found is reg = 1e-05 with score             95.75
+2024-05-24 20:19:52,072 : Evaluating...
+2024-05-24 20:21:12,224 : 
+Dev acc : 95.8 Test acc : 96.0 for LENGTH classification
+
+2024-05-24 20:21:12,238 : ***** (Probing) Transfer task : WORDCONTENT classification *****
+2024-05-24 20:21:12,361 : Loaded 100000 train - 10000 dev - 10000 test for WordContent
+2024-05-24 20:21:12,377 : Computing embeddings for train/dev/test
+2024-05-24 20:25:27,834 : Computed embeddings
+2024-05-24 20:25:27,835 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 20:29:43,952 : [('reg:1e-05', 55.51), ('reg:0.0001', 34.53), ('reg:0.001', 6.95), ('reg:0.01', 0.62)]
+2024-05-24 20:29:43,953 : Validation : best param found is reg = 1e-05 with score             55.51
+2024-05-24 20:29:43,953 : Evaluating...
+2024-05-24 20:31:28,435 : 
+Dev acc : 55.5 Test acc : 55.0 for WORDCONTENT classification
+
+2024-05-24 20:31:28,449 : ***** (Probing) Transfer task : DEPTH classification *****
+2024-05-24 20:31:28,547 : Loaded 100000 train - 10000 dev - 10000 test for Depth
+2024-05-24 20:31:28,563 : Computing embeddings for train/dev/test
+2024-05-24 20:35:51,797 : Computed embeddings
+2024-05-24 20:35:51,798 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 20:38:53,049 : [('reg:1e-05', 43.84), ('reg:0.0001', 43.79), ('reg:0.001', 41.85), ('reg:0.01', 37.94)]
+2024-05-24 20:38:53,049 : Validation : best param found is reg = 1e-05 with score             43.84
+2024-05-24 20:38:53,049 : Evaluating...
+2024-05-24 20:39:41,554 : 
+Dev acc : 43.8 Test acc : 44.0 for DEPTH classification
+
+2024-05-24 20:39:41,566 : ***** (Probing) Transfer task : TOPCONSTITUENTS classification *****
+2024-05-24 20:39:41,889 : Loaded 100000 train - 10000 dev - 10000 test for TopConstituents
+2024-05-24 20:39:41,906 : Computing embeddings for train/dev/test
+2024-05-24 20:43:50,772 : Computed embeddings
+2024-05-24 20:43:50,773 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 20:47:05,378 : [('reg:1e-05', 79.78), ('reg:0.0001', 78.83), ('reg:0.001', 73.93), ('reg:0.01', 63.84)]
+2024-05-24 20:47:05,378 : Validation : best param found is reg = 1e-05 with score             79.78
+2024-05-24 20:47:05,378 : Evaluating...
+2024-05-24 20:47:59,856 : 
+Dev acc : 79.8 Test acc : 80.1 for TOPCONSTITUENTS classification
+
+2024-05-24 20:47:59,868 : ***** (Probing) Transfer task : BIGRAMSHIFT classification *****
+2024-05-24 20:48:00,134 : Loaded 100000 train - 10000 dev - 10000 test for BigramShift
+2024-05-24 20:48:00,153 : Computing embeddings for train/dev/test
+2024-05-24 20:52:09,887 : Computed embeddings
+2024-05-24 20:52:09,888 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 20:54:39,561 : [('reg:1e-05', 78.42), ('reg:0.0001', 78.51), ('reg:0.001', 78.22), ('reg:0.01', 75.49)]
+2024-05-24 20:54:39,561 : Validation : best param found is reg = 0.0001 with score             78.51
+2024-05-24 20:54:39,562 : Evaluating...
+2024-05-24 20:55:17,225 : 
+Dev acc : 78.5 Test acc : 77.5 for BIGRAMSHIFT classification
+
+2024-05-24 20:55:17,237 : ***** (Probing) Transfer task : TENSE classification *****
+2024-05-24 20:55:17,547 : Loaded 100000 train - 10000 dev - 10000 test for Tense
+2024-05-24 20:55:17,562 : Computing embeddings for train/dev/test
+2024-05-24 20:59:34,927 : Computed embeddings
+2024-05-24 20:59:34,928 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 21:01:57,141 : [('reg:1e-05', 90.05), ('reg:0.0001', 90.1), ('reg:0.001', 90.02), ('reg:0.01', 89.59)]
+2024-05-24 21:01:57,142 : Validation : best param found is reg = 0.0001 with score             90.1
+2024-05-24 21:01:57,142 : Evaluating...
+2024-05-24 21:02:29,474 : 
+Dev acc : 90.1 Test acc : 88.5 for TENSE classification
+
+2024-05-24 21:02:29,486 : ***** (Probing) Transfer task : SUBJNUMBER classification *****
+2024-05-24 21:02:29,717 : Loaded 100000 train - 10000 dev - 10000 test for SubjNumber
+2024-05-24 21:02:29,733 : Computing embeddings for train/dev/test
+2024-05-24 21:06:46,992 : Computed embeddings
+2024-05-24 21:06:46,992 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 21:09:41,631 : [('reg:1e-05', 88.44), ('reg:0.0001', 88.52), ('reg:0.001', 87.97), ('reg:0.01', 85.85)]
+2024-05-24 21:09:41,632 : Validation : best param found is reg = 0.0001 with score             88.52
+2024-05-24 21:09:41,632 : Evaluating...
+2024-05-24 21:10:30,314 : 
+Dev acc : 88.5 Test acc : 87.2 for SUBJNUMBER classification
+
+2024-05-24 21:10:30,327 : ***** (Probing) Transfer task : OBJNUMBER classification *****
+2024-05-24 21:10:30,432 : Loaded 100000 train - 10000 dev - 10000 test for ObjNumber
+2024-05-24 21:10:30,448 : Computing embeddings for train/dev/test
+2024-05-24 21:14:49,582 : Computed embeddings
+2024-05-24 21:14:49,582 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 21:17:47,022 : [('reg:1e-05', 86.13), ('reg:0.0001', 86.22), ('reg:0.001', 85.9), ('reg:0.01', 84.77)]
+2024-05-24 21:17:47,023 : Validation : best param found is reg = 0.0001 with score             86.22
+2024-05-24 21:17:47,023 : Evaluating...
+2024-05-24 21:18:34,998 : 
+Dev acc : 86.2 Test acc : 86.9 for OBJNUMBER classification
+
+2024-05-24 21:18:35,011 : ***** (Probing) Transfer task : ODDMANOUT classification *****
+2024-05-24 21:18:35,311 : Loaded 100000 train - 10000 dev - 10000 test for OddManOut
+2024-05-24 21:18:35,327 : Computing embeddings for train/dev/test
+2024-05-24 21:23:04,076 : Computed embeddings
+2024-05-24 21:23:04,077 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 21:25:59,179 : [('reg:1e-05', 51.75), ('reg:0.0001', 51.86), ('reg:0.001', 51.69), ('reg:0.01', 51.71)]
+2024-05-24 21:25:59,179 : Validation : best param found is reg = 0.0001 with score             51.86
+2024-05-24 21:25:59,179 : Evaluating...
+2024-05-24 21:26:51,257 : 
+Dev acc : 51.9 Test acc : 50.3 for ODDMANOUT classification
+
+2024-05-24 21:26:51,272 : ***** (Probing) Transfer task : COORDINATIONINVERSION classification *****
+2024-05-24 21:26:51,574 : Loaded 100002 train - 10002 dev - 10002 test for CoordinationInversion
+2024-05-24 21:26:51,590 : Computing embeddings for train/dev/test
+2024-05-24 21:31:28,378 : Computed embeddings
+2024-05-24 21:31:28,378 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-24 21:33:45,902 : [('reg:1e-05', 60.07), ('reg:0.0001', 60.09), ('reg:0.001', 59.94), ('reg:0.01', 58.01)]
+2024-05-24 21:33:45,903 : Validation : best param found is reg = 0.0001 with score             60.09
+2024-05-24 21:33:45,903 : Evaluating...
+2024-05-24 21:34:22,474 : 
+Dev acc : 60.1 Test acc : 60.0 for COORDINATIONINVERSION classification
+
