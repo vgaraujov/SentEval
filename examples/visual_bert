@@ -1,0 +1,482 @@
+SLURM_JOB_ID: 61424607
+SLURM_JOB_USER: vsc35188
+SLURM_JOB_ACCOUNT: lp_lagom
+SLURM_JOB_NAME: probe_36
+SLURM_CLUSTER_NAME: wice
+SLURM_JOB_PARTITION: gpu_h100
+SLURM_NNODES: 1
+SLURM_NODELIST: s16g15
+SLURM_JOB_CPUS_PER_NODE: 16
+SLURM_JOB_GPUS: 0
+Date: Fri May 17 20:50:11 CEST 2024
+Walltime: 01-12:00:00
+========================================================================
+Running not on English...
+2024-05-17 20:50:14,386 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:50:14,551 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 20:50:14,556 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:50:14,675 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 20:50:14,679 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:50:14,795 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 20:50:14,800 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:50:14,922 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 20:50:14,925 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:50:15,048 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/vocab.txt HTTP/1.1" 200 0
+2024-05-17 20:50:15,051 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:50:15,182 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer.json HTTP/1.1" 200 0
+2024-05-17 20:50:15,186 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:50:15,310 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/added_tokens.json HTTP/1.1" 404 0
+2024-05-17 20:50:15,313 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:50:15,459 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/special_tokens_map.json HTTP/1.1" 404 0
+2024-05-17 20:50:15,462 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:50:15,581 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 20:50:15,584 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:50:15,701 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 20:50:16,445 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:50:16,574 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/pytorch_model.bin HTTP/1.1" 302 0
+Some weights of the model checkpoint at bert-base-cased were not used when initializing BertModel: ['cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.dense.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.bias', 'cls.seq_relationship.bias', 'cls.predictions.decoder.weight', 'cls.predictions.transform.LayerNorm.weight', 'cls.seq_relationship.weight']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+2024-05-17 20:50:19,634 : ***** (Probing) Transfer task : MAXCHARACTER classification *****
+2024-05-17 20:50:19,901 : Loaded 100000 train - 10000 dev - 10000 test for MaxCharacter
+2024-05-17 20:50:19,902 : Computing embeddings for train/dev/test
+2024-05-17 20:51:16,682 : Computed embeddings
+2024-05-17 20:51:16,683 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-17 20:52:47,273 : [('reg:1e-05', 99.5), ('reg:0.0001', 99.33), ('reg:0.001', 98.78), ('reg:0.01', 97.82)]
+2024-05-17 20:52:47,278 : Validation : best param found is reg = 1e-05 with score             99.5
+2024-05-17 20:52:47,278 : Evaluating...
+2024-05-17 20:53:12,860 : 
+Dev acc : 99.5 Test acc : 99.5 for MAXCHARACTER classification
+
+2024-05-17 20:53:17,445 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:53:17,582 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 20:53:17,586 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:53:17,705 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 20:53:17,708 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:53:17,842 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 20:53:17,846 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:53:17,979 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 20:53:17,982 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:53:18,103 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/vocab.txt HTTP/1.1" 200 0
+2024-05-17 20:53:18,106 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:53:18,226 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer.json HTTP/1.1" 200 0
+2024-05-17 20:53:18,229 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:53:18,347 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/added_tokens.json HTTP/1.1" 404 0
+2024-05-17 20:53:18,350 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:53:18,479 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/special_tokens_map.json HTTP/1.1" 404 0
+2024-05-17 20:53:18,482 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:53:18,602 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 20:53:18,605 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:53:18,735 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 20:53:19,336 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:53:19,458 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/pytorch_model.bin HTTP/1.1" 302 0
+Some weights of the model checkpoint at bert-base-cased were not used when initializing BertModel: ['cls.predictions.transform.LayerNorm.weight', 'cls.predictions.decoder.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.dense.bias', 'cls.predictions.transform.LayerNorm.bias', 'cls.seq_relationship.weight', 'cls.predictions.bias', 'cls.predictions.transform.dense.weight']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+2024-05-17 20:53:21,379 : ***** (Probing) Transfer task : MAXCHARACTER classification *****
+2024-05-17 20:53:21,445 : Loaded 100000 train - 10000 dev - 10000 test for MaxCharacter
+2024-05-17 20:53:21,447 : Computing embeddings for train/dev/test
+2024-05-17 20:54:18,011 : Computed embeddings
+2024-05-17 20:54:18,012 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-17 20:55:56,216 : [('reg:1e-05', 99.55), ('reg:0.0001', 99.29), ('reg:0.001', 98.78), ('reg:0.01', 97.78)]
+2024-05-17 20:55:56,217 : Validation : best param found is reg = 1e-05 with score             99.55
+2024-05-17 20:55:56,217 : Evaluating...
+2024-05-17 20:56:21,863 : 
+Dev acc : 99.5 Test acc : 99.4 for MAXCHARACTER classification
+
+2024-05-17 20:56:25,315 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:56:25,566 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 20:56:25,570 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:56:25,692 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 20:56:25,695 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:56:25,816 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 20:56:25,820 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:56:25,988 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 20:56:25,991 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:56:26,113 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/vocab.txt HTTP/1.1" 200 0
+2024-05-17 20:56:26,116 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:56:26,236 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer.json HTTP/1.1" 200 0
+2024-05-17 20:56:26,239 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:56:26,366 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/added_tokens.json HTTP/1.1" 404 0
+2024-05-17 20:56:26,369 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:56:26,485 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/special_tokens_map.json HTTP/1.1" 404 0
+2024-05-17 20:56:26,488 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:56:26,610 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 20:56:26,613 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:56:26,733 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 20:56:27,422 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:56:27,552 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/pytorch_model.bin HTTP/1.1" 302 0
+Some weights of the model checkpoint at bert-base-cased were not used when initializing BertModel: ['cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.predictions.bias', 'cls.predictions.transform.LayerNorm.bias', 'cls.seq_relationship.weight', 'cls.predictions.transform.LayerNorm.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.dense.weight']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+2024-05-17 20:56:29,340 : ***** (Probing) Transfer task : MAXCHARACTER classification *****
+2024-05-17 20:56:29,406 : Loaded 100000 train - 10000 dev - 10000 test for MaxCharacter
+2024-05-17 20:56:29,407 : Computing embeddings for train/dev/test
+2024-05-17 20:57:26,180 : Computed embeddings
+2024-05-17 20:57:26,181 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-17 20:59:07,503 : [('reg:1e-05', 99.38), ('reg:0.0001', 99.14), ('reg:0.001', 98.54), ('reg:0.01', 97.67)]
+2024-05-17 20:59:07,503 : Validation : best param found is reg = 1e-05 with score             99.38
+2024-05-17 20:59:07,503 : Evaluating...
+2024-05-17 20:59:35,936 : 
+Dev acc : 99.4 Test acc : 99.3 for MAXCHARACTER classification
+
+2024-05-17 20:59:39,666 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:59:39,800 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 20:59:39,804 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:59:39,926 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 20:59:39,929 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:59:40,050 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 20:59:40,054 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:59:40,172 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 20:59:40,176 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:59:40,296 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/vocab.txt HTTP/1.1" 200 0
+2024-05-17 20:59:40,299 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:59:40,420 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer.json HTTP/1.1" 200 0
+2024-05-17 20:59:40,423 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:59:40,545 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/added_tokens.json HTTP/1.1" 404 0
+2024-05-17 20:59:40,547 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:59:40,669 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/special_tokens_map.json HTTP/1.1" 404 0
+2024-05-17 20:59:40,672 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:59:40,793 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 20:59:40,796 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:59:40,926 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 20:59:41,565 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 20:59:41,692 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/pytorch_model.bin HTTP/1.1" 302 0
+Some weights of the model checkpoint at bert-base-cased were not used when initializing BertModel: ['cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.decoder.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.dense.weight', 'cls.predictions.bias', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+2024-05-17 20:59:43,401 : ***** (Probing) Transfer task : MAXCHARACTER classification *****
+2024-05-17 20:59:43,467 : Loaded 100000 train - 10000 dev - 10000 test for MaxCharacter
+2024-05-17 20:59:43,468 : Computing embeddings for train/dev/test
+2024-05-17 21:00:39,994 : Computed embeddings
+2024-05-17 21:00:39,994 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-17 21:02:12,815 : [('reg:1e-05', 99.14), ('reg:0.0001', 99.0), ('reg:0.001', 98.4), ('reg:0.01', 97.33)]
+2024-05-17 21:02:12,815 : Validation : best param found is reg = 1e-05 with score             99.14
+2024-05-17 21:02:12,816 : Evaluating...
+2024-05-17 21:02:35,928 : 
+Dev acc : 99.1 Test acc : 99.1 for MAXCHARACTER classification
+
+2024-05-17 21:02:39,732 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:02:39,878 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 21:02:39,882 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:02:39,999 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 21:02:40,003 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:02:40,126 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 21:02:40,130 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:02:40,302 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 21:02:40,305 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:02:40,421 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/vocab.txt HTTP/1.1" 200 0
+2024-05-17 21:02:40,424 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:02:40,542 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer.json HTTP/1.1" 200 0
+2024-05-17 21:02:40,545 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:02:40,672 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/added_tokens.json HTTP/1.1" 404 0
+2024-05-17 21:02:40,675 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:02:40,794 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/special_tokens_map.json HTTP/1.1" 404 0
+2024-05-17 21:02:40,796 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:02:41,130 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 21:02:41,134 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:02:41,259 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 21:02:41,925 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:02:42,046 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/pytorch_model.bin HTTP/1.1" 302 0
+Some weights of the model checkpoint at bert-base-cased were not used when initializing BertModel: ['cls.seq_relationship.weight', 'cls.predictions.decoder.weight', 'cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+2024-05-17 21:02:43,736 : ***** (Probing) Transfer task : MAXCHARACTER classification *****
+2024-05-17 21:02:43,803 : Loaded 100000 train - 10000 dev - 10000 test for MaxCharacter
+2024-05-17 21:02:43,804 : Computing embeddings for train/dev/test
+2024-05-17 21:03:40,211 : Computed embeddings
+2024-05-17 21:03:40,211 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-17 21:05:17,433 : [('reg:1e-05', 99.01), ('reg:0.0001', 98.76), ('reg:0.001', 98.13), ('reg:0.01', 96.98)]
+2024-05-17 21:05:17,434 : Validation : best param found is reg = 1e-05 with score             99.01
+2024-05-17 21:05:17,434 : Evaluating...
+2024-05-17 21:05:42,854 : 
+Dev acc : 99.0 Test acc : 99.0 for MAXCHARACTER classification
+
+2024-05-17 21:05:46,405 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:05:46,587 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 21:05:46,591 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:05:46,708 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 21:05:46,712 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:05:46,830 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 21:05:46,834 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:05:46,955 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 21:05:46,958 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:05:47,080 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/vocab.txt HTTP/1.1" 200 0
+2024-05-17 21:05:47,083 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:05:47,202 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer.json HTTP/1.1" 200 0
+2024-05-17 21:05:47,205 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:05:47,327 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/added_tokens.json HTTP/1.1" 404 0
+2024-05-17 21:05:47,330 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:05:47,450 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/special_tokens_map.json HTTP/1.1" 404 0
+2024-05-17 21:05:47,453 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:05:47,731 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 21:05:47,734 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:05:47,851 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 21:05:48,480 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:05:48,603 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/pytorch_model.bin HTTP/1.1" 302 0
+Some weights of the model checkpoint at bert-base-cased were not used when initializing BertModel: ['cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.bias', 'cls.predictions.decoder.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.LayerNorm.weight']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+2024-05-17 21:05:50,621 : ***** (Probing) Transfer task : MAXCHARACTER classification *****
+2024-05-17 21:05:50,687 : Loaded 100000 train - 10000 dev - 10000 test for MaxCharacter
+2024-05-17 21:05:50,688 : Computing embeddings for train/dev/test
+2024-05-17 21:06:47,393 : Computed embeddings
+2024-05-17 21:06:47,394 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-17 21:08:25,920 : [('reg:1e-05', 98.85), ('reg:0.0001', 98.71), ('reg:0.001', 98.12), ('reg:0.01', 96.77)]
+2024-05-17 21:08:25,920 : Validation : best param found is reg = 1e-05 with score             98.85
+2024-05-17 21:08:25,921 : Evaluating...
+2024-05-17 21:08:51,734 : 
+Dev acc : 98.8 Test acc : 98.9 for MAXCHARACTER classification
+
+2024-05-17 21:08:55,243 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:08:55,381 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 21:08:55,384 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:08:55,508 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 21:08:55,511 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:08:55,630 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 21:08:55,634 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:08:55,767 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 21:08:55,770 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:08:55,887 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/vocab.txt HTTP/1.1" 200 0
+2024-05-17 21:08:55,890 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:08:56,013 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer.json HTTP/1.1" 200 0
+2024-05-17 21:08:56,016 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:08:56,143 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/added_tokens.json HTTP/1.1" 404 0
+2024-05-17 21:08:56,146 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:08:56,268 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/special_tokens_map.json HTTP/1.1" 404 0
+2024-05-17 21:08:56,270 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:08:56,393 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 21:08:56,396 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:08:56,522 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 21:08:57,125 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:08:57,251 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/pytorch_model.bin HTTP/1.1" 302 0
+Some weights of the model checkpoint at bert-base-cased were not used when initializing BertModel: ['cls.seq_relationship.bias', 'cls.predictions.decoder.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.bias', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.dense.weight', 'cls.seq_relationship.weight']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+2024-05-17 21:08:59,101 : ***** (Probing) Transfer task : MAXCHARACTER classification *****
+2024-05-17 21:08:59,170 : Loaded 100000 train - 10000 dev - 10000 test for MaxCharacter
+2024-05-17 21:08:59,172 : Computing embeddings for train/dev/test
+2024-05-17 21:09:55,948 : Computed embeddings
+2024-05-17 21:09:55,948 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-17 21:11:36,376 : [('reg:1e-05', 98.77), ('reg:0.0001', 98.59), ('reg:0.001', 98.01), ('reg:0.01', 96.82)]
+2024-05-17 21:11:36,376 : Validation : best param found is reg = 1e-05 with score             98.77
+2024-05-17 21:11:36,376 : Evaluating...
+2024-05-17 21:12:04,516 : 
+Dev acc : 98.8 Test acc : 98.9 for MAXCHARACTER classification
+
+2024-05-17 21:12:08,276 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:12:08,412 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 21:12:08,416 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:12:08,540 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 21:12:08,543 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:12:08,664 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 21:12:08,668 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:12:08,785 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 21:12:08,788 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:12:08,911 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/vocab.txt HTTP/1.1" 200 0
+2024-05-17 21:12:08,914 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:12:09,038 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer.json HTTP/1.1" 200 0
+2024-05-17 21:12:09,041 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:12:09,164 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/added_tokens.json HTTP/1.1" 404 0
+2024-05-17 21:12:09,167 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:12:09,291 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/special_tokens_map.json HTTP/1.1" 404 0
+2024-05-17 21:12:09,293 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:12:09,409 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 21:12:09,412 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:12:09,536 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 21:12:10,230 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:12:10,356 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/pytorch_model.bin HTTP/1.1" 302 0
+Some weights of the model checkpoint at bert-base-cased were not used when initializing BertModel: ['cls.predictions.bias', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.decoder.weight', 'cls.predictions.transform.dense.bias', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.seq_relationship.weight']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+2024-05-17 21:12:12,080 : ***** (Probing) Transfer task : MAXCHARACTER classification *****
+2024-05-17 21:12:12,147 : Loaded 100000 train - 10000 dev - 10000 test for MaxCharacter
+2024-05-17 21:12:12,148 : Computing embeddings for train/dev/test
+2024-05-17 21:13:08,781 : Computed embeddings
+2024-05-17 21:13:08,781 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-17 21:14:49,017 : [('reg:1e-05', 98.66), ('reg:0.0001', 98.44), ('reg:0.001', 97.81), ('reg:0.01', 96.59)]
+2024-05-17 21:14:49,017 : Validation : best param found is reg = 1e-05 with score             98.66
+2024-05-17 21:14:49,018 : Evaluating...
+2024-05-17 21:15:14,560 : 
+Dev acc : 98.7 Test acc : 98.9 for MAXCHARACTER classification
+
+2024-05-17 21:15:18,394 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:15:18,527 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 21:15:18,531 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:15:18,653 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 21:15:18,656 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:15:18,779 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 21:15:18,783 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:15:18,899 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 21:15:18,902 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:15:19,199 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/vocab.txt HTTP/1.1" 200 0
+2024-05-17 21:15:19,202 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:15:19,315 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer.json HTTP/1.1" 200 0
+2024-05-17 21:15:19,318 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:15:19,444 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/added_tokens.json HTTP/1.1" 404 0
+2024-05-17 21:15:19,447 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:15:19,568 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/special_tokens_map.json HTTP/1.1" 404 0
+2024-05-17 21:15:19,570 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:15:19,695 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 21:15:19,698 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:15:19,820 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 21:15:20,439 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:15:20,589 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/pytorch_model.bin HTTP/1.1" 302 0
+Some weights of the model checkpoint at bert-base-cased were not used when initializing BertModel: ['cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.dense.weight', 'cls.predictions.bias', 'cls.predictions.transform.LayerNorm.bias', 'cls.seq_relationship.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+2024-05-17 21:15:22,278 : ***** (Probing) Transfer task : MAXCHARACTER classification *****
+2024-05-17 21:15:22,344 : Loaded 100000 train - 10000 dev - 10000 test for MaxCharacter
+2024-05-17 21:15:22,345 : Computing embeddings for train/dev/test
+2024-05-17 21:16:18,753 : Computed embeddings
+2024-05-17 21:16:18,754 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-17 21:17:59,008 : [('reg:1e-05', 98.46), ('reg:0.0001', 98.35), ('reg:0.001', 97.72), ('reg:0.01', 96.4)]
+2024-05-17 21:17:59,008 : Validation : best param found is reg = 1e-05 with score             98.46
+2024-05-17 21:17:59,009 : Evaluating...
+2024-05-17 21:18:29,643 : 
+Dev acc : 98.5 Test acc : 98.7 for MAXCHARACTER classification
+
+2024-05-17 21:18:33,197 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:18:33,367 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 21:18:33,371 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:18:33,488 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 21:18:33,491 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:18:33,611 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 21:18:33,615 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:18:33,737 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 21:18:33,740 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:18:33,910 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/vocab.txt HTTP/1.1" 200 0
+2024-05-17 21:18:33,913 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:18:34,036 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer.json HTTP/1.1" 200 0
+2024-05-17 21:18:34,039 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:18:34,165 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/added_tokens.json HTTP/1.1" 404 0
+2024-05-17 21:18:34,168 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:18:34,289 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/special_tokens_map.json HTTP/1.1" 404 0
+2024-05-17 21:18:34,291 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:18:34,406 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 21:18:34,409 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:18:34,527 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 21:18:35,134 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:18:35,321 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/pytorch_model.bin HTTP/1.1" 302 0
+Some weights of the model checkpoint at bert-base-cased were not used when initializing BertModel: ['cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.decoder.weight', 'cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+2024-05-17 21:18:37,033 : ***** (Probing) Transfer task : MAXCHARACTER classification *****
+2024-05-17 21:18:37,100 : Loaded 100000 train - 10000 dev - 10000 test for MaxCharacter
+2024-05-17 21:18:37,101 : Computing embeddings for train/dev/test
+2024-05-17 21:19:33,572 : Computed embeddings
+2024-05-17 21:19:33,572 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-17 21:21:23,423 : [('reg:1e-05', 98.47), ('reg:0.0001', 98.2), ('reg:0.001', 97.55), ('reg:0.01', 96.16)]
+2024-05-17 21:21:23,423 : Validation : best param found is reg = 1e-05 with score             98.47
+2024-05-17 21:21:23,424 : Evaluating...
+2024-05-17 21:21:58,957 : 
+Dev acc : 98.5 Test acc : 98.7 for MAXCHARACTER classification
+
+2024-05-17 21:22:02,776 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:22:02,900 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 21:22:02,904 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:22:03,022 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 21:22:03,025 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:22:03,174 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 21:22:03,179 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:22:03,301 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 21:22:03,304 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:22:03,590 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/vocab.txt HTTP/1.1" 200 0
+2024-05-17 21:22:03,593 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:22:03,713 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer.json HTTP/1.1" 200 0
+2024-05-17 21:22:03,716 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:22:03,845 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/added_tokens.json HTTP/1.1" 404 0
+2024-05-17 21:22:03,848 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:22:03,970 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/special_tokens_map.json HTTP/1.1" 404 0
+2024-05-17 21:22:03,972 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:22:04,090 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 21:22:04,093 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:22:04,220 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 21:22:04,923 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:22:05,063 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/pytorch_model.bin HTTP/1.1" 302 0
+Some weights of the model checkpoint at bert-base-cased were not used when initializing BertModel: ['cls.predictions.decoder.weight', 'cls.predictions.transform.dense.weight', 'cls.predictions.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias', 'cls.seq_relationship.bias', 'cls.predictions.transform.dense.bias', 'cls.seq_relationship.weight']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+2024-05-17 21:22:06,781 : ***** (Probing) Transfer task : MAXCHARACTER classification *****
+2024-05-17 21:22:06,847 : Loaded 100000 train - 10000 dev - 10000 test for MaxCharacter
+2024-05-17 21:22:06,849 : Computing embeddings for train/dev/test
+2024-05-17 21:23:03,655 : Computed embeddings
+2024-05-17 21:23:03,655 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-17 21:24:48,596 : [('reg:1e-05', 98.35), ('reg:0.0001', 98.09), ('reg:0.001', 97.43), ('reg:0.01', 96.0)]
+2024-05-17 21:24:48,597 : Validation : best param found is reg = 1e-05 with score             98.35
+2024-05-17 21:24:48,597 : Evaluating...
+2024-05-17 21:25:21,693 : 
+Dev acc : 98.3 Test acc : 98.6 for MAXCHARACTER classification
+
+2024-05-17 21:25:25,425 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:25:25,594 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 21:25:25,598 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:25:25,718 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 21:25:25,721 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:25:25,849 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 21:25:25,854 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:25:25,976 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 21:25:25,980 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:25:26,101 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/vocab.txt HTTP/1.1" 200 0
+2024-05-17 21:25:26,104 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:25:26,350 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer.json HTTP/1.1" 200 0
+2024-05-17 21:25:26,353 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:25:26,475 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/added_tokens.json HTTP/1.1" 404 0
+2024-05-17 21:25:26,478 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:25:26,599 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/special_tokens_map.json HTTP/1.1" 404 0
+2024-05-17 21:25:26,602 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:25:26,723 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 21:25:26,726 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:25:26,849 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 21:25:27,524 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:25:27,647 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/pytorch_model.bin HTTP/1.1" 302 0
+Some weights of the model checkpoint at bert-base-cased were not used when initializing BertModel: ['cls.predictions.bias', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.dense.bias', 'cls.seq_relationship.weight', 'cls.predictions.transform.dense.weight']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+2024-05-17 21:25:29,445 : ***** (Probing) Transfer task : MAXCHARACTER classification *****
+2024-05-17 21:25:29,512 : Loaded 100000 train - 10000 dev - 10000 test for MaxCharacter
+2024-05-17 21:25:29,513 : Computing embeddings for train/dev/test
+2024-05-17 21:26:26,056 : Computed embeddings
+2024-05-17 21:26:26,056 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-17 21:28:08,322 : [('reg:1e-05', 98.13), ('reg:0.0001', 97.8), ('reg:0.001', 97.09), ('reg:0.01', 95.65)]
+2024-05-17 21:28:08,322 : Validation : best param found is reg = 1e-05 with score             98.13
+2024-05-17 21:28:08,322 : Evaluating...
+2024-05-17 21:28:38,806 : 
+Dev acc : 98.1 Test acc : 98.2 for MAXCHARACTER classification
+
+2024-05-17 21:28:42,603 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:28:42,738 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 21:28:42,742 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:28:42,863 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 21:28:42,866 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:28:42,990 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 21:28:42,994 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:28:43,112 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 21:28:43,115 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:28:43,232 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/vocab.txt HTTP/1.1" 200 0
+2024-05-17 21:28:43,235 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:28:43,354 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer.json HTTP/1.1" 200 0
+2024-05-17 21:28:43,357 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:28:43,479 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/added_tokens.json HTTP/1.1" 404 0
+2024-05-17 21:28:43,482 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:28:43,604 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/special_tokens_map.json HTTP/1.1" 404 0
+2024-05-17 21:28:43,607 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:28:43,726 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2024-05-17 21:28:43,729 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:28:43,850 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/1.1" 200 0
+2024-05-17 21:28:44,458 : Starting new HTTPS connection (1): huggingface.co:443
+2024-05-17 21:28:44,582 : https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/pytorch_model.bin HTTP/1.1" 302 0
+Some weights of the model checkpoint at bert-base-cased were not used when initializing BertModel: ['cls.seq_relationship.bias', 'cls.predictions.bias', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.LayerNorm.weight']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+2024-05-17 21:28:46,283 : ***** (Probing) Transfer task : MAXCHARACTER classification *****
+2024-05-17 21:28:46,349 : Loaded 100000 train - 10000 dev - 10000 test for MaxCharacter
+2024-05-17 21:28:46,350 : Computing embeddings for train/dev/test
+2024-05-17 21:29:47,006 : Computed embeddings
+2024-05-17 21:29:47,006 : Training pytorch-MLP-nhid0-adam-bs64 with standard validation..
+2024-05-17 21:31:22,716 : [('reg:1e-05', 99.13), ('reg:0.0001', 98.86), ('reg:0.001', 98.24), ('reg:0.01', 97.15)]
+2024-05-17 21:31:22,716 : Validation : best param found is reg = 1e-05 with score             99.13
+2024-05-17 21:31:22,716 : Evaluating...
+2024-05-17 21:31:51,002 : 
+Dev acc : 99.1 Test acc : 99.2 for MAXCHARACTER classification
+

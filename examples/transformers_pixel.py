@@ -68,8 +68,10 @@ def batcher(params, batch):
 
     # batch = [[token for token in sent] for sent in batch]
     # batch = [" ".join(sent) if sent != [] else "." for sent in batch]
-    if model_name == "pixel-words" or model_name == "pixel_r":
+    if model_name in ["pixel-words", "pixel_r", "pixel-words-ud"]:
         encodings = [processor(text=a.split()) for a in batch]
+    elif model_name == "pixel-bigrams" or model_name == "pixel-bigrams-ud":
+        encodings = [processor(a, preprocessor="whitespace_only") for a in batch]
     else:
         encodings = [processor(text=format_fn(a)) for a in batch]
     pixel_values = [transforms(Image.fromarray(e.pixel_values)) for e in encodings]
@@ -155,7 +157,9 @@ if __name__ == "__main__":
 
     ## Required parameters
     parser.add_argument("--model_name", default="pixel", type=str, 
-                        choices=["pixel", "mpixel", "vit-mae", "pixel-words", "pixel-r", "pixel-bigrams", "pixel-bigrams-r", "pixel-words-r"],
+                        choices=["pixel", "mpixel", "vit-mae", "pixel-words", "pixel-r", 
+                                 "pixel-bigrams", "pixel-ud", "pixel-bigrams-ud", 
+                                 "pixel-words-ud", "vit-mae-ud"],
                         help="the name of transformer model to evaluate on")
     parser.add_argument("--task_index", default=None, type=int,
                         help="which task to perform")
@@ -178,16 +182,22 @@ if __name__ == "__main__":
 
     model_dict = {"pixel": "Team-PIXEL/pixel-base", "mpixel": "Team-PIXEL/mpixel-base2", "vit-mae": "facebook/vit-mae-base",
                   "pixel-r": "Team-PIXEL/pixel-base", "pixel-words": "Team-PIXEL/pixel-small-words", "pixel-bigrams": "Team-PIXEL/pixel-base-bigrams",
-                  "pixel-words-r": "Team-PIXEL/pixel-small-words", "pixel-bigrams-r": "Team-PIXEL/pixel-base-bigrams"}
+                  "pixel-ud" : "Team-PIXEL/pixel-base-finetuned-parsing-ud-english-ewt", 
+                  "pixel-bigrams-ud" : "UD_English-EWT-dep-pixel-base-bigrams-196-64-1-5e-5-15000-42",
+                  "pixel-words-ud" : "UD_English-EWT-dep-pixel-small-words-196-64-1-5e-5-15000-42",
+                  "vit-mae-ud" : "UD_English-EWT-dep-vit-mae-base-196-64-1-5e-5-15000-42"}
+    
     access_token = args.auth
+    if args.model_name == "pixel-words-ud":
+        args.max_seq_length = 196
 
     # Set up logger
     logging.basicConfig(format='%(asctime)s : %(message)s', level=logging.DEBUG)
-    if args.model_name == "pixel-bigrams":
+    if args.model_name in ["pixel-bigrams", "pixel-bigrams-ud"]:
         renderer_cls = PangoCairoBigramsRenderer
     else:
         renderer_cls = PangoCairoTextRenderer
-    if args.model_name == "vit-mae":
+    if args.model_name in ["vit-mae", "vit-mae-ud"]:
         processor = renderer_cls.from_pretrained(
             model_dict["pixel"],
             rgb=False,
@@ -200,6 +210,13 @@ if __name__ == "__main__":
             "test_text_renderer_config.json",
             rgb=False,
             max_seq_length=args.max_seq_length,
+            fallback_fonts_dir="fallback_fonts"
+        )
+    elif args.model_name == "pixel-bigrams-ud":
+        processor = renderer_cls.from_pretrained(
+            f"{model_dict[args.model_name]}/text_renderer_config.json",
+            rgb=False,
+            max_seq_length=196,
             fallback_fonts_dir="fallback_fonts"
         )
     else:
@@ -283,7 +300,9 @@ if __name__ == "__main__":
         ['Xtr_Length', 'Xtr_WordContent', 'Xtr_Depth',
          'Xtr_BigramShift', 'Xtr_Tense', 'Xtr_SubjNumber', 'Xtr_ObjNumber',
          'Xtr_OddManOut', 'Xtr_CoordinationInversion'],
-        ["Vis_MaxCharacter"]
+        ["Vis_MaxCharacter", "Vis_CountCharSent", "Vis_CountCharWords",
+         "Vis_MaxCountSent", "Vis_MaxCountWords", "Vis_OddCharSent", 
+         "Vis_OddCharWords"]
 
     ]
     if args.language == "Arabic":

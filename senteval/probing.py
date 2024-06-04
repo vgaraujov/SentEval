@@ -45,11 +45,9 @@ class PROBINGEval(object):
             for line in f:
                 line = line.rstrip().split('\t')
                 # self.task_data[self.tok2split[line[0]]]['X'].append(line[-1].split())
-                try:
-                    self.task_data[self.tok2split[line[0]]]['X'].append(line[-1])
-                    self.task_data[self.tok2split[line[0]]]['y'].append(line[1])
-                except:
-                    set_trace()
+                self.task_data[self.tok2split[line[0]]]['X'].append(line[-1])
+                self.task_data[self.tok2split[line[0]]]['y'].append(line[1])
+
 
         labels = sorted(np.unique(self.task_data['train']['y']))
         self.tok2label = dict(zip(labels, range(len(labels))))
@@ -57,7 +55,12 @@ class PROBINGEval(object):
 
         for split in self.task_data:
             for i, y in enumerate(self.task_data[split]['y']):
-                self.task_data[split]['y'][i] = self.tok2label[y]
+                try:
+                    self.task_data[split]['y'][i] = self.tok2label[y]
+                except:
+                    print(y)
+                    print(self.task_data[split]['X'][i])
+                    quit()
 
     def run(self, params, batcher):
         task_embed = {'train': {}, 'dev': {}, 'test': {}}
@@ -217,6 +220,36 @@ class MaxCharacter(PROBINGEval):
     def __init__(self, task_path, seed=1111):
         task_path = os.path.join(task_path, 'max_character.txt')
         PROBINGEval.__init__(self, 'MaxCharacter', task_path, seed)
+
+class CountCharSent(PROBINGEval):
+    def __init__(self, task_path, seed=1111):
+        task_path = os.path.join(task_path, 'count_character_sentences.txt')
+        PROBINGEval.__init__(self, 'CountCharSent', task_path, seed)
+
+class CountCharWords(PROBINGEval):
+    def __init__(self, task_path, seed=1111):
+        task_path = os.path.join(task_path, 'count_character_words.txt')
+        PROBINGEval.__init__(self, 'CountCharWord', task_path, seed)
+
+class MaxCountSent(PROBINGEval):
+    def __init__(self, task_path, seed=1111):
+        task_path = os.path.join(task_path, 'max_count_sentences.txt')
+        PROBINGEval.__init__(self, 'MaxCountSent', task_path, seed)
+
+class MaxCountWords(PROBINGEval):
+    def __init__(self, task_path, seed=1111):
+        task_path = os.path.join(task_path, 'max_count_words.txt')
+        PROBINGEval.__init__(self, 'MaxCountWord', task_path, seed)
+
+class OddCharSent(PROBINGEval):
+    def __init__(self, task_path, seed=1111):
+        task_path = os.path.join(task_path, 'odd_character_out_sentences.txt')
+        PROBINGEval.__init__(self, 'OddCharSent', task_path, seed)
+
+class OddCharWords(PROBINGEval):
+    def __init__(self, task_path, seed=1111):
+        task_path = os.path.join(task_path, 'odd_character_out_words.txt')
+        PROBINGEval.__init__(self, 'OddCharWord', task_path, seed)
 
 """
 Multilingual Probing Experiments
