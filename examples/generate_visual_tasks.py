@@ -214,7 +214,7 @@ class BinningAlgorithm(ABC):
     @staticmethod
     def printBins(bins: List["BinningAlgorithm.Bin"]):
         total = sum(map(lambda t: t[0], bins))
-        print(f"{len(bins)} bins (target size {int(total/len(bins))}):")
+        print(f"{len(bins)} bins (target size {int(total/len(bins))} = {total}/{len(bins)}):")
         for s, b in bins:
             print("\t", s, natsorted(b))
 
@@ -374,19 +374,19 @@ class OrderPreservingOverflow(BinningAlgorithm):
         # Add the rest
         for i in range(k,len(keys_and_counts)):
             key, count = keys_and_counts[i]
+            bins[k-1].push(key, count)
 
-            current_bin_index = k-1
-            while True:
-                # print("Attempting to add count", count, f"to bin {current_bin_index} of", [q.total for q in bins], "with threshold", max_bin_size)
-                assert current_bin_index >= 0
-
-                current_bin = bins[current_bin_index]
-                current_bin.push(key, count)
-                if current_bin.total > max_bin_size and current_bin_index != 0 and bins[current_bin_index-1].total <= max_bin_size:  # Current bin overflows to the previous bin, UNLESS the previous bin is already over capacity OR this is the last bin.
-                    key, count = current_bin.pop()  # Not the same key,count as above.
-                    current_bin_index -= 1
-                else:  # Current bin has not overflowed yet.
-                    break
+            any_overflow = True
+            while any_overflow:
+                any_overflow = False
+                for current_bin_index in range(k-1, 0, -1):  # 0 is not included because bin 0 can never overflow.
+                    current_bin   = bins[current_bin_index]
+                    preceding_bin = bins[current_bin_index-1]
+                    if current_bin.total > max_bin_size and preceding_bin.total <= max_bin_size:  # Current bin overflows to the previous bin, UNLESS the previous bin is already over capacity OR this is the last bin.
+                        key, count = current_bin.pop()
+                        preceding_bin.push(key, count)
+                        # print("Attempting to add count", count, f"to bin {current_bin_index-1} of", [q.total for q in bins], "with threshold", max_bin_size)
+                        any_overflow = True
 
         # Convert to the expected bin format
         return [(queue.total, set(queue.ordered_keys)) for queue in bins]
@@ -446,20 +446,6 @@ def testBinAmounts(binner: BinningAlgorithm, path: Path, column: int, max_k: int
 
 
 if __name__ == "__main__":
-    # for s in generateCharacters(n=10, lengths=5):
-    #     print(s)
-    # for example in dataset_countCharacter(generateCharacters(n=10, lengths=20), examples_per_sentence=5):
-    # for example in dataset_countCharacter(generateWords(lengths=10), examples_per_sentence=5):
-    # for example in dataset_countCharacter(generateSentences(), examples_per_sentence=3):
-    #     print("\t".join(map(str,example)))
-    # for example in take(10, dataset_argmaxCharacter(generateCharacters(lengths=20))):
-    # for example in dataset_unicodeInsert(generateSentences()):
-    #     print("\t".join(map(str,example)))
-    # for example in addHoldoutPrefix(20, dataset_unicodeInsert(generateSentences())):
-    #     print(example)
-
-    ##############################################################################
-
     out_path = PATH_DATA / "probing" / "Visual" / "odd_character_out_sentences.txt"
     if not out_path.exists():
         tuplesToFile(out_path, addHoldoutPrefix(100_000, dataset_unicodeInsert(generateSentences(loop=False))))
@@ -477,26 +463,30 @@ if __name__ == "__main__":
     if not out_path.exists():
         tuplesToFile(out_path, addHoldoutPrefix(100_000, dataset_countCharacter(generateSentences(loop=False), examples_per_sentence=3)), lastsep="|")
     # histogramOfTsv(out_path, column=1)
-    testBinAmounts(binner, out_path, column=1, max_k=7)  # 4 is best
+    testBinAmounts(binner, out_path, column=1, max_k=6)  # 4 is best
+    binned_path = binner.applyBinsToTsv(out_path, column=1, k_bins=4)
 
     out_path = PATH_DATA / "probing" / "Visual" / "count_character_words.txt"
     if not out_path.exists():
         tuplesToFile(out_path, addHoldoutPrefix(100_000, dataset_countCharacter(generateWords(
             map(len, map(str.split, generateSentences(loop=False)))), examples_per_sentence=3)), lastsep="|")
-    testBinAmounts(binner, out_path, column=1, max_k=7)  # 2 or 4
-
-    binner = OrderPreservingOverflow(margin=1.1)
+    testBinAmounts(binner, out_path, column=1, max_k=6)  # 2 or 4
+    binned_path = binner.applyBinsToTsv(out_path, column=1, k_bins=4)
 
     out_path = PATH_DATA / "probing" / "Visual" / "max_count_sentences.txt"
     if not out_path.exists():
         tuplesToFile(out_path, addHoldoutPrefix(80_000, dataset_maxCharacter(generateSentences(loop=False))))
-    testBinAmounts(binner, out_path, column=1, max_k=7)  # 3, 4 and 6 are best
+    testBinAmounts(binner, out_path, column=1, max_k=6)  # 4 is best
+    binned_path = binner.applyBinsToTsv(out_path, column=1, k_bins=4)
 
     out_path = PATH_DATA / "probing" / "Visual" / "max_count_words.txt"
     if not out_path.exists():
         tuplesToFile(out_path, addHoldoutPrefix(100_000, dataset_maxCharacter(generateWords(
             map(len, map(str.split, generateSentences(loop=False)))))))
-    testBinAmounts(binner, out_path, column=1, max_k=7)  # 2 or 3, the rest is bad  TODO: Why is the last bucket so heavily overloaded?
+    testBinAmounts(binner, out_path, column=1, max_k=6)  # 4 is best
+    binned_path = binner.applyBinsToTsv(out_path, column=1, k_bins=4)
+
+    ##############################################################################################################
 
     binner = BiggestKeySmallestBinFirst()
 
@@ -504,7 +494,6 @@ if __name__ == "__main__":
     if not out_path.exists():
         tuplesToFile(out_path, addHoldoutPrefix(80_000, dataset_argmaxCharacter(generateSentences(loop=False))))
     testBinAmounts(binner, out_path, column=1, max_k=7)  # 5 is nice IF you subsample the 'e' and 't' examples to 8k (making the dataset 40k instead).
-
     binned_path = binner.applyBinsToTsv(out_path, column=1, k_bins=5)
     filtered_path = limitTsvValueCount(binned_path, column=1, max_frequency=8_000)
     binner.binTsv(filtered_path, column=1, k_bins=5)
