@@ -3,14 +3,15 @@ from abc import ABC, abstractmethod
 from collections import Counter
 from pathlib import Path
 
+import time
 import warnings
+import itertools
 import numpy as np
 import numpy.random as npr
-import itertools
 import wonderwords as ww
 from tqdm.auto import tqdm
-from string import ascii_lowercase
 from natsort import natsorted
+from string import ascii_lowercase
 
 RNG = npr.default_rng(0)
 
@@ -53,6 +54,20 @@ def generateCharacters(lengths: Union[Iterable[int], int]):
         length = next(length_iterator)
         yield "".join([characters[i] for i in RNG.choice(len(characters), size=length)])
 
+##################################################################################################################
+
+def dataset_unicodeInsert(generator: Iterable[str]):
+    # 50% should be with and 50% without
+    character_ords = list(range(1568,1610+1)) + list(range(1654,1725+1))  # Arabic characters that aren't just diacritics.
+    for string in generator:
+        if RNG.random() < 0.5:
+            yield 0, string
+        else:
+            index = RNG.choice(len(string))
+            character_ord = RNG.choice(character_ords)
+            yield 1, string[:index] + chr(character_ord) + string[index:]
+
+##################################################################################################################
 
 def dataset_countCharacter(generator: Iterable[str], examples_per_sentence: int):
     def normalised_softmax(x: np.ndarray, tau: float):
@@ -70,7 +85,7 @@ def dataset_countCharacter(generator: Iterable[str], examples_per_sentence: int)
             if not k.isalpha():
                 counts.pop(k)
 
-        if not counts:  # Sentence consists entirely of numbers.
+        if len(counts) < 3:  # Sentence consists of spacing/numbers/punctuation, or very few letters, such that counting characters becomes counting length.
             continue
 
         keys          = list(counts.keys())
@@ -79,23 +94,15 @@ def dataset_countCharacter(generator: Iterable[str], examples_per_sentence: int)
             yield counts[keys[index]], string, keys[index]
 
 
-def dataset_unicodeInsert(generator: Iterable[str]):
-    # 50% should be with and 50% without
-    character_ords = list(range(1568,1610+1)) + list(range(1654,1725+1))  # Arabic characters that aren't just diacritics.
-    for string in generator:
-        if RNG.random() < 0.5:
-            yield 0, string
-        else:
-            index = RNG.choice(len(string))
-            character_ord = RNG.choice(character_ords)
-            yield 1, string[:index] + chr(character_ord) + string[index:]
-
-
 def dataset_maxCharacter(generator: Iterable[str]):
     for string in generator:
         counts = Counter(string)
-        if " " in counts:
-            counts.pop(" ")
+        for k in list(counts.keys()):
+            if not k.isalpha():
+                counts.pop(k)
+
+        if len(counts) < 3:  # Sentence consists of spacing/numbers/punctuation, or very few letters, such that counting characters becomes counting length.
+            continue
 
         first,second = counts.most_common(n=2)
         if first[1] != second[1]:  # Unique max
@@ -115,9 +122,9 @@ def dataset_argmaxCharacter(generator: Iterable[str]):
         if len(counts) < 3:  # This is a nonsense string. It doesn't even contain 3 different unique letters...
             continue
 
-        # Only if the maximum count is unique do we use this string.
+        # Only if the maximum count is unique do we use this string, and only if that maximum is a lowercase letter.
         first,second = counts.most_common(n=2)
-        if first[1] != second[1]:
+        if first[1] != second[1] and first[0].islower():
             yield first[0], string
 
 
@@ -152,7 +159,9 @@ def iterateTsv(path: Path) -> Generator[tuple, None, None]:
 
 def tuplesToFile(path: Path, generator: Iterable[tuple], sep: str="\t", lastsep: str="\t"):
     path.parent.mkdir(exist_ok=True, parents=True)
+    time.sleep(0.5)
     print("Writing", path.as_posix(), "...")
+    time.sleep(0.5)
     with open(path, "w", encoding="utf-8") as handle:
         for tup in generator:
             handle.write(sep.join(map(str,tup[:-2])) + sep + lastsep.join(map(str,tup[-2:])) + "\n")
@@ -463,27 +472,27 @@ if __name__ == "__main__":
     if not out_path.exists():
         tuplesToFile(out_path, addHoldoutPrefix(100_000, dataset_countCharacter(generateSentences(loop=False), examples_per_sentence=3)), lastsep="|")
     # histogramOfTsv(out_path, column=1)
-    testBinAmounts(binner, out_path, column=1, max_k=6)  # 4 is best
+    # testBinAmounts(binner, out_path, column=1, max_k=6)  # 4 is best
     binned_path = binner.applyBinsToTsv(out_path, column=1, k_bins=4)
 
     out_path = PATH_DATA / "probing" / "Visual" / "count_character_words.txt"
     if not out_path.exists():
         tuplesToFile(out_path, addHoldoutPrefix(100_000, dataset_countCharacter(generateWords(
             map(len, map(str.split, generateSentences(loop=False)))), examples_per_sentence=3)), lastsep="|")
-    testBinAmounts(binner, out_path, column=1, max_k=6)  # 2 or 4
+    # testBinAmounts(binner, out_path, column=1, max_k=6)  # 2 or 4
     binned_path = binner.applyBinsToTsv(out_path, column=1, k_bins=4)
 
     out_path = PATH_DATA / "probing" / "Visual" / "max_count_sentences.txt"
     if not out_path.exists():
         tuplesToFile(out_path, addHoldoutPrefix(80_000, dataset_maxCharacter(generateSentences(loop=False))))
-    testBinAmounts(binner, out_path, column=1, max_k=6)  # 4 is best
+    # testBinAmounts(binner, out_path, column=1, max_k=6)  # 4 is best
     binned_path = binner.applyBinsToTsv(out_path, column=1, k_bins=4)
 
     out_path = PATH_DATA / "probing" / "Visual" / "max_count_words.txt"
     if not out_path.exists():
         tuplesToFile(out_path, addHoldoutPrefix(100_000, dataset_maxCharacter(generateWords(
             map(len, map(str.split, generateSentences(loop=False)))))))
-    testBinAmounts(binner, out_path, column=1, max_k=6)  # 4 is best
+    # testBinAmounts(binner, out_path, column=1, max_k=6)  # 4 is best
     binned_path = binner.applyBinsToTsv(out_path, column=1, k_bins=4)
 
     ##############################################################################################################
@@ -493,7 +502,7 @@ if __name__ == "__main__":
     out_path = PATH_DATA / "probing" / "Visual" / "argmax_count_sentences.txt"
     if not out_path.exists():
         tuplesToFile(out_path, addHoldoutPrefix(80_000, dataset_argmaxCharacter(generateSentences(loop=False))))
-    testBinAmounts(binner, out_path, column=1, max_k=7)  # 5 is nice IF you subsample the 'e' and 't' examples to 8k (making the dataset 40k instead).
+    # testBinAmounts(binner, out_path, column=1, max_k=7)  # 5 is nice IF you subsample the 'e' and 't' examples to 8k (making the dataset 40k instead).
     binned_path = binner.applyBinsToTsv(out_path, column=1, k_bins=5)
     filtered_path = limitTsvValueCount(binned_path, column=1, max_frequency=8_000)
     binner.binTsv(filtered_path, column=1, k_bins=5)
@@ -502,7 +511,7 @@ if __name__ == "__main__":
     if not out_path.exists():
         tuplesToFile(out_path, addHoldoutPrefix(100_000, dataset_argmaxCharacter(generateWords(
             map(len, map(str.split, generateSentences(loop=False)))))))
-    testBinAmounts(binner, out_path, column=1, max_k=7)  # 5 is nice but you need to cap every class to about 9900
+    # testBinAmounts(binner, out_path, column=1, max_k=7)  # 5 is nice but you need to cap every class to about 9900
 
     binned_path = binner.applyBinsToTsv(out_path, column=1, k_bins=5)
     filtered_path = limitTsvValueCount(binned_path, column=1, max_frequency=9900)
