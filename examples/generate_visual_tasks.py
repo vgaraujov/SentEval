@@ -473,27 +473,31 @@ if __name__ == "__main__":
         tuplesToFile(out_path, addHoldoutPrefix(100_000, dataset_countCharacter(generateSentences(loop=False), examples_per_sentence=3)), lastsep="|")
     # histogramOfTsv(out_path, column=1)
     # testBinAmounts(binner, out_path, column=1, max_k=6)  # 4 is best
-    binned_path = binner.applyBinsToTsv(out_path, column=1, k_bins=4)
+    binner.binTsv(out_path, column=1, k_bins=4)
+    # binned_path = binner.applyBinsToTsv(out_path, column=1, k_bins=4)
 
     out_path = PATH_DATA / "probing" / "Visual" / "count_character_words.txt"
     if not out_path.exists():
         tuplesToFile(out_path, addHoldoutPrefix(100_000, dataset_countCharacter(generateWords(
             map(len, map(str.split, generateSentences(loop=False)))), examples_per_sentence=3)), lastsep="|")
     # testBinAmounts(binner, out_path, column=1, max_k=6)  # 2 or 4
-    binned_path = binner.applyBinsToTsv(out_path, column=1, k_bins=4)
+    binner.binTsv(out_path, column=1, k_bins=4)
+    # binned_path = binner.applyBinsToTsv(out_path, column=1, k_bins=4)
 
     out_path = PATH_DATA / "probing" / "Visual" / "max_count_sentences.txt"
     if not out_path.exists():
         tuplesToFile(out_path, addHoldoutPrefix(80_000, dataset_maxCharacter(generateSentences(loop=False))))
     # testBinAmounts(binner, out_path, column=1, max_k=6)  # 4 is best
-    binned_path = binner.applyBinsToTsv(out_path, column=1, k_bins=4)
+    binner.binTsv(out_path, column=1, k_bins=4)
+    # binned_path = binner.applyBinsToTsv(out_path, column=1, k_bins=4)
 
     out_path = PATH_DATA / "probing" / "Visual" / "max_count_words.txt"
     if not out_path.exists():
         tuplesToFile(out_path, addHoldoutPrefix(100_000, dataset_maxCharacter(generateWords(
             map(len, map(str.split, generateSentences(loop=False)))))))
     # testBinAmounts(binner, out_path, column=1, max_k=6)  # 4 is best
-    binned_path = binner.applyBinsToTsv(out_path, column=1, k_bins=4)
+    binner.binTsv(out_path, column=1, k_bins=4)
+    # binned_path = binner.applyBinsToTsv(out_path, column=1, k_bins=4)
 
     ##############################################################################################################
 
@@ -503,16 +507,17 @@ if __name__ == "__main__":
     if not out_path.exists():
         tuplesToFile(out_path, addHoldoutPrefix(80_000, dataset_argmaxCharacter(generateSentences(loop=False))))
     # testBinAmounts(binner, out_path, column=1, max_k=7)  # 5 is nice IF you subsample the 'e' and 't' examples to 8k (making the dataset 40k instead).
-    binned_path = binner.applyBinsToTsv(out_path, column=1, k_bins=5)
-    filtered_path = limitTsvValueCount(binned_path, column=1, max_frequency=8_000)
-    binner.binTsv(filtered_path, column=1, k_bins=5)
+    binner.binTsv(out_path, column=1, k_bins=5)
+    # binned_path = binner.applyBinsToTsv(out_path, column=1, k_bins=5)
+    # filtered_path = limitTsvValueCount(binned_path, column=1, max_frequency=8_000)
+    # binner.binTsv(filtered_path, column=1, k_bins=5)
 
     out_path = PATH_DATA / "probing" / "Visual" / "argmax_count_words.txt"
     if not out_path.exists():
         tuplesToFile(out_path, addHoldoutPrefix(100_000, dataset_argmaxCharacter(generateWords(
             map(len, map(str.split, generateSentences(loop=False)))))))
     # testBinAmounts(binner, out_path, column=1, max_k=7)  # 5 is nice but you need to cap every class to about 9900
-
-    binned_path = binner.applyBinsToTsv(out_path, column=1, k_bins=5)
-    filtered_path = limitTsvValueCount(binned_path, column=1, max_frequency=9900)
-    binner.binTsv(filtered_path, column=1, k_bins=5)
+    binner.binTsv(out_path, column=1, k_bins=5)
+    # binned_path = binner.applyBinsToTsv(out_path, column=1, k_bins=5)
+    # filtered_path = limitTsvValueCount(binned_path, column=1, max_frequency=9900)
+    # binner.binTsv(filtered_path, column=1, k_bins=5)
